@@ -10,6 +10,10 @@ dependencies:
   get: 4.6.1
   firebase_core: 1.10.6
   cloud_firestore: 3.1.5
+  get_storage: 2.0.3
+  data_table_2: 2.2.0
+  font_awesome_flutter: 9.2.0
+  google_fonts: 2.1.1
   flutter: 
     sdk: flutter
 

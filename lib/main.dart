@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/constants/style_constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -19,5 +20,8 @@ Widget _buildApp() {
     debugShowCheckedModeBanner: false,
     initialRoute: AppPages.INITIAL,
     getPages: AppPages.routes,
+    theme: ThemeData(
+      textTheme: myTextTheme,
+    ),
   );
 }
