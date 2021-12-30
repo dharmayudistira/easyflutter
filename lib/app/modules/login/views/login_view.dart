@@ -120,7 +120,9 @@ class LoginView extends GetView<LoginController> {
               width: double.maxFinite,
               height: 35,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamed(Routes.DASHBOARD_LECTURER);
+                },
                 child: Text(
                   "Masuk",
                   style: Theme.of(context)
