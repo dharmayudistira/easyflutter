@@ -1,20 +1,152 @@
 import 'package:get/get.dart';
 
 class DataStudentController extends GetxController {
-  //TODO: Implement DataStudentController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  final dummyRow = [
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : true,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : true,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : true,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : true,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+    {
+      "nim" : "184",
+      "nama" : "Budi",
+      "kelas" : "3A",
+      "status" : false,
+    },
+  ];
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }
