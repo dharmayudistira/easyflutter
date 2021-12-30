@@ -1,4 +1,5 @@
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/views/app_description_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -143,7 +144,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          //TODO : should navigate to register screen
+                          Get.toNamed(Routes.REGISTER);
                         }
                     ),
                   ]
