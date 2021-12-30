@@ -1,20 +1,90 @@
 import 'package:get/get.dart';
 
 class DataClassController extends GetxController {
-  //TODO: Implement DataClassController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  final dummyRow = [
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+    {
+      "id_kelas" : "3A",
+      "kelas" : "3A",
+    },
+  ];
 }
