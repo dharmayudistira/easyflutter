@@ -45,4 +45,12 @@ class StorageHelper extends GetxController {
     return storageManager.read(KEY_IS_LOGIN_USER) ?? false;
   }
 
+  void setIdClassUser(String idClass) {
+    storageManager.write(KEY_ID_CLASS_USER, idClass);
+  }
+
+  String getIdClassUser() {
+    return storageManager.read(KEY_ID_CLASS_USER);
+  }
+
 }
