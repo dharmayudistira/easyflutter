@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,15 +9,95 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('DashboardLecturerView'),
-        centerTitle: true,
+      body: Row(
+        children: [
+          _buildSideBar(context),
+          Expanded(
+            flex: 5,
+            child: Obx(() {
+              var selected = controller.selectedIndexScreen.value;
+              return controller.listDashboardScreen[selected];
+            }),
+          ),
+        ],
       ),
-      body: Center(
-        child: Text(
-          'DashboardLecturerView is working',
-          style: TextStyle(fontSize: 20),
+    );
+  }
+
+  Widget _buildSideBar(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Container(
+        color: Colors.blue,
+        child: Padding(
+          padding: EdgeInsets.all(dimenSmall),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  DrawerHeader(
+                    child: Text(
+                      "EasyFlutter",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5
+                          ?.copyWith(color: Colors.white),
+                    ),
+                  ),
+                  _buildSideBarItem(
+                    context,
+                    "Data Kelas",
+                    () {
+                      controller.setSelectedIndex(0);
+                    },
+                  ),
+                  SizedBox(height: dimenSmall),
+                  _buildSideBarItem(
+                    context,
+                    "Data Mahasiswa",
+                    () {
+                      controller.setSelectedIndex(1);
+                    },
+                  ),
+                ],
+              ),
+              _buildSideBarItem(
+                context,
+                "Logout",
+                () {},
+              ),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildSideBarItem(
+    BuildContext context,
+    String title,
+    Function onPressed,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.white,
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(dimenSmall / 2),
+      ),
+      child: ListTile(
+        title: Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2
+              ?.copyWith(color: Colors.white),
+        ),
+        onTap: () {
+          onPressed();
+        },
       ),
     );
   }
