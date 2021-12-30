@@ -28,7 +28,9 @@ class DataClassView extends StatelessWidget {
                       ?.copyWith(color: Colors.black),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _buildShowAddTableDialog(context);
+                  },
                   child: Text(
                     "Tambah",
                   ),
@@ -39,6 +41,47 @@ class DataClassView extends StatelessWidget {
             _buildDataTableClass(),
           ],
         ),
+      ),
+    );
+  }
+
+  Future<dynamic> _buildShowAddTableDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Tambahkan Kelas"),
+        content: TextFormField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: "Contoh : TI-3A / MI-2A",
+            label: Text("Masukkan Nama Kelas"),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text(
+              "Batal",
+              style: TextStyle(
+                color: Colors.redAccent,
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              /*
+                TODO :
+                1. Do validation
+                2. add class
+                3. create exercise
+                4. then close the dialog
+              */
+            },
+            child: Text("Simpan"),
+          ),
+        ],
       ),
     );
   }
