@@ -1,4 +1,7 @@
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/modules/add_student/views/add_student_view.dart';
+import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
+import 'package:easyflutter/app/modules/data_student/views/data_student_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -16,7 +19,14 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
             flex: 5,
             child: Obx(() {
               var selected = controller.selectedIndexScreen.value;
-              return controller.listDashboardScreen[selected];
+              return IndexedStack(
+                index: selected,
+                children: [
+                  DataClassView(),
+                  DataStudentView(),
+                  AddStudentView(),
+                ],
+              );
             }),
           ),
         ],

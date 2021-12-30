@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 
 class DashboardLecturerController extends GetxController {
 
-  final listDashboardScreen = [
-    DataClassView(),
-    DataStudentView(),
-  ];
+  // final listDashboardScreen = [
+  //   DataClassView(),
+  //   DataStudentView(),
+  // ];
 
   var selectedIndexScreen = 0.obs;
 

@@ -30,7 +30,9 @@ class DataStudentView extends StatelessWidget {
                   ?.copyWith(color: Colors.black),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.dashboardLecturerController.setSelectedIndex(2);
+              },
               child: Text(
                 "Tambah",
               ),
