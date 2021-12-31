@@ -9,6 +9,7 @@ abstract class Routes {
   static const DASHBOARD_LECTURER = _Paths.DASHBOARD_LECTURER;
   static const DATA_CLASS = _Paths.DATA_CLASS;
   static const DATA_STUDENT = _Paths.DATA_STUDENT;
+  static const LIST_EXERCISE = _Paths.LIST_EXERCISE;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const DASHBOARD_LECTURER = '/dashboard-lecturer';
   static const DATA_CLASS = '/data-class';
   static const DATA_STUDENT = '/data-student';
+  static const LIST_EXERCISE = '/list-exercise';
 }
