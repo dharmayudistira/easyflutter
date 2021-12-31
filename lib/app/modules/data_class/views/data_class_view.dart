@@ -109,11 +109,15 @@ class DataClassView extends StatelessWidget {
           rows: controller.dummyRow.map((e) {
             var index = controller.dummyRow.indexOf(e) + 1;
             var converted = index.toString();
+
+            var classId = e["id_kelas"].toString();
+            var className = e["kelas"].toString();
+
             return DataRow2(
               cells: [
                 DataCell(Text(converted)),
-                DataCell(Text(e["id_kelas"]!)),
-                DataCell(Text(e["kelas"]!)),
+                DataCell(Text(classId)),
+                DataCell(Text(className)),
                 DataCell(
                   ElevatedButton(
                     onPressed: () {

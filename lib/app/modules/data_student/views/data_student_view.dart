@@ -75,17 +75,17 @@ class DataStudentView extends StatelessWidget {
             var index = controller.dummyRow.indexOf(e) + 1;
             var converted = index.toString();
 
-            var nim = e["nim"].toString();
-            var nama = e["nama"].toString();
-            var kelas = e["kelas"].toString();
+            var studentId = e["nim"].toString();
+            var studentName = e["nama"].toString();
+            var studentClass = e["kelas"].toString();
             var status = e["status"] as bool;
 
             return DataRow2(
               cells: [
                 DataCell(Text(converted)),
-                DataCell(Text(nim)),
-                DataCell(Text(nama)),
-                DataCell(Text(kelas)),
+                DataCell(Text(studentId)),
+                DataCell(Text(studentName)),
+                DataCell(Text(studentClass)),
                 DataCell(
                     (status)
                         ? Text("Valid")
@@ -96,7 +96,7 @@ class DataStudentView extends StatelessWidget {
                     onPressed: (status)
                         ? null
                         : () {},
-                    child: Text("Detail"),
+                    child: Text("Validasi"),
                   ),
                 ),
               ],

@@ -4,23 +4,22 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/list_exercise_controller.dart';
+import '../controllers/list_log_student_controller.dart';
 
-class ListExerciseView extends StatelessWidget {
-
-  final controller = Get.put(ListExerciseController());
+class ListLogStudentView extends StatelessWidget {
+  final controller = Get.put(ListLogStudentController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding:
-        EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
+            EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Data Latihan",
+              "Data Log Mahasiswa",
               style: Theme.of(context)
                   .textTheme
                   .headline5
@@ -44,35 +43,43 @@ class ListExerciseView extends StatelessWidget {
               label: Text("No"),
             ),
             DataColumn2(
-              label: Text("ID Latihan"),
+              label: Text("ID Log"),
             ),
             DataColumn2(
-              label: Text("Latihan"),
+              label: Text("Nama Mahasiswa"),
             ),
             DataColumn2(
-              label: Text("Aksi"),
+              label: Text("Langkah ke-"),
+            ),
+            DataColumn2(
+              label: Text("Waktu"),
+            ),
+            DataColumn2(
+              label: Text("Jawaban"),
             ),
           ],
           rows: controller.dummyRow.map((e) {
             var index = controller.dummyRow.indexOf(e) + 1;
             var converted = index.toString();
 
-            var exerciseId = e["id_latihan"].toString();
-            var exerciseName = e["latihan"].toString();
+            var logId = e["id_log"].toString();
+            var studentName = e["nama_mahasiswa"].toString();
+            var steps = e["langkah"].toString();
+            var time = e["waktu"].toString();
+            var studentAnswer = e["jawaban"].toString();
 
             return DataRow2(
               cells: [
                 DataCell(Text(converted)),
-                DataCell(Text(exerciseId)),
-                DataCell(Text(exerciseName)),
-                DataCell(
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.dashboardLecturerController.setSelectedIndex(4);
-                    },
-                    child: Text("Lihat Log Mahasiswa"),
-                  ),
-                ),
+                DataCell(Text(logId)),
+                DataCell(Text(
+                  studentName,
+                  maxLines: 2,
+                  style: TextStyle(overflow: TextOverflow.ellipsis),
+                )),
+                DataCell(Text(steps)),
+                DataCell(Text(time)),
+                DataCell(Text(studentAnswer)),
               ],
             );
           }).toList(),

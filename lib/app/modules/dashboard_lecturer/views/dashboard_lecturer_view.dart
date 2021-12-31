@@ -3,6 +3,7 @@ import 'package:easyflutter/app/modules/add_student/views/add_student_view.dart'
 import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
 import 'package:easyflutter/app/modules/data_student/views/data_student_view.dart';
 import 'package:easyflutter/app/modules/list_exercise/views/list_exercise_view.dart';
+import 'package:easyflutter/app/modules/list_log_student/views/list_log_student_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -27,6 +28,7 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
                   DataStudentView(),
                   AddStudentView(),
                   ListExerciseView(),
+                  ListLogStudentView(),
                 ],
               );
             }),

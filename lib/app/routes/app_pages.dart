@@ -8,6 +8,8 @@ import 'package:easyflutter/app/modules/data_student/bindings/data_student_bindi
 import 'package:easyflutter/app/modules/data_student/views/data_student_view.dart';
 import 'package:easyflutter/app/modules/list_exercise/bindings/list_exercise_binding.dart';
 import 'package:easyflutter/app/modules/list_exercise/views/list_exercise_view.dart';
+import 'package:easyflutter/app/modules/list_log_student/bindings/list_log_student_binding.dart';
+import 'package:easyflutter/app/modules/list_log_student/views/list_log_student_view.dart';
 import 'package:easyflutter/app/modules/login/bindings/login_binding.dart';
 import 'package:easyflutter/app/modules/login/views/login_view.dart';
 import 'package:easyflutter/app/modules/register/bindings/register_binding.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.LIST_EXERCISE,
       page: () => ListExerciseView(),
       binding: ListExerciseBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_LOG_STUDENT,
+      page: () => ListLogStudentView(),
+      binding: ListLogStudentBinding(),
     ),
   ];
 }

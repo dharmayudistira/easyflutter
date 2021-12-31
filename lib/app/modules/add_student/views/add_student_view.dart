@@ -82,7 +82,15 @@ class AddStudentView extends StatelessWidget {
               );
             }),
             SizedBox(height: dimenMedium),
-            ElevatedButton(onPressed: (){}, child: Text("Simpan")),
+            ElevatedButton(onPressed: (){
+              /*
+                TODO :
+                1. Do validation by NIM (student id)
+                2. Save value to firestore
+                3. then navigate to data student page
+              */
+              controller.dashboardLecturerController.setSelectedIndex(1);
+            }, child: Text("Simpan")),
           ],
         ),
       ),
