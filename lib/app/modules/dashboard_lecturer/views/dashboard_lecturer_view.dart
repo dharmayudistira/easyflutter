@@ -4,6 +4,7 @@ import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
 import 'package:easyflutter/app/modules/data_student/views/data_student_view.dart';
 import 'package:easyflutter/app/modules/list_exercise/views/list_exercise_view.dart';
 import 'package:easyflutter/app/modules/list_log_student/views/list_log_student_view.dart';
+import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ import 'package:get/get.dart';
 import '../controllers/dashboard_lecturer_controller.dart';
 
 class DashboardLecturerView extends GetView<DashboardLecturerController> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +81,9 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
               _buildSideBarItem(
                 context,
                 "Logout",
-                () {},
+                () async {
+                  await controller.logout();
+                },
               ),
             ],
           ),

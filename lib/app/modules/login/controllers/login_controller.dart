@@ -56,7 +56,7 @@ class LoginController extends GetxController {
       final selectedLecturer = lecturerReference.docs[0];
 
       if(selectedLecturer["kata_sandi"] == password) {
-        saveLecturerDataToSharedPref(selectedLecturer);
+        await saveLecturerDataToSharedPref(selectedLecturer);
         Get.snackbar("Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}");
         Get.offNamed(Routes.DASHBOARD_LECTURER);
       }else {
@@ -70,7 +70,7 @@ class LoginController extends GetxController {
 
   void doLoginAsStudent(String id, String password) {}
 
-  void saveLecturerDataToSharedPref(QueryDocumentSnapshot<Map<String, dynamic>> selectedLecturer) async {
+  Future<void> saveLecturerDataToSharedPref(QueryDocumentSnapshot<Map<String, dynamic>> selectedLecturer) async {
     await _storageHelper.setIdUser(selectedLecturer["id_dosen"]);
     await _storageHelper.setPasswordUser(selectedLecturer["kata_sandi"]);
     await _storageHelper.setNameUser(selectedLecturer["nama_dosen"]);

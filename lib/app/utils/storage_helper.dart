@@ -53,4 +53,8 @@ class StorageHelper extends GetxController {
     return storageManager.read(KEY_ID_CLASS_USER);
   }
 
+  Future<void> clearStorage() async {
+    await storageManager.erase();
+  }
+
 }
