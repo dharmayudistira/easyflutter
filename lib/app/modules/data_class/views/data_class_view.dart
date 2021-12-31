@@ -52,6 +52,7 @@ class DataClassView extends StatelessWidget {
       builder: (context) => AlertDialog(
         title: Text("Tambahkan Kelas"),
         content: TextFormField(
+          controller: controller.edtControllerClassName,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             hintText: "Contoh : TI-3A / MI-2A",
@@ -71,14 +72,8 @@ class DataClassView extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {
-              /*
-                TODO :
-                1. Do validation
-                2. add class
-                3. create exercise
-                4. then close the dialog
-              */
+            onPressed: () async {
+              await controller.addClass();
             },
             child: Text("Simpan"),
           ),

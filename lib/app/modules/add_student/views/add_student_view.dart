@@ -45,7 +45,7 @@ class AddStudentView extends StatelessWidget {
                 SizedBox(height: dimenSmall),
                 TextFormField(
                   enabled: false,
-                  initialValue: "Putra Prima Arhandi, ST., M.Kom",
+                  initialValue: controller.getLecturerName(),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     label: Text("Nama Dosen"),
