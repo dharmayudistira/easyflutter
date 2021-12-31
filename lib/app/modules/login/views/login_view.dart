@@ -52,6 +52,7 @@ class LoginView extends GetView<LoginController> {
             ),
             SizedBox(height: dimenMedium),
             TextFormField(
+              controller: controller.edtControllerId,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "1941720000",
@@ -63,6 +64,7 @@ class LoginView extends GetView<LoginController> {
               var passwordState = controller.isObscured.value;
 
               return TextFormField(
+                controller: controller.edtControllerPassword,
                 obscureText: passwordState,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -121,7 +123,7 @@ class LoginView extends GetView<LoginController> {
               height: 35,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.offNamed(Routes.DASHBOARD_LECTURER);
+                  controller.login();
                 },
                 child: Text(
                   "Masuk",
