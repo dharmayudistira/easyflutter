@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
@@ -39,7 +40,21 @@ class DataClassView extends StatelessWidget {
               ],
             ),
             SizedBox(height: dimenSmall),
-            _buildDataTableClass(),
+            StreamBuilder(
+              stream: controller.getAllClass(),
+              builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
+                if(snapshots.hasData) {
+                  if(snapshots.data!.docs.isNotEmpty) {
+                    return _buildDataTableClass(snapshots);
+                  }else {
+                    return Expanded(child: Center(child: Text("No Data")));
+                  }
+                }else {
+                  // should be center text("No Data");
+                  return Expanded(child: Center(child: Text("No Data")));
+                }
+              },
+            ),
           ],
         ),
       ),
@@ -82,7 +97,10 @@ class DataClassView extends StatelessWidget {
     );
   }
 
-  Widget _buildDataTableClass() {
+  Widget _buildDataTableClass(AsyncSnapshot<QuerySnapshot> snapshots) {
+
+    controller.mapConvertClassFirestoreToClassModel(snapshots);
+
     return Expanded(
       child: Card(
         elevation: dimenSmall,
@@ -101,18 +119,18 @@ class DataClassView extends StatelessWidget {
               label: Text("Aksi"),
             ),
           ],
-          rows: controller.dummyRow.map((e) {
-            var index = controller.dummyRow.indexOf(e) + 1;
+          rows: controller.rowOfClasses.map((itemClass) {
+            var index = controller.rowOfClasses.indexOf(itemClass) + 1;
             var converted = index.toString();
 
-            var classId = e["id_kelas"].toString();
-            var className = e["kelas"].toString();
+            var classId = itemClass.classId;
+            var className = itemClass.className;
 
             return DataRow2(
               cells: [
                 DataCell(Text(converted)),
-                DataCell(Text(classId)),
-                DataCell(Text(className)),
+                DataCell(Text(classId!)),
+                DataCell(Text(className!)),
                 DataCell(
                   ElevatedButton(
                     onPressed: () {
