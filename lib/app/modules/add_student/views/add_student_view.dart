@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/data/class_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -6,7 +8,6 @@ import 'package:get/get.dart';
 import '../controllers/add_student_controller.dart';
 
 class AddStudentView extends StatelessWidget {
-
   final controller = Get.put(AddStudentController());
 
   @override
@@ -14,7 +15,7 @@ class AddStudentView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding:
-        EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
+            EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -29,6 +30,7 @@ class AddStudentView extends StatelessWidget {
             Column(
               children: [
                 TextFormField(
+                  controller: controller.edtStudentIdController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "1941720000",
@@ -37,6 +39,7 @@ class AddStudentView extends StatelessWidget {
                 ),
                 SizedBox(height: dimenSmall),
                 TextFormField(
+                  controller: controller.edtStudentNameController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     label: Text("Masukkan Nama Mahasiswa"),
@@ -54,45 +57,59 @@ class AddStudentView extends StatelessWidget {
               ],
             ),
             SizedBox(height: dimenSmall),
-            Obx(() {
-              return Container(
-                padding: EdgeInsets.symmetric(horizontal: dimenSmall / 2),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    value: controller.selectedClass.value,
-                    items: controller.listClass
-                        .map((itemClass) => DropdownMenuItem<String>(
-                      value: itemClass,
-                      child: Text(itemClass),
-                    ))
-                        .toList(),
-                    onChanged: (selected) {
-                      controller.selectedClass.value = selected!;
-                    },
-                  ),
-                ),
-              );
-            }),
+            StreamBuilder(
+              stream: controller.getAllClass(),
+              builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
+                if(snapshots.hasData) {
+                  if(snapshots.data!.docs.isNotEmpty) {
+                    return _buildDropDownClass(snapshots);
+                  }else {
+                    return _buildDropDownClass(snapshots);
+                  }
+                }else {
+                  return Expanded(child: Center(child: Text("No Data")));
+                }
+              },
+            ),
             SizedBox(height: dimenMedium),
-            ElevatedButton(onPressed: (){
-              /*
-                TODO :
-                1. Do validation by NIM (student id)
-                2. Save value to firestore
-                3. then navigate to data student page
-              */
-              controller.dashboardLecturerController.setSelectedIndex(1);
-            }, child: Text("Simpan")),
+            ElevatedButton(
+                onPressed: () {
+                  controller.addStudent();
+                },
+                child: Text("Simpan")),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildDropDownClass(AsyncSnapshot<QuerySnapshot> snapshots) {
+
+    controller.mapConvertClassFirestoreToClassModel(snapshots);
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: dimenSmall / 2),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.grey,
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: Obx(() {
+          return DropdownButton<String>(
+            isExpanded: true,
+            value: controller.selectedClass.value,
+            items: controller.listOfClass.map((itemClass) => DropdownMenuItem<String>(
+              value: itemClass.className,
+              child: Text(itemClass.className!),
+            )).toList(),
+            onChanged: (selected) {
+              controller.selectedClass.value = selected!;
+            },
+          );
+        }),
       ),
     );
   }

@@ -1,17 +1,118 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/controllers/dashboard_lecturer_controller.dart';
+import 'package:easyflutter/app/utils/converter_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class AddStudentController extends GetxController {
-
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
-  final listClass = ["Pilih Kelas"].obs;
+  final classReference = FirebaseFirestore.instance.collection("kelas");
+  final studentReference = FirebaseFirestore.instance.collection("mahasiswa");
+
+  var isValid = true;
+  var listOfClass = [
+    ClassModel(
+      lecturerId: null,
+      classId: null,
+      lecturerName: null,
+      className: "Pilih Kelas",
+    ),
+  ].obs;
+
+  late TextEditingController edtStudentIdController;
+  late TextEditingController edtStudentNameController;
 
   var selectedClass = "Pilih Kelas".obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    edtStudentIdController = TextEditingController();
+    edtStudentNameController = TextEditingController();
+  }
+
+  @override
+  void onClose() {
+    edtStudentIdController.dispose();
+    edtStudentNameController.dispose();
+
+    super.onClose();
+  }
 
   String getLecturerName() {
     return _storageHelper.getNameUser();
   }
 
+  Stream<QuerySnapshot> getAllClass() {
+    final lecturerId = _storageHelper.getIdUser();
+    return classReference.where("id_dosen", isEqualTo: lecturerId).snapshots();
+  }
+
+  void mapConvertClassFirestoreToClassModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+    final result = ConverterHelper.mapClassFirestoreToClassModel(snapshots);
+
+    result.add(
+        ClassModel(
+          lecturerId: null,
+          classId: "null",
+          lecturerName: null,
+          className: "Pilih Kelas",
+        )
+    );
+    result.sort((a, b) => a.classId!.compareTo(b.classId!));
+    listOfClass.value = result;
+  }
+
+  void addStudent() async {
+    await validateStudentId();
+
+    if (selectedClass.value == "Pilih Kelas") {
+      Get.snackbar("Terjadi Kesalahan", "Harap pilih kelas terlebih dahulu");
+    } else if (!isValid) {
+      Get.snackbar("Terjadi Kesalahan", "Mahasiswa dengan NIM ${edtStudentIdController.text} sudah ada");
+    } else {
+      final studentId = edtStudentIdController.text;
+      final passwordStudent = studentId;
+      final studentName = edtStudentNameController.text;
+      final lecturerId = _storageHelper.getIdUser();
+      final lecturerName = _storageHelper.getNameUser();
+      final classId = selectedClass.value.toLowerCase();
+      final className = selectedClass.value.toUpperCase();
+
+      studentReference.add({
+        "id_mahasiswa": studentId,
+        "nama_mahasiswa": studentName,
+        "kata_sandi": passwordStudent,
+        "id_dosen": lecturerId,
+        "nama_dosen": lecturerName,
+        "id_kelas": classId,
+        "nama_kelas": className,
+        "status": true
+      }).whenComplete(() {
+        edtStudentIdController.clear();
+        edtStudentNameController.clear();
+        selectedClass.value = "Pilih Kelas";
+        dashboardLecturerController.setSelectedIndex(1);
+        Get.snackbar("Berhasil Menambahkan Mahasiswa", "Data mahasiswa $studentName berhasil ditambahkan");
+      });
+    }
+  }
+
+  Future<void> validateStudentId() async {
+    isValid = true;
+    final studentId = edtStudentIdController.text;
+
+    var snapshots = await studentReference.get();
+
+    snapshots.docs.forEach((element) {
+      if(element["id_mahasiswa"] == studentId) {
+        isValid = false;
+      }
+    });
+
+  }
 }
