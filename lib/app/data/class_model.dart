@@ -17,11 +17,4 @@ class ClassModel {
     lecturerName: json["nama_dosen"],
     className: json["nama_kelas"],
   );
-
-  Map<String, dynamic> toJson() => {
-    "id_dosen": lecturerId,
-    "id_kelas": classId,
-    "nama_dosen": lecturerName,
-    "nama_kelas": className,
-  };
 }

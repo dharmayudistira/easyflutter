@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:get/get.dart';
 import '../controllers/data_student_controller.dart';
 
 class DataStudentView extends StatelessWidget {
-
   final controller = Get.put(DataStudentController());
 
   @override
@@ -15,38 +15,53 @@ class DataStudentView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding:
-        EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
+            EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
         child: Column(
           children: [
-          Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Data Mahasiswa",
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline5
-                  ?.copyWith(color: Colors.black),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Data Mahasiswa",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      ?.copyWith(color: Colors.black),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    controller.dashboardLecturerController.setSelectedIndex(2);
+                  },
+                  child: Text(
+                    "Tambah",
+                  ),
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                controller.dashboardLecturerController.setSelectedIndex(2);
+            SizedBox(height: dimenSmall),
+            StreamBuilder(
+              stream: controller.getAllStudent(),
+              builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
+                if (snapshots.hasData) {
+                  if (snapshots.data!.docs.isNotEmpty) {
+                    return _buildDataTableStudent(snapshots);
+                  } else {
+                    return Expanded(child: Center(child: Text("No Data")));
+                  }
+                } else {
+                  return Expanded(child: Center(child: Text("No Data")));
+                }
               },
-              child: Text(
-                "Tambah",
-              ),
             ),
           ],
         ),
-        SizedBox(height: dimenSmall),
-        _buildDataTableStudent(),
-        ],
       ),
-    ),);
+    );
   }
 
-  Widget _buildDataTableStudent() {
+  Widget _buildDataTableStudent(AsyncSnapshot<QuerySnapshot> snapshots) {
+    controller.mapStudentFirestoreToStudentModel(snapshots);
+
     return Expanded(
       child: Card(
         elevation: dimenSmall,
@@ -71,31 +86,29 @@ class DataStudentView extends StatelessWidget {
               label: Text("Aksi"),
             ),
           ],
-          rows: controller.dummyRow.map((e) {
-            var index = controller.dummyRow.indexOf(e) + 1;
+          rows: controller.listStudent.map((student) {
+            var index = controller.listStudent.indexOf(student) + 1;
             var converted = index.toString();
 
-            var studentId = e["nim"].toString();
-            var studentName = e["nama"].toString();
-            var studentClass = e["kelas"].toString();
-            var status = e["status"] as bool;
+            var studentId = student.studentId;
+            var studentName = student.studentName;
+            var studentClass = student.className;
+            var status = student.status;
 
             return DataRow2(
               cells: [
                 DataCell(Text(converted)),
-                DataCell(Text(studentId)),
-                DataCell(Text(studentName)),
-                DataCell(Text(studentClass)),
-                DataCell(
-                    (status)
-                        ? Text("Valid")
-                        : Text("Belum valid")
-                ),
+                DataCell(Text(studentId!)),
+                DataCell(Text(studentName!)),
+                DataCell(Text(studentClass!)),
+                DataCell((status!) ? Text("Valid") : Text("Belum valid")),
                 DataCell(
                   ElevatedButton(
                     onPressed: (status)
                         ? null
-                        : () {},
+                        : () {
+                            controller.validateStudentStatus(studentId);
+                          },
                     child: Text("Validasi"),
                   ),
                 ),
