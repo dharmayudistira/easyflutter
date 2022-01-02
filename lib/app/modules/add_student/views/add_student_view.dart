@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/data/class_model.dart';
+import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 
@@ -19,12 +21,23 @@ class AddStudentView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Tambah Mahasiswa",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  ?.copyWith(color: Colors.black),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    controller.dashboardLecturerController.setSelectedIndex(1);
+                  },
+                  icon: FaIcon(FontAwesomeIcons.angleLeft),
+                ),
+                SizedBox(width: dimenSmall),
+                Text(
+                  "Tambah Mahasiswa",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      ?.copyWith(color: Colors.black),
+                ),
+              ],
             ),
             SizedBox(height: dimenSmall),
             Column(
@@ -60,13 +73,13 @@ class AddStudentView extends StatelessWidget {
             StreamBuilder(
               stream: controller.getAllClass(),
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
-                if(snapshots.hasData) {
-                  if(snapshots.data!.docs.isNotEmpty) {
+                if (snapshots.hasData) {
+                  if (snapshots.data!.docs.isNotEmpty) {
                     return _buildDropDownClass(snapshots);
-                  }else {
+                  } else {
                     return _buildDropDownClass(snapshots);
                   }
-                }else {
+                } else {
                   return Expanded(child: Center(child: Text("No Data")));
                 }
               },
@@ -84,7 +97,6 @@ class AddStudentView extends StatelessWidget {
   }
 
   Widget _buildDropDownClass(AsyncSnapshot<QuerySnapshot> snapshots) {
-
     controller.mapConvertClassFirestoreToClassModel(snapshots);
 
     return Container(
@@ -101,10 +113,12 @@ class AddStudentView extends StatelessWidget {
           return DropdownButton<String>(
             isExpanded: true,
             value: controller.selectedClass.value,
-            items: controller.listOfClass.map((itemClass) => DropdownMenuItem<String>(
-              value: itemClass.className,
-              child: Text(itemClass.className!),
-            )).toList(),
+            items: controller.listOfClass
+                .map((itemClass) => DropdownMenuItem<String>(
+                      value: itemClass.className,
+                      child: Text(itemClass.className!),
+                    ))
+                .toList(),
             onChanged: (selected) {
               controller.selectedClass.value = selected!;
             },

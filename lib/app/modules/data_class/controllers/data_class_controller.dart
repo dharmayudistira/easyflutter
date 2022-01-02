@@ -42,7 +42,7 @@ class DataClassController extends GetxController {
   }
 
   Future<void> addClass() async {
-    final className = edtControllerClassName.text;
+    final className = edtControllerClassName.text.toUpperCase();
 
     final classSnapshots = await classReference.get();
 
