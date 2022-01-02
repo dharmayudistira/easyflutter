@@ -37,12 +37,20 @@ class StorageHelper extends GetxController {
     return storageManager.read(KEY_NAME_USER);
   }
 
-  Future<void> setIsLoginUser(bool state) async {
-    await storageManager.write(KEY_IS_LOGIN_USER, state);
+  Future<void> setIsLoginLecturer(bool state) async {
+    await storageManager.write(KEY_IS_LOGIN_LECTURER, state);
   }
 
-  bool getIsLoginUser() {
-    return storageManager.read(KEY_IS_LOGIN_USER) ?? false;
+  bool getIsLoginLecturer() {
+    return storageManager.read(KEY_IS_LOGIN_LECTURER) ?? false;
+  }
+
+  Future<void> setIsLoginStudent(bool state) async {
+    await storageManager.write(KEY_IS_LOGIN_STUDENT, state);
+  }
+
+  bool getIsLoginStudent() {
+    return storageManager.read(KEY_IS_LOGIN_STUDENT) ?? false;
   }
 
   Future<void> setIdClassUser(String idClass) async {

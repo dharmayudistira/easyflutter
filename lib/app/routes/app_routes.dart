@@ -11,6 +11,7 @@ abstract class Routes {
   static const DATA_STUDENT = _Paths.DATA_STUDENT;
   static const LIST_EXERCISE = _Paths.LIST_EXERCISE;
   static const LIST_LOG_STUDENT = _Paths.LIST_LOG_STUDENT;
+  static const DASHBOARD_STUDENT = _Paths.DASHBOARD_STUDENT;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const DATA_STUDENT = '/data-student';
   static const LIST_EXERCISE = '/list-exercise';
   static const LIST_LOG_STUDENT = '/list-log-student';
+  static const DASHBOARD_STUDENT = '/dashboard-student';
 }

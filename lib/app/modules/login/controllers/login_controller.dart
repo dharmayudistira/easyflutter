@@ -65,19 +65,51 @@ class LoginController extends GetxController {
       }else {
         Get.snackbar("Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda");
       }
-
     } else {
       Get.snackbar("Terjadi Kesalahan", "Tidak ada dosen dengan ID : $id");
     }
   }
 
-  void doLoginAsStudent(String id, String password) {}
+  void doLoginAsStudent(String id, String password) async {
+    QuerySnapshot<Map<String, dynamic>> studentReference = await _firestore
+        .collection("mahasiswa")
+        .where("id_mahasiswa", isEqualTo: id)
+        .get();
+    
+    if(studentReference.docs.isNotEmpty) {
+      final selectedStudent = studentReference.docs[0];
+      final encryptedPassword = generateMd5(password);
+      
+      if(selectedStudent["kata_sandi"] == encryptedPassword) {
+        if(selectedStudent["status"] == true) {
+          await saveStudentDataToSharedPref(selectedStudent);
+          Get.snackbar("Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}");
+          clearForm();
+          Get.offNamed(Routes.DASHBOARD_STUDENT);
+        }else {
+          Get.snackbar("Terjadi Kesalahan", "Mohon tunggu validasi dari dosen pengampu Anda");
+        }
+      }else {
+        Get.snackbar("Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda");
+      }
+    }else {
+      Get.snackbar("Terjadi Kesalahan", "Tidak ada mahasiswa dengan ID : $id");
+    }
+  }
 
   Future<void> saveLecturerDataToSharedPref(QueryDocumentSnapshot<Map<String, dynamic>> selectedLecturer) async {
     await _storageHelper.setIdUser(selectedLecturer["id_dosen"]);
     await _storageHelper.setPasswordUser(selectedLecturer["kata_sandi"]);
     await _storageHelper.setNameUser(selectedLecturer["nama_dosen"]);
-    await _storageHelper.setIsLoginUser(true);
+    await _storageHelper.setIsLoginLecturer(true);
+  }
+  
+  Future<void> saveStudentDataToSharedPref(QueryDocumentSnapshot<Map<String, dynamic>> selectedStudent) async {
+    await _storageHelper.setIdUser(selectedStudent["id_mahasiswa"]);
+    await _storageHelper.setPasswordUser(selectedStudent["kata_sandi"]);
+    await _storageHelper.setNameUser(selectedStudent["nama_mahasiswa"]);
+    await _storageHelper.setIsLoginStudent(true);
+    await _storageHelper.setIdClassUser(selectedStudent["id_kelas"]);
   }
 
   void clearForm() {

@@ -1,7 +1,11 @@
+import 'package:easyflutter/app/middlewares/auth_lecturer_middleware.dart';
+import 'package:easyflutter/app/middlewares/auth_student_middleware.dart';
 import 'package:get/get.dart';
 
 import 'package:easyflutter/app/modules/dashboard_lecturer/bindings/dashboard_lecturer_binding.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/views/dashboard_lecturer_view.dart';
+import 'package:easyflutter/app/modules/dashboard_student/bindings/dashboard_student_binding.dart';
+import 'package:easyflutter/app/modules/dashboard_student/views/dashboard_student_view.dart';
 import 'package:easyflutter/app/modules/data_class/bindings/data_class_binding.dart';
 import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
 import 'package:easyflutter/app/modules/data_student/bindings/data_student_binding.dart';
@@ -37,6 +41,7 @@ class AppPages {
       name: _Paths.DASHBOARD_LECTURER,
       page: () => DashboardLecturerView(),
       binding: DashboardLecturerBinding(),
+      middlewares: [AuthLecturerMiddleware()],
     ),
     GetPage(
       name: _Paths.DATA_CLASS,
@@ -57,6 +62,12 @@ class AppPages {
       name: _Paths.LIST_LOG_STUDENT,
       page: () => ListLogStudentView(),
       binding: ListLogStudentBinding(),
+    ),
+    GetPage(
+      name: _Paths.DASHBOARD_STUDENT,
+      page: () => DashboardStudentView(),
+      binding: DashboardStudentBinding(),
+      middlewares: [AuthStudentMiddleware()],
     ),
   ];
 }
