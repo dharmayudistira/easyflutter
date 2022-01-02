@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/data/exercise_model.dart';
+import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/data/student_model.dart';
 import 'package:flutter/material.dart';
 
@@ -55,6 +56,18 @@ class ConverterHelper {
     });
 
     return allExercise;
+  }
+
+  static List<LogModel> mapLogFirestoreToLogModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+    List<LogModel> logs = [];
+
+    snapshots.data!.docs.forEach((element) {
+      Map<String, dynamic> data = element.data() as Map<String, dynamic>;
+      var convertedLogModel = LogModel.fromJson(data);
+      logs.add(convertedLogModel);
+    });
+
+    return logs;
   }
 
 }

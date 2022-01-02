@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:flutter/material.dart';
@@ -38,14 +39,30 @@ class ListLogStudentView extends StatelessWidget {
               ],
             ),
             SizedBox(height: dimenSmall),
-            _buildDataTableExercises(),
+            StreamBuilder(
+              stream: controller.getLogsByExercise(),
+              builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
+                if (snapshots.hasData) {
+                  if(snapshots.data!.docs.isNotEmpty) {
+                    return _buildDataTableExercises(snapshots);
+                  }else {
+                    return Expanded(child: Center(child: Text("No Data")));
+                  }
+                }else {
+                  return Expanded(child: Center(child: Text("No Data")));
+                }
+              },
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget _buildDataTableExercises() {
+  Widget _buildDataTableExercises(AsyncSnapshot<QuerySnapshot> snapshots) {
+
+    controller.mapLogFirestoreToLogModel(snapshots);
+
     return Expanded(
       child: Card(
         elevation: dimenSmall,
@@ -53,45 +70,51 @@ class ListLogStudentView extends StatelessWidget {
           columns: [
             DataColumn2(
               label: Text("No"),
+              size: ColumnSize.S,
             ),
             DataColumn2(
               label: Text("ID Log"),
+              size: ColumnSize.L,
             ),
             DataColumn2(
               label: Text("Nama Mahasiswa"),
+              size: ColumnSize.L,
             ),
             DataColumn2(
               label: Text("Langkah ke-"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Waktu"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Jawaban"),
+              size: ColumnSize.M,
             ),
           ],
-          rows: controller.dummyRow.map((e) {
-            var index = controller.dummyRow.indexOf(e) + 1;
+          rows: controller.listLog.map((log) {
+            var index = controller.listLog.indexOf(log) + 1;
             var converted = index.toString();
 
-            var logId = e["id_log"].toString();
-            var studentName = e["nama_mahasiswa"].toString();
-            var steps = e["langkah"].toString();
-            var time = e["waktu"].toString();
-            var studentAnswer = e["jawaban"].toString();
+            var logId = log.logId;
+            var studentName = log.studentName;
+            var steps = log.step;
+            var time = log.time;
+            var studentAnswer = log.answer;
 
             return DataRow2(
               cells: [
                 DataCell(Text(converted)),
-                DataCell(Text(logId)),
+                DataCell(Text(logId!)),
                 DataCell(Text(
-                  studentName,
+                  studentName!,
                   maxLines: 2,
                   style: TextStyle(overflow: TextOverflow.ellipsis),
                 )),
-                DataCell(Text(steps)),
-                DataCell(Text(time)),
-                DataCell(Text(studentAnswer)),
+                DataCell(Text(steps!)),
+                DataCell(Text(time!)),
+                DataCell(Text(studentAnswer!)),
               ],
             );
           }).toList(),

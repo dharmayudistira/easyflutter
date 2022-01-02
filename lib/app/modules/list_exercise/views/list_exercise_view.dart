@@ -47,11 +47,9 @@ class ListExerciseView extends StatelessWidget {
                   if(snapshots.data!.docs.isNotEmpty) {
                     return _buildDataTableExercises(snapshots);
                   }else {
-                    print("SELECTED CLASS EMPTY DATA : ${controller.dashboardLecturerController.getSelectedClass()}");
                     return Expanded(child: Center(child: Text("No Data")));
                   }
                 }else {
-                  print("SELECTED CLASS NO DATA : ${controller.dashboardLecturerController.getSelectedClass()}");
                   return Expanded(child: Center(child: Text("No Data")));
                 }
               },
@@ -73,15 +71,19 @@ class ListExerciseView extends StatelessWidget {
           columns: [
             DataColumn2(
               label: Text("No"),
+              size: ColumnSize.S,
             ),
             DataColumn2(
               label: Text("ID Latihan"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Latihan"),
+              size: ColumnSize.L,
             ),
             DataColumn2(
               label: Text("Aksi"),
+              size: ColumnSize.L,
             ),
           ],
           rows: controller.listOfExercise.map((exercise) {
@@ -99,6 +101,7 @@ class ListExerciseView extends StatelessWidget {
                 DataCell(
                   ElevatedButton(
                     onPressed: () {
+                      controller.dashboardLecturerController.setSelectedExercise(exerciseId);
                       controller.dashboardLecturerController.setSelectedIndex(4);
                     },
                     child: Text("Lihat Log Mahasiswa"),

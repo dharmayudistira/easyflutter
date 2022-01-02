@@ -69,21 +69,27 @@ class DataStudentView extends StatelessWidget {
           columns: [
             DataColumn2(
               label: Text("No"),
+              size: ColumnSize.S,
             ),
             DataColumn2(
               label: Text("NIM"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Nama"),
+              size: ColumnSize.L,
             ),
             DataColumn2(
               label: Text("Kelas"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Status"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Aksi"),
+              size: ColumnSize.L,
             ),
           ],
           rows: controller.listStudent.map((student) {
@@ -99,7 +105,15 @@ class DataStudentView extends StatelessWidget {
               cells: [
                 DataCell(Text(converted)),
                 DataCell(Text(studentId!)),
-                DataCell(Text(studentName!)),
+                DataCell(
+                  Text(
+                    studentName!,
+                    maxLines: 2,
+                    style: TextStyle(
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
                 DataCell(Text(studentClass!)),
                 DataCell((status!) ? Text("Valid") : Text("Belum valid")),
                 DataCell(

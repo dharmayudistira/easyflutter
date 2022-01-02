@@ -108,15 +108,19 @@ class DataClassView extends StatelessWidget {
           columns: [
             DataColumn2(
               label: Text("No"),
+              size: ColumnSize.S,
             ),
             DataColumn2(
               label: Text("ID Kelas"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Kelas"),
+              size: ColumnSize.M,
             ),
             DataColumn2(
               label: Text("Aksi"),
+              size: ColumnSize.L,
             ),
           ],
           rows: controller.rowOfClasses.map((itemClass) {
@@ -135,7 +139,6 @@ class DataClassView extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       controller.dashboardLecturerController.setSelectedClass(classId);
-                      print("PAS NGIRIM : ${controller.dashboardLecturerController.getSelectedClass()}");
                       controller.dashboardLecturerController.setSelectedIndex(3);
                     },
                     child: Text("Lihat Latihan Soal"),

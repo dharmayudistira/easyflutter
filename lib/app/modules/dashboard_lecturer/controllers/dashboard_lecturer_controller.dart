@@ -10,6 +10,7 @@ class DashboardLecturerController extends GetxController {
 
   var selectedIndexScreen = 0.obs;
   var _selectedClass = "";
+  var _selectedExercise = "";
 
   void setSelectedIndex(int selected) {
     selectedIndexScreen.value = selected;
@@ -21,6 +22,14 @@ class DashboardLecturerController extends GetxController {
 
   String getSelectedClass() {
     return _selectedClass;
+  }
+
+  void setSelectedExercise(String exerciseId) {
+    _selectedExercise = exerciseId;
+  }
+
+  String getSelectedExercise() {
+    return _selectedExercise;
   }
 
   Future<void> logout() async {
