@@ -134,6 +134,8 @@ class DataClassView extends StatelessWidget {
                 DataCell(
                   ElevatedButton(
                     onPressed: () {
+                      controller.dashboardLecturerController.setSelectedClass(classId);
+                      print("PAS NGIRIM : ${controller.dashboardLecturerController.getSelectedClass()}");
                       controller.dashboardLecturerController.setSelectedIndex(3);
                     },
                     child: Text("Lihat Latihan Soal"),

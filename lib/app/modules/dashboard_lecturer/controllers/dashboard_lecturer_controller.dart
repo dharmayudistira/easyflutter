@@ -9,9 +9,18 @@ class DashboardLecturerController extends GetxController {
   final storageHelper = Get.find<StorageHelper>();
 
   var selectedIndexScreen = 0.obs;
+  var _selectedClass = "";
 
   void setSelectedIndex(int selected) {
     selectedIndexScreen.value = selected;
+  }
+
+  void setSelectedClass(String classId) {
+    _selectedClass = classId;
+  }
+
+  String getSelectedClass() {
+    return _selectedClass;
   }
 
   Future<void> logout() async {

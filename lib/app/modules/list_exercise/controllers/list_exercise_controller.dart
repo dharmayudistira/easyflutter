@@ -1,119 +1,28 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easyflutter/app/data/exercise_model.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/controllers/dashboard_lecturer_controller.dart';
+import 'package:easyflutter/app/utils/converter_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListExerciseController extends GetxController {
 
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
+  final exerciseReference = FirebaseFirestore.instance.collection("latihan");
 
-  final dummyRow = [
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-    {
-      "id_latihan" : "123",
-      "latihan" : "Dummy Latihan A",
-    },
-  ];
+  late String selectedClass;
+
+  var listOfExercise = <ExerciseModel>[];
+
+  Stream<QuerySnapshot> getAllExerciseByClass() {
+    selectedClass = dashboardLecturerController.getSelectedClass();
+    return exerciseReference.where("id_kelas", isEqualTo: selectedClass).snapshots();
+  }
+
+  void mapExerciseFirestoreToExerciseModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+    var result = ConverterHelper.mapExerciseFirestoreToExerciseModel(snapshots);
+    result.sort((a, b) => a.exerciseId!.compareTo(b.exerciseId!));
+    listOfExercise = result;
+  }
 
 }

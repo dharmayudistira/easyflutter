@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/class_model.dart';
+import 'package:easyflutter/app/data/exercise_model.dart';
 import 'package:easyflutter/app/data/student_model.dart';
 import 'package:flutter/material.dart';
 
@@ -29,5 +30,31 @@ class ConverterHelper {
     return allStudent;
   }
 
+  static List<ExerciseModel> mapExerciseFirestoreToExerciseModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+    List<ExerciseModel> allExercise = [];
+
+    snapshots.data!.docs.forEach((element) {
+      Map<String, dynamic> data = element.data() as Map<String, dynamic>;
+      var convertedExerciseModel = ExerciseModel.fromJson(data);
+      allExercise.add(convertedExerciseModel);
+    });
+
+    return allExercise;
+  }
+
+  static List<ExerciseModel> mapExerciseFirestoreToExerciseModelByType(AsyncSnapshot<QuerySnapshot> snapshots, String type) {
+    List<ExerciseModel> allExercise = [];
+
+    snapshots.data!.docs.forEach((element) {
+      Map<String, dynamic> data = element.data() as Map<String, dynamic>;
+      var convertedExerciseModel = ExerciseModel.fromJson(data);
+
+      if(convertedExerciseModel.type == type) {
+        allExercise.add(convertedExerciseModel);
+      }
+    });
+
+    return allExercise;
+  }
 
 }
