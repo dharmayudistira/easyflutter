@@ -60,6 +60,7 @@ class LoginController extends GetxController {
       if(selectedLecturer["kata_sandi"] == encryptedPassword) {
         await saveLecturerDataToSharedPref(selectedLecturer);
         Get.snackbar("Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}");
+        clearForm();
         Get.offNamed(Routes.DASHBOARD_LECTURER);
       }else {
         Get.snackbar("Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda");
@@ -77,6 +78,11 @@ class LoginController extends GetxController {
     await _storageHelper.setPasswordUser(selectedLecturer["kata_sandi"]);
     await _storageHelper.setNameUser(selectedLecturer["nama_dosen"]);
     await _storageHelper.setIsLoginUser(true);
+  }
+
+  void clearForm() {
+    edtControllerId.clear();
+    edtControllerPassword.clear();
   }
 
 }

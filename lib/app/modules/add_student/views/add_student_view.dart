@@ -25,6 +25,7 @@ class AddStudentView extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
+                    controller.clearForm();
                     controller.dashboardLecturerController.setSelectedIndex(1);
                   },
                   icon: FaIcon(FontAwesomeIcons.angleLeft),

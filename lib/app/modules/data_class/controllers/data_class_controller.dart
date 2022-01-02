@@ -89,7 +89,7 @@ class DataClassController extends GetxController {
     }else {
       edtControllerClassName.clear();
       Get.back();
-      Get.snackbar("Terjadi Kesalahan", "Data kelas $className sudah ada");
+      Get.snackbar("Terjadi Kesalahan", "Data kelas $className sudah diampu dosen lain");
     }
   }
 
@@ -113,5 +113,9 @@ class DataClassController extends GetxController {
         "tipe" : "widget",
       });
     }
+  }
+
+  void clearForm() {
+    edtControllerClassName.clear();
   }
 }

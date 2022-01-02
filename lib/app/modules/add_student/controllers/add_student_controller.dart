@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/controllers/dashboard_lecturer_controller.dart';
 import 'package:easyflutter/app/utils/converter_helper.dart';
+import 'package:easyflutter/app/utils/encrypt_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -76,7 +77,7 @@ class AddStudentController extends GetxController {
       Get.snackbar("Terjadi Kesalahan", "Mahasiswa dengan NIM ${edtStudentIdController.text} sudah ada");
     } else {
       final studentId = edtStudentIdController.text;
-      final passwordStudent = studentId;
+      final passwordStudent = generateMd5(studentId);
       final studentName = edtStudentNameController.text;
       final lecturerId = _storageHelper.getIdUser();
       final lecturerName = _storageHelper.getNameUser();
@@ -93,9 +94,7 @@ class AddStudentController extends GetxController {
         "nama_kelas": className,
         "status": true
       }).whenComplete(() {
-        edtStudentIdController.clear();
-        edtStudentNameController.clear();
-        selectedClass.value = "Pilih Kelas";
+        clearForm();
         dashboardLecturerController.setSelectedIndex(1);
         Get.snackbar("Berhasil Menambahkan Mahasiswa", "Data mahasiswa $studentName berhasil ditambahkan");
       });
@@ -114,5 +113,11 @@ class AddStudentController extends GetxController {
       }
     });
 
+  }
+
+  void clearForm() {
+    edtStudentIdController.clear();
+    edtStudentNameController.clear();
+    selectedClass.value = "Pilih Kelas";
   }
 }

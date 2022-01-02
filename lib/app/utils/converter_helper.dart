@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/class_model.dart';
+import 'package:easyflutter/app/data/dosen_model.dart';
 import 'package:easyflutter/app/data/exercise_model.dart';
 import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/data/student_model.dart';
@@ -68,6 +69,20 @@ class ConverterHelper {
     });
 
     return logs;
+  }
+
+  static List<LecturerModel> mapLecturerFirestoreToLecturerModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+    List<LecturerModel> listLecturer = [];
+
+    snapshots.data!.docs.forEach((element) {
+      Map<String, dynamic> data = element.data() as Map<String, dynamic>;
+      var convertedLecturerModel = LecturerModel.fromJson(data);
+      if(convertedLecturerModel.lecturerId != "111") {
+        listLecturer.add(convertedLecturerModel);
+      }
+    });
+
+    return listLecturer;
   }
 
 }

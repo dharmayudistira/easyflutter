@@ -31,6 +31,7 @@ class DataClassView extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    controller.clearForm();
                     _buildShowAddTableDialog(context);
                   },
                   child: Text(
