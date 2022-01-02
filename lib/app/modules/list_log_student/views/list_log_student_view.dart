@@ -1,6 +1,7 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 
@@ -18,12 +19,23 @@ class ListLogStudentView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Data Log Mahasiswa",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  ?.copyWith(color: Colors.black),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    controller.dashboardLecturerController.setSelectedIndex(3);
+                  },
+                  icon: FaIcon(FontAwesomeIcons.angleLeft),
+                ),
+                SizedBox(width: dimenSmall),
+                Text(
+                  "Data Log Mahasiswa",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      ?.copyWith(color: Colors.black),
+                ),
+              ],
             ),
             SizedBox(height: dimenSmall),
             _buildDataTableExercises(),
