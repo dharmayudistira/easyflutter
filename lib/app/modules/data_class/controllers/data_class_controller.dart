@@ -11,6 +11,21 @@ class DataClassController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
   final classReference = FirebaseFirestore.instance.collection("kelas");
+  final exerciseReference = FirebaseFirestore.instance.collection("latihan");
+  final listTitleExerciseCodeReconstruction = [
+    "Latihan A",
+    "Latihan B",
+    "Latihan C",
+    "Latihan D",
+    "Latihan E",
+  ];
+  final listTitleExerciseWidgetTreeReconstruction = [
+    "Latihan A",
+    "Latihan B",
+    "Latihan C",
+    "Latihan D",
+    "Latihan E",
+  ];
 
   late TextEditingController edtControllerClassName;
 
@@ -69,7 +84,25 @@ class DataClassController extends GetxController {
         Get.snackbar("Berhasil", "Data kelas $className berhasil ditambahkan");
       });
 
-      //TODO : Create exercise
+      //loop to add Code Reconstruction exercises
+      for(int i = 0; i < listTitleExerciseCodeReconstruction.length; i++) {
+        await exerciseReference.add({
+          "id_latihan" : "${className.toLowerCase()}-code-${i+1}",
+          "nama_latihan" : "${listTitleExerciseCodeReconstruction[i]}",
+          "id_kelas" : "${className.toLowerCase()}",
+          "tipe" : "code",
+        });
+      }
+
+      //loop to add Widget Tree Reconstruction exercises
+      for(int i = 0; i < listTitleExerciseWidgetTreeReconstruction.length; i++) {
+        await exerciseReference.add({
+          "id_latihan" : "${className.toLowerCase()}-widget-${i+1}",
+          "nama_latihan" : "${listTitleExerciseWidgetTreeReconstruction[i]}",
+          "id_kelas" : "${className.toLowerCase()}",
+          "tipe" : "widget",
+        });
+      }
 
     }else {
       edtControllerClassName.clear();
