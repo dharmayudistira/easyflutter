@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/encrypt_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -54,8 +55,9 @@ class LoginController extends GetxController {
 
     if (lecturerReference.docs.isNotEmpty) {
       final selectedLecturer = lecturerReference.docs[0];
+      final encryptedPassword = generateMd5(password);
 
-      if(selectedLecturer["kata_sandi"] == password) {
+      if(selectedLecturer["kata_sandi"] == encryptedPassword) {
         await saveLecturerDataToSharedPref(selectedLecturer);
         Get.snackbar("Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}");
         Get.offNamed(Routes.DASHBOARD_LECTURER);
@@ -76,4 +78,5 @@ class LoginController extends GetxController {
     await _storageHelper.setNameUser(selectedLecturer["nama_dosen"]);
     await _storageHelper.setIsLoginUser(true);
   }
+
 }
