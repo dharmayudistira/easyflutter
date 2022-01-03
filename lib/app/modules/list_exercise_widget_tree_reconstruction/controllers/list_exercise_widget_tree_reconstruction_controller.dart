@@ -1,20 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easyflutter/app/data/exercise_model.dart';
+import 'package:easyflutter/app/utils/converter_helper.dart';
+import 'package:easyflutter/app/utils/storage_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListExerciseWidgetTreeReconstructionController extends GetxController {
-  //TODO: Implement ListExerciseWidgetTreeReconstructionController
+  final _storageHelper = Get.find<StorageHelper>();
+  final exerciseReference = FirebaseFirestore.instance.collection("latihan");
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  var listExercise = <ExerciseModel>[];
+
+  Stream<QuerySnapshot> getAllExercise() {
+    final classId = _storageHelper.getIdClassUser();
+    return exerciseReference.where("id_kelas", isEqualTo: classId).snapshots();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void mapExerciseFirestoreToExerciseModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+    final result = ConverterHelper.mapExerciseFirestoreToExerciseModelByType(snapshots, "widget");
+    result.sort((a, b) => a.exerciseId!.compareTo(b.exerciseId!));
+    listExercise = result;
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }
