@@ -12,6 +12,10 @@ abstract class Routes {
   static const LIST_EXERCISE = _Paths.LIST_EXERCISE;
   static const LIST_LOG_STUDENT = _Paths.LIST_LOG_STUDENT;
   static const DASHBOARD_STUDENT = _Paths.DASHBOARD_STUDENT;
+  static const LIST_EXERCISE_CODE_RECONSTRUCTION =
+      _Paths.LIST_EXERCISE_CODE_RECONSTRUCTION;
+  static const LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION =
+      _Paths.LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION;
 }
 
 abstract class _Paths {
@@ -23,4 +27,8 @@ abstract class _Paths {
   static const LIST_EXERCISE = '/list-exercise';
   static const LIST_LOG_STUDENT = '/list-log-student';
   static const DASHBOARD_STUDENT = '/dashboard-student';
+  static const LIST_EXERCISE_CODE_RECONSTRUCTION =
+      '/list-exercise-code-reconstruction';
+  static const LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION =
+      '/list-exercise-widget-tree-reconstruction';
 }

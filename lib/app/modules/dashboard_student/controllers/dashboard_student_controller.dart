@@ -1,20 +1,10 @@
 import 'package:get/get.dart';
 
 class DashboardStudentController extends GetxController {
-  //TODO: Implement DashboardStudentController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  var selectedIndex = 0.obs;
+
+  void setSelectedIndex(int index) {
+    selectedIndex.value = index;
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

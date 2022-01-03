@@ -15,9 +15,6 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return Scaffold(
       body: Row(
         children: [
