@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/views/app_description_widget.dart';
@@ -12,7 +13,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: ColorConstants.kPrimaryColor,
       body: Center(
         child: Container(
           width: Get.size.width * 0.6,
@@ -120,7 +121,7 @@ class LoginView extends GetView<LoginController> {
             SizedBox(height: dimenMedium),
             Container(
               width: double.maxFinite,
-              height: 35,
+              height: 50,
               child: ElevatedButton(
                 onPressed: () {
                   controller.login();

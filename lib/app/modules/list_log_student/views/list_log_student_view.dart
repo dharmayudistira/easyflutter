@@ -90,7 +90,7 @@ class ListLogStudentView extends StatelessWidget {
             ),
             DataColumn2(
               label: Text("Jawaban"),
-              size: ColumnSize.M,
+              size: ColumnSize.L,
             ),
           ],
           rows: controller.listLog.map((log) {

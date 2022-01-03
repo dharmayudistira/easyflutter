@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/data/dosen_model.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
@@ -14,7 +15,7 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: ColorConstants.kPrimaryColor,
       body: Center(
         child: Container(
           width: Get.size.width * 0.6,
@@ -124,17 +125,10 @@ class RegisterView extends GetView<RegisterController> {
               SizedBox(height: dimenMedium),
               Container(
                 width: double.maxFinite,
-                height: 35,
+                height: 50,
                 child: ElevatedButton(
                   onPressed: () {
                     controller.addStudent();
-                    /*
-                      TODO :
-                      1. Validasi NIM
-                      2. Validasi Pilih Dosen
-                      3. Validasi Pilih Kelas
-                      4. save data mahasiswa
-                    */
                   },
                   child: Text(
                     "Daftar",

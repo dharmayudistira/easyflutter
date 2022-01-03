@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/modules/add_student/views/add_student_view.dart';
 import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
@@ -44,7 +45,7 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
     return Expanded(
       flex: 1,
       child: Container(
-        color: Colors.blue,
+        color: ColorConstants.kPrimaryColor,
         child: Padding(
           padding: EdgeInsets.all(dimenSmall),
           child: Column(
@@ -58,7 +59,7 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
                       style: Theme.of(context)
                           .textTheme
                           .headline5
-                          ?.copyWith(color: Colors.white),
+                          ?.copyWith(color: Colors.black),
                     ),
                   ),
                   _buildSideBarItem(
@@ -100,7 +101,7 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.white,
+          color: Colors.black,
           width: 1,
         ),
         borderRadius: BorderRadius.circular(dimenSmall / 2),
@@ -111,7 +112,7 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
           style: Theme.of(context)
               .textTheme
               .subtitle2
-              ?.copyWith(color: Colors.white),
+              ?.copyWith(color: Colors.black),
         ),
         onTap: () {
           onPressed();

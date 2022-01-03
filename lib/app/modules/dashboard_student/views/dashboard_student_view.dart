@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/views/list_exercise_code_reconstruction_view.dart';
 import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/views/list_exercise_widget_tree_reconstruction_view.dart';
@@ -76,13 +77,14 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                 icon: FaIcon(
                   FontAwesomeIcons.signOutAlt,
                   color: Colors.black,
+                  size: dimenMedium * 0.65,
                 ),
               ),
             ],
           )
         ],
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorConstants.kPrimaryColor,
       elevation: 0,
     );
   }
