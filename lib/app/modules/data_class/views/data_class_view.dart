@@ -51,7 +51,6 @@ class DataClassView extends StatelessWidget {
                     return Expanded(child: Center(child: Text("No Data")));
                   }
                 }else {
-                  // should be center text("No Data");
                   return Expanded(child: Center(child: Text("No Data")));
                 }
               },

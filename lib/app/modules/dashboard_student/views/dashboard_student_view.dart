@@ -13,7 +13,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: _buildAppBar(),
+        appBar: _buildAppBar(context),
         body: Obx(() {
           final selectedIndex = controller.selectedIndex.value;
           return IndexedStack(
@@ -27,7 +27,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
         }));
   }
 
-  AppBar _buildAppBar() {
+  AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,9 +70,11 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
               ),
               SizedBox(width: dimenMedium),
               IconButton(
-                onPressed: () {},
+                onPressed: ()  {
+                  _buildDialogLogout(context);
+                },
                 icon: FaIcon(
-                  FontAwesomeIcons.angleDown,
+                  FontAwesomeIcons.signOutAlt,
                   color: Colors.black,
                 ),
               ),
@@ -214,6 +216,35 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<dynamic> _buildDialogLogout(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Keluar ?"),
+        content: Text("Apakah Anda yakin untuk keluar ?"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text(
+              "Tidak",
+              style: TextStyle(
+                color: Colors.redAccent,
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              await controller.logout();
+            },
+            child: Text("Ya"),
+          ),
+        ],
       ),
     );
   }
