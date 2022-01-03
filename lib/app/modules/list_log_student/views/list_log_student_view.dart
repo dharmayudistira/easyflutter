@@ -63,62 +63,60 @@ class ListLogStudentView extends StatelessWidget {
 
     controller.mapLogFirestoreToLogModel(snapshots);
 
-    return Expanded(
-      child: Card(
-        elevation: dimenSmall,
-        child: DataTable2(
-          columns: [
-            DataColumn2(
-              label: Text("No"),
-              size: ColumnSize.S,
-            ),
-            DataColumn2(
-              label: Text("ID Log"),
-              size: ColumnSize.L,
-            ),
-            DataColumn2(
-              label: Text("Nama Mahasiswa"),
-              size: ColumnSize.L,
-            ),
-            DataColumn2(
-              label: Text("Langkah ke-"),
-              size: ColumnSize.M,
-            ),
-            DataColumn2(
-              label: Text("Waktu"),
-              size: ColumnSize.M,
-            ),
-            DataColumn2(
-              label: Text("Jawaban"),
-              size: ColumnSize.L,
-            ),
-          ],
-          rows: controller.listLog.map((log) {
-            var index = controller.listLog.indexOf(log) + 1;
-            var converted = index.toString();
+    return Card(
+      elevation: dimenSmall,
+      child: DataTable2(
+        columns: [
+          DataColumn2(
+            label: Text("No"),
+            size: ColumnSize.S,
+          ),
+          DataColumn2(
+            label: Text("ID Log"),
+            size: ColumnSize.L,
+          ),
+          DataColumn2(
+            label: Text("Nama Mahasiswa"),
+            size: ColumnSize.L,
+          ),
+          DataColumn2(
+            label: Text("Langkah ke-"),
+            size: ColumnSize.M,
+          ),
+          DataColumn2(
+            label: Text("Waktu"),
+            size: ColumnSize.M,
+          ),
+          DataColumn2(
+            label: Text("Jawaban"),
+            size: ColumnSize.L,
+          ),
+        ],
+        rows: controller.listLog.map((log) {
+          var index = controller.listLog.indexOf(log) + 1;
+          var converted = index.toString();
 
-            var logId = log.logId;
-            var studentName = log.studentName;
-            var steps = log.step;
-            var time = log.time;
-            var studentAnswer = log.answer;
+          var logId = log.logId;
+          var studentName = log.studentName;
+          var steps = log.step;
+          var time = log.time;
+          var studentAnswer = log.answer;
 
-            return DataRow2(
-              cells: [
-                DataCell(Text(converted)),
-                DataCell(Text(logId!)),
-                DataCell(Text(
-                  studentName!,
-                  maxLines: 2,
-                  style: TextStyle(overflow: TextOverflow.ellipsis),
-                )),
-                DataCell(Text(steps!)),
-                DataCell(Text(time!)),
-                DataCell(Text(studentAnswer!)),
-              ],
-            );
-          }).toList(),
-        ),
+          return DataRow2(
+            cells: [
+              DataCell(Text(converted)),
+              DataCell(Text(logId!)),
+              DataCell(Text(
+                studentName!,
+                maxLines: 2,
+                style: TextStyle(overflow: TextOverflow.ellipsis),
+              )),
+              DataCell(Text(steps!)),
+              DataCell(Text(time!)),
+              DataCell(Text(studentAnswer!)),
+            ],
+          );
+        }).toList(),
       ),
     );
   }

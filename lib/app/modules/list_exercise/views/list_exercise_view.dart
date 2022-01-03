@@ -64,53 +64,51 @@ class ListExerciseView extends StatelessWidget {
 
     controller.mapExerciseFirestoreToExerciseModel(snapshots);
 
-    return Expanded(
-      child: Card(
-        elevation: dimenSmall,
-        child: DataTable2(
-          columns: [
-            DataColumn2(
-              label: Text("No"),
-              size: ColumnSize.S,
-            ),
-            DataColumn2(
-              label: Text("ID Latihan"),
-              size: ColumnSize.M,
-            ),
-            DataColumn2(
-              label: Text("Latihan"),
-              size: ColumnSize.L,
-            ),
-            DataColumn2(
-              label: Text("Aksi"),
-              size: ColumnSize.L,
-            ),
-          ],
-          rows: controller.listOfExercise.map((exercise) {
-            var index = controller.listOfExercise.indexOf(exercise) + 1;
-            var converted = index.toString();
+    return Card(
+      elevation: dimenSmall,
+      child: DataTable2(
+        columns: [
+          DataColumn2(
+            label: Text("No"),
+            size: ColumnSize.S,
+          ),
+          DataColumn2(
+            label: Text("ID Latihan"),
+            size: ColumnSize.M,
+          ),
+          DataColumn2(
+            label: Text("Latihan"),
+            size: ColumnSize.L,
+          ),
+          DataColumn2(
+            label: Text("Aksi"),
+            size: ColumnSize.L,
+          ),
+        ],
+        rows: controller.listOfExercise.map((exercise) {
+          var index = controller.listOfExercise.indexOf(exercise) + 1;
+          var converted = index.toString();
 
-            var exerciseId = exercise.exerciseId;
-            var exerciseName = exercise.exerciseName;
+          var exerciseId = exercise.exerciseId;
+          var exerciseName = exercise.exerciseName;
 
-            return DataRow2(
-              cells: [
-                DataCell(Text(converted)),
-                DataCell(Text(exerciseId!)),
-                DataCell(Text(exerciseName!)),
-                DataCell(
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.dashboardLecturerController.setSelectedExercise(exerciseId);
-                      controller.dashboardLecturerController.setSelectedIndex(4);
-                    },
-                    child: Text("Lihat Log Mahasiswa"),
-                  ),
+          return DataRow2(
+            cells: [
+              DataCell(Text(converted)),
+              DataCell(Text(exerciseId!)),
+              DataCell(Text(exerciseName!)),
+              DataCell(
+                ElevatedButton(
+                  onPressed: () {
+                    controller.dashboardLecturerController.setSelectedExercise(exerciseId);
+                    controller.dashboardLecturerController.setSelectedIndex(4);
+                  },
+                  child: Text("Lihat Log Mahasiswa"),
                 ),
-              ],
-            );
-          }).toList(),
-        ),
+              ),
+            ],
+          );
+        }).toList(),
       ),
     );
   }

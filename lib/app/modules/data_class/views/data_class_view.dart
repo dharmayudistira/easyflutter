@@ -101,53 +101,51 @@ class DataClassView extends StatelessWidget {
 
     controller.mapConvertClassFirestoreToClassModel(snapshots);
 
-    return Expanded(
-      child: Card(
-        elevation: dimenSmall,
-        child: DataTable2(
-          columns: [
-            DataColumn2(
-              label: Text("No"),
-              size: ColumnSize.S,
-            ),
-            DataColumn2(
-              label: Text("ID Kelas"),
-              size: ColumnSize.M,
-            ),
-            DataColumn2(
-              label: Text("Kelas"),
-              size: ColumnSize.M,
-            ),
-            DataColumn2(
-              label: Text("Aksi"),
-              size: ColumnSize.L,
-            ),
-          ],
-          rows: controller.rowOfClasses.map((itemClass) {
-            var index = controller.rowOfClasses.indexOf(itemClass) + 1;
-            var converted = index.toString();
+    return Card(
+      elevation: dimenSmall,
+      child: DataTable2(
+        columns: [
+          DataColumn2(
+            label: Text("No"),
+            size: ColumnSize.S,
+          ),
+          DataColumn2(
+            label: Text("ID Kelas"),
+            size: ColumnSize.M,
+          ),
+          DataColumn2(
+            label: Text("Kelas"),
+            size: ColumnSize.M,
+          ),
+          DataColumn2(
+            label: Text("Aksi"),
+            size: ColumnSize.L,
+          ),
+        ],
+        rows: controller.rowOfClasses.map((itemClass) {
+          var index = controller.rowOfClasses.indexOf(itemClass) + 1;
+          var converted = index.toString();
 
-            var classId = itemClass.classId;
-            var className = itemClass.className;
+          var classId = itemClass.classId;
+          var className = itemClass.className;
 
-            return DataRow2(
-              cells: [
-                DataCell(Text(converted)),
-                DataCell(Text(classId!)),
-                DataCell(Text(className!)),
-                DataCell(
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.dashboardLecturerController.setSelectedClass(classId);
-                      controller.dashboardLecturerController.setSelectedIndex(3);
-                    },
-                    child: Text("Lihat Latihan Soal"),
-                  ),
+          return DataRow2(
+            cells: [
+              DataCell(Text(converted)),
+              DataCell(Text(classId!)),
+              DataCell(Text(className!)),
+              DataCell(
+                ElevatedButton(
+                  onPressed: () {
+                    controller.dashboardLecturerController.setSelectedClass(classId);
+                    controller.dashboardLecturerController.setSelectedIndex(3);
+                  },
+                  child: Text("Lihat Latihan Soal"),
                 ),
-              ],
-            );
-          }).toList(),
-        ),
+              ),
+            ],
+          );
+        }).toList(),
       ),
     );
   }
