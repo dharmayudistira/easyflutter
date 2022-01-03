@@ -24,5 +24,4 @@ class ListExerciseCodeReconstructionController extends GetxController {
     listExercise = result;
   }
 
-
 }
