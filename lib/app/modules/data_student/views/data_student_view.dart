@@ -62,72 +62,74 @@ class DataStudentView extends StatelessWidget {
   Widget _buildDataTableStudent(AsyncSnapshot<QuerySnapshot> snapshots) {
     controller.mapStudentFirestoreToStudentModel(snapshots);
 
-    return Card(
-      elevation: dimenSmall,
-      child: DataTable2(
-        columns: [
-          DataColumn2(
-            label: Text("No"),
-            size: ColumnSize.S,
-          ),
-          DataColumn2(
-            label: Text("NIM"),
-            size: ColumnSize.M,
-          ),
-          DataColumn2(
-            label: Text("Nama"),
-            size: ColumnSize.L,
-          ),
-          DataColumn2(
-            label: Text("Kelas"),
-            size: ColumnSize.M,
-          ),
-          DataColumn2(
-            label: Text("Status"),
-            size: ColumnSize.M,
-          ),
-          DataColumn2(
-            label: Text("Aksi"),
-            size: ColumnSize.L,
-          ),
-        ],
-        rows: controller.listStudent.map((student) {
-          var index = controller.listStudent.indexOf(student) + 1;
-          var converted = index.toString();
+    return Expanded(
+      child: Card(
+        elevation: dimenSmall,
+        child: DataTable2(
+          columns: [
+            DataColumn2(
+              label: Text("No"),
+              size: ColumnSize.S,
+            ),
+            DataColumn2(
+              label: Text("NIM"),
+              size: ColumnSize.M,
+            ),
+            DataColumn2(
+              label: Text("Nama"),
+              size: ColumnSize.L,
+            ),
+            DataColumn2(
+              label: Text("Kelas"),
+              size: ColumnSize.M,
+            ),
+            DataColumn2(
+              label: Text("Status"),
+              size: ColumnSize.M,
+            ),
+            DataColumn2(
+              label: Text("Aksi"),
+              size: ColumnSize.L,
+            ),
+          ],
+          rows: controller.listStudent.map((student) {
+            var index = controller.listStudent.indexOf(student) + 1;
+            var converted = index.toString();
 
-          var studentId = student.studentId;
-          var studentName = student.studentName;
-          var studentClass = student.className;
-          var status = student.status;
+            var studentId = student.studentId;
+            var studentName = student.studentName;
+            var studentClass = student.className;
+            var status = student.status;
 
-          return DataRow2(
-            cells: [
-              DataCell(Text(converted)),
-              DataCell(Text(studentId!)),
-              DataCell(
-                Text(
-                  studentName!,
-                  maxLines: 2,
-                  style: TextStyle(
-                    overflow: TextOverflow.ellipsis,
+            return DataRow2(
+              cells: [
+                DataCell(Text(converted)),
+                DataCell(Text(studentId!)),
+                DataCell(
+                  Text(
+                    studentName!,
+                    maxLines: 2,
+                    style: TextStyle(
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
-              ),
-              DataCell(Text(studentClass!)),
-              DataCell((status!) ? Text("Valid") : Text("Belum valid")),
-              DataCell(
-                ElevatedButton(
-                  onPressed: (status)
-                      ? null
-                      : () {
-                          controller.validateStudentStatus(studentId);
-                        },
-                  child: Text("Validasi"),
+                DataCell(Text(studentClass!)),
+                DataCell((status!) ? Text("Valid") : Text("Belum valid")),
+                DataCell(
+                  ElevatedButton(
+                    onPressed: (status)
+                        ? null
+                        : () {
+                            controller.validateStudentStatus(studentId);
+                          },
+                    child: Text("Validasi"),
+                  ),
                 ),
-              ),
-            ],
-          );
-        }).toList(),
+              ],
+            );
+          }).toList(),
+        ),
       ),
     );
   }
