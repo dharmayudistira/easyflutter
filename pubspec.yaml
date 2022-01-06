@@ -14,6 +14,7 @@ dependencies:
   data_table_2: 2.2.0
   font_awesome_flutter: 9.2.0
   google_fonts: 2.1.1
+  lottie: 1.2.1
   flutter: 
     sdk: flutter
 
@@ -23,7 +24,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
-  uses-material-design: true
-  assets:
+  assets: 
     - assets/images/
+    - assets/animations/
+  uses-material-design: true
 

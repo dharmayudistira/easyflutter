@@ -3,6 +3,8 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
+import 'package:easyflutter/app/views/empty_data_view.dart';
+import 'package:easyflutter/app/views/loading_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -45,14 +47,18 @@ class DataClassView extends StatelessWidget {
             StreamBuilder(
               stream: controller.getAllClass(),
               builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
-                if(snapshots.hasData) {
-                  if(snapshots.data!.docs.isNotEmpty) {
-                    return _buildDataTableClass(snapshots);
+                if(snapshots.connectionState == ConnectionState.active) {
+                  if(snapshots.hasData) {
+                    if(snapshots.data!.docs.isNotEmpty) {
+                      return _buildDataTableClass(snapshots);
+                    }else {
+                      return EmptyDataView(label: "Data kelas");
+                    }
                   }else {
-                    return Expanded(child: Center(child: Text("No Data")));
+                    return EmptyDataView(label: "Data kelas");
                   }
                 }else {
-                  return Expanded(child: Center(child: Text("No Data")));
+                  return LoadingView();
                 }
               },
             ),

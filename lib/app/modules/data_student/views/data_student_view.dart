@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/views/empty_data_view.dart';
+import 'package:easyflutter/app/views/loading_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -42,14 +44,18 @@ class DataStudentView extends StatelessWidget {
             StreamBuilder(
               stream: controller.getAllStudent(),
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
-                if (snapshots.hasData) {
-                  if (snapshots.data!.docs.isNotEmpty) {
-                    return _buildDataTableStudent(snapshots);
+                if(snapshots.connectionState == ConnectionState.active) {
+                  if (snapshots.hasData) {
+                    if (snapshots.data!.docs.isNotEmpty) {
+                      return _buildDataTableStudent(snapshots);
+                    } else {
+                      return EmptyDataView(label: "Data mahasiswa");
+                    }
                   } else {
-                    return Expanded(child: Center(child: Text("No Data")));
+                    return EmptyDataView(label: "Data mahasiswa");
                   }
-                } else {
-                  return Expanded(child: Center(child: Text("No Data")));
+                }else {
+                  return LoadingView();
                 }
               },
             ),
