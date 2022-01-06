@@ -9,12 +9,15 @@ class LoginController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final _firestore = FirebaseFirestore.instance;
   final listLoginType = ["Mahasiswa", "Dosen"].obs;
+  final GlobalKey<FormState> loginFormKey = GlobalKey();
 
   late TextEditingController edtControllerId;
   late TextEditingController edtControllerPassword;
 
   var isObscured = true.obs;
   var selectedLoginType = "Mahasiswa".obs;
+
+  var isFormIdEmpty = false.obs;
 
   void setObscuredPassword() {
     isObscured.toggle();
@@ -37,13 +40,18 @@ class LoginController extends GetxController {
   }
 
   void login() {
-    final id = edtControllerId.text;
-    final password = edtControllerPassword.text;
 
-    if (selectedLoginType.value == "Dosen") {
-      doLoginAsLecturer(id, password);
-    } else {
-      doLoginAsStudent(id, password);
+    final isValid = loginFormKey.currentState?.validate();
+
+    if(isValid == true) {
+      final id = edtControllerId.text;
+      final password = edtControllerPassword.text;
+
+      if (selectedLoginType.value == "Dosen") {
+        doLoginAsLecturer(id, password);
+      } else {
+        doLoginAsStudent(id, password);
+      }
     }
   }
 

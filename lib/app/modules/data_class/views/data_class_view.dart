@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -66,12 +67,18 @@ class DataClassView extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text("Tambahkan Kelas"),
-        content: TextFormField(
-          controller: controller.edtControllerClassName,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: "Contoh : TI-3A / MI-2A",
-            label: Text("Masukkan Nama Kelas"),
+        content: Form(
+          key: controller.dataClassFormKey,
+          child: TextFormField(
+            controller: controller.edtControllerClassName,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: "Contoh : TI-3A / MI-2A",
+              label: Text("Masukkan Nama Kelas"),
+            ),
+            validator: (newValue) {
+              return emptyValidationForm(newValue, "nama kelas");
+            },
           ),
         ),
         actions: [

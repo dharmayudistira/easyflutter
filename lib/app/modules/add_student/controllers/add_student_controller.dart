@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 class AddStudentController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
+  final GlobalKey<FormState> addStudentFormKey = GlobalKey();
   final classReference = FirebaseFirestore.instance.collection("kelas");
   final studentReference = FirebaseFirestore.instance.collection("mahasiswa");
 
@@ -69,6 +70,11 @@ class AddStudentController extends GetxController {
   }
 
   void addStudent() async {
+
+    final isFormValid = addStudentFormKey.currentState?.validate();
+
+    if(isFormValid != true) return;
+
     await validateStudentId();
 
     if (selectedClass.value == "Pilih Kelas") {

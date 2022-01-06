@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -41,34 +42,45 @@ class AddStudentView extends StatelessWidget {
               ],
             ),
             SizedBox(height: dimenSmall),
-            Column(
-              children: [
-                TextFormField(
-                  controller: controller.edtStudentIdController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "1941720000",
-                    label: Text("Masukkan NIM"),
-                  ),
+            Form(
+              key: controller.addStudentFormKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: controller.edtStudentIdController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "1941720000",
+                        label: Text("Masukkan NIM"),
+                      ),
+                      validator: (newValue) {
+                        return emptyValidationForm(newValue, "NIM");
+                      },
+                    ),
+                    SizedBox(height: dimenSmall),
+                    TextFormField(
+                      controller: controller.edtStudentNameController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        label: Text("Masukkan Nama Mahasiswa"),
+                      ),
+                      validator: (newValue) {
+                        return emptyValidationForm(newValue, "nama mahasiswa");
+                      },
+                    ),
+                    SizedBox(height: dimenSmall),
+                    TextFormField(
+                      enabled: false,
+                      initialValue: controller.getLecturerName(),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        label: Text("Nama Dosen"),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: dimenSmall),
-                TextFormField(
-                  controller: controller.edtStudentNameController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text("Masukkan Nama Mahasiswa"),
-                  ),
-                ),
-                SizedBox(height: dimenSmall),
-                TextFormField(
-                  enabled: false,
-                  initialValue: controller.getLecturerName(),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text("Nama Dosen"),
-                  ),
-                ),
-              ],
+              ),
             ),
             SizedBox(height: dimenSmall),
             StreamBuilder(

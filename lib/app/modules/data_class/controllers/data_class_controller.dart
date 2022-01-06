@@ -10,6 +10,7 @@ class DataClassController extends GetxController {
 
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
+  final GlobalKey<FormState> dataClassFormKey = GlobalKey();
   final classReference = FirebaseFirestore.instance.collection("kelas");
   final exerciseReference = FirebaseFirestore.instance.collection("latihan");
   final listTitleExerciseCodeReconstruction = [
@@ -57,6 +58,11 @@ class DataClassController extends GetxController {
   }
 
   Future<void> addClass() async {
+
+    final isValid = dataClassFormKey.currentState?.validate();
+
+    if(isValid != true) return;
+
     final className = edtControllerClassName.text.toUpperCase();
 
     final classSnapshots = await classReference.get();

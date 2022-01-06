@@ -3,6 +3,7 @@ import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/data/dosen_model.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:easyflutter/app/views/app_description_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -42,121 +43,133 @@ class RegisterView extends GetView<RegisterController> {
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: dimenLarge, vertical: dimenMedium),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                "Daftar Sebagai Mahasiswa",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    ?.copyWith(color: Colors.black),
-              ),
-              SizedBox(height: dimenMedium),
-              TextFormField(
-                controller: controller.edtStudentIdController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "1941720000",
-                  label: Text("Masukkan NIM"),
+        child: Form(
+          key: controller.registerFormKey,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(
+                  "Daftar Sebagai Mahasiswa",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      ?.copyWith(color: Colors.black),
                 ),
-              ),
-              SizedBox(height: dimenSmall),
-              TextFormField(
-                controller: controller.edtStudentNameController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Masukkan Nama Anda",
-                  label: Text("Masukkan Nama"),
-                ),
-              ),
-              SizedBox(height: dimenSmall),
-              Obx(() {
-                var passwordState = controller.isObscured.value;
-
-                return TextFormField(
-                  controller: controller.edtStudentPasswordController,
-                  obscureText: passwordState,
+                SizedBox(height: dimenMedium),
+                TextFormField(
+                  controller: controller.edtStudentIdController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "********",
-                    suffixIcon: IconButton(
-                      icon: (passwordState)
-                          ? Icon(Icons.visibility_off)
-                          : Icon(Icons.visibility),
-                      onPressed: () {
-                        controller.setObscuredPassword();
-                      },
-                    ),
-                    label: Text("Masukkan Kata Sandi"),
+                    hintText: "1941720000",
+                    label: Text("Masukkan NIM"),
                   ),
-                );
-              }),
-              SizedBox(height: dimenSmall),
-              StreamBuilder(
-                stream: controller.getAllLecturer(),
-                builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
-                  if (snapshots.connectionState == ConnectionState.active) {
-                    return _buildDropdownLecturer(snapshots);
-                  } else {
-                    return _buildDropdownDummyValue("Pilih Dosen");
-                  }
-                },
-              ),
-              SizedBox(height: dimenSmall),
-              Obx(() {
-                return (controller.isClassHidden.value)
-                    ? Container()
-                    : StreamBuilder(
-                  stream: controller.getClassByLecturer(),
+                  validator: (newValue) {
+                    return emptyValidationForm(newValue, "NIM");
+                  },
+                ),
+                SizedBox(height: dimenSmall),
+                TextFormField(
+                  controller: controller.edtStudentNameController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Masukkan Nama Anda",
+                    label: Text("Masukkan Nama"),
+                  ),
+                  validator: (newValue) {
+                    return emptyValidationForm(newValue, "nama mahasiswa");
+                  },
+                ),
+                SizedBox(height: dimenSmall),
+                Obx(() {
+                  var passwordState = controller.isObscured.value;
+
+                  return TextFormField(
+                    controller: controller.edtStudentPasswordController,
+                    obscureText: passwordState,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "********",
+                      suffixIcon: IconButton(
+                        icon: (passwordState)
+                            ? Icon(Icons.visibility_off)
+                            : Icon(Icons.visibility),
+                        onPressed: () {
+                          controller.setObscuredPassword();
+                        },
+                      ),
+                      label: Text("Masukkan Kata Sandi"),
+                    ),
+                    validator: (newValue) {
+                      return emptyValidationForm(newValue, "kata sandi");
+                    },
+                  );
+                }),
+                SizedBox(height: dimenSmall),
+                StreamBuilder(
+                  stream: controller.getAllLecturer(),
                   builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
-                    if(snapshots.hasData) {
-                      if(snapshots.data!.docs.isNotEmpty) {
-                        return _buildDropdownClass(snapshots);
-                      }else {
-                        return _buildDropdownDummyValue("Pilih Kelas");
-                      }
+                    if (snapshots.connectionState == ConnectionState.active) {
+                      return _buildDropdownLecturer(snapshots);
                     } else {
-                      return _buildDropdownDummyValue("Pilih Kelas");
+                      return _buildDropdownDummyValue("Pilih Dosen");
                     }
                   },
-                );
-              }),
-              SizedBox(height: dimenMedium),
-              Container(
-                width: double.maxFinite,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.addStudent();
-                  },
-                  child: Text(
-                    "Daftar",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5
-                        ?.copyWith(color: Colors.white),
+                ),
+                SizedBox(height: dimenSmall),
+                Obx(() {
+                  return (controller.isClassHidden.value)
+                      ? Container()
+                      : StreamBuilder(
+                    stream: controller.getClassByLecturer(),
+                    builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
+                      if(snapshots.hasData) {
+                        if(snapshots.data!.docs.isNotEmpty) {
+                          return _buildDropdownClass(snapshots);
+                        }else {
+                          return _buildDropdownDummyValue("Pilih Kelas");
+                        }
+                      } else {
+                        return _buildDropdownDummyValue("Pilih Kelas");
+                      }
+                    },
+                  );
+                }),
+                SizedBox(height: dimenMedium),
+                Container(
+                  width: double.maxFinite,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.addStudent();
+                    },
+                    child: Text(
+                      "Daftar",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5
+                          ?.copyWith(color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: dimenSmall),
-              Center(
-                child: RichText(
-                  text: TextSpan(text: "Sudah punya akun ? ", children: [
-                    TextSpan(
-                        text: "Masuk di sini",
-                        style: TextStyle(
-                          color: Colors.blueAccent,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Get.offNamed(Routes.LOGIN);
-                          }),
-                  ]),
+                SizedBox(height: dimenSmall),
+                Center(
+                  child: RichText(
+                    text: TextSpan(text: "Sudah punya akun ? ", children: [
+                      TextSpan(
+                          text: "Masuk di sini",
+                          style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Get.offNamed(Routes.LOGIN);
+                            }),
+                    ]),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

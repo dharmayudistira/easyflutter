@@ -11,6 +11,7 @@ class RegisterController extends GetxController {
   final lecturerReference = FirebaseFirestore.instance.collection("dosen");
   final classReference = FirebaseFirestore.instance.collection("kelas");
   final studentReference = FirebaseFirestore.instance.collection("mahasiswa");
+  final GlobalKey<FormState> registerFormKey = GlobalKey();
 
   late TextEditingController edtStudentIdController;
   late TextEditingController edtStudentPasswordController;
@@ -96,6 +97,12 @@ class RegisterController extends GetxController {
   }
 
   void addStudent() async {
+
+    final isFormValid = registerFormKey.currentState?.validate();
+
+    if(isFormValid != true) {
+      return;
+    }
 
     await validateStudentId();
 
