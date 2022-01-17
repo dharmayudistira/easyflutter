@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class DataClassController extends GetxController {
-
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
   final GlobalKey<FormState> dataClassFormKey = GlobalKey();
@@ -50,18 +49,18 @@ class DataClassController extends GetxController {
     return classReference.where("id_dosen", isEqualTo: lecturerId).snapshots();
   }
 
-  void mapConvertClassFirestoreToClassModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+  void mapConvertClassFirestoreToClassModel(
+      AsyncSnapshot<QuerySnapshot> snapshots) {
     final result = ConverterHelper.mapClassFirestoreToClassModel(snapshots);
 
     result.sort((a, b) => a.classId!.compareTo(b.classId!));
-    rowOfClasses= result;
+    rowOfClasses = result;
   }
 
   Future<void> addClass() async {
-
     final isValid = dataClassFormKey.currentState?.validate();
 
-    if(isValid != true) return;
+    if (isValid != true) return;
 
     final className = edtControllerClassName.text.toUpperCase();
 
@@ -70,20 +69,20 @@ class DataClassController extends GetxController {
     var isClassValid = true;
 
     classSnapshots.docs.forEach((element) {
-      if(element["nama_kelas"] == className) {
+      if (element["nama_kelas"] == className) {
         isClassValid = false;
       }
     });
 
-    if(isClassValid) {
+    if (isClassValid) {
       var lecturerId = _storageHelper.getIdUser();
       var lecturerName = _storageHelper.getNameUser();
 
       await classReference.add({
-        "id_kelas" : className.toLowerCase(),
-        "nama_kelas" : className.toUpperCase(),
-        "id_dosen" : lecturerId,
-        "nama_dosen" : lecturerName,
+        "id_kelas": className.toLowerCase(),
+        "nama_kelas": className.toUpperCase(),
+        "id_dosen": lecturerId,
+        "nama_dosen": lecturerName,
       }).whenComplete(() {
         edtControllerClassName.clear();
         Get.back();
@@ -91,32 +90,34 @@ class DataClassController extends GetxController {
       });
 
       await addExerciseEachClass(className);
-
-    }else {
+    } else {
       edtControllerClassName.clear();
       Get.back();
-      Get.snackbar("Terjadi Kesalahan", "Data kelas $className sudah diampu dosen lain");
+      Get.snackbar(
+          "Terjadi Kesalahan", "Data kelas $className sudah diampu dosen lain");
     }
   }
 
   Future<void> addExerciseEachClass(String className) async {
     //loop to add Code Reconstruction exercises
-    for(int i = 0; i < listTitleExerciseCodeReconstruction.length; i++) {
+    for (int i = 0; i < listTitleExerciseCodeReconstruction.length; i++) {
       await exerciseReference.add({
-        "id_latihan" : "${className.toLowerCase()}-code-${i+1}",
-        "nama_latihan" : "${listTitleExerciseCodeReconstruction[i]}",
-        "id_kelas" : "${className.toLowerCase()}",
-        "tipe" : "code",
+        "id_latihan": "${className.toLowerCase()}-code-${i + 1}",
+        "nama_latihan": "${listTitleExerciseCodeReconstruction[i]}",
+        "id_kelas": "${className.toLowerCase()}",
+        "tipe": "code",
+        "daftar_id_mahasiswa": <String>[],
       });
     }
 
     //loop to add Widget Tree Reconstruction exercises
-    for(int i = 0; i < listTitleExerciseWidgetTreeReconstruction.length; i++) {
+    for (int i = 0; i < listTitleExerciseWidgetTreeReconstruction.length; i++) {
       await exerciseReference.add({
-        "id_latihan" : "${className.toLowerCase()}-widget-${i+1}",
-        "nama_latihan" : "${listTitleExerciseWidgetTreeReconstruction[i]}",
-        "id_kelas" : "${className.toLowerCase()}",
-        "tipe" : "widget",
+        "id_latihan": "${className.toLowerCase()}-widget-${i + 1}",
+        "nama_latihan": "${listTitleExerciseWidgetTreeReconstruction[i]}",
+        "id_kelas": "${className.toLowerCase()}",
+        "tipe": "widget",
+        "daftar_id_mahasiswa": <String>[],
       });
     }
   }
