@@ -122,7 +122,7 @@ class DataClassController extends GetxController {
     //loop to add Code Reconstruction exercises
     for (int i = 0; i < listTitleExerciseCodeReconstruction.length; i++) {
       await exerciseReference.add({
-        "id_latihan": "${className.toLowerCase()}-code-${i + 1}",
+        "id_latihan": "${className.toLowerCase()}-c-${i + 1}",
         "nama_latihan": "${listTitleExerciseCodeReconstruction[i]}",
         "id_kelas": "${className.toLowerCase()}",
         "tipe": "code",
@@ -133,7 +133,7 @@ class DataClassController extends GetxController {
     //loop to add Widget Tree Reconstruction exercises
     for (int i = 0; i < listTitleExerciseWidgetTreeReconstruction.length; i++) {
       await exerciseReference.add({
-        "id_latihan": "${className.toLowerCase()}-widget-${i + 1}",
+        "id_latihan": "${className.toLowerCase()}-w-${i + 1}",
         "nama_latihan": "${listTitleExerciseWidgetTreeReconstruction[i]}",
         "id_kelas": "${className.toLowerCase()}",
         "tipe": "widget",

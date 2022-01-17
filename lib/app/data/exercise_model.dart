@@ -18,6 +18,6 @@ class ExerciseModel {
         exerciseName: json["nama_latihan"],
         classId: json["id_kelas"],
         type: json["tipe"],
-        listStudentId: json["daftar_id_mahasiswa"],
+        listStudentId: (json["daftar_id_mahasiswa"] as List).map((e) => e as String).toList(),
       );
 }
