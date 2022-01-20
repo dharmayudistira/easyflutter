@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListExerciseCodeReconstructionController extends GetxController {
-
   final _storageHelper = Get.find<StorageHelper>();
   final exerciseReference = FirebaseFirestore.instance.collection("latihan");
 
@@ -18,10 +17,16 @@ class ListExerciseCodeReconstructionController extends GetxController {
     return exerciseReference.where("id_kelas", isEqualTo: classId).snapshots();
   }
 
-  void mapExerciseFirestoreToExerciseModel(AsyncSnapshot<QuerySnapshot> snapshots) {
-    final result = ConverterHelper.mapExerciseFirestoreToExerciseModelByType(snapshots, "code");
-    result.sort((a, b) => a.exerciseId!.compareTo(b.exerciseId!));
+  void mapExerciseFirestoreToExerciseModel(
+      AsyncSnapshot<QuerySnapshot> snapshots) {
+    final result = ConverterHelper.mapExerciseFirestoreToExerciseModelByType(
+        snapshots, "code");
+    result.sort((a, b) {
+      final idA = int.parse(a.exerciseId?.substring(8) ?? "0");
+      final idB = int.parse(b.exerciseId?.substring(8) ?? "0");
+
+      return idA.compareTo(idB);
+    });
     listExercise = result;
   }
-
 }
