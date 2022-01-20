@@ -19,7 +19,7 @@ class RegisterView extends GetView<RegisterController> {
       backgroundColor: ColorConstants.kPrimaryColor,
       body: Center(
         child: Container(
-          width: Get.size.width * 0.6,
+          width: Get.size.width * 0.65,
           height: Get.size.height * 0.8,
           child: Card(
             shape: RoundedRectangleBorder(
@@ -120,19 +120,19 @@ class RegisterView extends GetView<RegisterController> {
                   return (controller.isClassHidden.value)
                       ? Container()
                       : StreamBuilder(
-                    stream: controller.getClassByLecturer(),
-                    builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
-                      if(snapshots.hasData) {
-                        if(snapshots.data!.docs.isNotEmpty) {
-                          return _buildDropdownClass(snapshots);
-                        }else {
-                          return _buildDropdownDummyValue("Pilih Kelas");
-                        }
-                      } else {
-                        return _buildDropdownDummyValue("Pilih Kelas");
-                      }
-                    },
-                  );
+                          stream: controller.getClassByLecturer(),
+                          builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
+                            if (snapshots.hasData) {
+                              if (snapshots.data!.docs.isNotEmpty) {
+                                return _buildDropdownClass(snapshots);
+                              } else {
+                                return _buildDropdownDummyValue("Pilih Kelas");
+                              }
+                            } else {
+                              return _buildDropdownDummyValue("Pilih Kelas");
+                            }
+                          },
+                        );
                 }),
                 SizedBox(height: dimenMedium),
                 Container(

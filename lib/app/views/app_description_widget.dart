@@ -12,9 +12,9 @@ class AppDescriptionWidget extends StatelessWidget {
     return Expanded(
       flex: 2,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: dimenSmall, vertical: dimenMedium),
+        padding: EdgeInsets.symmetric(horizontal: dimenSmall),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               "EasyFlutter",

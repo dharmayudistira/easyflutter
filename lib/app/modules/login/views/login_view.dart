@@ -18,7 +18,7 @@ class LoginView extends GetView<LoginController> {
       backgroundColor: ColorConstants.kPrimaryColor,
       body: Center(
         child: Container(
-          width: Get.size.width * 0.6,
+          width: Get.size.width * 0.65,
           height: Get.size.height * 0.7,
           child: Card(
             shape: RoundedRectangleBorder(
@@ -62,7 +62,9 @@ class LoginView extends GetView<LoginController> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "1941720000",
-                    label: Text("Masukkan NIM / NIDN",),
+                    label: Text(
+                      "Masukkan NIM / NIDN",
+                    ),
                     prefixIcon: Icon(
                       FontAwesomeIcons.userAlt,
                       size: dimenSmall * 1.2,
@@ -111,7 +113,8 @@ class LoginView extends GetView<LoginController> {
                     SizedBox(width: dimenSmall),
                     Obx(() {
                       return Container(
-                        padding: EdgeInsets.symmetric(horizontal: dimenSmall / 2),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: dimenSmall / 2),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.grey,
