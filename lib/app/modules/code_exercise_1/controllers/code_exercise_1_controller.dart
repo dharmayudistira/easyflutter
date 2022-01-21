@@ -164,8 +164,12 @@ class CodeExercise1Controller extends GetxController {
       stopTimer();
       return;
     }else {
-      SnackBarHelper.showSnackbar("Mohon maaf", "Blok kode yang Anda belum sesuai dengan output yang diharapkan");
+      SnackBarHelper.showSnackbarWarning("Mohon maaf", "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan");
     }
+  }
+
+  void showDialogSuccess() {
+    SnackBarHelper.showSnackbarSuccess("Selamat!", "Blok kode yang Anda susun telah sesuai dengan output yang diharapkan");
   }
 
   void startTimer() {

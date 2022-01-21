@@ -161,8 +161,11 @@ class CodeExercise1View extends GetView<CodeExercise1Controller> {
                         SizedBox(width: dimenSmall),
                         Obx(() {
                           return ElevatedButton(
-                            onPressed:
-                                (controller.isCorrect.value) ? () {} : null,
+                            onPressed: (controller.isCorrect.value)
+                                ? () {
+                                    controller.showDialogSuccess();
+                                  }
+                                : null,
                             child: Text("Kirim Jawaban"),
                           );
                         }),
