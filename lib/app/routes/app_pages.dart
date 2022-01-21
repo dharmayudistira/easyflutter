@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:easyflutter/app/middlewares/auth_lecturer_middleware.dart';
 import 'package:easyflutter/app/middlewares/auth_student_middleware.dart';
+import 'package:easyflutter/app/modules/code_exercise_1/bindings/code_exercise_1_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise_1/views/code_exercise_1_view.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/bindings/dashboard_lecturer_binding.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/views/dashboard_lecturer_view.dart';
 import 'package:easyflutter/app/modules/dashboard_student/bindings/dashboard_student_binding.dart';
@@ -82,6 +84,12 @@ class AppPages {
       name: _Paths.LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION,
       page: () => ListExerciseWidgetTreeReconstructionView(),
       binding: ListExerciseWidgetTreeReconstructionBinding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE_1,
+      page: () => CodeExercise1View(),
+      binding: CodeExercise1Binding(),
+      middlewares: [AuthStudentMiddleware()],
     ),
   ];
 }

@@ -15,6 +15,7 @@ dependencies:
   font_awesome_flutter: 9.2.0
   google_fonts: 2.1.1
   lottie: 1.2.1
+  stop_watch_timer: 1.3.1
   flutter: 
     sdk: flutter
 
@@ -27,5 +28,6 @@ flutter:
   assets: 
     - assets/images/
     - assets/animations/
+    - assets/images/code/
   uses-material-design: true
 
