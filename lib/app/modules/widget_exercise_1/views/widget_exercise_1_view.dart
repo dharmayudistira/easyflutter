@@ -47,20 +47,21 @@ class WidgetExercise1View extends GetView<WidgetExercise1Controller> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r),
                           ),
-                          child: SizedBox(
-                            height: 400.h,
-                            width: 700.w,
-                            child: Image.asset(
-                              "assets/images/widget/widget_tree0.png",
+                          child: Center(
+                            child: SizedBox(
+                              height: 400.h,
+                              child: Image.asset(
+                                "assets/images/widget/widget_tree1.png",
+                              ),
                             ),
                           ),
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 222.r),
+                            SizedBox(height: 118.r),
                             Row(
                               children: [
-                                SizedBox(width: 298.h),
+                                SizedBox(width: 264.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
@@ -72,14 +73,19 @@ class WidgetExercise1View extends GetView<WidgetExercise1Controller> {
                             SizedBox(height: 33.8.r),
                             Row(
                               children: [
-                                SizedBox(width: 193.8.h),
+                                SizedBox(width: 333.3.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 1,
                                   size: 70,
                                 ),
-                                SizedBox(width: 138.5.h),
+                              ],
+                            ),
+                            SizedBox(height: 33.8.r),
+                            Row(
+                              children: [
+                                SizedBox(width: 403.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
@@ -87,7 +93,7 @@ class WidgetExercise1View extends GetView<WidgetExercise1Controller> {
                                   size: 70,
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                       ],
@@ -102,7 +108,7 @@ class WidgetExercise1View extends GetView<WidgetExercise1Controller> {
                 ),
                 RightContentWidget(
                   stopWatchTimer: controller.stopWatchTimer,
-                  image: "assets/images/widget/latihan0.png",
+                  image: "assets/images/widget/latihan1.png",
                   exerciseName: controller.exerciseName,
                   isStart: controller.isStart,
                   isAnswerTrue: controller.isAnswerTrue,

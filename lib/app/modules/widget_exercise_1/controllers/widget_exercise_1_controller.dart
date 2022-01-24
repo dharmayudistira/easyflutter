@@ -14,7 +14,7 @@ class WidgetExercise1Controller extends GetxController {
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
-      "Flutter memiliki beberapa widget yang dapat digunakan untuk menyusun widget, yaitu Row dan Column. Row merupakan widget yang menampilkan beberapa child dalam larik horizontal, sedangkan Column merupakan widget yang menampilkan beberapa child dalam larik vertikal.";
+      "Flutter memiliki beberapa widget yang dapat digunakan untuk menyusun widget, salah satunya yaitu Stack. Stack merupakan widget yang memposisikan beberapa widget secara relatif terhadap tepi kotaknya.";
 
   Function eq = const ListEquality().equals;
 
@@ -24,14 +24,14 @@ class WidgetExercise1Controller extends GetxController {
 
   var isStart = false.obs;
 
-  List<String> answer = ["Row", "Icon", "Icon"];
+  List<String> answer = ["Stack", "Row", "Icon Button"];
 
   List<AnswerWidgetModel> answerList = [
-    AnswerWidgetModel(index: 0, content: "Icon", isUsed: false),
-    AnswerWidgetModel(index: 1, content: "Text", isUsed: false),
-    AnswerWidgetModel(index: 2, content: "Icon", isUsed: false),
-    AnswerWidgetModel(index: 3, content: "Image", isUsed: false),
-    AnswerWidgetModel(index: 4, content: "Row", isUsed: false),
+    AnswerWidgetModel(index: 0, content: "Icon Button", isUsed: false),
+    AnswerWidgetModel(index: 1, content: "Row", isUsed: false),
+    AnswerWidgetModel(index: 2, content: "Stack", isUsed: false),
+    AnswerWidgetModel(index: 3, content: "Column", isUsed: false),
+    AnswerWidgetModel(index: 4, content: "Icon", isUsed: false),
   ].obs;
 
   List<AnswerWidgetModel> targetAnswers = [

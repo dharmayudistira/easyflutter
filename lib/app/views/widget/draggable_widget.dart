@@ -35,6 +35,7 @@ class DraggableWidget extends StatelessWidget {
                         child: Center(
                           child: Text(
                             answerContent,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 14.sp,
                             ),
@@ -53,6 +54,7 @@ class DraggableWidget extends StatelessWidget {
                           child: Center(
                             child: Text(
                               answerContent,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 14.sp,
                               ),
@@ -70,6 +72,7 @@ class DraggableWidget extends StatelessWidget {
                           child: Center(
                             child: Text(
                               answerContent,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 14.sp,
                               ),
@@ -85,6 +88,7 @@ class DraggableWidget extends StatelessWidget {
                           child: Center(
                             child: Text(
                               answerContent,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 14.sp,
                               ),
