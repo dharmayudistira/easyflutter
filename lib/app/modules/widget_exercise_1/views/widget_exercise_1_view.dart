@@ -62,7 +62,8 @@ class WidgetExercise1View extends GetView<WidgetExercise1Controller> {
                               children: [
                                 SizedBox(width: 298.h),
                                 DragTargetWidget(
-                                  controller: controller,
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswers: controller.targetAnswers,
                                   index: 0,
                                   size: 70,
                                 ),
@@ -73,13 +74,15 @@ class WidgetExercise1View extends GetView<WidgetExercise1Controller> {
                               children: [
                                 SizedBox(width: 193.8.h),
                                 DragTargetWidget(
-                                  controller: controller,
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswers: controller.targetAnswers,
                                   index: 1,
                                   size: 70,
                                 ),
                                 SizedBox(width: 138.5.h),
                                 DragTargetWidget(
-                                  controller: controller,
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswers: controller.targetAnswers,
                                   index: 2,
                                   size: 70,
                                 ),
@@ -92,7 +95,7 @@ class WidgetExercise1View extends GetView<WidgetExercise1Controller> {
                   ),
                   draggableContent: Center(
                     child: DraggableWidget(
-                      controller: controller,
+                      answerList: controller.answerList,
                       size: 70,
                     ),
                   ),

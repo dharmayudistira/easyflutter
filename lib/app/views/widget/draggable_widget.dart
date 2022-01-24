@@ -1,17 +1,16 @@
 import 'package:easyflutter/app/data/answer_widget_model.dart';
-import 'package:easyflutter/app/modules/widget_exercise_1/controllers/widget_exercise_1_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DraggableWidget extends StatelessWidget {
   const DraggableWidget({
-    required this.controller,
+    required this.answerList,
     required this.size,
     Key? key,
   }) : super(key: key);
 
-  final WidgetExercise1Controller controller;
+  final List<AnswerWidgetModel> answerList;
   final int size;
 
   @override
@@ -23,11 +22,11 @@ class DraggableWidget extends StatelessWidget {
           return ListView.separated(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: controller.answerList.length,
+            itemCount: answerList.length,
             itemBuilder: (context, index) {
-              final answer = controller.answerList[index];
-              final answerContent = controller.answerList[index].content ?? "";
-              final isAnswerUsed = controller.answerList[index].isUsed ?? false;
+              final answer = answerList[index];
+              final answerContent = answerList[index].content ?? "";
+              final isAnswerUsed = answerList[index].isUsed ?? false;
               return isAnswerUsed
                   ? SizedBox(
                       width: size.r,
