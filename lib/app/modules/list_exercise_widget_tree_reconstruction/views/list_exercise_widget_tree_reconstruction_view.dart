@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -35,7 +36,15 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
                         ?.copyWith(color: Colors.black),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(
+                        Routes.WIDGET_EXERCISE_EXAMPLE,
+                        arguments: [
+                          "ti-3a-w-0",
+                          "Contoh Soal",
+                        ],
+                      );
+                    },
                     child: Text("Contoh Soal"),
                   ),
                 ],
