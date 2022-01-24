@@ -158,18 +158,16 @@ class CodeExercise1Controller extends GetxController {
   }
 
   void checkAnswer() {
-    isCorrect.value = CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer);
+    isCorrect.value =
+        CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer);
 
-    if(isCorrect.value) {
+    if (isCorrect.value) {
       stopTimer();
       return;
-    }else {
-      SnackBarHelper.showSnackbarWarning("Mohon maaf", "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan");
+    } else {
+      SnackBarHelper.showSnackbarWarning("Mohon maaf",
+          "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan");
     }
-  }
-
-  void showDialogSuccess() {
-    SnackBarHelper.showSnackbarSuccess("Selamat!", "Blok kode yang Anda susun telah sesuai dengan output yang diharapkan");
   }
 
   void startTimer() {
@@ -178,6 +176,12 @@ class CodeExercise1Controller extends GetxController {
 
   void stopTimer() {
     stopwatchTimer.onExecute.add(StopWatchExecute.stop);
+  }
+
+  void dialogStartOnSuccess() {
+    isStarted.toggle();
+    Get.back();
+    startTimer();
   }
 
   String _getStopwatchTime() {
