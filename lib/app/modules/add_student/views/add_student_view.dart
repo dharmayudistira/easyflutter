@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
-import 'package:easyflutter/app/data/class_model.dart';
-import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

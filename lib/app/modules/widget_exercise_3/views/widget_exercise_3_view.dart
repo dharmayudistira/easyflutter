@@ -43,13 +43,12 @@ class WidgetExercise3View extends GetView<WidgetExercise3Controller> {
                     child: Stack(
                       children: [
                         Card(
-                          color: Colors.grey.withOpacity(0.1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Center(
                             child: SizedBox(
-                              height: 400.h,
+                              height: 420.h,
                               child: Image.asset(
                                 "assets/images/widget/widget_tree3.png",
                               ),
@@ -58,7 +57,7 @@ class WidgetExercise3View extends GetView<WidgetExercise3Controller> {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 117.7.r),
+                            SizedBox(height: 127.r),
                             Row(
                               children: [
                                 SizedBox(width: 298.h),
@@ -70,7 +69,7 @@ class WidgetExercise3View extends GetView<WidgetExercise3Controller> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 34.r),
+                            SizedBox(height: 34.5.r),
                             Row(
                               children: [
                                 SizedBox(width: 298.h),
@@ -82,10 +81,10 @@ class WidgetExercise3View extends GetView<WidgetExercise3Controller> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 33.r),
+                            SizedBox(height: 34.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 229.h),
+                                SizedBox(width: 228.3.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,

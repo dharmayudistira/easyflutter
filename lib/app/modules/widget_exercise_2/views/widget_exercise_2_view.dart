@@ -43,13 +43,12 @@ class WidgetExercise2View extends GetView<WidgetExercise2Controller> {
                     child: Stack(
                       children: [
                         Card(
-                          color: Colors.grey.withOpacity(0.1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Center(
                             child: SizedBox(
-                              height: 400.h,
+                              height: 420.h,
                               child: Image.asset(
                                 "assets/images/widget/widget_tree2.png",
                               ),
@@ -58,39 +57,39 @@ class WidgetExercise2View extends GetView<WidgetExercise2Controller> {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 117.r),
+                            SizedBox(height: 128.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 332.h),
+                                SizedBox(width: 335.2.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 0,
-                                  size: 70,
+                                  size: 65,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 35.r),
+                            SizedBox(height: 40.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 262.h),
+                                SizedBox(width: 264.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 1,
-                                  size: 70,
+                                  size: 65,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 35.r),
+                            SizedBox(height: 41.r),
                             Row(
                               children: [
-                                SizedBox(width: 332.h),
+                                SizedBox(width: 335.2.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 2,
-                                  size: 70,
+                                  size: 65,
                                 ),
                               ],
                             ),

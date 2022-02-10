@@ -67,13 +67,11 @@ class RightContentWidget extends StatelessWidget {
                 ),
                 Center(
                   child: Card(
-                    color: Colors.grey.withOpacity(0.1),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
                     child: SizedBox(
-                      height: 400.h,
-                      width: 700.w,
+                      height: 420.h,
                       child: Image.asset(image),
                     ),
                   ),
