@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
-import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:easyflutter/app/views/loading_view.dart';

@@ -1,5 +1,3 @@
-import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
-import 'package:easyflutter/app/modules/data_student/views/data_student_view.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:get/get.dart';
