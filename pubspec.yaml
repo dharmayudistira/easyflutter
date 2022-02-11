@@ -29,5 +29,6 @@ flutter:
   assets:
     - assets/images/
     - assets/animations/
+    - assets/images/code/
     - assets/images/widget/
   uses-material-design: true
