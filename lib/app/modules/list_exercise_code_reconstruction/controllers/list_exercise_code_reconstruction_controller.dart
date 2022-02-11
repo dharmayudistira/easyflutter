@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/data/exercise_model.dart';
 import 'package:easyflutter/app/utils/converter_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';

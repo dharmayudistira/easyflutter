@@ -4,7 +4,6 @@ import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/data/dosen_model.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
-import 'package:easyflutter/app/views/app_description_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 

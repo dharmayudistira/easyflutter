@@ -16,6 +16,10 @@ abstract class Routes {
       _Paths.LIST_EXERCISE_CODE_RECONSTRUCTION;
   static const LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION =
       _Paths.LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION;
+  static const WIDGET_EXERCISE_1 = _Paths.WIDGET_EXERCISE_1;
+  static const WIDGET_EXERCISE_EXAMPLE = _Paths.WIDGET_EXERCISE_EXAMPLE;
+  static const WIDGET_EXERCISE_2 = _Paths.WIDGET_EXERCISE_2;
+  static const WIDGET_EXERCISE_3 = _Paths.WIDGET_EXERCISE_3;
 }
 
 abstract class _Paths {
@@ -31,4 +35,8 @@ abstract class _Paths {
       '/list-exercise-code-reconstruction';
   static const LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION =
       '/list-exercise-widget-tree-reconstruction';
+  static const WIDGET_EXERCISE_1 = '/widget-exercise-1';
+  static const WIDGET_EXERCISE_EXAMPLE = '/widget-exercise-example';
+  static const WIDGET_EXERCISE_2 = '/widget-exercise-2';
+  static const WIDGET_EXERCISE_3 = '/widget-exercise-3';
 }
