@@ -1,17 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
-import 'package:easyflutter/app/data/log_model.dart';
-import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class WidgetExerciseExampleController extends GetxController {
   final StopWatchTimer stopWatchTimer = StopWatchTimer();
-
-  final _storageHelper = Get.find<StorageHelper>();
-
-  final CollectionReference logReference =
-      FirebaseFirestore.instance.collection("log");
 
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
@@ -66,8 +59,6 @@ class WidgetExerciseExampleController extends GetxController {
       targetAnswers[indexTargetAnswer].index = answer.index;
       targetAnswers[indexTargetAnswer].content = answer.content;
       targetAnswers[indexTargetAnswer].isUsed = true;
-
-      createLog();
     } else {
       Get.snackbar(
         "Informasi",
@@ -115,39 +106,6 @@ class WidgetExerciseExampleController extends GetxController {
 
   void stopStopWatch() {
     stopWatchTimer.onExecute.add(StopWatchExecute.stop);
-  }
-
-  void createLog() {
-    step++;
-
-    final log = LogModel(
-      logId: "$exerciseId-${DateTime.now()}",
-      studentId: _storageHelper.getIdUser(),
-      studentName: _storageHelper.getNameUser(),
-      exerciseId: exerciseId,
-      step: step.toString(),
-      time: StopWatchTimer.getDisplayTime(
-        stopWatchTimer.rawTime.value,
-        hours: true,
-      ),
-      answer: getTextAnswer().toString(),
-      timeStamp: DateTime.now().toString(),
-    );
-
-    uploadLog(log);
-  }
-
-  void uploadLog(LogModel log) {
-    logReference.add({
-      "id_log": log.logId,
-      "id_mahasiswa": log.studentId,
-      "nama_mahasiswa": log.studentName,
-      "id_latihan": log.exerciseId,
-      "langkah": log.step,
-      "waktu": log.time,
-      "jawaban": log.answer,
-      "time_stamp": log.timeStamp,
-    });
   }
 
   bool checkAnswer() {

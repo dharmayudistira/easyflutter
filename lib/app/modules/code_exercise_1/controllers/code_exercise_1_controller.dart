@@ -4,7 +4,6 @@ import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
-import 'package:collection/collection.dart';
 
 class CodeExercise1Controller extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();

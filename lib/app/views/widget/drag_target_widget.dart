@@ -35,7 +35,7 @@ class DragTargetWidget extends StatelessWidget {
                   child: Text(
                     targetAnswers[index].content ?? "",
                     style: TextStyle(
-                      fontSize: 14.sp,
+                      fontSize: 13.sp,
                     ),
                     textAlign: TextAlign.center,
                   ),

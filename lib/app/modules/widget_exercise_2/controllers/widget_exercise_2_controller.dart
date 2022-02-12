@@ -11,6 +11,9 @@ class WidgetExercise2Controller extends GetxController {
 
   final _storageHelper = Get.find<StorageHelper>();
 
+  final CollectionReference logReference =
+      FirebaseFirestore.instance.collection("log");
+
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
@@ -132,14 +135,20 @@ class WidgetExercise2Controller extends GetxController {
       timeStamp: DateTime.now().toString(),
     );
 
-    print("log : "
-        "\n idlog : ${log.logId}"
-        "\n idExercise : ${log.exerciseId}"
-        "\n idStudent : ${log.studentId}"
-        "\n studentName : ${log.studentName}"
-        "\n studentAnswer : ${log.answer}"
-        "\n steps : ${log.step}"
-        "\n time : ${log.time}");
+    uploadLog(log);
+  }
+
+  void uploadLog(LogModel log) {
+    logReference.add({
+      "id_log": log.logId,
+      "id_mahasiswa": log.studentId,
+      "nama_mahasiswa": log.studentName,
+      "id_latihan": log.exerciseId,
+      "langkah": log.step,
+      "waktu": log.time,
+      "jawaban": log.answer,
+      "time_stamp": log.timeStamp,
+    });
   }
 
   bool checkAnswer() {
