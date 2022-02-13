@@ -19,84 +19,85 @@ class CodeExercise1Controller extends GetxController {
   var isStarted = false.obs;
   var isCorrect = false.obs;
   var steps = 0.obs;
+  var isFinished = false.obs;
 
   final correctAnswer = [
     {
-      "keyValue" : 1,
-      "codeValue" : "Column ("
+      "keyValue": 1,
+      "codeValue": "Column ("
           "\n   mainAxisAlignment: MainAxisAligment.start,"
           "\n   crossAxisAlignment: CrossAxisAlignment.end,",
-      "paddingValue" : 32.0,
+      "paddingValue": 32.0,
     },
     {
-      "keyValue" : 2,
-      "codeValue" : "childern : [",
-      "paddingValue" : 64.0,
+      "keyValue": 2,
+      "codeValue": "childern : [",
+      "paddingValue": 64.0,
     },
     {
-      "keyValue" : 3,
-      "codeValue" : "Container (color: Colors.red),",
-      "paddingValue" : 96.0,
+      "keyValue": 3,
+      "codeValue": "Container (color: Colors.red),",
+      "paddingValue": 96.0,
     },
     {
-      "keyValue" : 4,
-      "codeValue" : "Container (color: Colors.yellow),",
-      "paddingValue" : 96.0,
+      "keyValue": 4,
+      "codeValue": "Container (color: Colors.yellow),",
+      "paddingValue": 96.0,
     },
     {
-      "keyValue" : 5,
-      "codeValue" : "Container (color: Colors.green),",
-      "paddingValue" : 96.0,
+      "keyValue": 5,
+      "codeValue": "Container (color: Colors.green),",
+      "paddingValue": 96.0,
     },
     {
-      "keyValue" : 6,
-      "codeValue" : "],",
-      "paddingValue" : 64.0,
+      "keyValue": 6,
+      "codeValue": "],",
+      "paddingValue": 64.0,
     },
     {
-      "keyValue" : 7,
-      "codeValue" : ");",
-      "paddingValue" : 32.0,
+      "keyValue": 7,
+      "codeValue": ");",
+      "paddingValue": 32.0,
     },
   ].obs;
 
   final studentAnswer = [
     {
-      "keyValue" : 1,
-      "codeValue" : "Column ("
+      "keyValue": 1,
+      "codeValue": "Column ("
           "\n   mainAxisAlignment: MainAxisAligment.start,"
           "\n   crossAxisAlignment: CrossAxisAlignment.end,",
-      "paddingValue" : 32.0,
+      "paddingValue": 32.0,
     },
     {
-      "keyValue" : 2,
-      "codeValue" : "childern : [",
-      "paddingValue" : 64.0,
+      "keyValue": 2,
+      "codeValue": "childern : [",
+      "paddingValue": 64.0,
     },
     {
-      "keyValue" : 3,
-      "codeValue" : "Container (color: Colors.red),",
-      "paddingValue" : 96.0,
+      "keyValue": 3,
+      "codeValue": "Container (color: Colors.red),",
+      "paddingValue": 96.0,
     },
     {
-      "keyValue" : 4,
-      "codeValue" : "Container (color: Colors.yellow),",
-      "paddingValue" : 96.0,
+      "keyValue": 4,
+      "codeValue": "Container (color: Colors.yellow),",
+      "paddingValue": 96.0,
     },
     {
-      "keyValue" : 5,
-      "codeValue" : "Container (color: Colors.green),",
-      "paddingValue" : 96.0,
+      "keyValue": 5,
+      "codeValue": "Container (color: Colors.green),",
+      "paddingValue": 96.0,
     },
     {
-      "keyValue" : 6,
-      "codeValue" : "],",
-      "paddingValue" : 64.0,
+      "keyValue": 6,
+      "codeValue": "],",
+      "paddingValue": 64.0,
     },
     {
-      "keyValue" : 7,
-      "codeValue" : ");",
-      "paddingValue" : 32.0,
+      "keyValue": 7,
+      "codeValue": ");",
+      "paddingValue": 32.0,
     },
   ].obs;
 
@@ -113,7 +114,7 @@ class CodeExercise1Controller extends GetxController {
   }
 
   void _mixAnswer() {
-    while(CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer)) {
+    while (CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer)) {
       studentAnswer.shuffle();
     }
   }
@@ -163,6 +164,9 @@ class CodeExercise1Controller extends GetxController {
 
     if (isCorrect.value) {
       stopTimer();
+      isFinished.toggle();
+      SnackBarHelper.showSnackbarSuccess("Selamat",
+          "Blok kode yang Anda susun telah sesuai dengan output yang diharapkan");
       return;
     } else {
       SnackBarHelper.showSnackbarWarning("Mohon maaf",

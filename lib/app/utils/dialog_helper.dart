@@ -28,7 +28,6 @@ class DialogHelper {
         TextButton(
           onPressed: () {
             Get.back();
-            Get.back();
           },
           child: Text(
             "Tidak",
@@ -80,6 +79,48 @@ class DialogHelper {
         ),
       ),
       actions: [
+        TextButton(
+          onPressed: () {
+            Get.back();
+            Get.back();
+          },
+          child: Text("Yakin"),
+        ),
+      ],
+    );
+  }
+
+  static AlertDialog dialogBackExercise(
+    BuildContext context,
+    String exerciseName,
+  ) {
+    return AlertDialog(
+      title: Text(
+        "Apakah Anda yakin untuk keluar ?",
+        style: Theme.of(context)
+            .textTheme
+            .subtitle2
+            ?.copyWith(color: Colors.black),
+      ),
+      content: Container(
+        width: double.minPositive,
+        child: Text(
+          "Saat ini Anda sedang mengerjakan $exerciseName. Jika Anda menekan tombol \"Yakin\", maka Anda akan keluar dari latihan ini.",
+          style: Theme.of(context).textTheme.caption,
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: Text(
+            "Tidak",
+            style: TextStyle(
+              color: Colors.redAccent,
+            ),
+          ),
+        ),
         TextButton(
           onPressed: () {
             Get.back();

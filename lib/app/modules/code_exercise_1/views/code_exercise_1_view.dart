@@ -15,7 +15,12 @@ class CodeExercise1View extends GetView<CodeExercise1Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBarExercise(context, controller.exerciseId),
+      appBar: buildAppBarExercise(
+        context,
+        controller.exerciseId,
+        controller.exerciseName,
+        controller.isStarted,
+      ),
       body: Padding(
         padding: EdgeInsets.all(dimenMedium),
         child: Row(
@@ -79,7 +84,9 @@ class CodeExercise1View extends GetView<CodeExercise1Controller> {
                   }).toList(),
                   onReorder: (oldIndex, newIndex) {
                     if (controller.isStarted.value) {
-                      controller.onReorder(oldIndex, newIndex);
+                      if (!controller.isFinished.value) {
+                        controller.onReorder(oldIndex, newIndex);
+                      }
                     }
                   },
                 );
@@ -195,7 +202,6 @@ class CodeExercise1View extends GetView<CodeExercise1Controller> {
                           barrierDismissible: false,
                           context: context,
                           builder: (context) {
-                            // return _buildDialogStart(context);
                             return DialogHelper.dialogStartExercise(
                               context,
                               controller.exerciseName,
