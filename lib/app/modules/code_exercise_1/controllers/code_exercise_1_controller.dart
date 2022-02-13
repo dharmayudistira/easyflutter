@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
@@ -10,6 +11,7 @@ class CodeExercise1Controller extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final exerciseId = Get.arguments[0] as String;
   final exerciseName = Get.arguments[1] as String;
+  final logReference = FirebaseFirestore.instance.collection("log");
 
   final exerciseCaption =
       "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
@@ -146,16 +148,17 @@ class CodeExercise1Controller extends GetxController {
       timeStamp: DateTime.now().toString(),
     );
 
-    // print log (as if it's pushed to firestore)
-    print("log : "
-        "\n idlog : ${log.logId}"
-        "\n idExercise : ${log.exerciseId}"
-        "\n idStudent : ${log.studentId}"
-        "\n studentName : ${log.studentName}"
-        "\n studentAnswer : ${log.answer}"
-        "\n steps : ${log.step}"
-        "\n time : ${log.time}"
-        "\n timestamp : ${log.timeStamp}");
+    // uploading log to the firestore
+    logReference.add({
+      "id_log": log.logId,
+      "id_mahasiswa": log.studentId,
+      "nama_mahasiswa": log.studentName,
+      "id_latihan": log.exerciseId,
+      "langkah": log.step,
+      "waktu": log.time,
+      "jawaban": log.answer,
+      "time_stamp": log.timeStamp,
+    });
   }
 
   void checkAnswer() {
