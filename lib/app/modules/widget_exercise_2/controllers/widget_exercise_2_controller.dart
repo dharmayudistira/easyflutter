@@ -26,6 +26,7 @@ class WidgetExercise2Controller extends GetxController {
   var isAnswerTrue = false.obs;
 
   var isStart = false.obs;
+  var isOver = false;
 
   List<String> answer = ["Row", "Column", "Text"];
 
@@ -46,29 +47,31 @@ class WidgetExercise2Controller extends GetxController {
   void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer) {
     // check isStart
     if (isStart.value) {
-      // disable answer
-      final temp = answerList.removeAt(answer.index ?? -1);
-      answerList.insert(
-        answer.index ?? -1,
-        AnswerWidgetModel(
-          index: temp.index,
-          content: temp.content,
-          isUsed: true,
-        ),
-      );
+      if (!isOver) {
+        // disable answer
+        final temp = answerList.removeAt(answer.index ?? -1);
+        answerList.insert(
+          answer.index ?? -1,
+          AnswerWidgetModel(
+            index: temp.index,
+            content: temp.content,
+            isUsed: true,
+          ),
+        );
 
-      // replace answer
-      if (targetAnswers[indexTargetAnswer].isUsed ?? true) {
-        final tempAnswer = targetAnswers[indexTargetAnswer];
-        answerList[tempAnswer.index ?? -1].isUsed = false;
+        // replace answer
+        if (targetAnswers[indexTargetAnswer].isUsed ?? true) {
+          final tempAnswer = targetAnswers[indexTargetAnswer];
+          answerList[tempAnswer.index ?? -1].isUsed = false;
+        }
+
+        // set targetAnswers
+        targetAnswers[indexTargetAnswer].index = answer.index;
+        targetAnswers[indexTargetAnswer].content = answer.content;
+        targetAnswers[indexTargetAnswer].isUsed = true;
+
+        createLog();
       }
-
-      // set targetAnswers
-      targetAnswers[indexTargetAnswer].index = answer.index;
-      targetAnswers[indexTargetAnswer].content = answer.content;
-      targetAnswers[indexTargetAnswer].isUsed = true;
-
-      createLog();
     } else {
       Get.snackbar(
         "Informasi",
@@ -154,6 +157,7 @@ class WidgetExercise2Controller extends GetxController {
   bool checkAnswer() {
     if (eq(getTextAnswer(), answer)) {
       isAnswerTrue.value = true;
+      isOver = true;
       stopStopWatch();
       return true;
     } else {

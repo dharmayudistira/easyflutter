@@ -1,31 +1,9 @@
 import 'package:get/get.dart';
 
-import 'package:easyflutter/app/middlewares/auth_lecturer_middleware.dart';
-import 'package:easyflutter/app/middlewares/auth_student_middleware.dart';
-import 'package:easyflutter/app/modules/code_exercise_1/bindings/code_exercise_1_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_1/views/code_exercise_1_view.dart';
-import 'package:easyflutter/app/modules/dashboard_lecturer/bindings/dashboard_lecturer_binding.dart';
-import 'package:easyflutter/app/modules/dashboard_lecturer/views/dashboard_lecturer_view.dart';
-import 'package:easyflutter/app/modules/dashboard_student/bindings/dashboard_student_binding.dart';
-import 'package:easyflutter/app/modules/dashboard_student/views/dashboard_student_view.dart';
-import 'package:easyflutter/app/modules/data_class/bindings/data_class_binding.dart';
-import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
-import 'package:easyflutter/app/modules/data_student/bindings/data_student_binding.dart';
-import 'package:easyflutter/app/modules/data_student/views/data_student_view.dart';
-import 'package:easyflutter/app/modules/list_exercise/bindings/list_exercise_binding.dart';
-import 'package:easyflutter/app/modules/list_exercise/views/list_exercise_view.dart';
-import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/bindings/list_exercise_code_reconstruction_binding.dart';
-import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/views/list_exercise_code_reconstruction_view.dart';
-import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/bindings/list_exercise_widget_tree_reconstruction_binding.dart';
-import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/views/list_exercise_widget_tree_reconstruction_view.dart';
-import 'package:easyflutter/app/modules/list_log_student/bindings/list_log_student_binding.dart';
-import 'package:easyflutter/app/modules/list_log_student/views/list_log_student_view.dart';
-import 'package:easyflutter/app/modules/login/bindings/login_binding.dart';
-import 'package:easyflutter/app/modules/login/views/login_view.dart';
-import 'package:easyflutter/app/modules/register/bindings/register_binding.dart';
-import 'package:easyflutter/app/modules/register/views/register_view.dart';
 import '../middlewares/auth_lecturer_middleware.dart';
 import '../middlewares/auth_student_middleware.dart';
+import '../modules/code_exercise_1/bindings/code_exercise_1_binding.dart';
+import '../modules/code_exercise_1/views/code_exercise_1_view.dart';
 import '../modules/dashboard_lecturer/bindings/dashboard_lecturer_binding.dart';
 import '../modules/dashboard_lecturer/views/dashboard_lecturer_view.dart';
 import '../modules/dashboard_student/bindings/dashboard_student_binding.dart';
@@ -52,6 +30,8 @@ import '../modules/widget_exercise_2/bindings/widget_exercise_2_binding.dart';
 import '../modules/widget_exercise_2/views/widget_exercise_2_view.dart';
 import '../modules/widget_exercise_3/bindings/widget_exercise_3_binding.dart';
 import '../modules/widget_exercise_3/views/widget_exercise_3_view.dart';
+import '../modules/widget_exercise_4/bindings/widget_exercise_4_binding.dart';
+import '../modules/widget_exercise_4/views/widget_exercise_4_view.dart';
 import '../modules/widget_exercise_example/bindings/widget_exercise_example_binding.dart';
 import '../modules/widget_exercise_example/views/widget_exercise_example_view.dart';
 
@@ -140,6 +120,11 @@ class AppPages {
       name: _Paths.WIDGET_EXERCISE_3,
       page: () => WidgetExercise3View(),
       binding: WidgetExercise3Binding(),
+    ),
+    GetPage(
+      name: _Paths.WIDGET_EXERCISE_4,
+      page: () => WidgetExercise4View(),
+      binding: WidgetExercise4Binding(),
     ),
   ];
 }

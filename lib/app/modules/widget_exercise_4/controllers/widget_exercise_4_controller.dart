@@ -1,15 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
+import 'package:easyflutter/app/data/log_model.dart';
+import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-class WidgetExerciseExampleController extends GetxController {
+class WidgetExercise4Controller extends GetxController {
   final StopWatchTimer stopWatchTimer = StopWatchTimer();
+
+  final _storageHelper = Get.find<StorageHelper>();
+
+  final CollectionReference logReference =
+      FirebaseFirestore.instance.collection("log");
 
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
-      "Flutter memiliki beberapa widget yang dapat digunakan untuk menyusun widget, yaitu Row dan Column. Row merupakan widget yang menampilkan beberapa child dalam larik horizontal, sedangkan Column merupakan widget yang menampilkan beberapa child dalam larik vertikal.";
+      "Flutter memiliki beberapa widget seperti TextButton dan ElevatedButton. TextButton merupakan widget untuk menampilkan text yang dapat ditekan. ElevatedButton merupakan widget untuk menampilkan text dengan background yang dapat ditekan.";
 
   Function eq = const ListEquality().equals;
 
@@ -20,14 +27,14 @@ class WidgetExerciseExampleController extends GetxController {
   var isStart = false.obs;
   var isOver = false;
 
-  List<String> answer = ["Row", "Icon", "Icon"];
+  List<String> answer = ["Column", "Elevated Button", "Row"];
 
   List<AnswerWidgetModel> answerList = [
-    AnswerWidgetModel(index: 0, content: "Icon", isUsed: false),
-    AnswerWidgetModel(index: 1, content: "Text", isUsed: false),
+    AnswerWidgetModel(index: 0, content: "Text Button", isUsed: false),
+    AnswerWidgetModel(index: 1, content: "Row", isUsed: false),
     AnswerWidgetModel(index: 2, content: "Icon", isUsed: false),
-    AnswerWidgetModel(index: 3, content: "Image", isUsed: false),
-    AnswerWidgetModel(index: 4, content: "Row", isUsed: false),
+    AnswerWidgetModel(index: 3, content: "Column", isUsed: false),
+    AnswerWidgetModel(index: 4, content: "Elevated Button", isUsed: false),
   ].obs;
 
   List<AnswerWidgetModel> targetAnswers = [
@@ -39,7 +46,7 @@ class WidgetExerciseExampleController extends GetxController {
   void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer) {
     // check isStart
     if (isStart.value) {
-      if(!isOver){
+      if (!isOver) {
         // disable answer
         final temp = answerList.removeAt(answer.index ?? -1);
         answerList.insert(
@@ -61,6 +68,8 @@ class WidgetExerciseExampleController extends GetxController {
         targetAnswers[indexTargetAnswer].index = answer.index;
         targetAnswers[indexTargetAnswer].content = answer.content;
         targetAnswers[indexTargetAnswer].isUsed = true;
+
+        createLog();
       }
     } else {
       Get.snackbar(
@@ -109,6 +118,39 @@ class WidgetExerciseExampleController extends GetxController {
 
   void stopStopWatch() {
     stopWatchTimer.onExecute.add(StopWatchExecute.stop);
+  }
+
+  void createLog() {
+    step++;
+
+    final log = LogModel(
+      logId: "$exerciseId-${DateTime.now()}",
+      studentId: _storageHelper.getIdUser(),
+      studentName: _storageHelper.getNameUser(),
+      exerciseId: exerciseId,
+      step: step.toString(),
+      time: StopWatchTimer.getDisplayTime(
+        stopWatchTimer.rawTime.value,
+        hours: true,
+      ),
+      answer: getTextAnswer().toString(),
+      timeStamp: DateTime.now().toString(),
+    );
+
+    uploadLog(log);
+  }
+
+  void uploadLog(LogModel log) {
+    logReference.add({
+      "id_log": log.logId,
+      "id_mahasiswa": log.studentId,
+      "nama_mahasiswa": log.studentName,
+      "id_latihan": log.exerciseId,
+      "langkah": log.step,
+      "waktu": log.time,
+      "jawaban": log.answer,
+      "time_stamp": log.timeStamp,
+    });
   }
 
   bool checkAnswer() {
