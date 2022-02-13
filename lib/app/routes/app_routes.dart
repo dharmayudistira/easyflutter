@@ -24,6 +24,7 @@ abstract class Routes {
   static const WIDGET_EXERCISE_4 = _Paths.WIDGET_EXERCISE_4;
   static const WIDGET_EXERCISE_5 = _Paths.WIDGET_EXERCISE_5;
   static const WIDGET_EXERCISE_6 = _Paths.WIDGET_EXERCISE_6;
+  static const WIDGET_EXERCISE_7 = _Paths.WIDGET_EXERCISE_7;
 }
 
 abstract class _Paths {
@@ -47,4 +48,5 @@ abstract class _Paths {
   static const WIDGET_EXERCISE_4 = '/widget-exercise-4';
   static const WIDGET_EXERCISE_5 = '/widget-exercise-5';
   static const WIDGET_EXERCISE_6 = '/widget-exercise-6';
+  static const WIDGET_EXERCISE_7 = '/widget-exercise-7';
 }
