@@ -21,6 +21,15 @@ abstract class Routes {
   static const WIDGET_EXERCISE_EXAMPLE = _Paths.WIDGET_EXERCISE_EXAMPLE;
   static const WIDGET_EXERCISE_2 = _Paths.WIDGET_EXERCISE_2;
   static const WIDGET_EXERCISE_3 = _Paths.WIDGET_EXERCISE_3;
+  static const CODE_EXERCISE_2 = _Paths.CODE_EXERCISE_2;
+  static const CODE_EXERCISE_3 = _Paths.CODE_EXERCISE_3;
+  static const CODE_EXERCISE_4 = _Paths.CODE_EXERCISE_4;
+  static const CODE_EXERCISE_5 = _Paths.CODE_EXERCISE_5;
+  static const CODE_EXERCISE_6 = _Paths.CODE_EXERCISE_6;
+  static const CODE_EXERCISE_7 = _Paths.CODE_EXERCISE_7;
+  static const CODE_EXERCISE_8 = _Paths.CODE_EXERCISE_8;
+  static const CODE_EXERCISE_9 = _Paths.CODE_EXERCISE_9;
+  static const CODE_EXERCISE_10 = _Paths.CODE_EXERCISE_10;
 }
 
 abstract class _Paths {
@@ -41,4 +50,13 @@ abstract class _Paths {
   static const WIDGET_EXERCISE_EXAMPLE = '/widget-exercise-example';
   static const WIDGET_EXERCISE_2 = '/widget-exercise-2';
   static const WIDGET_EXERCISE_3 = '/widget-exercise-3';
+  static const CODE_EXERCISE_2 = '/code-exercise-2';
+  static const CODE_EXERCISE_3 = '/code-exercise-3';
+  static const CODE_EXERCISE_4 = '/code-exercise-4';
+  static const CODE_EXERCISE_5 = '/code-exercise-5';
+  static const CODE_EXERCISE_6 = '/code-exercise-6';
+  static const CODE_EXERCISE_7 = '/code-exercise-7';
+  static const CODE_EXERCISE_8 = '/code-exercise-8';
+  static const CODE_EXERCISE_9 = '/code-exercise-9';
+  static const CODE_EXERCISE_10 = '/code-exercise-10';
 }
