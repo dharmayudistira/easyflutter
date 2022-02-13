@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/log_model.dart';
+import 'package:easyflutter/app/utils/bank_code_exercises_helper.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
@@ -20,88 +21,11 @@ class CodeExercise1Controller extends GetxController {
 
   var isStarted = false.obs;
   var isCorrect = false.obs;
-  var steps = 0.obs;
   var isFinished = false.obs;
+  var steps = 0.obs;
 
-  final correctAnswer = [
-    {
-      "keyValue": 1,
-      "codeValue": "Column ("
-          "\n   mainAxisAlignment: MainAxisAligment.start,"
-          "\n   crossAxisAlignment: CrossAxisAlignment.end,",
-      "paddingValue": 32.0,
-    },
-    {
-      "keyValue": 2,
-      "codeValue": "childern : [",
-      "paddingValue": 64.0,
-    },
-    {
-      "keyValue": 3,
-      "codeValue": "Container (color: Colors.red),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 4,
-      "codeValue": "Container (color: Colors.yellow),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 5,
-      "codeValue": "Container (color: Colors.green),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 6,
-      "codeValue": "],",
-      "paddingValue": 64.0,
-    },
-    {
-      "keyValue": 7,
-      "codeValue": ");",
-      "paddingValue": 32.0,
-    },
-  ].obs;
-
-  final studentAnswer = [
-    {
-      "keyValue": 1,
-      "codeValue": "Column ("
-          "\n   mainAxisAlignment: MainAxisAligment.start,"
-          "\n   crossAxisAlignment: CrossAxisAlignment.end,",
-      "paddingValue": 32.0,
-    },
-    {
-      "keyValue": 2,
-      "codeValue": "childern : [",
-      "paddingValue": 64.0,
-    },
-    {
-      "keyValue": 3,
-      "codeValue": "Container (color: Colors.red),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 4,
-      "codeValue": "Container (color: Colors.yellow),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 5,
-      "codeValue": "Container (color: Colors.green),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 6,
-      "codeValue": "],",
-      "paddingValue": 64.0,
-    },
-    {
-      "keyValue": 7,
-      "codeValue": ");",
-      "paddingValue": 32.0,
-    },
-  ].obs;
+  final correctAnswer = BankCodeExercisesHelper.firstExerciseAnswer.obs;
+  final studentAnswer = BankCodeExercisesHelper.firstExerciseAnswer.obs;
 
   @override
   void onInit() {
