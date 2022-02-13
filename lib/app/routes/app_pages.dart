@@ -32,6 +32,8 @@ import '../modules/widget_exercise_3/bindings/widget_exercise_3_binding.dart';
 import '../modules/widget_exercise_3/views/widget_exercise_3_view.dart';
 import '../modules/widget_exercise_4/bindings/widget_exercise_4_binding.dart';
 import '../modules/widget_exercise_4/views/widget_exercise_4_view.dart';
+import '../modules/widget_exercise_5/bindings/widget_exercise_5_binding.dart';
+import '../modules/widget_exercise_5/views/widget_exercise_5_view.dart';
 import '../modules/widget_exercise_example/bindings/widget_exercise_example_binding.dart';
 import '../modules/widget_exercise_example/views/widget_exercise_example_view.dart';
 
@@ -125,6 +127,11 @@ class AppPages {
       name: _Paths.WIDGET_EXERCISE_4,
       page: () => WidgetExercise4View(),
       binding: WidgetExercise4Binding(),
+    ),
+    GetPage(
+      name: _Paths.WIDGET_EXERCISE_5,
+      page: () => WidgetExercise5View(),
+      binding: WidgetExercise5Binding(),
     ),
   ];
 }
