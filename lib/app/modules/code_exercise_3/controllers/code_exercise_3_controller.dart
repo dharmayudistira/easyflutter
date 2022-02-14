@@ -14,7 +14,7 @@ class CodeExercise3Controller extends GetxController {
   final logReference = FirebaseFirestore.instance.collection("log");
 
   final exerciseCaption =
-      "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
+      "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.End maka widget di dalamnya akan tersusun sedekat mungkin dengan ujung sumbu utama. Sedangkan CrossAxis.Center akan menyusun widget ditengah sumbu silang.";
 
   final stopwatchTimer = StopWatchTimer();
 
