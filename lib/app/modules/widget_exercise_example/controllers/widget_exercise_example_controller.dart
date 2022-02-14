@@ -6,8 +6,8 @@ import 'package:stop_watch_timer/stop_watch_timer.dart';
 class WidgetExerciseExampleController extends GetxController {
   final StopWatchTimer stopWatchTimer = StopWatchTimer();
 
-  final exerciseId = Get.arguments[0];
-  final exerciseName = Get.arguments[1];
+  final exerciseId = "Get.arguments[0]";
+  final exerciseName = "Get.arguments[1]";
   final exerciseDescription =
       "Flutter memiliki beberapa widget yang dapat digunakan untuk menyusun widget, yaitu Row dan Column. Row merupakan widget yang menampilkan beberapa child dalam larik horizontal, sedangkan Column merupakan widget yang menampilkan beberapa child dalam larik vertikal.";
 
