@@ -73,12 +73,24 @@ class ListExerciseCodeReconstructionController extends GetxController {
             arguments: [exerciseId, exerciseName]);
         break;
       case 10:
+        Get.toNamed(Routes.CODE_EXERCISE_11,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 11:
+        Get.toNamed(Routes.CODE_EXERCISE_12,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 12:
+        Get.toNamed(Routes.CODE_EXERCISE_13,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 13:
+        Get.toNamed(Routes.CODE_EXERCISE_14,
+            arguments: [exerciseId, exerciseName]);
+        break;
+      case 14:
+        Get.toNamed(Routes.CODE_EXERCISE_15,
+            arguments: [exerciseId, exerciseName]);
         break;
     }
   }

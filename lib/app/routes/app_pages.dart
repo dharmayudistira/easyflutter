@@ -6,6 +6,16 @@ import 'package:easyflutter/app/modules/code_exercise_1/bindings/code_exercise_1
 import 'package:easyflutter/app/modules/code_exercise_1/views/code_exercise_1_view.dart';
 import 'package:easyflutter/app/modules/code_exercise_10/bindings/code_exercise_10_binding.dart';
 import 'package:easyflutter/app/modules/code_exercise_10/views/code_exercise_10_view.dart';
+import 'package:easyflutter/app/modules/code_exercise_11/bindings/code_exercise_11_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise_11/views/code_exercise_11_view.dart';
+import 'package:easyflutter/app/modules/code_exercise_12/bindings/code_exercise_12_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise_12/views/code_exercise_12_view.dart';
+import 'package:easyflutter/app/modules/code_exercise_13/bindings/code_exercise_13_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise_13/views/code_exercise_13_view.dart';
+import 'package:easyflutter/app/modules/code_exercise_14/bindings/code_exercise_14_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise_14/views/code_exercise_14_view.dart';
+import 'package:easyflutter/app/modules/code_exercise_15/bindings/code_exercise_15_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise_15/views/code_exercise_15_view.dart';
 import 'package:easyflutter/app/modules/code_exercise_2/bindings/code_exercise_2_binding.dart';
 import 'package:easyflutter/app/modules/code_exercise_2/views/code_exercise_2_view.dart';
 import 'package:easyflutter/app/modules/code_exercise_3/bindings/code_exercise_3_binding.dart';
@@ -204,6 +214,31 @@ class AppPages {
       name: _Paths.CODE_EXERCISE_10,
       page: () => CodeExercise10View(),
       binding: CodeExercise10Binding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE_11,
+      page: () => CodeExercise11View(),
+      binding: CodeExercise11Binding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE_12,
+      page: () => CodeExercise12View(),
+      binding: CodeExercise12Binding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE_13,
+      page: () => CodeExercise13View(),
+      binding: CodeExercise13Binding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE_14,
+      page: () => CodeExercise14View(),
+      binding: CodeExercise14Binding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE_15,
+      page: () => CodeExercise15View(),
+      binding: CodeExercise15Binding(),
     ),
   ];
 }
