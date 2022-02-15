@@ -112,7 +112,13 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
         }
 
         if (index == 9) {
-          //end tutorial
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return DialogHelper.dialogEndTutorial(context);
+            },
+          );
         }
       },
     );

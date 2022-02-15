@@ -79,7 +79,7 @@ class DialogHelper {
             Get.back();
             Get.back();
           },
-          child: Text("Yakin"),
+          child: Text("OK"),
         ),
       ],
     );
@@ -122,6 +122,42 @@ class DialogHelper {
             Get.back();
           },
           child: Text("Yakin"),
+        ),
+      ],
+    );
+  }
+
+  static AlertDialog dialogEndTutorial(BuildContext context) {
+    return AlertDialog(
+      title: Text(
+        "Selamat! Tutorial pengerjaan latihan soal sudah selesai\nSebagai latihan, Anda dapat melanjutkan mengerjakan latihan soal ini.",
+        style: Theme.of(context)
+            .textTheme
+            .subtitle2
+            ?.copyWith(color: Colors.black),
+            textAlign: TextAlign.center,
+      ),
+      content: Container(
+        width: double.minPositive,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Lottie.asset(
+              "assets/animations/success_animation.json",
+              height: 150,
+              width: 150,
+              repeat: false,
+            ),
+            SizedBox(height: dimenSmall),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: Text("OK"),
         ),
       ],
     );
