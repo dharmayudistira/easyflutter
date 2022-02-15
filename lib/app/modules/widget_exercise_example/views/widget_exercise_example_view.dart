@@ -30,7 +30,7 @@ class WidgetExerciseExampleView extends StatelessWidget {
             Get.defaultDialog(
               title: "Selamat! Anda telah menyelesaikan Tutorial.",
               middleText:
-                  "Kerjakan contoh soal berikut sebelum mengerjakan soal latihan. Semangat!",
+                  "Kerjakan contoh soal berikut sebelum mengerjakan latihan soal. Semangat!",
             );
           }
         },
@@ -65,19 +65,21 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
     super.initState();
 
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      ShowCaseWidget.of(context)?.startShowCase([
-        key1,
-        key2,
-        key3,
-        key4,
-        key5,
-        key6,
-        key7,
-        key8,
-        key9,
-        key10,
-        key11,
-      ]);
+      Future.delayed(Duration(milliseconds: 200), () {
+        ShowCaseWidget.of(context)?.startShowCase([
+          key1,
+          key2,
+          key3,
+          key4,
+          key5,
+          key6,
+          key7,
+          key8,
+          key9,
+          key10,
+          key11,
+        ]);
+      });
     });
   }
 
