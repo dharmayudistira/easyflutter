@@ -112,6 +112,7 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
         }
 
         if (index == 9) {
+          //end tutorial then let student finish the example exercise
           showDialog(
             barrierDismissible: false,
             context: context,

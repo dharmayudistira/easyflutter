@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class ListLogStudentController extends GetxController {
 
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
-  final logReference = FirebaseFirestore.instance.collection("log_mahasiswa");
+  final logReference = FirebaseFirestore.instance.collection("log");
 
   var listLog = <LogModel>[];
 
