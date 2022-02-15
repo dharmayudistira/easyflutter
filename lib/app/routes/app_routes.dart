@@ -35,6 +35,7 @@ abstract class Routes {
   static const CODE_EXERCISE_13 = _Paths.CODE_EXERCISE_13;
   static const CODE_EXERCISE_14 = _Paths.CODE_EXERCISE_14;
   static const CODE_EXERCISE_15 = _Paths.CODE_EXERCISE_15;
+  static const CODE_EXERCISE_EXAMPLE = _Paths.CODE_EXERCISE_EXAMPLE;
 }
 
 abstract class _Paths {
@@ -69,4 +70,5 @@ abstract class _Paths {
   static const CODE_EXERCISE_13 = '/code-exercise-13';
   static const CODE_EXERCISE_14 = '/code-exercise-14';
   static const CODE_EXERCISE_15 = '/code-exercise-15';
+  static const CODE_EXERCISE_EXAMPLE = '/code-exercise-example';
 }

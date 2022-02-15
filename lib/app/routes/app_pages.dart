@@ -32,6 +32,8 @@ import 'package:easyflutter/app/modules/code_exercise_8/bindings/code_exercise_8
 import 'package:easyflutter/app/modules/code_exercise_8/views/code_exercise_8_view.dart';
 import 'package:easyflutter/app/modules/code_exercise_9/bindings/code_exercise_9_binding.dart';
 import 'package:easyflutter/app/modules/code_exercise_9/views/code_exercise_9_view.dart';
+import 'package:easyflutter/app/modules/code_exercise_example/bindings/code_exercise_example_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise_example/views/code_exercise_example_view.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/bindings/dashboard_lecturer_binding.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/views/dashboard_lecturer_view.dart';
 import 'package:easyflutter/app/modules/dashboard_student/bindings/dashboard_student_binding.dart';
@@ -239,6 +241,11 @@ class AppPages {
       name: _Paths.CODE_EXERCISE_15,
       page: () => CodeExercise15View(),
       binding: CodeExercise15Binding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE_EXAMPLE,
+      page: () => CodeExerciseExampleView(),
+      binding: CodeExerciseExampleBinding(),
     ),
   ];
 }
