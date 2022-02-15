@@ -70,11 +70,6 @@ class DialogHelper {
               repeat: false,
             ),
             SizedBox(height: dimenSmall),
-            Text(
-              "Anda dapat melanjutkan ke latihan soal berikutnya",
-              style: Theme.of(context).textTheme.caption,
-              textAlign: TextAlign.center,
-            ),
           ],
         ),
       ),

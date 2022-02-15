@@ -11,38 +11,13 @@ import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 import '../controllers/code_exercise_example_controller.dart';
 
-class CodeExerciseExampleView extends StatelessWidget {
-  final controller = Get.put(CodeExerciseExampleController());
-
+class CodeExerciseExampleView extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ShowCaseWidget(
-        builder: Builder(
-          builder: (_) => ExerciseExampleWidget(),
-        ),
-        onComplete: (p0, p1) {
-          if (p0 == 7) {
-            controller.isStarted.toggle();
-            controller.startTimer();
-          }
-
-          if (p0 == 9) {
-            //end tutorial
-          }
-        },
-      ),
-    );
-  }
+  State<CodeExerciseExampleView> createState() =>
+      _CodeExerciseExampleViewState();
 }
 
-class ExerciseExampleWidget extends StatefulWidget {
-  @override
-  State<ExerciseExampleWidget> createState() => _ExerciseExampleWidgetState();
-}
-
-class _ExerciseExampleWidgetState extends State<ExerciseExampleWidget> {
+class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
   final controller = Get.put(CodeExerciseExampleController());
   final keyButtonBack = GlobalKey();
   final keyAppbarTitle = GlobalKey();
@@ -55,12 +30,14 @@ class _ExerciseExampleWidgetState extends State<ExerciseExampleWidget> {
   final keyButtonCheckAnswer = GlobalKey();
   final keyButtonSendAnswer = GlobalKey();
 
+  BuildContext? exampleContext;
+
   @override
   void initState() {
     super.initState();
 
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      ShowCaseWidget.of(context)?.startShowCase([
+      ShowCaseWidget.of(exampleContext!)?.startShowCase([
         keyButtonBack,
         keyAppbarTitle,
         keyExerciseName,
@@ -77,50 +54,67 @@ class _ExerciseExampleWidgetState extends State<ExerciseExampleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: CustomShowcaseWidget(
-          globalKey: keyAppbarTitle,
-          description: "Berikut adalah ID latihan yang sedang dikerjakan",
-          child: Text(
-            "Latihan ID : ${controller.exerciseId}",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2
-                ?.copyWith(color: Colors.black),
-          ),
-        ),
-        leading: CustomShowcaseWidget(
-          globalKey: keyButtonBack,
-          description: "Berikut adalah tombol kembali",
-          child: IconButton(
-            icon: FaIcon(
-              FontAwesomeIcons.angleLeft,
-              color: Colors.black,
+    return ShowCaseWidget(
+      builder: Builder(
+        builder: (context) {
+          exampleContext = context;
+          return Scaffold(
+            appBar: AppBar(
+              title: CustomShowcaseWidget(
+                globalKey: keyAppbarTitle,
+                description: "Berikut adalah ID latihan yang sedang dikerjakan",
+                child: Text(
+                  "Latihan ID : ${controller.exerciseId}",
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2
+                      ?.copyWith(color: Colors.black),
+                ),
+              ),
+              leading: CustomShowcaseWidget(
+                globalKey: keyButtonBack,
+                description: "Berikut adalah tombol kembali",
+                child: IconButton(
+                  icon: FaIcon(
+                    FontAwesomeIcons.angleLeft,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                ),
+              ),
+              centerTitle: false,
+              backgroundColor: ColorConstants.kPrimaryColor,
+              elevation: 0,
             ),
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        ),
-        centerTitle: false,
-        backgroundColor: ColorConstants.kPrimaryColor,
-        elevation: 0,
+            body: Padding(
+              padding: EdgeInsets.all(dimenMedium),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: _buildLeftContent(context),
+                  ),
+                  SizedBox(width: dimenMedium),
+                  Expanded(
+                    child: _buildRightContent(context),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
-      body: Padding(
-        padding: EdgeInsets.all(dimenMedium),
-        child: Row(
-          children: [
-            Expanded(
-              child: _buildLeftContent(context),
-            ),
-            SizedBox(width: dimenMedium),
-            Expanded(
-              child: _buildRightContent(context),
-            ),
-          ],
-        ),
-      ),
+      onComplete: (index, key) {
+        if (index == 7) {
+          controller.isStarted.toggle();
+          controller.startTimer();
+        }
+
+        if (index == 9) {
+          //end tutorial
+        }
+      },
     );
   }
 
@@ -350,14 +344,14 @@ class CustomShowcaseWidget extends StatelessWidget {
       child: child,
       key: globalKey,
       showcaseBackgroundColor: ColorConstants.kPrimaryColor,
-      contentPadding: EdgeInsets.all(12),
+      contentPadding: EdgeInsets.all(dimenSmall / 2),
       description: description,
       descTextStyle: TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,
-        fontSize: 16,
+        fontSize: 14,
       ),
-      overlayPadding: EdgeInsets.all(8),
+      overlayPadding: EdgeInsets.all(dimenSmall / 2),
     );
   }
 }
