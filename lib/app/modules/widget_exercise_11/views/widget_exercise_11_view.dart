@@ -9,9 +9,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/widget_exercise_10_controller.dart';
+import '../controllers/widget_exercise_11_controller.dart';
 
-class WidgetExercise10View extends GetView<WidgetExercise10Controller> {
+class WidgetExercise11View extends GetView<WidgetExercise11Controller> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -50,46 +50,65 @@ class WidgetExercise10View extends GetView<WidgetExercise10Controller> {
                             child: SizedBox(
                               height: 420.h,
                               child: Image.asset(
-                                "assets/images/widget/widget_tree10.png",
+                                "assets/images/widget/widget_tree11.png",
                               ),
                             ),
                           ),
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 20.5.r),
+                            SizedBox(height: 80.r),
                             Row(
                               children: [
-                                SizedBox(width: 268.5.h),
+                                SizedBox(width: 300.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 0,
-                                  size: 65,
+                                  size: 60,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 96.5.r),
+                            SizedBox(height: 10.r),
                             Row(
                               children: [
-                                SizedBox(width: 268.5.h),
+                                SizedBox(width: 245.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 1,
-                                  size: 65,
+                                  size: 60,
                                 ),
-                              ],
-                            ),
-                            SizedBox(height: 15.5.r),
-                            Row(
-                              children: [
-                                SizedBox(width: 333.h),
+                                SizedBox(width: 50.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 2,
-                                  size: 65,
+                                  size: 60,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.r),
+                            Row(
+                              children: [
+                                SizedBox(width: 355.h),
+                                DragTargetWidget(
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswers: controller.targetAnswers,
+                                  index: 3,
+                                  size: 60,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.r),
+                            Row(
+                              children: [
+                                SizedBox(width: 355.h),
+                                DragTargetWidget(
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswers: controller.targetAnswers,
+                                  index: 4,
+                                  size: 60,
                                 ),
                               ],
                             ),
@@ -107,7 +126,7 @@ class WidgetExercise10View extends GetView<WidgetExercise10Controller> {
                 ),
                 RightContentWidget(
                   stopWatchTimer: controller.stopWatchTimer,
-                  image: "assets/images/widget/latihan10.png",
+                  image: "assets/images/widget/latihan11.png",
                   exerciseName: controller.exerciseName,
                   isStart: controller.isStart,
                   isAnswerTrue: controller.isAnswerTrue,

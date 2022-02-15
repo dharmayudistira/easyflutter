@@ -28,6 +28,10 @@ import '../modules/widget_exercise_1/bindings/widget_exercise_1_binding.dart';
 import '../modules/widget_exercise_1/views/widget_exercise_1_view.dart';
 import '../modules/widget_exercise_10/bindings/widget_exercise_10_binding.dart';
 import '../modules/widget_exercise_10/views/widget_exercise_10_view.dart';
+import '../modules/widget_exercise_11/bindings/widget_exercise_11_binding.dart';
+import '../modules/widget_exercise_11/views/widget_exercise_11_view.dart';
+import '../modules/widget_exercise_12/bindings/widget_exercise_12_binding.dart';
+import '../modules/widget_exercise_12/views/widget_exercise_12_view.dart';
 import '../modules/widget_exercise_2/bindings/widget_exercise_2_binding.dart';
 import '../modules/widget_exercise_2/views/widget_exercise_2_view.dart';
 import '../modules/widget_exercise_3/bindings/widget_exercise_3_binding.dart';
@@ -167,6 +171,16 @@ class AppPages {
       name: _Paths.WIDGET_EXERCISE_10,
       page: () => WidgetExercise10View(),
       binding: WidgetExercise10Binding(),
+    ),
+    GetPage(
+      name: _Paths.WIDGET_EXERCISE_11,
+      page: () => WidgetExercise11View(),
+      binding: WidgetExercise11Binding(),
+    ),
+    GetPage(
+      name: _Paths.WIDGET_EXERCISE_12,
+      page: () => WidgetExercise12View(),
+      binding: WidgetExercise12Binding(),
     ),
   ];
 }

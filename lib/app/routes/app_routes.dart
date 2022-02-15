@@ -28,6 +28,8 @@ abstract class Routes {
   static const WIDGET_EXERCISE_8 = _Paths.WIDGET_EXERCISE_8;
   static const WIDGET_EXERCISE_9 = _Paths.WIDGET_EXERCISE_9;
   static const WIDGET_EXERCISE_10 = _Paths.WIDGET_EXERCISE_10;
+  static const WIDGET_EXERCISE_11 = _Paths.WIDGET_EXERCISE_11;
+  static const WIDGET_EXERCISE_12 = _Paths.WIDGET_EXERCISE_12;
 }
 
 abstract class _Paths {
@@ -55,4 +57,6 @@ abstract class _Paths {
   static const WIDGET_EXERCISE_8 = '/widget-exercise-8';
   static const WIDGET_EXERCISE_9 = '/widget-exercise-9';
   static const WIDGET_EXERCISE_10 = '/widget-exercise-10';
+  static const WIDGET_EXERCISE_11 = '/widget-exercise-11';
+  static const WIDGET_EXERCISE_12 = '/widget-exercise-12';
 }
