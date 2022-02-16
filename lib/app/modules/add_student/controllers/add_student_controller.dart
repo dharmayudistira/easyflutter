@@ -3,6 +3,7 @@ import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/controllers/dashboard_lecturer_controller.dart';
 import 'package:easyflutter/app/utils/converter_helper.dart';
 import 'package:easyflutter/app/utils/encrypt_helper.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -54,33 +55,37 @@ class AddStudentController extends GetxController {
     return classReference.where("id_dosen", isEqualTo: lecturerId).snapshots();
   }
 
-  void mapConvertClassFirestoreToClassModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+  void mapConvertClassFirestoreToClassModel(
+      AsyncSnapshot<QuerySnapshot> snapshots) {
     final result = ConverterHelper.mapClassFirestoreToClassModel(snapshots);
 
-    result.add(
-        ClassModel(
-          lecturerId: null,
-          classId: "null",
-          lecturerName: null,
-          className: "Pilih Kelas",
-        )
-    );
+    result.add(ClassModel(
+      lecturerId: null,
+      classId: "null",
+      lecturerName: null,
+      className: "Pilih Kelas",
+    ));
     result.sort((a, b) => a.classId!.compareTo(b.classId!));
     listOfClass.value = result;
   }
 
-  void addStudent() async {
-
+  void addStudent(BuildContext context) async {
     final isFormValid = addStudentFormKey.currentState?.validate();
 
-    if(isFormValid != true) return;
+    if (isFormValid != true) return;
 
     await validateStudentId();
 
     if (selectedClass.value == "Pilih Kelas") {
-      Get.snackbar("Terjadi Kesalahan", "Harap pilih kelas terlebih dahulu");
+      SnackBarHelper.showFlushbarInfo(
+        "Terjadi Kesalahan",
+        "Harap pilih kelas terlebih dahulu",
+      );
     } else if (!isValid) {
-      Get.snackbar("Terjadi Kesalahan", "Mahasiswa dengan NIM ${edtStudentIdController.text} sudah ada");
+      SnackBarHelper.showFlushbarError(
+        "Terjadi Kesalahan",
+        "Mahasiswa dengan NIM ${edtStudentIdController.text} sudah ada",
+      );
     } else {
       final studentId = edtStudentIdController.text;
       final passwordStudent = generateMd5(studentId);
@@ -102,7 +107,10 @@ class AddStudentController extends GetxController {
       }).whenComplete(() {
         clearForm();
         dashboardLecturerController.setSelectedIndex(1);
-        Get.snackbar("Berhasil Menambahkan Mahasiswa", "Data mahasiswa $studentName berhasil ditambahkan");
+        SnackBarHelper.showFlushbarSuccess(
+          "Berhasil Menambahkan Mahasiswa",
+          "Data mahasiswa $studentName berhasil ditambahkan",
+        );
       });
     }
   }
@@ -114,11 +122,10 @@ class AddStudentController extends GetxController {
     var snapshots = await studentReference.get();
 
     snapshots.docs.forEach((element) {
-      if(element["id_mahasiswa"] == studentId) {
+      if (element["id_mahasiswa"] == studentId) {
         isValid = false;
       }
     });
-
   }
 
   void clearForm() {

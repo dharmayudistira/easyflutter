@@ -98,7 +98,7 @@ class AddStudentView extends StatelessWidget {
             SizedBox(height: dimenMedium),
             ElevatedButton(
                 onPressed: () {
-                  controller.addStudent();
+                  controller.addStudent(context);
                 },
                 child: Text("Simpan")),
           ],

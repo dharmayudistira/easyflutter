@@ -17,7 +17,7 @@ class SnackBarHelper {
         forwardAnimationCurve: Curves.elasticOut,
         margin: EdgeInsets.all(dimenSmall / 2),
         borderRadius: BorderRadius.circular(dimenSmall / 2),
-        isDismissible: false,
+        isDismissible: true,
         duration: Duration(seconds: 3),
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
@@ -39,7 +39,7 @@ class SnackBarHelper {
         forwardAnimationCurve: Curves.elasticOut,
         margin: EdgeInsets.all(dimenSmall / 2),
         borderRadius: BorderRadius.circular(dimenSmall / 2),
-        isDismissible: false,
+        isDismissible: true,
         duration: Duration(seconds: 3),
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
@@ -61,7 +61,7 @@ class SnackBarHelper {
         forwardAnimationCurve: Curves.elasticOut,
         margin: EdgeInsets.all(dimenSmall / 2),
         borderRadius: BorderRadius.circular(dimenSmall / 2),
-        isDismissible: false,
+        isDismissible: true,
         duration: Duration(seconds: 3),
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
@@ -73,7 +73,7 @@ class SnackBarHelper {
         leftBarIndicatorColor: Colors.yellow,
       );
 
-      static Flushbar showFlushbarError(String title, String message) => Flushbar(
+  static Flushbar showFlushbarError(String title, String message) => Flushbar(
         title: title,
         titleColor: Colors.white,
         message: message,
@@ -83,7 +83,7 @@ class SnackBarHelper {
         forwardAnimationCurve: Curves.elasticOut,
         margin: EdgeInsets.all(dimenSmall / 2),
         borderRadius: BorderRadius.circular(dimenSmall / 2),
-        isDismissible: false,
+        isDismissible: true,
         duration: Duration(seconds: 3),
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
