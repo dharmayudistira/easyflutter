@@ -161,7 +161,7 @@ class CodeExercise7View extends GetView<CodeExercise7Controller> {
                             onPressed: (controller.isCorrect.value)
                                 ? null
                                 : () {
-                                    controller.checkAnswer();
+                                    controller.checkAnswer(context);
                                   },
                             child: Text("Cek Jawaban"),
                           );

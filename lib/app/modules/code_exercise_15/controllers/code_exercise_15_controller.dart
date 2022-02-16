@@ -4,6 +4,7 @@ import 'package:easyflutter/app/utils/bank_code_exercises_helper.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
@@ -84,7 +85,7 @@ class CodeExercise15Controller extends GetxController {
     });
   }
 
-  void checkAnswer() {
+  void checkAnswer(BuildContext context) {
     final correctCodeValue = <String>[];
     correctAnswer.forEach((element) {
       correctCodeValue.add("${element['codeValue']}");
@@ -101,12 +102,16 @@ class CodeExercise15Controller extends GetxController {
     if (isCorrect.value) {
       stopTimer();
       isFinished.toggle();
-      SnackBarHelper.showSnackbarSuccess("Selamat",
-          "Blok kode yang Anda susun telah sesuai dengan output yang diharapkan");
+      SnackBarHelper.showFlushbarSuccess(
+        "Selamat",
+        "Blok kode yang Anda susun telah sesuai dengan output yang diharapkan",
+      )..show(context);
       return;
     } else {
-      SnackBarHelper.showSnackbarWarning("Mohon maaf",
-          "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan");
+      SnackBarHelper.showFlushbarWarning(
+        "Mohon maaf",
+        "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan",
+      )..show(context);
     }
   }
 

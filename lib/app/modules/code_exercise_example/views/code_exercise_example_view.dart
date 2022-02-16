@@ -276,7 +276,7 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                               onPressed: (controller.isCorrect.value)
                                   ? null
                                   : () {
-                                      controller.checkAnswer();
+                                      controller.checkAnswer(context);
                                     },
                               child: Text("Cek Jawaban"),
                             ),
