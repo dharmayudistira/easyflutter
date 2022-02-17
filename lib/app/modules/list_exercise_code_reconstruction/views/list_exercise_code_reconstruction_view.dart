@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -58,10 +59,10 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                   if (snapshots.data!.docs.isNotEmpty) {
                     return _buildListExerciseCode(snapshots);
                   } else {
-                    return Expanded(child: Center(child: Text("Empty Data")));
+                    return EmptyDataView(label: "Data latihan soal");
                   }
                 } else {
-                  return Expanded(child: Center(child: Text("No Data")));
+                  return EmptyDataView(label: "Data latihan soal");
                 }
               },
             )
