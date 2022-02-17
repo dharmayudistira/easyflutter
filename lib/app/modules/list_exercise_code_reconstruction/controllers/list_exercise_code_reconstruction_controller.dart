@@ -37,30 +37,60 @@ class ListExerciseCodeReconstructionController extends GetxController {
             arguments: [exerciseId, exerciseName]);
         break;
       case 1:
+        Get.toNamed(Routes.CODE_EXERCISE_2,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 2:
+        Get.toNamed(Routes.CODE_EXERCISE_3,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 3:
+        Get.toNamed(Routes.CODE_EXERCISE_4,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 4:
+        Get.toNamed(Routes.CODE_EXERCISE_5,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 5:
+        Get.toNamed(Routes.CODE_EXERCISE_6,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 6:
+        Get.toNamed(Routes.CODE_EXERCISE_7,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 7:
+        Get.toNamed(Routes.CODE_EXERCISE_8,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 8:
+        Get.toNamed(Routes.CODE_EXERCISE_9,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 9:
+        Get.toNamed(Routes.CODE_EXERCISE_10,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 10:
+        Get.toNamed(Routes.CODE_EXERCISE_11,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 11:
+        Get.toNamed(Routes.CODE_EXERCISE_12,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 12:
+        Get.toNamed(Routes.CODE_EXERCISE_13,
+            arguments: [exerciseId, exerciseName]);
         break;
       case 13:
+        Get.toNamed(Routes.CODE_EXERCISE_14,
+            arguments: [exerciseId, exerciseName]);
+        break;
+      case 14:
+        Get.toNamed(Routes.CODE_EXERCISE_15,
+            arguments: [exerciseId, exerciseName]);
         break;
     }
   }

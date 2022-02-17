@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/log_model.dart';
+import 'package:easyflutter/app/utils/bank_code_exercises_helper.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
@@ -9,6 +12,7 @@ class CodeExercise1Controller extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final exerciseId = Get.arguments[0] as String;
   final exerciseName = Get.arguments[1] as String;
+  final logReference = FirebaseFirestore.instance.collection("log");
 
   final exerciseCaption =
       "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
@@ -17,87 +21,11 @@ class CodeExercise1Controller extends GetxController {
 
   var isStarted = false.obs;
   var isCorrect = false.obs;
+  var isFinished = false.obs;
   var steps = 0.obs;
 
-  final correctAnswer = [
-    {
-      "keyValue" : 1,
-      "codeValue" : "Column ("
-          "\n   mainAxisAlignment: MainAxisAligment.start,"
-          "\n   crossAxisAlignment: CrossAxisAlignment.end,",
-      "paddingValue" : 32.0,
-    },
-    {
-      "keyValue" : 2,
-      "codeValue" : "childern : [",
-      "paddingValue" : 64.0,
-    },
-    {
-      "keyValue" : 3,
-      "codeValue" : "Container (color: Colors.red),",
-      "paddingValue" : 96.0,
-    },
-    {
-      "keyValue" : 4,
-      "codeValue" : "Container (color: Colors.yellow),",
-      "paddingValue" : 96.0,
-    },
-    {
-      "keyValue" : 5,
-      "codeValue" : "Container (color: Colors.green),",
-      "paddingValue" : 96.0,
-    },
-    {
-      "keyValue" : 6,
-      "codeValue" : "],",
-      "paddingValue" : 64.0,
-    },
-    {
-      "keyValue" : 7,
-      "codeValue" : ");",
-      "paddingValue" : 32.0,
-    },
-  ].obs;
-
-  final studentAnswer = [
-    {
-      "keyValue" : 1,
-      "codeValue" : "Column ("
-          "\n   mainAxisAlignment: MainAxisAligment.start,"
-          "\n   crossAxisAlignment: CrossAxisAlignment.end,",
-      "paddingValue" : 32.0,
-    },
-    {
-      "keyValue" : 2,
-      "codeValue" : "childern : [",
-      "paddingValue" : 64.0,
-    },
-    {
-      "keyValue" : 3,
-      "codeValue" : "Container (color: Colors.red),",
-      "paddingValue" : 96.0,
-    },
-    {
-      "keyValue" : 4,
-      "codeValue" : "Container (color: Colors.yellow),",
-      "paddingValue" : 96.0,
-    },
-    {
-      "keyValue" : 5,
-      "codeValue" : "Container (color: Colors.green),",
-      "paddingValue" : 96.0,
-    },
-    {
-      "keyValue" : 6,
-      "codeValue" : "],",
-      "paddingValue" : 64.0,
-    },
-    {
-      "keyValue" : 7,
-      "codeValue" : ");",
-      "paddingValue" : 32.0,
-    },
-  ].obs;
+  final correctAnswer = BankCodeExercisesHelper.firstExerciseAnswer.obs;
+  final studentAnswer = BankCodeExercisesHelper.firstExerciseAnswer.obs;
 
   @override
   void onInit() {
@@ -112,7 +40,7 @@ class CodeExercise1Controller extends GetxController {
   }
 
   void _mixAnswer() {
-    while(CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer)) {
+    while (CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer)) {
       studentAnswer.shuffle();
     }
   }
@@ -144,28 +72,36 @@ class CodeExercise1Controller extends GetxController {
       timeStamp: DateTime.now().toString(),
     );
 
-    // print log (as if it's pushed to firestore)
-    print("log : "
-        "\n idlog : ${log.logId}"
-        "\n idExercise : ${log.exerciseId}"
-        "\n idStudent : ${log.studentId}"
-        "\n studentName : ${log.studentName}"
-        "\n studentAnswer : ${log.answer}"
-        "\n steps : ${log.step}"
-        "\n time : ${log.time}"
-        "\n timestamp : ${log.timeStamp}");
+    // uploading log to the firestore
+    logReference.add({
+      "id_log": log.logId,
+      "id_mahasiswa": log.studentId,
+      "nama_mahasiswa": log.studentName,
+      "id_latihan": log.exerciseId,
+      "langkah": log.step,
+      "waktu": log.time,
+      "jawaban": log.answer,
+      "time_stamp": log.timeStamp,
+    });
   }
 
-  void checkAnswer() {
+  void checkAnswer(BuildContext context) {
     isCorrect.value =
         CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer);
 
     if (isCorrect.value) {
       stopTimer();
+      isFinished.toggle();
+      SnackBarHelper.showFlushbarSuccess(
+        "Selamat",
+        "Blok kode yang Anda susun telah sesuai dengan output yang diharapkan",
+      )..show(context);
       return;
     } else {
-      SnackBarHelper.showSnackbarWarning("Mohon maaf",
-          "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan");
+      SnackBarHelper.showFlushbarWarning(
+        "Mohon maaf",
+        "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan",
+      )..show(context);
     }
   }
 

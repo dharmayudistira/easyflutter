@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -24,12 +26,29 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                 left: dimenSmall / 2,
                 right: dimenSmall / 2,
               ),
-              child: Text(
-                "Daftar Latihan Soal - Widget Tree Reconstruction",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5
-                    ?.copyWith(color: Colors.black),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Daftar Latihan Soal - Widget Tree Reconstruction",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5
+                        ?.copyWith(color: Colors.black),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed(
+                        Routes.CODE_EXERCISE_EXAMPLE,
+                        arguments: [
+                          "ti-3a-c-0",
+                          "Contoh Latihan Soal"
+                        ]
+                      );
+                    },
+                    child: Text("Contoh Soal"),
+                  )
+                ],
               ),
             ),
             SizedBox(height: dimenMedium),
@@ -40,10 +59,10 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                   if (snapshots.data!.docs.isNotEmpty) {
                     return _buildListExerciseCode(snapshots);
                   } else {
-                    return Expanded(child: Center(child: Text("Empty Data")));
+                    return EmptyDataView(label: "Data latihan soal");
                   }
                 } else {
-                  return Expanded(child: Center(child: Text("No Data")));
+                  return EmptyDataView(label: "Data latihan soal");
                 }
               },
             )
@@ -72,7 +91,8 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
               elevation: dimenSmall,
               child: ListTile(
                 onTap: () {
-                  controller.navigateTo(index, item.exerciseId!, item.exerciseName!);
+                  controller.navigateTo(
+                      index, item.exerciseId!, item.exerciseName!);
                 },
                 title: Text(
                   item.exerciseName!,
