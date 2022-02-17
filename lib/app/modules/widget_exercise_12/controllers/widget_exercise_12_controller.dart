@@ -16,7 +16,7 @@ class WidgetExercise12Controller extends GetxController {
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
-      "Flutter memiliki beberapa widget seperti ListView dan GridView. ListView merupakan widget untuk menampilkan beberapa widget secara linear. GridView merupakan widget untuk menampilkan beberapa widget secara 2D.";
+      "Flutter memiliki beberapa widget seperti Row dan Column. Row merupakan widget untuk menampilkan beberapa widget secara horizontal. Column merupakan widget untuk menampilkan beberapa widget secara vertical.";
 
   Function eq = const ListEquality().equals;
 
