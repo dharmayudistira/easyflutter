@@ -19,36 +19,40 @@ class DragTargetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DragTarget<AnswerWidgetModel>(
-      onWillAccept: (data) => true,
-      onAccept: (data) {
-        acceptAnswer(data, index);
-      },
-      builder: (context, candidateData, rejectedData) {
-        return Obx(
-          () {
-            return SizedBox(
-              width: size.r,
-              height: size.r,
-              child: Material(
-                child: Center(
-                  child: Text(
-                    targetAnswers[index].content ?? "",
-                    style: TextStyle(
-                      fontSize: 14.sp,
+    return Material(
+      child: DragTarget<AnswerWidgetModel>(
+        onWillAccept: (data) => true,
+        onAccept: (data) {
+          acceptAnswer(data, index);
+        },
+        builder: (context, candidateData, rejectedData) {
+          return Obx(
+            () {
+              return SizedBox(
+                width: size.r,
+                height: size.r,
+                child: Material(
+                  child: Center(
+                    child: Text(
+                      targetAnswers[index].content ?? "",
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
+                  color: targetAnswers[index].isUsed ?? false
+                      ? Colors.white.withOpacity(0.25)
+                      : Colors.white,
+                  shape: const StadiumBorder(),
                 ),
-                color: targetAnswers[index].isUsed ?? false
-                    ? Colors.white.withOpacity(0.25)
-                    : Colors.white,
-                shape: const StadiumBorder(),
-              ),
-            );
-          },
-        );
-      },
+              );
+            },
+          );
+        },
+      ),
+      shape: StadiumBorder(),
+      elevation: 8.r,
     );
   }
 }
