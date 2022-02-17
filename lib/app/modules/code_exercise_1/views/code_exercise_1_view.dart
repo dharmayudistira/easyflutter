@@ -3,10 +3,7 @@ import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/utils/dialog_helper.dart';
 import 'package:easyflutter/app/views/app_bar_exercise.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 import '../controllers/code_exercise_1_controller.dart';

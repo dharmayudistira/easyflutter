@@ -17,5 +17,6 @@ class AuthLecturerMiddleware extends GetMiddleware {
     if (isAuthenticated == false) {
       return RouteSettings(name: Routes.LOGIN);
     }
+    return null;
   }
 }
