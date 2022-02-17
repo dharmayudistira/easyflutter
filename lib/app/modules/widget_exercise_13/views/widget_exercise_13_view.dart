@@ -9,9 +9,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/widget_exercise_12_controller.dart';
+import '../controllers/widget_exercise_13_controller.dart';
 
-class WidgetExercise12View extends GetView<WidgetExercise12Controller> {
+class WidgetExercise13View extends GetView<WidgetExercise13Controller> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -50,7 +50,7 @@ class WidgetExercise12View extends GetView<WidgetExercise12Controller> {
                             child: SizedBox(
                               height: 420.h,
                               child: Image.asset(
-                                "assets/images/widget/widget_tree12.png",
+                                "assets/images/widget/widget_tree13.png",
                               ),
                             ),
                           ),
@@ -60,7 +60,7 @@ class WidgetExercise12View extends GetView<WidgetExercise12Controller> {
                             SizedBox(height: 101.r),
                             Row(
                               children: [
-                                SizedBox(width: 324.5.h),
+                                SizedBox(width: 188.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
@@ -72,23 +72,37 @@ class WidgetExercise12View extends GetView<WidgetExercise12Controller> {
                             SizedBox(height: 16.r),
                             Row(
                               children: [
-                                SizedBox(width: 235.8.h),
+                                SizedBox(width: 42.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 1,
                                   size: 65,
                                 ),
-                              ],
-                            ),
-                            SizedBox(height: 96.r),
-                            Row(
-                              children: [
-                                SizedBox(width: 284.3.h),
+                                SizedBox(width: 80.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswers: controller.targetAnswers,
                                   index: 2,
+                                  size: 65,
+                                ),
+                                SizedBox(width: 169.h),
+                                DragTargetWidget(
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswers: controller.targetAnswers,
+                                  index: 3,
+                                  size: 65,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 15.5.r),
+                            Row(
+                              children: [
+                                SizedBox(width: 510.h),
+                                DragTargetWidget(
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswers: controller.targetAnswers,
+                                  index: 4,
                                   size: 65,
                                 ),
                               ],
@@ -107,7 +121,7 @@ class WidgetExercise12View extends GetView<WidgetExercise12Controller> {
                 ),
                 RightContentWidget(
                   stopWatchTimer: controller.stopWatchTimer,
-                  image: "assets/images/widget/latihan12.png",
+                  image: "assets/images/widget/latihan13.png",
                   exerciseName: controller.exerciseName,
                   isStart: controller.isStart,
                   isAnswerTrue: controller.isAnswerTrue,

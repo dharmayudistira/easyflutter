@@ -27,19 +27,17 @@ class WidgetExercise12Controller extends GetxController {
   var isStart = false.obs;
   var isOver = false;
 
-  List<String> answer = ["Container", "Row", "Image", "Column", "Column"];
+  List<String> answer = ["Column", "Row", "Text"];
 
   List<AnswerWidgetModel> answerList = [
-    AnswerWidgetModel(index: 0, content: "Column", isUsed: false),
-    AnswerWidgetModel(index: 1, content: "Container", isUsed: false),
-    AnswerWidgetModel(index: 2, content: "Image", isUsed: false),
+    AnswerWidgetModel(index: 0, content: "Text", isUsed: false),
+    AnswerWidgetModel(index: 1, content: "Column", isUsed: false),
+    AnswerWidgetModel(index: 2, content: "Container", isUsed: false),
     AnswerWidgetModel(index: 3, content: "Row", isUsed: false),
-    AnswerWidgetModel(index: 4, content: "Column", isUsed: false),
+    AnswerWidgetModel(index: 4, content: "Image", isUsed: false),
   ].obs;
 
   List<AnswerWidgetModel> targetAnswers = [
-    AnswerWidgetModel(index: -1, content: "", isUsed: false),
-    AnswerWidgetModel(index: -1, content: "", isUsed: false),
     AnswerWidgetModel(index: -1, content: "", isUsed: false),
     AnswerWidgetModel(index: -1, content: "", isUsed: false),
     AnswerWidgetModel(index: -1, content: "", isUsed: false),

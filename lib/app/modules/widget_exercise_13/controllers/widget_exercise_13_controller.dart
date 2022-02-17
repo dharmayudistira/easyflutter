@@ -5,7 +5,7 @@ import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-class WidgetExercise11Controller extends GetxController {
+class WidgetExercise13Controller extends GetxController {
   final StopWatchTimer stopWatchTimer = StopWatchTimer();
 
   final _storageHelper = Get.find<StorageHelper>();
@@ -27,17 +27,19 @@ class WidgetExercise11Controller extends GetxController {
   var isStart = false.obs;
   var isOver = false;
 
-  List<String> answer = ["Column", "Image", "Container"];
+  List<String> answer = ["Column", "Center", "Column", "Row", "Column"];
 
   List<AnswerWidgetModel> answerList = [
-    AnswerWidgetModel(index: 0, content: "Image", isUsed: false),
-    AnswerWidgetModel(index: 1, content: "Row", isUsed: false),
-    AnswerWidgetModel(index: 2, content: "Container", isUsed: false),
+    AnswerWidgetModel(index: 0, content: "Center", isUsed: false),
+    AnswerWidgetModel(index: 1, content: "Column", isUsed: false),
+    AnswerWidgetModel(index: 2, content: "Column", isUsed: false),
     AnswerWidgetModel(index: 3, content: "Column", isUsed: false),
-    AnswerWidgetModel(index: 4, content: "Text", isUsed: false),
+    AnswerWidgetModel(index: 4, content: "Row", isUsed: false),
   ].obs;
 
   List<AnswerWidgetModel> targetAnswers = [
+    AnswerWidgetModel(index: -1, content: "", isUsed: false),
+    AnswerWidgetModel(index: -1, content: "", isUsed: false),
     AnswerWidgetModel(index: -1, content: "", isUsed: false),
     AnswerWidgetModel(index: -1, content: "", isUsed: false),
     AnswerWidgetModel(index: -1, content: "", isUsed: false),
