@@ -86,6 +86,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
       ),
       backgroundColor: ColorConstants.kPrimaryColor,
       elevation: 0,
+      leading: Container(),
     );
   }
 
