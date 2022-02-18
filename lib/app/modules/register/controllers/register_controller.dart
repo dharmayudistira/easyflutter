@@ -134,6 +134,7 @@ class RegisterController extends GetxController {
         "id_kelas" : classId,
         "nama_kelas" : className,
         "status" : false,
+        "daftar_id_latihan" : <String>[],
       }).whenComplete(() {
         Get.snackbar("Berhasil Menambahkan Mahasiswa", "Data mahasiswa $studentId berhasil ditambahkan");
         clearForm();

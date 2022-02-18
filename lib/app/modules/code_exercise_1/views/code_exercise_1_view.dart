@@ -170,6 +170,7 @@ class CodeExercise1View extends GetView<CodeExercise1Controller> {
                           return ElevatedButton(
                             onPressed: (controller.isCorrect.value)
                                 ? () {
+                                    controller.sendAnswer();
                                     showDialog(
                                       barrierDismissible: false,
                                       context: context,

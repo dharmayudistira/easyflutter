@@ -103,7 +103,8 @@ class AddStudentController extends GetxController {
         "nama_dosen": lecturerName,
         "id_kelas": classId,
         "nama_kelas": className,
-        "status": true
+        "status": true,
+        "daftar_id_latihan" : <String>[],
       }).whenComplete(() {
         clearForm();
         dashboardLecturerController.setSelectedIndex(1);

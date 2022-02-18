@@ -8,6 +8,7 @@ class StudentModel {
     this.classId,
     this.className,
     this.status,
+    this.listExerciseId,
   });
 
   String? studentId;
@@ -18,6 +19,7 @@ class StudentModel {
   String? classId;
   String? className;
   bool? status;
+  List<String>? listExerciseId;
 
   factory StudentModel.fromJson(Map<String, dynamic> json) => StudentModel(
     studentId: json["id_mahasiswa"],
@@ -28,5 +30,6 @@ class StudentModel {
     classId: json["id_kelas"],
     className: json["nama_kelas"],
     status: json["status"],
+    listExerciseId: (json["daftar_id_latihan"] as List).map((e) => e as String).toList(),
   );
 }
