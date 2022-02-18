@@ -38,13 +38,8 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Get.toNamed(
-                        Routes.CODE_EXERCISE_EXAMPLE,
-                        arguments: [
-                          "ti-3a-c-0",
-                          "Contoh Latihan Soal"
-                        ]
-                      );
+                      Get.toNamed(Routes.CODE_EXERCISE_EXAMPLE,
+                          arguments: ["ti-3a-c-0", "Contoh Latihan Soal"]);
                     },
                     child: Text("Contoh Soal"),
                   )
@@ -81,6 +76,14 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = controller.listExercise[index];
 
+          var isComplete = false;
+          item.listStudentId?.forEach((element) {
+            if (element == controller.storageHelper.getIdUser()) {
+              isComplete = true;
+              return;
+            }
+          });
+
           return Padding(
             padding: const EdgeInsets.only(
               left: dimenSmall / 2,
@@ -108,10 +111,15 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                       .caption
                       ?.copyWith(color: Colors.black),
                 ),
-                trailing: FaIcon(
-                  FontAwesomeIcons.angleRight,
-                  color: Colors.black,
-                ),
+                trailing: (isComplete)
+                    ? ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Kerjakan Lagi"),
+                      )
+                    : ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Kerjakan"),
+                      ),
               ),
             ),
           );
