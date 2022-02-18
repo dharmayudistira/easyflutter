@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/utils/bank_code_exercises_helper.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
+import 'package:easyflutter/app/utils/send_answer_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:flutter/material.dart';
@@ -125,5 +126,10 @@ class CodeExercise6Controller extends GetxController {
     final rawValue = stopwatchTimer.rawTime.value;
     final displayTime = StopWatchTimer.getDisplayTime(rawValue, hours: true);
     return displayTime;
+  }
+
+  void sendAnswer() {
+    SendAnswerHelper.updateExercise(exerciseId);
+    SendAnswerHelper.updateStudent(exerciseId);
   }
 }

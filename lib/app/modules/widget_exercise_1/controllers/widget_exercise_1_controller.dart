@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
 import 'package:easyflutter/app/data/log_model.dart';
+import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 
 import 'package:get/get.dart';
@@ -18,8 +19,6 @@ class WidgetExercise1Controller extends GetxController {
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
       "Flutter memiliki beberapa widget yang dapat digunakan untuk menyusun widget, salah satunya yaitu Stack. Stack merupakan widget yang memposisikan beberapa widget secara relatif terhadap tepi kotaknya.";
-
-  Function eq = const ListEquality().equals;
 
   int step = 0;
 
@@ -155,7 +154,7 @@ class WidgetExercise1Controller extends GetxController {
   }
 
   bool checkAnswer() {
-    if (eq(getTextAnswer(), answer)) {
+    if (CheckAnswerHelper.isEqual(getTextAnswer(), answer)) {
       isAnswerTrue.value = true;
       isOver = true;
       stopStopWatch();
