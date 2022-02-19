@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/utils/bank_code_exercises_helper.dart';

@@ -1,7 +1,6 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/utils/dialog_helper.dart';
-import 'package:easyflutter/app/views/app_bar_exercise.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -30,25 +29,27 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
   final keyButtonCheckAnswer = GlobalKey();
   final keyButtonSendAnswer = GlobalKey();
 
-  BuildContext? exampleContext;
+  BuildContext? myContext;
 
   @override
   void initState() {
     super.initState();
 
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      ShowCaseWidget.of(exampleContext!)?.startShowCase([
-        keyButtonBack,
-        keyAppbarTitle,
-        keyExerciseName,
-        keyExerciseCaption,
-        keyReorderables,
-        keyTimer,
-        keyOutput,
-        keyButtonStartExercise,
-        keyButtonCheckAnswer,
-        keyButtonSendAnswer,
-      ]);
+      Future.delayed(Duration(milliseconds: 200), () {
+        ShowCaseWidget.of(myContext!)?.startShowCase([
+          keyButtonBack,
+          keyAppbarTitle,
+          keyExerciseName,
+          keyExerciseCaption,
+          keyReorderables,
+          keyTimer,
+          keyOutput,
+          keyButtonStartExercise,
+          keyButtonCheckAnswer,
+          keyButtonSendAnswer,
+        ]);
+      });
     });
   }
 
@@ -57,7 +58,7 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
     return ShowCaseWidget(
       builder: Builder(
         builder: (context) {
-          exampleContext = context;
+          myContext = context;
           return Scaffold(
             appBar: AppBar(
               title: CustomShowcaseWidget(

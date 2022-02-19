@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
 import 'package:easyflutter/app/data/log_model.dart';
+import 'package:easyflutter/app/utils/check_answer_helper.dart';
+import 'package:easyflutter/app/utils/send_answer_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
+
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
@@ -17,8 +20,6 @@ class WidgetExercise13Controller extends GetxController {
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
       "Flutter memiliki beberapa widget seperti Row dan Column. Row merupakan widget untuk menampilkan beberapa widget secara horizontal. Column merupakan widget untuk menampilkan beberapa widget secara vertical.";
-
-  Function eq = const ListEquality().equals;
 
   int step = 0;
 
@@ -156,7 +157,7 @@ class WidgetExercise13Controller extends GetxController {
   }
 
   bool checkAnswer() {
-    if (eq(getTextAnswer(), answer)) {
+    if (CheckAnswerHelper.isEqual(getTextAnswer(), answer)) {
       isAnswerTrue.value = true;
       isOver = true;
       stopStopWatch();
@@ -168,6 +169,11 @@ class WidgetExercise13Controller extends GetxController {
 
   List<String?> getTextAnswer() {
     return targetAnswers.map((e) => e.content).toList();
+  }
+  
+  void sendAnswer() {
+    SendAnswerHelper.updateExercise(exerciseId);
+    SendAnswerHelper.updateStudent(exerciseId);
   }
 
   @override

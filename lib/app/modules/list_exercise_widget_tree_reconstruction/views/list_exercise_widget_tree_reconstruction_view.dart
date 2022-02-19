@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 
@@ -80,6 +79,14 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = controller.listExercise[index];
 
+          var isComplete = false;
+          item.listStudentId?.forEach((element) {
+            if (element == controller.storageHelper.getIdUser()) {
+              isComplete = true;
+              return;
+            }
+          });
+
           return Padding(
             padding: const EdgeInsets.only(
               left: dimenSmall / 2,
@@ -112,10 +119,15 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
                       .caption
                       ?.copyWith(color: Colors.black),
                 ),
-                trailing: FaIcon(
-                  FontAwesomeIcons.angleRight,
-                  color: Colors.black,
-                ),
+                trailing: (isComplete)
+                    ? ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Kerjakan Lagi"),
+                      )
+                    : ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Kerjakan"),
+                      ),
               ),
             ),
           );

@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListExerciseWidgetTreeReconstructionController extends GetxController {
-  final _storageHelper = Get.find<StorageHelper>();
+  final storageHelper = Get.find<StorageHelper>();
   final exerciseReference = FirebaseFirestore.instance.collection("latihan");
 
   var listExercise = <ExerciseModel>[];
 
   Stream<QuerySnapshot> getAllExercise() {
-    final classId = _storageHelper.getIdClassUser();
+    final classId = storageHelper.getIdClassUser();
     return exerciseReference.where("id_kelas", isEqualTo: classId).snapshots();
   }
 

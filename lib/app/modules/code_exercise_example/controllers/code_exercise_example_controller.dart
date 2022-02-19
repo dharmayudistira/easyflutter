@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/utils/bank_code_exercises_helper.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
-import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
@@ -14,7 +12,7 @@ class CodeExerciseExampleController extends GetxController {
   final logReference = FirebaseFirestore.instance.collection("log");
 
   final exerciseCaption =
-      "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et posuere nulla. Mauris fringilla felis arcu, at aliquet mi porttitor venenatis.";
 
   final stopwatchTimer = StopWatchTimer();
 
