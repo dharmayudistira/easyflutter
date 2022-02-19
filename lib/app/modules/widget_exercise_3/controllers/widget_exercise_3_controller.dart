@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
 import 'package:easyflutter/app/data/log_model.dart';
+import 'package:easyflutter/app/utils/check_answer_helper.dart';
+import 'package:easyflutter/app/utils/send_answer_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 
 import 'package:get/get.dart';
@@ -18,8 +20,6 @@ class WidgetExercise3Controller extends GetxController {
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
       "Flutter memiliki beberapa widget seperti Icon dan Image. Icon merupakan widget untuk menampilkan icon. Image merupakan widget untuk menampilkan gambar.";
-
-  Function eq = const ListEquality().equals;
 
   int step = 0;
 
@@ -155,7 +155,7 @@ class WidgetExercise3Controller extends GetxController {
   }
 
   bool checkAnswer() {
-    if (eq(getTextAnswer(), answer)) {
+    if (CheckAnswerHelper.isEqual(getTextAnswer(), answer)) {
       isAnswerTrue.value = true;
       isOver = true;
       stopStopWatch();
@@ -167,6 +167,11 @@ class WidgetExercise3Controller extends GetxController {
 
   List<String?> getTextAnswer() {
     return targetAnswers.map((e) => e.content).toList();
+  }
+
+  void sendAnswer() {
+    SendAnswerHelper.updateExercise(exerciseId);
+    SendAnswerHelper.updateStudent(exerciseId);
   }
 
   @override

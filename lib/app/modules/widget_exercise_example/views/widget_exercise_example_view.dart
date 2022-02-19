@@ -90,6 +90,7 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
       builder: () {
         return Scaffold(
           appBar: AppBar(
+            centerTitle: false,
             leading: BackButtonExercise(
               isStart: controller.isStart,
             ),

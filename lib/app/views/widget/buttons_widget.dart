@@ -1,6 +1,9 @@
+import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class ButtonsWidget extends StatelessWidget {
   const ButtonsWidget({
@@ -9,6 +12,7 @@ class ButtonsWidget extends StatelessWidget {
     required this.isAnswerTrue,
     required this.startExercise,
     required this.checkAnswer,
+    required this.sendAnswer,
     required this.reset,
     Key? key,
   }) : super(key: key);
@@ -18,6 +22,7 @@ class ButtonsWidget extends StatelessWidget {
   final RxBool isAnswerTrue;
   final Function startExercise;
   final Function checkAnswer;
+  final Function sendAnswer;
   final Function reset;
 
   @override
@@ -73,7 +78,9 @@ class ButtonsWidget extends StatelessWidget {
                   onPressed: () {
                     Get.back();
                     startExercise();
-                    Get.snackbar("Informasi", "Selamat mengerjakan.");
+                    SnackBarHelper.showFlushbarInfo(
+                        "Informasi", "Selamat mengerjakan.")
+                      ..show(context);
                   },
                   child: Text('Yakin'),
                 ),
@@ -96,13 +103,32 @@ class ButtonsWidget extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text("Selamat"),
-                          content: Text(
-                            "Anda telah menyelesaikan $exerciseName",
+                          title: Text(
+                            "Selamat Anda telah menyelesaikan $exerciseName",
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2
+                                ?.copyWith(color: Colors.black),
+                          ),
+                          content: Container(
+                            width: double.minPositive,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Lottie.asset(
+                                  "assets/animations/success_animation.json",
+                                  height: 150,
+                                  width: 150,
+                                  repeat: false,
+                                ),
+                                SizedBox(height: dimenSmall),
+                              ],
+                            ),
                           ),
                           actions: [
                             ElevatedButton(
                               onPressed: () {
+                                sendAnswer();
                                 Get.back();
                                 Get.back();
                               },
@@ -132,15 +158,15 @@ class ButtonsWidget extends StatelessWidget {
           onPressed: !isAnswerTrue.value
               ? () {
                   if (checkAnswer()) {
-                    Get.snackbar(
-                      "Benar!",
-                      "Selamat, jawaban Anda benar!",
-                    );
+                    SnackBarHelper.showFlushbarSuccess(
+                      "Selamat",
+                      "Widget Tree yang Anda lengkapi telah sesuai dengan output yang diharapkan",
+                    )..show(context);
                   } else {
-                    Get.snackbar(
-                      "Salah!",
-                      "Maaf, jawaban Anda salah!",
-                    );
+                    SnackBarHelper.showFlushbarWarning(
+                      "Mohon maaf",
+                      "Widget Tree yang Anda lengkapi belum sesuai dengan output yang diharapkan",
+                    )..show(context);
                   }
                 }
               : null,

@@ -1,10 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 
 class SnackBarHelper {
   static Flushbar showFlushbarSuccess(String title, String message) => Flushbar(

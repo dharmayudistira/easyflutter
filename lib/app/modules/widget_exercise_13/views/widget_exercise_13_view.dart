@@ -19,6 +19,7 @@ class WidgetExercise13View extends GetView<WidgetExercise13Controller> {
       builder: () {
         return Scaffold(
           appBar: AppBar(
+            centerTitle: false,
             leading: BackButtonExercise(
               isStart: controller.isStart,
             ),
@@ -127,6 +128,7 @@ class WidgetExercise13View extends GetView<WidgetExercise13Controller> {
                   isAnswerTrue: controller.isAnswerTrue,
                   startExercise: controller.startExercise,
                   checkAnswer: controller.checkAnswer,
+                  sendAnswer: controller.sendAnswer,
                   reset: controller.reset,
                 ),
               ],

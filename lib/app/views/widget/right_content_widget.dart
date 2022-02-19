@@ -15,6 +15,7 @@ class RightContentWidget extends StatelessWidget {
     required this.isAnswerTrue,
     required this.startExercise,
     required this.checkAnswer,
+    required this.sendAnswer,
     required this.reset,
     Key? key,
   }) : super(key: key);
@@ -26,6 +27,7 @@ class RightContentWidget extends StatelessWidget {
   final RxBool isAnswerTrue;
   final Function startExercise;
   final Function checkAnswer;
+  final Function sendAnswer;
   final Function reset;
 
   @override
@@ -82,6 +84,7 @@ class RightContentWidget extends StatelessWidget {
                   isAnswerTrue: isAnswerTrue,
                   startExercise: startExercise,
                   checkAnswer: checkAnswer,
+                  sendAnswer: sendAnswer,
                   reset: reset,
                 ),
               ],

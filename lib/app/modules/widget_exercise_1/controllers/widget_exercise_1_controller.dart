@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
 import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
+import 'package:easyflutter/app/utils/send_answer_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 
 import 'package:get/get.dart';
@@ -166,6 +167,11 @@ class WidgetExercise1Controller extends GetxController {
 
   List<String?> getTextAnswer() {
     return targetAnswers.map((e) => e.content).toList();
+  }
+
+  void sendAnswer() {
+    SendAnswerHelper.updateExercise(exerciseId);
+    SendAnswerHelper.updateStudent(exerciseId);
   }
 
   @override
