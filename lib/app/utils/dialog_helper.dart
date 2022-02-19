@@ -1,4 +1,5 @@
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -39,6 +40,8 @@ class DialogHelper {
         TextButton(
           onPressed: () {
             onDialogStartSuccess();
+            SnackBarHelper.showFlushbarInfo("Informasi", "Selamat mengerjakan.")
+              ..show(context);
           },
           child: Text("Yakin"),
         ),
@@ -135,7 +138,7 @@ class DialogHelper {
             .textTheme
             .subtitle2
             ?.copyWith(color: Colors.black),
-            textAlign: TextAlign.center,
+        textAlign: TextAlign.center,
       ),
       content: Container(
         width: double.minPositive,
