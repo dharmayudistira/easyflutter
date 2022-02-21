@@ -1,5 +1,7 @@
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class DashboardLecturerController extends GetxController {
@@ -30,10 +32,10 @@ class DashboardLecturerController extends GetxController {
     return _selectedExercise;
   }
 
-  Future<void> logout() async {
-    Get.snackbar("Berhasil Keluar", "Sampai jumpa lagi! ${storageHelper.getNameUser()}");
-    await storageHelper.clearStorage();
+  void logout(BuildContext context) async {
     Get.offNamed(Routes.LOGIN);
+    SnackBarHelper.showFlushbarSuccess("Berhasil Keluar", "Sampai jumpa lagi! ${storageHelper.getNameUser()}")..show(context);
+    await storageHelper.clearStorage();
   }
 
 }

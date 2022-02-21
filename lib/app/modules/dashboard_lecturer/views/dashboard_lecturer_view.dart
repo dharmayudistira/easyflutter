@@ -81,8 +81,8 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
               _buildSideBarItem(
                 context,
                 "Logout",
-                () async {
-                  await controller.logout();
+                () {
+                  controller.logout(context);
                 },
               ),
             ],
