@@ -20,6 +20,7 @@ class DraggableWidget extends StatelessWidget {
       child: Obx(
         () {
           return ListView.separated(
+            controller: ScrollController(),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: answerList.length,

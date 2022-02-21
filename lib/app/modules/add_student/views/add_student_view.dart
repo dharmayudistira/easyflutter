@@ -42,42 +42,40 @@ class AddStudentView extends StatelessWidget {
             SizedBox(height: dimenSmall),
             Form(
               key: controller.addStudentFormKey,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: controller.edtStudentIdController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "1941720000",
-                        label: Text("Masukkan NIM"),
-                      ),
-                      validator: (newValue) {
-                        return emptyValidationForm(newValue, "NIM");
-                      },
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: controller.edtStudentIdController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "1941720000",
+                      label: Text("Masukkan NIM"),
                     ),
-                    SizedBox(height: dimenSmall),
-                    TextFormField(
-                      controller: controller.edtStudentNameController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text("Masukkan Nama Mahasiswa"),
-                      ),
-                      validator: (newValue) {
-                        return emptyValidationForm(newValue, "nama mahasiswa");
-                      },
+                    validator: (newValue) {
+                      return emptyValidationForm(newValue, "NIM");
+                    },
+                  ),
+                  SizedBox(height: dimenSmall),
+                  TextFormField(
+                    controller: controller.edtStudentNameController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text("Masukkan Nama Mahasiswa"),
                     ),
-                    SizedBox(height: dimenSmall),
-                    TextFormField(
-                      enabled: false,
-                      initialValue: controller.getLecturerName(),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text("Nama Dosen"),
-                      ),
+                    validator: (newValue) {
+                      return emptyValidationForm(newValue, "nama mahasiswa");
+                    },
+                  ),
+                  SizedBox(height: dimenSmall),
+                  TextFormField(
+                    enabled: false,
+                    initialValue: controller.getLecturerName(),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text("Nama Dosen"),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: dimenSmall),

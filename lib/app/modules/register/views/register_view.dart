@@ -45,6 +45,7 @@ class RegisterView extends GetView<RegisterController> {
         child: Form(
           key: controller.registerFormKey,
           child: SingleChildScrollView(
+            controller: ScrollController(),
             child: Column(
               children: [
                 Text(

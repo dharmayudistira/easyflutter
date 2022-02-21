@@ -92,6 +92,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
 
   Widget _buildDashboardContent(BuildContext context) {
     return SingleChildScrollView(
+      controller: ScrollController(),
       child: Column(
         children: [
           _buildCodeReconstructionInformation(context),

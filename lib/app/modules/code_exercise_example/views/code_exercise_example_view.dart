@@ -162,6 +162,7 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                 description:
                     "Berikut adalah susunan blok kode yang harus diurutkan",
                 child: ReorderableListView(
+                  scrollController: ScrollController(),
                   shrinkWrap: true,
                   children: controller.studentAnswer.map((element) {
                     final valueKey = element["keyValue"] as int;

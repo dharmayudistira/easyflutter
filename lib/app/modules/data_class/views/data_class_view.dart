@@ -117,6 +117,7 @@ class DataClassView extends StatelessWidget {
       child: Card(
         elevation: dimenSmall,
         child: DataTable2(
+          scrollController: ScrollController(),
           columns: [
             DataColumn2(
               label: Text("No"),

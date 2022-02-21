@@ -47,6 +47,7 @@ class LoginView extends GetView<LoginController> {
         child: Form(
           key: controller.loginFormKey,
           child: SingleChildScrollView(
+            controller: ScrollController(),
             child: Column(
               children: [
                 Text(

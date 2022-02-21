@@ -75,6 +75,7 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
 
     return Expanded(
       child: ListView.builder(
+        controller: ScrollController(),
         itemCount: controller.listExercise.length,
         itemBuilder: (context, index) {
           final item = controller.listExercise[index];

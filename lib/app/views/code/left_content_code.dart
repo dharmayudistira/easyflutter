@@ -47,6 +47,7 @@ class LeftContentCode extends StatelessWidget {
               Expanded(
                 child: Obx(() {
                   return ReorderableListView(
+                    scrollController: ScrollController(),
                     children: studentAnswer.map((element) {
                       final valueKey = element["keyValue"] as int;
                       final valueText = element["codeValue"] as String;
