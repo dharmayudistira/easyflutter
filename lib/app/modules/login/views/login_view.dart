@@ -146,7 +146,7 @@ class LoginView extends GetView<LoginController> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      controller.login();
+                      controller.login(context);
                     },
                     child: Text(
                       "Masuk",

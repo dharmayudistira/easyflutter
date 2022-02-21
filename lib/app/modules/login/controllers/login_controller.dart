@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/encrypt_helper.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -39,18 +40,17 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void login() {
-
+  void login(BuildContext context) {
     final isValid = loginFormKey.currentState?.validate();
 
-    if(isValid == true) {
+    if (isValid == true) {
       final id = edtControllerId.text;
       final password = edtControllerPassword.text;
 
       if (selectedLoginType.value == "Dosen") {
         doLoginAsLecturer(id, password);
       } else {
-        doLoginAsStudent(id, password);
+        doLoginAsStudent(id, password, context);
       }
     }
   }
@@ -65,54 +65,67 @@ class LoginController extends GetxController {
       final selectedLecturer = lecturerReference.docs[0];
       final encryptedPassword = generateMd5(password);
 
-      if(selectedLecturer["kata_sandi"] == encryptedPassword) {
+      if (selectedLecturer["kata_sandi"] == encryptedPassword) {
         await saveLecturerDataToSharedPref(selectedLecturer);
-        Get.snackbar("Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}");
+        Get.snackbar("Berhasil Masuk",
+            "Selamat Datang! ${_storageHelper.getNameUser()}");
         clearForm();
         Get.offNamed(Routes.DASHBOARD_LECTURER);
-      }else {
-        Get.snackbar("Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda");
+      } else {
+        Get.snackbar("Terjadi Kesalahan",
+            "Mohon periksa kembali ID dan kata sandi Anda");
       }
     } else {
       Get.snackbar("Terjadi Kesalahan", "Tidak ada dosen dengan ID : $id");
     }
   }
 
-  void doLoginAsStudent(String id, String password) async {
+  void doLoginAsStudent(
+      String id, String password, BuildContext context) async {
     QuerySnapshot<Map<String, dynamic>> studentReference = await _firestore
         .collection("mahasiswa")
         .where("id_mahasiswa", isEqualTo: id)
         .get();
-    
-    if(studentReference.docs.isNotEmpty) {
+
+    if (studentReference.docs.isNotEmpty) {
       final selectedStudent = studentReference.docs[0];
       final encryptedPassword = generateMd5(password);
-      
-      if(selectedStudent["kata_sandi"] == encryptedPassword) {
-        if(selectedStudent["status"] == true) {
+
+      if (selectedStudent["kata_sandi"] == encryptedPassword) {
+        if (selectedStudent["status"] == true) {
           await saveStudentDataToSharedPref(selectedStudent);
-          Get.snackbar("Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}");
           clearForm();
           Get.offNamed(Routes.DASHBOARD_STUDENT);
-        }else {
-          Get.snackbar("Terjadi Kesalahan", "Mohon tunggu validasi dari dosen pengampu Anda");
+          SnackBarHelper.showFlushbarSuccess("Berhasil Masuk",
+              "Selamat Datang! ${_storageHelper.getNameUser()}")
+            ..show(context);
+        } else {
+          SnackBarHelper.showFlushbarInfo("Terjadi Kesalahan",
+              "Mohon tunggu validasi dari dosen pengampu Anda")
+            ..show(context);
         }
-      }else {
-        Get.snackbar("Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda");
+      } else {
+        SnackBarHelper.showFlushbarWarning(
+            "Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda")
+          ..show(context);
       }
-    }else {
-      Get.snackbar("Terjadi Kesalahan", "Tidak ada mahasiswa dengan ID : $id");
+    } else {
+      SnackBarHelper.showFlushbarWarning(
+          "Terjadi Kesalahan", "Tidak ada mahasiswa dengan ID : $id")
+        ..show(context);
     }
   }
 
-  Future<void> saveLecturerDataToSharedPref(QueryDocumentSnapshot<Map<String, dynamic>> selectedLecturer) async {
+  Future<void> saveLecturerDataToSharedPref(
+      QueryDocumentSnapshot<Map<String, dynamic>> selectedLecturer) async {
     await _storageHelper.setIdUser(selectedLecturer["id_dosen"]);
     await _storageHelper.setPasswordUser(selectedLecturer["kata_sandi"]);
     await _storageHelper.setNameUser(selectedLecturer["nama_dosen"]);
     await _storageHelper.setIsLoginLecturer(true);
   }
-  
-  Future<void> saveStudentDataToSharedPref(QueryDocumentSnapshot<Map<String, dynamic>> selectedStudent) async {
+
+  Future<void> saveStudentDataToSharedPref(
+      QueryDocumentSnapshot<Map<String, dynamic>> selectedStudent) async {
     await _storageHelper.setIdUser(selectedStudent["id_mahasiswa"]);
     await _storageHelper.setPasswordUser(selectedStudent["kata_sandi"]);
     await _storageHelper.setNameUser(selectedStudent["nama_mahasiswa"]);
@@ -124,5 +137,4 @@ class LoginController extends GetxController {
     edtControllerId.clear();
     edtControllerPassword.clear();
   }
-
 }
