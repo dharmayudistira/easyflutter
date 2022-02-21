@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/controllers/dashboard_lecturer_controller.dart';
 import 'package:easyflutter/app/utils/converter_helper.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -77,7 +78,7 @@ class DataClassController extends GetxController {
     rowOfClasses = result;
   }
 
-  Future<void> addClass() async {
+  Future<void> addClass(BuildContext context) async {
     final isValid = dataClassFormKey.currentState?.validate();
 
     if (isValid != true) return;
@@ -106,15 +107,18 @@ class DataClassController extends GetxController {
       }).whenComplete(() {
         edtControllerClassName.clear();
         Get.back();
-        Get.snackbar("Berhasil", "Data kelas $className berhasil ditambahkan");
+        SnackBarHelper.showFlushbarSuccess(
+            "Berhasil", "Data kelas $className berhasil ditambahkan")
+          ..show(context);
       });
 
       await addExerciseEachClass(className);
     } else {
       edtControllerClassName.clear();
       Get.back();
-      Get.snackbar(
-          "Terjadi Kesalahan", "Data kelas $className sudah diampu dosen lain");
+      SnackBarHelper.showFlushbarWarning(
+          "Terjadi Kesalahan", "Data kelas $className sudah diampu dosen lain")
+        ..show(context);
     }
   }
 

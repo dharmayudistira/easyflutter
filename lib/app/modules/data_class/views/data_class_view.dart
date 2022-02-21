@@ -45,18 +45,19 @@ class DataClassView extends StatelessWidget {
             SizedBox(height: dimenSmall),
             StreamBuilder(
               stream: controller.getAllClass(),
-              builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
-                if(snapshots.connectionState == ConnectionState.active) {
-                  if(snapshots.hasData) {
-                    if(snapshots.data!.docs.isNotEmpty) {
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshots) {
+                if (snapshots.connectionState == ConnectionState.active) {
+                  if (snapshots.hasData) {
+                    if (snapshots.data!.docs.isNotEmpty) {
                       return _buildDataTableClass(snapshots);
-                    }else {
+                    } else {
                       return EmptyDataView(label: "Data kelas");
                     }
-                  }else {
+                  } else {
                     return EmptyDataView(label: "Data kelas");
                   }
-                }else {
+                } else {
                   return LoadingView();
                 }
               },
@@ -100,7 +101,7 @@ class DataClassView extends StatelessWidget {
           ),
           TextButton(
             onPressed: () async {
-              await controller.addClass();
+              await controller.addClass(context);
             },
             child: Text("Simpan"),
           ),
@@ -110,7 +111,6 @@ class DataClassView extends StatelessWidget {
   }
 
   Widget _buildDataTableClass(AsyncSnapshot<QuerySnapshot> snapshots) {
-
     controller.mapConvertClassFirestoreToClassModel(snapshots);
 
     return Expanded(
@@ -150,8 +150,10 @@ class DataClassView extends StatelessWidget {
                 DataCell(
                   ElevatedButton(
                     onPressed: () {
-                      controller.dashboardLecturerController.setSelectedClass(classId);
-                      controller.dashboardLecturerController.setSelectedIndex(3);
+                      controller.dashboardLecturerController
+                          .setSelectedClass(classId);
+                      controller.dashboardLecturerController
+                          .setSelectedIndex(3);
                     },
                     child: Text("Lihat Latihan Soal"),
                   ),
