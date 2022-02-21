@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,19 +38,14 @@ class LeftContentWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  exerciseName,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle2
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textBody(
+                  context: context,
+                  text: exerciseName,
+                  customWeight: FontWeight.bold,
                 ),
-                Text(
-                  exerciseDescription,
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textCaption(
+                  context: context,
+                  text: exerciseDescription,
                 ),
                 dragTargetContent,
                 draggableContent,

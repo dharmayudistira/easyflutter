@@ -1,4 +1,5 @@
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/dialog_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
@@ -41,12 +42,9 @@ class RightContentCode extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Output yang diharapkan : ",
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle2
-                              ?.copyWith(color: Colors.black),
+                        CustomTextHelper.textBody(
+                          context: context,
+                          text: "Output yang diharapkan : ",
                         ),
                         StreamBuilder<int>(
                           stream: stopwatchTimer.rawTime,
@@ -57,12 +55,9 @@ class RightContentCode extends StatelessWidget {
                                 snapshotData,
                                 hours: true);
                             final hideMilSecTime = displayTime.substring(0, 8);
-                            return Text(
-                              hideMilSecTime,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle2
-                                  ?.copyWith(color: Colors.black),
+                            return CustomTextHelper.textBody(
+                              context: context,
+                              text: hideMilSecTime,
                             );
                           },
                         ),

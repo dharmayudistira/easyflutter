@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -55,12 +56,9 @@ class RightContentWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Output yang diharapkan",
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1
-                          ?.copyWith(color: Colors.black),
+                    CustomTextHelper.textBody(
+                      context: context,
+                      text: "Output yang diharapkan : ",
                     ),
                     StopWatchWidget(
                       stopWatchTimer: stopWatchTimer,

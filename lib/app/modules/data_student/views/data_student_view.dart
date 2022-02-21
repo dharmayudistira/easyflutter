@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:easyflutter/app/views/loading_view.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +24,9 @@ class DataStudentView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Data Mahasiswa",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textTitle(
+                  context: context,
+                  text: "Data Mahasiswa",
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -44,17 +42,17 @@ class DataStudentView extends StatelessWidget {
             StreamBuilder(
               stream: controller.getAllStudent(),
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
-                if(snapshots.connectionState == ConnectionState.active) {
+                if (snapshots.connectionState == ConnectionState.active) {
                   if (snapshots.hasData) {
                     if (snapshots.data!.docs.isNotEmpty) {
-                      return _buildDataTableStudent(snapshots);
+                      return _buildDataTableStudent(snapshots, context);
                     } else {
                       return EmptyDataView(label: "Data mahasiswa");
                     }
                   } else {
                     return EmptyDataView(label: "Data mahasiswa");
                   }
-                }else {
+                } else {
                   return LoadingView();
                 }
               },
@@ -65,7 +63,8 @@ class DataStudentView extends StatelessWidget {
     );
   }
 
-  Widget _buildDataTableStudent(AsyncSnapshot<QuerySnapshot> snapshots) {
+  Widget _buildDataTableStudent(
+      AsyncSnapshot<QuerySnapshot> snapshots, BuildContext context) {
     controller.mapStudentFirestoreToStudentModel(snapshots);
 
     return Expanded(
@@ -75,27 +74,45 @@ class DataStudentView extends StatelessWidget {
           scrollController: ScrollController(),
           columns: [
             DataColumn2(
-              label: Text("No"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "No",
+              ),
               size: ColumnSize.S,
             ),
             DataColumn2(
-              label: Text("NIM"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "NIM",
+              ),
               size: ColumnSize.M,
             ),
             DataColumn2(
-              label: Text("Nama"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Nama",
+              ),
               size: ColumnSize.L,
             ),
             DataColumn2(
-              label: Text("Kelas"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Kelas",
+              ),
               size: ColumnSize.M,
             ),
             DataColumn2(
-              label: Text("Status"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Status",
+              ),
               size: ColumnSize.M,
             ),
             DataColumn2(
-              label: Text("Aksi"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Aksi",
+              ),
               size: ColumnSize.L,
             ),
           ],
@@ -110,19 +127,41 @@ class DataStudentView extends StatelessWidget {
 
             return DataRow2(
               cells: [
-                DataCell(Text(converted)),
-                DataCell(Text(studentId!)),
                 DataCell(
-                  Text(
-                    studentName!,
-                    maxLines: 2,
-                    style: TextStyle(
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: converted,
                   ),
                 ),
-                DataCell(Text(studentClass!)),
-                DataCell((status!) ? Text("Valid") : Text("Belum valid")),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: studentId!,
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: studentName!,
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: studentClass!,
+                  ),
+                ),
+                DataCell(
+                  (status!)
+                      ? CustomTextHelper.textBodyTable(
+                          context: context,
+                          text: "Valid",
+                        )
+                      : CustomTextHelper.textBodyTable(
+                          context: context,
+                          text: "Belum Valid",
+                        ),
+                ),
                 DataCell(
                   ElevatedButton(
                     onPressed: (status)

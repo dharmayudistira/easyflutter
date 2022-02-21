@@ -1,6 +1,7 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:easyflutter/app/views/app_description_widget.dart';
 import 'package:flutter/gestures.dart';
@@ -50,12 +51,9 @@ class LoginView extends GetView<LoginController> {
             controller: ScrollController(),
             child: Column(
               children: [
-                Text(
-                  "Masuk",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline4
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textTitle(
+                  context: context,
+                  text: "Masuk",
                 ),
                 SizedBox(height: dimenMedium),
                 TextFormField(
@@ -63,8 +61,9 @@ class LoginView extends GetView<LoginController> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "1941720000",
-                    label: Text(
-                      "Masukkan NIM / NIDN",
+                    label: CustomTextHelper.textLabelForm(
+                      context: context,
+                      text: "Masukkan NIM / NIDN",
                     ),
                     prefixIcon: Icon(
                       FontAwesomeIcons.userAlt,
@@ -97,7 +96,10 @@ class LoginView extends GetView<LoginController> {
                           controller.setObscuredPassword();
                         },
                       ),
-                      label: Text("Masukkan Kata Sandi"),
+                      label: CustomTextHelper.textLabelForm(
+                        context: context,
+                        text: "Masukkan Kata Sandi",
+                      ),
                     ),
                     validator: (newValue) {
                       return emptyValidationForm(newValue, "kata sandi");
@@ -108,8 +110,9 @@ class LoginView extends GetView<LoginController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      "Masuk sebagai : ",
+                    CustomTextHelper.textBody(
+                      context: context,
+                      text: "Masuk sebagai : ",
                     ),
                     SizedBox(width: dimenSmall),
                     Obx(() {
@@ -127,10 +130,15 @@ class LoginView extends GetView<LoginController> {
                           child: DropdownButton<String>(
                             value: controller.selectedLoginType.value,
                             items: controller.listLoginType
-                                .map((type) => DropdownMenuItem<String>(
-                                      value: type,
-                                      child: Text(type),
-                                    ))
+                                .map(
+                                  (type) => DropdownMenuItem<String>(
+                                    value: type,
+                                    child: CustomTextHelper.textBody(
+                                      context: context,
+                                      text: type,
+                                    ),
+                                  ),
+                                )
                                 .toList(),
                             onChanged: (selected) {
                               controller.selectedLoginType.value = selected!;
@@ -163,17 +171,22 @@ class LoginView extends GetView<LoginController> {
                   child: RichText(
                     text: TextSpan(
                         text: "Bagi mahasiswa silahkan daftar ",
+                        style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                              color: Colors.black,
+                            ),
                         children: [
                           TextSpan(
-                              text: "di sini",
-                              style: TextStyle(
-                                color: Colors.blueAccent,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Get.offNamed(Routes.REGISTER);
-                                }),
+                            text: "di sini",
+                            style:
+                                Theme.of(context).textTheme.subtitle2?.copyWith(
+                                      color: Colors.blueAccent,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Get.offNamed(Routes.REGISTER);
+                              },
+                          ),
                         ]),
                   ),
                 ),

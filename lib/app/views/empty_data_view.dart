@@ -1,9 +1,9 @@
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class EmptyDataView extends StatelessWidget {
-
   final String label;
 
   EmptyDataView({required this.label});
@@ -20,10 +20,10 @@ class EmptyDataView extends StatelessWidget {
               child: Lottie.asset("assets/animations/empty_animation.json"),
             ),
             SizedBox(height: dimenSmall),
-            Text(
-              label + " kosong",
-              style: Theme.of(context).textTheme.subtitle1?.copyWith(color: Colors.black),
-            ),
+            CustomTextHelper.textBody(
+              context: context,
+              text: label + " kosong",
+            )
           ],
         ),
       ),

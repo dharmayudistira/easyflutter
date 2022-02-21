@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
+import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -30,12 +32,9 @@ class AddStudentView extends StatelessWidget {
                   icon: FaIcon(FontAwesomeIcons.angleLeft),
                 ),
                 SizedBox(width: dimenSmall),
-                Text(
-                  "Tambah Mahasiswa",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textTitle(
+                  context: context,
+                  text: "Tambah Mahasiswa",
                 ),
               ],
             ),
@@ -49,7 +48,10 @@ class AddStudentView extends StatelessWidget {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "1941720000",
-                      label: Text("Masukkan NIM"),
+                      label: CustomTextHelper.textLabelForm(
+                        context: context,
+                        text: "Masukkan NIM",
+                      ),
                     ),
                     validator: (newValue) {
                       return emptyValidationForm(newValue, "NIM");
@@ -60,7 +62,10 @@ class AddStudentView extends StatelessWidget {
                     controller: controller.edtStudentNameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      label: Text("Masukkan Nama Mahasiswa"),
+                      label: CustomTextHelper.textLabelForm(
+                        context: context,
+                        text: "Masukkan Nama Mahasiswa",
+                      ),
                     ),
                     validator: (newValue) {
                       return emptyValidationForm(newValue, "nama mahasiswa");
@@ -72,7 +77,10 @@ class AddStudentView extends StatelessWidget {
                     initialValue: controller.getLecturerName(),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      label: Text("Nama Dosen"),
+                      label: CustomTextHelper.textBody(
+                        context: context,
+                        text: "Nama Dosen",
+                      ),
                     ),
                   ),
                 ],
@@ -84,12 +92,12 @@ class AddStudentView extends StatelessWidget {
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
                 if (snapshots.hasData) {
                   if (snapshots.data!.docs.isNotEmpty) {
-                    return _buildDropDownClass(snapshots);
+                    return _buildDropDownClass(snapshots, context);
                   } else {
-                    return _buildDropDownClass(snapshots);
+                    return _buildDropDownClass(snapshots, context);
                   }
                 } else {
-                  return Expanded(child: Center(child: Text("No Data")));
+                  return EmptyDataView(label: "Data Kelas");
                 }
               },
             ),
@@ -105,7 +113,8 @@ class AddStudentView extends StatelessWidget {
     );
   }
 
-  Widget _buildDropDownClass(AsyncSnapshot<QuerySnapshot> snapshots) {
+  Widget _buildDropDownClass(
+      AsyncSnapshot<QuerySnapshot> snapshots, BuildContext context) {
     controller.mapConvertClassFirestoreToClassModel(snapshots);
 
     return Container(
@@ -125,7 +134,10 @@ class AddStudentView extends StatelessWidget {
             items: controller.listOfClass
                 .map((itemClass) => DropdownMenuItem<String>(
                       value: itemClass.className,
-                      child: Text(itemClass.className!),
+                      child: CustomTextHelper.textBody(
+                        context: context,
+                        text: itemClass.className!,
+                      ),
                     ))
                 .toList(),
             onChanged: (selected) {

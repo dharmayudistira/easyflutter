@@ -1,3 +1,4 @@
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -19,15 +20,16 @@ class BackButtonExercise extends StatelessWidget {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text(
-                  'Apakah Anda yakin untuk keluar?',
-                  style: Theme.of(context).textTheme.subtitle2,
+                title: CustomTextHelper.textTitleDialog(
+                  context: context,
+                  text: 'Apakah Anda yakin untuk keluar?',
                 ),
                 content: Container(
                   width: double.minPositive,
-                  child: Text(
-                    'Jika Anda menekan tombol "Yakin" maka progres Anda pada latihan ini akan direset.!',
-                    style: Theme.of(context).textTheme.caption,
+                  child: CustomTextHelper.textBodyDialog(
+                    context: context,
+                    text:
+                        'Jika Anda menekan tombol "Yakin" maka progres Anda pada latihan ini akan direset.!',
                   ),
                 ),
                 actions: [

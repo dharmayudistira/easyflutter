@@ -6,6 +6,7 @@ import 'package:easyflutter/app/views/widget/left_content_widget.dart';
 import 'package:easyflutter/app/views/widget/right_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 
 import 'package:get/get.dart';
 
@@ -23,12 +24,9 @@ class WidgetExercise3View extends GetView<WidgetExercise3Controller> {
             leading: BackButtonExercise(
               isStart: controller.isStart,
             ),
-            title: Text(
-              "Latihan ID: ${controller.exerciseId}",
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2
-                  ?.copyWith(color: Colors.black),
+            title: CustomTextHelper.textBody(
+              context: context,
+              text: "Latihan ID: ${controller.exerciseId}",
             ),
             backgroundColor: ColorConstants.kPrimaryColor,
             elevation: 0,

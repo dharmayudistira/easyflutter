@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:easyflutter/app/views/loading_view.dart';
@@ -24,12 +25,9 @@ class DataClassView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Data Kelas",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textTitle(
+                  context: context,
+                  text: "Data Kelas",
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -50,7 +48,7 @@ class DataClassView extends StatelessWidget {
                 if (snapshots.connectionState == ConnectionState.active) {
                   if (snapshots.hasData) {
                     if (snapshots.data!.docs.isNotEmpty) {
-                      return _buildDataTableClass(snapshots);
+                      return _buildDataTableClass(snapshots, context);
                     } else {
                       return EmptyDataView(label: "Data kelas");
                     }
@@ -72,7 +70,10 @@ class DataClassView extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Tambahkan Kelas"),
+        title: CustomTextHelper.textTitleDialog(
+          context: context,
+          text: "Tambahkkan Kelas",
+        ),
         content: Form(
           key: controller.dataClassFormKey,
           child: TextFormField(
@@ -80,7 +81,10 @@ class DataClassView extends StatelessWidget {
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: "Contoh : TI-3A / MI-2A",
-              label: Text("Masukkan Nama Kelas"),
+              label: CustomTextHelper.textLabelForm(
+                context: context,
+                text: "Masukkan Nama Kelas",
+              ),
             ),
             validator: (newValue) {
               return emptyValidationForm(newValue, "nama kelas");
@@ -110,7 +114,10 @@ class DataClassView extends StatelessWidget {
     );
   }
 
-  Widget _buildDataTableClass(AsyncSnapshot<QuerySnapshot> snapshots) {
+  Widget _buildDataTableClass(
+    AsyncSnapshot<QuerySnapshot> snapshots,
+    BuildContext context,
+  ) {
     controller.mapConvertClassFirestoreToClassModel(snapshots);
 
     return Expanded(
@@ -120,19 +127,31 @@ class DataClassView extends StatelessWidget {
           scrollController: ScrollController(),
           columns: [
             DataColumn2(
-              label: Text("No"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "No",
+              ),
               size: ColumnSize.S,
             ),
             DataColumn2(
-              label: Text("ID Kelas"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "ID Kelas",
+              ),
               size: ColumnSize.M,
             ),
             DataColumn2(
-              label: Text("Kelas"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Kelas",
+              ),
               size: ColumnSize.M,
             ),
             DataColumn2(
-              label: Text("Aksi"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Aksi",
+              ),
               size: ColumnSize.L,
             ),
           ],
@@ -145,9 +164,24 @@ class DataClassView extends StatelessWidget {
 
             return DataRow2(
               cells: [
-                DataCell(Text(converted)),
-                DataCell(Text(classId!)),
-                DataCell(Text(className!)),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: converted,
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: classId!,
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: className!,
+                  ),
+                ),
                 DataCell(
                   ElevatedButton(
                     onPressed: () {

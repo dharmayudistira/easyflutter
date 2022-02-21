@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:easyflutter/app/views/loading_view.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,6 @@ import 'package:get/get.dart';
 import '../controllers/list_exercise_controller.dart';
 
 class ListExerciseView extends StatelessWidget {
-
   final controller = Get.put(ListExerciseController());
 
   @override
@@ -19,7 +19,7 @@ class ListExerciseView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding:
-        EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
+            EdgeInsets.symmetric(horizontal: dimenMedium, vertical: dimenLarge),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,12 +32,9 @@ class ListExerciseView extends StatelessWidget {
                   icon: FaIcon(FontAwesomeIcons.angleLeft),
                 ),
                 SizedBox(width: dimenSmall),
-                Text(
-                  "Data Latihan",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textTitle(
+                  context: context,
+                  text: "Data Latihan",
                 ),
               ],
             ),
@@ -45,17 +42,17 @@ class ListExerciseView extends StatelessWidget {
             StreamBuilder(
               stream: controller.getAllExerciseByClass(),
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
-                if(snapshots.connectionState == ConnectionState.active) {
+                if (snapshots.connectionState == ConnectionState.active) {
                   if (snapshots.hasData) {
                     if (snapshots.data!.docs.isNotEmpty) {
-                      return _buildDataTableExercises(snapshots);
+                      return _buildDataTableExercises(snapshots, context);
                     } else {
                       return EmptyDataView(label: "Data latihan");
                     }
                   } else {
                     return EmptyDataView(label: "Data latihan");
                   }
-                }else {
+                } else {
                   return LoadingView();
                 }
               },
@@ -66,8 +63,8 @@ class ListExerciseView extends StatelessWidget {
     );
   }
 
-  Widget _buildDataTableExercises(AsyncSnapshot<QuerySnapshot> snapshots) {
-
+  Widget _buildDataTableExercises(
+      AsyncSnapshot<QuerySnapshot> snapshots, BuildContext context) {
     controller.mapExerciseFirestoreToExerciseModel(snapshots);
 
     return Expanded(
@@ -77,19 +74,31 @@ class ListExerciseView extends StatelessWidget {
           scrollController: ScrollController(),
           columns: [
             DataColumn2(
-              label: Text("No"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "No",
+              ),
               size: ColumnSize.S,
             ),
             DataColumn2(
-              label: Text("ID Latihan"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "ID Latihan",
+              ),
               size: ColumnSize.M,
             ),
             DataColumn2(
-              label: Text("Latihan"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Latihan",
+              ),
               size: ColumnSize.L,
             ),
             DataColumn2(
-              label: Text("Aksi"),
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Aksi",
+              ),
               size: ColumnSize.L,
             ),
           ],
@@ -102,14 +111,27 @@ class ListExerciseView extends StatelessWidget {
 
             return DataRow2(
               cells: [
-                DataCell(Text(converted)),
-                DataCell(Text(exerciseId!)),
-                DataCell(Text(exerciseName!)),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: converted,
+                  ),
+                ),
+                DataCell(CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: exerciseId!,
+                  ),),
+                DataCell(CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: exerciseName!,
+                  ),),
                 DataCell(
                   ElevatedButton(
                     onPressed: () {
-                      controller.dashboardLecturerController.setSelectedExercise(exerciseId);
-                      controller.dashboardLecturerController.setSelectedIndex(4);
+                      controller.dashboardLecturerController
+                          .setSelectedExercise(exerciseId);
+                      controller.dashboardLecturerController
+                          .setSelectedIndex(4);
                     },
                     child: Text("Lihat Log Mahasiswa"),
                   ),

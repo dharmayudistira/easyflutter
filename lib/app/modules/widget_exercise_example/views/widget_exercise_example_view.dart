@@ -1,4 +1,5 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/views/widget/back_button_exercise_widget.dart';
 import 'package:easyflutter/app/views/widget/drag_target_widget.dart';
 import 'package:easyflutter/app/views/widget/draggable_widget.dart';
@@ -97,12 +98,9 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
             title: CustomShowcaseWidget(
               globalKey: key1,
               description: "Berikut merupakan ID Latihan.",
-              child: Text(
-                "Latihan ID: ${controller.exerciseId}",
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2
-                    ?.copyWith(color: Colors.black),
+              child: CustomTextHelper.textBody(
+                context: context,
+                text: "Latihan ID: ${controller.exerciseId}",
               ),
             ),
             backgroundColor: ColorConstants.kPrimaryColor,
@@ -136,24 +134,18 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                             CustomShowcaseWidget(
                               globalKey: key2,
                               description: "Berikut merupakan Nama Latihan.",
-                              child: Text(
-                                controller.exerciseName,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle2
-                                    ?.copyWith(color: Colors.black),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: controller.exerciseName,
                               ),
                             ),
                             CustomShowcaseWidget(
                               globalKey: key3,
                               description:
                                   "Berikut merupakan Deskripsi Latihan.",
-                              child: Text(
-                                controller.exerciseDescription,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption
-                                    ?.copyWith(color: Colors.black),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: controller.exerciseDescription,
                               ),
                             ),
                             CustomShowcaseWidget(
@@ -263,12 +255,9 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  "Output yang diharapkan",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle1
-                                      ?.copyWith(color: Colors.black),
+                                CustomTextHelper.textBody(
+                                  context: context,
+                                  text: "Output yang diharapkan :",
                                 ),
                                 CustomShowcaseWidget(
                                   globalKey: key6,
@@ -358,15 +347,17 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text(
-                'Apakah Anda yakin untuk mengerjakan ${controller.exerciseName}?',
-                style: Theme.of(context).textTheme.subtitle2,
+              title: CustomTextHelper.textTitleDialog(
+                context: context,
+                text:
+                    "Apakah Anda yakin untuk mengerjakan ${controller.exerciseName}?",
               ),
               content: Container(
                 width: double.minPositive,
-                child: Text(
-                  'Lengkapi peta konsep menggunakan jawaban yang sudah disediakan, sesuai dengan output yang diharapkan. Ketika Anda menekan tombol "Yakin", maka waktu akan dimulai, dan waktu akan secara otomatis berhenti ketika Anda telah melengkapi peta konsep dengan benar.',
-                  style: Theme.of(context).textTheme.caption,
+                child: CustomTextHelper.textCaption(
+                  context: context,
+                  text:
+                      'Lengkapi peta konsep menggunakan jawaban yang sudah disediakan, sesuai dengan output yang diharapkan. Ketika Anda menekan tombol "Yakin", maka waktu akan dimulai, dan waktu akan secara otomatis berhenti ketika Anda telah melengkapi peta konsep dengan benar.',
                 ),
               ),
               actions: [
@@ -406,9 +397,14 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text("Selamat"),
-                          content: Text(
-                            "Anda telah menyelesaikan ${controller.exerciseName}",
+                          title: CustomTextHelper.textTitleDialog(
+                            context: context,
+                            text: "Selamat",
+                          ),
+                          content: CustomTextHelper.textBodyDialog(
+                            context: context,
+                            text:
+                                "Anda telah menyelesaikan ${controller.exerciseName}",
                           ),
                           actions: [
                             ElevatedButton(
@@ -476,9 +472,10 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text(
-                          'Apakah Anda yakin untuk reset jawaban latihan?',
-                          style: Theme.of(context).textTheme.subtitle2,
+                        title: CustomTextHelper.textTitleDialog(
+                          context: context,
+                          text:
+                              'Apakah Anda yakin untuk reset jawaban latihan?',
                         ),
                         actions: [
                           ElevatedButton(

@@ -1,4 +1,5 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/views/widget/back_button_exercise_widget.dart';
 import 'package:easyflutter/app/views/widget/drag_target_widget.dart';
 import 'package:easyflutter/app/views/widget/draggable_widget.dart';
@@ -23,12 +24,9 @@ class WidgetExercise2View extends GetView<WidgetExercise2Controller> {
             leading: BackButtonExercise(
               isStart: controller.isStart,
             ),
-            title: Text(
-              "Latihan ID: ${controller.exerciseId}",
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2
-                  ?.copyWith(color: Colors.black),
+            title: CustomTextHelper.textBody(
+              context: context,
+              text: "Latihan ID: ${controller.exerciseId}",
             ),
             backgroundColor: ColorConstants.kPrimaryColor,
             elevation: 0,

@@ -1,4 +1,5 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/dialog_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,10 +12,9 @@ AppBar buildAppBarExercise(
   RxBool isStarted,
 ) {
   return AppBar(
-    title: Text(
-      "Latihan ID : $exerciseId",
-      style:
-          Theme.of(context).textTheme.subtitle2?.copyWith(color: Colors.black),
+    title: CustomTextHelper.textBody(
+      context: context,
+      text: "Latihan ID : $exerciseId",
     ),
     leading: IconButton(
       icon: FaIcon(

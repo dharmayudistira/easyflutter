@@ -1,10 +1,10 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
 class LeftContentCode extends StatelessWidget {
-
   final String exerciseName;
   final String exerciseCaption;
   final RxList<Map<String, Object>> studentAnswer;
@@ -31,17 +31,15 @@ class LeftContentCode extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                exerciseName,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2
-                    ?.copyWith(color: Colors.black),
+              CustomTextHelper.textBody(
+                context: context,
+                text: exerciseName,
+                customWeight: FontWeight.bold,
               ),
               SizedBox(height: dimenSmall / 2),
-              Text(
-                exerciseCaption,
-                style: Theme.of(context).textTheme.caption,
+              CustomTextHelper.textCaption(
+                context: context,
+                text: exerciseCaption,
               ),
               SizedBox(height: dimenSmall),
               Expanded(
@@ -52,17 +50,14 @@ class LeftContentCode extends StatelessWidget {
                       final valueKey = element["keyValue"] as int;
                       final valueText = element["codeValue"] as String;
                       final valuePadding = element["paddingValue"] as double;
-    
+
                       return Card(
                         key: ValueKey(valueKey),
                         child: ListTile(
                           leading: SizedBox(width: valuePadding),
-                          title: Text(
-                            valueText,
-                            style: Theme.of(context)
-                                .textTheme
-                                .caption
-                                ?.copyWith(color: Colors.black),
+                          title: CustomTextHelper.textCaption(
+                            context: context,
+                            text: valueText,
                           ),
                           tileColor: ColorConstants.kPrimaryColor,
                         ),

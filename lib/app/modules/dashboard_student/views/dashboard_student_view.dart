@@ -2,6 +2,7 @@ import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/views/list_exercise_code_reconstruction_view.dart';
 import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/views/list_exercise_widget_tree_reconstruction_view.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -34,11 +35,9 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextButton(
-            child: Text(
-              "EasyFlutter",
-              style: TextStyle(
-                color: Colors.black,
-              ),
+            child: CustomTextHelper.textBody(
+              context: context,
+              text: "EasyFlutter",
             ),
             onPressed: () {
               controller.setSelectedIndex(0);
@@ -47,11 +46,9 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
           Row(
             children: [
               TextButton(
-                child: Text(
-                  "Code Reconstruction",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                child: CustomTextHelper.textBody(
+                  context: context,
+                  text: "Code Reconstruction",
                 ),
                 onPressed: () {
                   controller.setSelectedIndex(1);
@@ -59,11 +56,9 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
               ),
               SizedBox(width: dimenMedium),
               TextButton(
-                child: Text(
-                  "Widget Tree Reconstruction",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                child: CustomTextHelper.textBody(
+                  context: context,
+                  text: "Widget Tree Reconstruction",
                 ),
                 onPressed: () {
                   controller.setSelectedIndex(2);
@@ -71,7 +66,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
               ),
               SizedBox(width: dimenMedium),
               IconButton(
-                onPressed: ()  {
+                onPressed: () {
                   _buildDialogLogout(context);
                 },
                 icon: FaIcon(
@@ -135,23 +130,22 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   child: Padding(
                     padding: EdgeInsets.all(dimenMedium),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Apa itu\nWidget Tree Reconstruction ?",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4
-                              ?.copyWith(color: Colors.black),
+                        CustomTextHelper.textTitle(
+                          context: context,
+                          text: "Apa itu\nWidget Tree Reconstruction ?",
                         ),
                         SizedBox(height: dimenMedium),
-                        Text(
-                          "Widget Tree Reconstruction menerapkan metode Concept Map. "
-                          "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
-                          "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
-                          "konsep tersebut dengan jawaban yang sudah disediakan.",
-                        ),
+                        CustomTextHelper.textBody(
+                          context: context,
+                          text:
+                              "Widget Tree Reconstruction menerapkan metode Concept Map. "
+                              "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
+                              "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
+                              "konsep tersebut dengan jawaban yang sudah disediakan.",
+                        )
                       ],
                     ),
                   ),
@@ -185,18 +179,17 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Apa itu\nCode Reconstruction ?",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4
-                              ?.copyWith(color: Colors.black),
+                        CustomTextHelper.textTitle(
+                          context: context,
+                          text: "Apa itu\nCode Reconstruction ?",
                         ),
                         SizedBox(height: dimenMedium),
-                        Text(
-                          "Code Reconstruction menerapkan metode Parsons Problem, "
-                          "di mana terdapat blok-blok kode yang sudah disusun secara "
-                          "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
+                        CustomTextHelper.textBody(
+                          context: context,
+                          text:
+                              "Code Reconstruction menerapkan metode Parsons Problem, "
+                              "di mana terdapat blok-blok kode yang sudah disusun secara "
+                              "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
                         ),
                       ],
                     ),
@@ -228,8 +221,11 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Keluar ?"),
-        content: Text("Apakah Anda yakin untuk keluar ?"),
+        title: CustomTextHelper.textTitleDialog(
+          context: context,
+          text: "Keluar ?",
+        ),
+        content: CustomTextHelper.textBodyDialog(context: context, text: "Apakah Anda yakin untuk keluar ?"),
         actions: [
           TextButton(
             onPressed: () {

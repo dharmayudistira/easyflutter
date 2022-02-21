@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/views/empty_data_view.dart';
 import 'package:flutter/material.dart';
 
@@ -28,12 +29,9 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Daftar Latihan Soal - Widget Tree Reconstruction",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5
-                        ?.copyWith(color: Colors.black),
+                  CustomTextHelper.textTitle(
+                    context: context,
+                    text: "Daftar Latihan Soal - Code Reconstruction",
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -53,10 +51,10 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                   if (snapshots.data!.docs.isNotEmpty) {
                     return _buildListExerciseCode(snapshots);
                   } else {
-                    return EmptyDataView(label: "Data latihan soal");
+                    return EmptyDataView(label: "latihan soal");
                   }
                 } else {
-                  return EmptyDataView(label: "Data latihan soal");
+                  return EmptyDataView(label: "latihan soal");
                 }
               },
             )
@@ -97,19 +95,13 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                   controller.navigateTo(
                       index, item.exerciseId!, item.exerciseName!);
                 },
-                title: Text(
-                  item.exerciseName!,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle2
-                      ?.copyWith(color: Colors.black),
+                title: CustomTextHelper.textBody(
+                  context: context,
+                  text: item.exerciseName!,
                 ),
-                subtitle: Text(
-                  item.exerciseId!,
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption
-                      ?.copyWith(color: Colors.black),
+                subtitle: CustomTextHelper.textCaption(
+                  context: context,
+                  text: item.exerciseId!,
                 ),
                 trailing: (isComplete)
                     ? ElevatedButton(

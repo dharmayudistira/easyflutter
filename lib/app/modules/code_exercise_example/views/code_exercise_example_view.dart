@@ -1,5 +1,6 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/dialog_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -64,12 +65,9 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
               title: CustomShowcaseWidget(
                 globalKey: keyAppbarTitle,
                 description: "Berikut adalah ID latihan yang sedang dikerjakan",
-                child: Text(
-                  "Latihan ID : ${controller.exerciseId}",
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle2
-                      ?.copyWith(color: Colors.black),
+                child: CustomTextHelper.textBody(
+                  context: context,
+                  text: "Latihan ID : ${controller.exerciseId}",
                 ),
               ),
               leading: CustomShowcaseWidget(
@@ -137,12 +135,9 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
             CustomShowcaseWidget(
               globalKey: keyExerciseName,
               description: "Berikut adalah nama latihan yang sedang dikerjakan",
-              child: Text(
-                controller.exerciseName,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2
-                    ?.copyWith(color: Colors.black),
+              child: CustomTextHelper.textBody(
+                context: context,
+                text: controller.exerciseName,
               ),
             ),
             SizedBox(height: dimenSmall / 2),
@@ -150,9 +145,9 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
               globalKey: keyExerciseCaption,
               description:
                   "Berikut adalah instruksi latihan yang sedang dikerjakan",
-              child: Text(
-                controller.exerciseCaption,
-                style: Theme.of(context).textTheme.caption,
+              child: CustomTextHelper.textCaption(
+                context: context,
+                text: controller.exerciseCaption,
               ),
             ),
             SizedBox(height: dimenSmall),
@@ -173,12 +168,9 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                       key: ValueKey(valueKey),
                       child: ListTile(
                         leading: SizedBox(width: valuePadding),
-                        title: Text(
-                          valueText,
-                          style: Theme.of(context)
-                              .textTheme
-                              .caption
-                              ?.copyWith(color: Colors.black),
+                        title: CustomTextHelper.textBody(
+                          context: context,
+                          text: valueText,
                         ),
                         tileColor: ColorConstants.kPrimaryColor,
                       ),
@@ -214,12 +206,9 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Output yang diharapkan : ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            ?.copyWith(color: Colors.black),
+                      CustomTextHelper.textBody(
+                        context: context,
+                        text: "Output yang diharapkan :",
                       ),
                       CustomShowcaseWidget(
                         globalKey: keyTimer,
@@ -234,12 +223,9 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                                 snapshotData,
                                 hours: true);
                             final hideMilSecTime = displayTime.substring(0, 8);
-                            return Text(
-                              hideMilSecTime,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle2
-                                  ?.copyWith(color: Colors.black),
+                            return CustomTextHelper.textBody(
+                              context: context,
+                              text: hideMilSecTime,
                             );
                           },
                         ),

@@ -5,6 +5,7 @@ import 'package:easyflutter/app/modules/data_class/views/data_class_view.dart';
 import 'package:easyflutter/app/modules/data_student/views/data_student_view.dart';
 import 'package:easyflutter/app/modules/list_exercise/views/list_exercise_view.dart';
 import 'package:easyflutter/app/modules/list_log_student/views/list_log_student_view.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -12,7 +13,6 @@ import 'package:get/get.dart';
 import '../controllers/dashboard_lecturer_controller.dart';
 
 class DashboardLecturerView extends GetView<DashboardLecturerController> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,12 +53,9 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
               Column(
                 children: [
                   DrawerHeader(
-                    child: Text(
-                      "EasyFlutter",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline5
-                          ?.copyWith(color: Colors.black),
+                    child: CustomTextHelper.textTitle(
+                      context: context,
+                      text: "EasyFlutter",
                     ),
                   ),
                   _buildSideBarItem(
@@ -106,12 +103,9 @@ class DashboardLecturerView extends GetView<DashboardLecturerController> {
         borderRadius: BorderRadius.circular(dimenSmall / 2),
       ),
       child: ListTile(
-        title: Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .subtitle2
-              ?.copyWith(color: Colors.black),
+        title: CustomTextHelper.textBody(
+          context: context,
+          text: title,
         ),
         onTap: () {
           onPressed();

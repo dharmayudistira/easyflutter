@@ -3,6 +3,7 @@ import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/data/dosen_model.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
+import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/validation_helper.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -48,12 +49,9 @@ class RegisterView extends GetView<RegisterController> {
             controller: ScrollController(),
             child: Column(
               children: [
-                Text(
-                  "Daftar Sebagai Mahasiswa",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline4
-                      ?.copyWith(color: Colors.black),
+                CustomTextHelper.textTitle(
+                  context: context,
+                  text: "Daftar Sebagai Mahasiswa",
                 ),
                 SizedBox(height: dimenMedium),
                 TextFormField(
@@ -61,7 +59,10 @@ class RegisterView extends GetView<RegisterController> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "1941720000",
-                    label: Text("Masukkan NIM"),
+                    label: CustomTextHelper.textLabelForm(
+                      context: context,
+                      text: "Masukkan NIM",
+                    ),
                   ),
                   validator: (newValue) {
                     return emptyValidationForm(newValue, "NIM");
@@ -73,7 +74,10 @@ class RegisterView extends GetView<RegisterController> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Masukkan Nama Anda",
-                    label: Text("Masukkan Nama"),
+                    label: CustomTextHelper.textLabelForm(
+                      context: context,
+                      text: "Masukkan Nama",
+                    ),
                   ),
                   validator: (newValue) {
                     return emptyValidationForm(newValue, "nama mahasiswa");
@@ -97,7 +101,10 @@ class RegisterView extends GetView<RegisterController> {
                           controller.setObscuredPassword();
                         },
                       ),
-                      label: Text("Masukkan Kata Sandi"),
+                      label: CustomTextHelper.textLabelForm(
+                        context: context,
+                        text: "Masukkan Kata Sandi",
+                      ),
                     ),
                     validator: (newValue) {
                       return emptyValidationForm(newValue, "kata sandi");
@@ -109,9 +116,9 @@ class RegisterView extends GetView<RegisterController> {
                   stream: controller.getAllLecturer(),
                   builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
                     if (snapshots.connectionState == ConnectionState.active) {
-                      return _buildDropdownLecturer(snapshots);
+                      return _buildDropdownLecturer(snapshots, context);
                     } else {
-                      return _buildDropdownDummyValue("Pilih Dosen");
+                      return _buildDropdownDummyValue("Pilih Dosen", context);
                     }
                   },
                 ),
@@ -124,12 +131,18 @@ class RegisterView extends GetView<RegisterController> {
                           builder: (_, AsyncSnapshot<QuerySnapshot> snapshots) {
                             if (snapshots.hasData) {
                               if (snapshots.data!.docs.isNotEmpty) {
-                                return _buildDropdownClass(snapshots);
+                                return _buildDropdownClass(snapshots, context);
                               } else {
-                                return _buildDropdownDummyValue("Pilih Kelas");
+                                return _buildDropdownDummyValue(
+                                  "Pilih Kelas",
+                                  context,
+                                );
                               }
                             } else {
-                              return _buildDropdownDummyValue("Pilih Kelas");
+                              return _buildDropdownDummyValue(
+                                "Pilih Kelas",
+                                context,
+                              );
                             }
                           },
                         );
@@ -142,30 +155,35 @@ class RegisterView extends GetView<RegisterController> {
                     onPressed: () {
                       controller.addStudent(context);
                     },
-                    child: Text(
-                      "Daftar",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline5
-                          ?.copyWith(color: Colors.white),
+                    child: CustomTextHelper.textTitle(
+                      context: context,
+                      text: "Daftar",
                     ),
                   ),
                 ),
                 SizedBox(height: dimenSmall),
                 Center(
                   child: RichText(
-                    text: TextSpan(text: "Sudah punya akun ? ", children: [
-                      TextSpan(
-                          text: "Masuk di sini",
-                          style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold,
+                    text: TextSpan(
+                      text: "Sudah punya akun ? ",
+                      style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                            color: Colors.black,
                           ),
+                      children: [
+                        TextSpan(
+                          text: "Masuk di sini",
+                          style:
+                              Theme.of(context).textTheme.subtitle2?.copyWith(
+                                    color: Colors.blueAccent,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Get.offNamed(Routes.LOGIN);
-                            }),
-                    ]),
+                            },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -176,7 +194,10 @@ class RegisterView extends GetView<RegisterController> {
     );
   }
 
-  Widget _buildDropdownLecturer(AsyncSnapshot<QuerySnapshot> snapshots) {
+  Widget _buildDropdownLecturer(
+    AsyncSnapshot<QuerySnapshot> snapshots,
+    BuildContext context,
+  ) {
     controller.mapLecturerFirestoreToLecturerModel(snapshots);
 
     return Container(
@@ -194,10 +215,15 @@ class RegisterView extends GetView<RegisterController> {
             isExpanded: true,
             value: controller.selectedLecturer.value,
             items: controller.listLecturer
-                .map((lecturer) => DropdownMenuItem<LecturerModel>(
-                      value: lecturer,
-                      child: Text(lecturer.lecturerName!),
-                    ))
+                .map(
+                  (lecturer) => DropdownMenuItem<LecturerModel>(
+                    value: lecturer,
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: lecturer.lecturerName!,
+                    ),
+                  ),
+                )
                 .toList(),
             onChanged: (selected) {
               final selectedLecturer = selected as LecturerModel;
@@ -216,7 +242,10 @@ class RegisterView extends GetView<RegisterController> {
     );
   }
 
-  Widget _buildDropdownDummyValue(String dummyValue) {
+  Widget _buildDropdownDummyValue(
+    String dummyValue,
+    BuildContext context,
+  ) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: dimenSmall / 2),
       decoration: BoxDecoration(
@@ -231,10 +260,15 @@ class RegisterView extends GetView<RegisterController> {
           isExpanded: true,
           value: dummyValue,
           items: <String>[dummyValue]
-              .map((dummy) => DropdownMenuItem<String>(
-                    value: dummy,
-                    child: Text(dummy),
-                  ))
+              .map(
+                (dummy) => DropdownMenuItem<String>(
+                  value: dummy,
+                  child: CustomTextHelper.textBody(
+                    context: context,
+                    text: dummy,
+                  ),
+                ),
+              )
               .toList(),
           onChanged: (selected) {},
         ),
@@ -242,7 +276,10 @@ class RegisterView extends GetView<RegisterController> {
     );
   }
 
-  Widget _buildDropdownClass(AsyncSnapshot<QuerySnapshot> snapshots) {
+  Widget _buildDropdownClass(
+    AsyncSnapshot<QuerySnapshot> snapshots,
+    BuildContext context,
+  ) {
     controller.mapClassFirestoreToClassModel(snapshots);
 
     return Container(
@@ -260,10 +297,15 @@ class RegisterView extends GetView<RegisterController> {
             isExpanded: true,
             value: controller.selectedClass.value,
             items: controller.listClass
-                .map((itemClass) => DropdownMenuItem<String>(
-                      value: itemClass.className,
-                      child: Text(itemClass.className!),
-                    ))
+                .map(
+                  (itemClass) => DropdownMenuItem<String>(
+                    value: itemClass.className,
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: itemClass.className!,
+                    ),
+                  ),
+                )
                 .toList(),
             onChanged: (selected) {
               controller.selectedClass.value = selected!;
