@@ -143,14 +143,24 @@ class AppPages {
       binding: ListExerciseWidgetTreeReconstructionBinding(),
     ),
     GetPage(
-      name: _Paths.WIDGET_EXERCISE_1,
-      page: () => WidgetExercise1View(),
-      binding: WidgetExercise1Binding(),
+      name: _Paths.CODE_EXERCISE_EXAMPLE,
+      page: () => CodeExerciseExampleView(),
+      binding: CodeExerciseExampleBinding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE,
+      page: () => CodeExerciseView(),
+      binding: CodeExerciseBinding(),
     ),
     GetPage(
       name: _Paths.WIDGET_EXERCISE_EXAMPLE,
       page: () => WidgetExerciseExampleView(),
       binding: WidgetExerciseExampleBinding(),
+    ),
+    GetPage(
+      name: _Paths.WIDGET_EXERCISE_1,
+      page: () => WidgetExercise1View(),
+      binding: WidgetExercise1Binding(),
     ),
     GetPage(
       name: _Paths.WIDGET_EXERCISE_2,
@@ -161,11 +171,6 @@ class AppPages {
       name: _Paths.WIDGET_EXERCISE_3,
       page: () => WidgetExercise3View(),
       binding: WidgetExercise3Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_EXAMPLE,
-      page: () => CodeExerciseExampleView(),
-      binding: CodeExerciseExampleBinding(),
     ),
     GetPage(
       name: _Paths.WIDGET_EXERCISE_4,
@@ -226,11 +231,6 @@ class AppPages {
       name: _Paths.WIDGET_EXERCISE_15,
       page: () => WidgetExercise15View(),
       binding: WidgetExercise15Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE,
-      page: () => CodeExerciseView(),
-      binding: CodeExerciseBinding(),
     ),
   ];
 }

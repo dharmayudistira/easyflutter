@@ -16,26 +16,12 @@ abstract class Routes {
       _Paths.LIST_EXERCISE_CODE_RECONSTRUCTION;
   static const LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION =
       _Paths.LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION;
-  static const CODE_EXERCISE_1 = _Paths.CODE_EXERCISE_1;
-  static const WIDGET_EXERCISE_1 = _Paths.WIDGET_EXERCISE_1;
+  static const CODE_EXERCISE_EXAMPLE = _Paths.CODE_EXERCISE_EXAMPLE;
+  static const CODE_EXERCISE = _Paths.CODE_EXERCISE;
   static const WIDGET_EXERCISE_EXAMPLE = _Paths.WIDGET_EXERCISE_EXAMPLE;
+  static const WIDGET_EXERCISE_1 = _Paths.WIDGET_EXERCISE_1;
   static const WIDGET_EXERCISE_2 = _Paths.WIDGET_EXERCISE_2;
   static const WIDGET_EXERCISE_3 = _Paths.WIDGET_EXERCISE_3;
-  static const CODE_EXERCISE_2 = _Paths.CODE_EXERCISE_2;
-  static const CODE_EXERCISE_3 = _Paths.CODE_EXERCISE_3;
-  static const CODE_EXERCISE_4 = _Paths.CODE_EXERCISE_4;
-  static const CODE_EXERCISE_5 = _Paths.CODE_EXERCISE_5;
-  static const CODE_EXERCISE_6 = _Paths.CODE_EXERCISE_6;
-  static const CODE_EXERCISE_7 = _Paths.CODE_EXERCISE_7;
-  static const CODE_EXERCISE_8 = _Paths.CODE_EXERCISE_8;
-  static const CODE_EXERCISE_9 = _Paths.CODE_EXERCISE_9;
-  static const CODE_EXERCISE_10 = _Paths.CODE_EXERCISE_10;
-  static const CODE_EXERCISE_11 = _Paths.CODE_EXERCISE_11;
-  static const CODE_EXERCISE_12 = _Paths.CODE_EXERCISE_12;
-  static const CODE_EXERCISE_13 = _Paths.CODE_EXERCISE_13;
-  static const CODE_EXERCISE_14 = _Paths.CODE_EXERCISE_14;
-  static const CODE_EXERCISE_15 = _Paths.CODE_EXERCISE_15;
-  static const CODE_EXERCISE_EXAMPLE = _Paths.CODE_EXERCISE_EXAMPLE;
   static const WIDGET_EXERCISE_4 = _Paths.WIDGET_EXERCISE_4;
   static const WIDGET_EXERCISE_5 = _Paths.WIDGET_EXERCISE_5;
   static const WIDGET_EXERCISE_6 = _Paths.WIDGET_EXERCISE_6;
@@ -48,7 +34,6 @@ abstract class Routes {
   static const WIDGET_EXERCISE_13 = _Paths.WIDGET_EXERCISE_13;
   static const WIDGET_EXERCISE_14 = _Paths.WIDGET_EXERCISE_14;
   static const WIDGET_EXERCISE_15 = _Paths.WIDGET_EXERCISE_15;
-  static const CODE_EXERCISE = _Paths.CODE_EXERCISE;
 }
 
 abstract class _Paths {
@@ -64,26 +49,12 @@ abstract class _Paths {
       '/list-exercise-code-reconstruction';
   static const LIST_EXERCISE_WIDGET_TREE_RECONSTRUCTION =
       '/list-exercise-widget-tree-reconstruction';
-  static const CODE_EXERCISE_1 = '/code-exercise-1';
-  static const WIDGET_EXERCISE_1 = '/widget-exercise-1';
+  static const CODE_EXERCISE_EXAMPLE = '/code-exercise-example';
+  static const CODE_EXERCISE = '/code-exercise';
   static const WIDGET_EXERCISE_EXAMPLE = '/widget-exercise-example';
+  static const WIDGET_EXERCISE_1 = '/widget-exercise-1';
   static const WIDGET_EXERCISE_2 = '/widget-exercise-2';
   static const WIDGET_EXERCISE_3 = '/widget-exercise-3';
-  static const CODE_EXERCISE_2 = '/code-exercise-2';
-  static const CODE_EXERCISE_3 = '/code-exercise-3';
-  static const CODE_EXERCISE_4 = '/code-exercise-4';
-  static const CODE_EXERCISE_5 = '/code-exercise-5';
-  static const CODE_EXERCISE_6 = '/code-exercise-6';
-  static const CODE_EXERCISE_7 = '/code-exercise-7';
-  static const CODE_EXERCISE_8 = '/code-exercise-8';
-  static const CODE_EXERCISE_9 = '/code-exercise-9';
-  static const CODE_EXERCISE_10 = '/code-exercise-10';
-  static const CODE_EXERCISE_11 = '/code-exercise-11';
-  static const CODE_EXERCISE_12 = '/code-exercise-12';
-  static const CODE_EXERCISE_13 = '/code-exercise-13';
-  static const CODE_EXERCISE_14 = '/code-exercise-14';
-  static const CODE_EXERCISE_15 = '/code-exercise-15';
-  static const CODE_EXERCISE_EXAMPLE = '/code-exercise-example';
   static const WIDGET_EXERCISE_4 = '/widget-exercise-4';
   static const WIDGET_EXERCISE_5 = '/widget-exercise-5';
   static const WIDGET_EXERCISE_6 = '/widget-exercise-6';
@@ -96,5 +67,4 @@ abstract class _Paths {
   static const WIDGET_EXERCISE_13 = '/widget-exercise-13';
   static const WIDGET_EXERCISE_14 = '/widget-exercise-14';
   static const WIDGET_EXERCISE_15 = '/widget-exercise-15';
-  static const CODE_EXERCISE = '/code-exercise';
 }
