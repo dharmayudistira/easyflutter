@@ -48,14 +48,15 @@ class LoginController extends GetxController {
       final password = edtControllerPassword.text;
 
       if (selectedLoginType.value == "Dosen") {
-        doLoginAsLecturer(id, password);
+        doLoginAsLecturer(id, password, context);
       } else {
         doLoginAsStudent(id, password, context);
       }
     }
   }
 
-  void doLoginAsLecturer(String id, String password) async {
+  void doLoginAsLecturer(
+      String id, String password, BuildContext context) async {
     QuerySnapshot<Map<String, dynamic>> lecturerReference = await _firestore
         .collection("dosen")
         .where("id_dosen", isEqualTo: id)
@@ -67,16 +68,20 @@ class LoginController extends GetxController {
 
       if (selectedLecturer["kata_sandi"] == encryptedPassword) {
         await saveLecturerDataToSharedPref(selectedLecturer);
-        Get.snackbar("Berhasil Masuk",
-            "Selamat Datang! ${_storageHelper.getNameUser()}");
         clearForm();
         Get.offNamed(Routes.DASHBOARD_LECTURER);
+        SnackBarHelper.showFlushbarSuccess(
+            "Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}")
+          ..show(context);
       } else {
-        Get.snackbar("Terjadi Kesalahan",
-            "Mohon periksa kembali ID dan kata sandi Anda");
+        SnackBarHelper.showFlushbarWarning(
+            "Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda")
+          ..show(context);
       }
     } else {
-      Get.snackbar("Terjadi Kesalahan", "Tidak ada dosen dengan ID : $id");
+      SnackBarHelper.showFlushbarWarning(
+          "Terjadi Kesalahan", "Tidak ada dosen dengan ID : $id")
+        ..show(context);
     }
   }
 
