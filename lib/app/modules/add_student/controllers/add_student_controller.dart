@@ -77,15 +77,15 @@ class AddStudentController extends GetxController {
     await validateStudentId();
 
     if (selectedClass.value == "Pilih Kelas") {
-      SnackBarHelper.showFlushbarInfo(
+      SnackBarHelper.showFlushbarWarning(
         "Terjadi Kesalahan",
         "Harap pilih kelas terlebih dahulu",
-      );
+      )..show(context);
     } else if (!isValid) {
-      SnackBarHelper.showFlushbarError(
+      SnackBarHelper.showFlushbarWarning(
         "Terjadi Kesalahan",
         "Mahasiswa dengan NIM ${edtStudentIdController.text} sudah ada",
-      );
+      )..show(context);
     } else {
       final studentId = edtStudentIdController.text;
       final passwordStudent = generateMd5(studentId);
@@ -111,7 +111,7 @@ class AddStudentController extends GetxController {
         SnackBarHelper.showFlushbarSuccess(
           "Berhasil Menambahkan Mahasiswa",
           "Data mahasiswa $studentName berhasil ditambahkan",
-        );
+        )..show(context);
       });
     }
   }
