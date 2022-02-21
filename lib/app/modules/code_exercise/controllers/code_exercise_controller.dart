@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/log_model.dart';
-import 'package:easyflutter/app/utils/bank_code_exercises_helper.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/send_answer_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
@@ -9,14 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-class CodeExercise9Controller extends GetxController {
+class CodeExerciseController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
-  final exerciseId = Get.arguments[0] as String;
-  final exerciseName = Get.arguments[1] as String;
   final logReference = FirebaseFirestore.instance.collection("log");
 
-  final exerciseCaption =
-      "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.SpaceAround maka akan menempatkan ruang kosong secara merata di antara widget, serta menempatkan setengah dari ruang kosong tersebut pada sebelum widget pertama dan setelah widget terakhir.";
+  final exerciseId = Get.arguments[0] as String;
+  final exerciseName = Get.arguments[1] as String;
+  final exerciseCaption = Get.arguments[2] as String;
+  final exerciseCodeBlocks = Get.arguments[3] as List<Map<String, Object>>;
+  final exerciseOutput = Get.arguments[4] as String;
 
   final stopwatchTimer = StopWatchTimer();
 
@@ -25,12 +25,14 @@ class CodeExercise9Controller extends GetxController {
   var isFinished = false.obs;
   var steps = 0.obs;
 
-  final correctAnswer = BankCodeExercisesHelper.ninthExerciseAnswer.obs;
-  final studentAnswer = BankCodeExercisesHelper.ninthExerciseAnswer.obs;
+  var correctAnswer = <Map<String, Object>>[].obs;
+  var studentAnswer = <Map<String, Object>>[].obs;
 
   @override
   void onInit() {
     super.onInit();
+    correctAnswer = exerciseCodeBlocks.obs;
+    studentAnswer = exerciseCodeBlocks.obs;
     _mixAnswer();
   }
 
@@ -131,3 +133,4 @@ class CodeExercise9Controller extends GetxController {
     SendAnswerHelper.updateStudent(exerciseId);
   }
 }
+

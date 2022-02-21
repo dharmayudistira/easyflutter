@@ -1,17 +1,14 @@
-import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
-import 'package:easyflutter/app/utils/dialog_helper.dart';
 import 'package:easyflutter/app/views/app_bar_exercise.dart';
 import 'package:easyflutter/app/views/code/left_content_code.dart';
 import 'package:easyflutter/app/views/code/right_content_code.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-import '../controllers/code_exercise_9_controller.dart';
+import '../controllers/code_exercise_controller.dart';
 
-class CodeExercise9View extends GetView<CodeExercise9Controller> {
+class CodeExerciseView extends GetView<CodeExerciseController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +34,7 @@ class CodeExercise9View extends GetView<CodeExercise9Controller> {
             RightContentCode(
               stopwatchTimer: controller.stopwatchTimer,
               exerciseName: controller.exerciseName,
-              exerciseOutputImage: "assets/images/code/output_soal_9.png",
+              exerciseOutputImage: controller.exerciseOutput,
               isStarted: controller.isStarted,
               isCorrect: controller.isCorrect,
               checkAnswer: controller.checkAnswer,

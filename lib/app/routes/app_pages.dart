@@ -2,36 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:easyflutter/app/middlewares/auth_lecturer_middleware.dart';
 import 'package:easyflutter/app/middlewares/auth_student_middleware.dart';
-import 'package:easyflutter/app/modules/code_exercise_1/bindings/code_exercise_1_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_1/views/code_exercise_1_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_10/bindings/code_exercise_10_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_10/views/code_exercise_10_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_11/bindings/code_exercise_11_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_11/views/code_exercise_11_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_12/bindings/code_exercise_12_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_12/views/code_exercise_12_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_13/bindings/code_exercise_13_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_13/views/code_exercise_13_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_14/bindings/code_exercise_14_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_14/views/code_exercise_14_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_15/bindings/code_exercise_15_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_15/views/code_exercise_15_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_2/bindings/code_exercise_2_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_2/views/code_exercise_2_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_3/bindings/code_exercise_3_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_3/views/code_exercise_3_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_4/bindings/code_exercise_4_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_4/views/code_exercise_4_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_5/bindings/code_exercise_5_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_5/views/code_exercise_5_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_6/bindings/code_exercise_6_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_6/views/code_exercise_6_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_7/bindings/code_exercise_7_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_7/views/code_exercise_7_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_8/bindings/code_exercise_8_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_8/views/code_exercise_8_view.dart';
-import 'package:easyflutter/app/modules/code_exercise_9/bindings/code_exercise_9_binding.dart';
-import 'package:easyflutter/app/modules/code_exercise_9/views/code_exercise_9_view.dart';
+import 'package:easyflutter/app/modules/code_exercise/bindings/code_exercise_binding.dart';
+import 'package:easyflutter/app/modules/code_exercise/views/code_exercise_view.dart';
 import 'package:easyflutter/app/modules/code_exercise_example/bindings/code_exercise_example_binding.dart';
 import 'package:easyflutter/app/modules/code_exercise_example/views/code_exercise_example_view.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/bindings/dashboard_lecturer_binding.dart';
@@ -57,8 +29,6 @@ import 'package:easyflutter/app/modules/register/views/register_view.dart';
 
 import '../middlewares/auth_lecturer_middleware.dart';
 import '../middlewares/auth_student_middleware.dart';
-import '../modules/code_exercise_1/bindings/code_exercise_1_binding.dart';
-import '../modules/code_exercise_1/views/code_exercise_1_view.dart';
 import '../modules/dashboard_lecturer/bindings/dashboard_lecturer_binding.dart';
 import '../modules/dashboard_lecturer/views/dashboard_lecturer_view.dart';
 import '../modules/dashboard_student/bindings/dashboard_student_binding.dart';
@@ -173,12 +143,6 @@ class AppPages {
       binding: ListExerciseWidgetTreeReconstructionBinding(),
     ),
     GetPage(
-      name: _Paths.CODE_EXERCISE_1,
-      page: () => CodeExercise1View(),
-      binding: CodeExercise1Binding(),
-      middlewares: [AuthStudentMiddleware()],
-    ),
-    GetPage(
       name: _Paths.WIDGET_EXERCISE_1,
       page: () => WidgetExercise1View(),
       binding: WidgetExercise1Binding(),
@@ -197,76 +161,6 @@ class AppPages {
       name: _Paths.WIDGET_EXERCISE_3,
       page: () => WidgetExercise3View(),
       binding: WidgetExercise3Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_2,
-      page: () => CodeExercise2View(),
-      binding: CodeExercise2Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_3,
-      page: () => CodeExercise3View(),
-      binding: CodeExercise3Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_4,
-      page: () => CodeExercise4View(),
-      binding: CodeExercise4Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_5,
-      page: () => CodeExercise5View(),
-      binding: CodeExercise5Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_6,
-      page: () => CodeExercise6View(),
-      binding: CodeExercise6Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_7,
-      page: () => CodeExercise7View(),
-      binding: CodeExercise7Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_8,
-      page: () => CodeExercise8View(),
-      binding: CodeExercise8Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_9,
-      page: () => CodeExercise9View(),
-      binding: CodeExercise9Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_10,
-      page: () => CodeExercise10View(),
-      binding: CodeExercise10Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_11,
-      page: () => CodeExercise11View(),
-      binding: CodeExercise11Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_12,
-      page: () => CodeExercise12View(),
-      binding: CodeExercise12Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_13,
-      page: () => CodeExercise13View(),
-      binding: CodeExercise13Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_14,
-      page: () => CodeExercise14View(),
-      binding: CodeExercise14Binding(),
-    ),
-    GetPage(
-      name: _Paths.CODE_EXERCISE_15,
-      page: () => CodeExercise15View(),
-      binding: CodeExercise15Binding(),
     ),
     GetPage(
       name: _Paths.CODE_EXERCISE_EXAMPLE,
@@ -332,6 +226,11 @@ class AppPages {
       name: _Paths.WIDGET_EXERCISE_15,
       page: () => WidgetExercise15View(),
       binding: WidgetExercise15Binding(),
+    ),
+    GetPage(
+      name: _Paths.CODE_EXERCISE,
+      page: () => CodeExerciseView(),
+      binding: CodeExerciseBinding(),
     ),
   ];
 }

@@ -1,4 +1,5 @@
 class BankCodeExercisesHelper {
+  static String firstExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> firstExerciseAnswer = [
     {
       "keyValue": 1,
@@ -39,6 +40,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String secondExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> secondExerciseAnswer = [
     {
       "keyValue": 1,
@@ -79,6 +81,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String thirdExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> thirdExerciseAnswer = [
     {
       "keyValue": 1,
@@ -119,6 +122,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String fourthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> fourthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -159,6 +163,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String fifthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> fifthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -199,6 +204,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String sixthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> sixthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -239,6 +245,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String seventhExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> seventhExerciseAnswer = [
     {
       "keyValue": 1,
@@ -278,6 +285,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String eighthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> eighthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -317,6 +325,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String ninthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> ninthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -356,6 +365,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String tenthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> tenthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -395,6 +405,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String eleventhExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> eleventhExerciseAnswer = [
     {
       "keyValue": 1,
@@ -434,6 +445,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String twelfthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> twelfthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -473,6 +485,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String thirteenthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> thirteenthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -532,6 +545,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String fourteenthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> fourteenthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -594,6 +608,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
+  static String fifteenthExerciseCaption = "Column digunakan untuk menyusun widget - widget di dalamnya secara vertikal. Dengan MainAxis.Start maka widget di dalamnya akan tersusun sedekat mungkin dengan sumbu utama. Sedangkan CrossAxis.End akan menyusun widget sedekat mungkin dengan ujung sumbu silang.";
   static List<Map<String, Object>> fifteenthExerciseAnswer = [
     {
       "keyValue": 1,
