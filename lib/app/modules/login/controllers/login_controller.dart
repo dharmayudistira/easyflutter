@@ -56,7 +56,10 @@ class LoginController extends GetxController {
   }
 
   void doLoginAsLecturer(
-      String id, String password, BuildContext context) async {
+    String id,
+    String password,
+    BuildContext context,
+  ) async {
     QuerySnapshot<Map<String, dynamic>> lecturerReference = await _firestore
         .collection("dosen")
         .where("id_dosen", isEqualTo: id)
@@ -86,7 +89,10 @@ class LoginController extends GetxController {
   }
 
   void doLoginAsStudent(
-      String id, String password, BuildContext context) async {
+    String id,
+    String password,
+    BuildContext context,
+  ) async {
     QuerySnapshot<Map<String, dynamic>> studentReference = await _firestore
         .collection("mahasiswa")
         .where("id_mahasiswa", isEqualTo: id)

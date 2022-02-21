@@ -242,8 +242,8 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
             ),
           ),
           TextButton(
-            onPressed: () async {
-              await controller.logout();
+            onPressed: () {
+              controller.logout(context);
             },
             child: Text("Ya"),
           ),
