@@ -4,6 +4,7 @@ import 'package:easyflutter/app/data/dosen_model.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/converter_helper.dart';
 import 'package:easyflutter/app/utils/encrypt_helper.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -72,8 +73,10 @@ class RegisterController extends GetxController {
     return classReference.where("id_dosen", isEqualTo: lecturerId).snapshots();
   }
 
-  void mapLecturerFirestoreToLecturerModel(AsyncSnapshot<QuerySnapshot> snapshots) {
-    final result = ConverterHelper.mapLecturerFirestoreToLecturerModel(snapshots);
+  void mapLecturerFirestoreToLecturerModel(
+      AsyncSnapshot<QuerySnapshot> snapshots) {
+    final result =
+        ConverterHelper.mapLecturerFirestoreToLecturerModel(snapshots);
 
     result.add(initialLecturer);
 
@@ -96,11 +99,10 @@ class RegisterController extends GetxController {
     listClass.value = result;
   }
 
-  void addStudent() async {
-
+  void addStudent(BuildContext context) async {
     final isFormValid = registerFormKey.currentState?.validate();
 
-    if(isFormValid != true) {
+    if (isFormValid != true) {
       return;
     }
 
@@ -114,36 +116,43 @@ class RegisterController extends GetxController {
     final classId = selectedClass.value.toLowerCase();
     final className = selectedClass.value.toUpperCase();
 
-    if(lecturerId == "null") {
-      Get.snackbar("Terjadi Kesalahan", "Harap pilih dosen terlebih dahulu");
+    if (lecturerId == "null") {
+      SnackBarHelper.showFlushbarWarning(
+          "Terjadi Kesalahan", "Harap pilih dosen terlebih dahulu")
+        ..show(context);
       return;
     }
 
-    if(className == "PILIH KELAS") {
-      Get.snackbar("Terjadi Kesalahan", "Harap pilih kelas terlebih dahulu");
+    if (className == "PILIH KELAS") {
+      SnackBarHelper.showFlushbarWarning(
+          "Terjadi Kesalahan", "Harap pilih kelas terlebih dahulu")
+        ..show(context);
       return;
     }
 
-    if(isValid) {
+    if (isValid) {
       await studentReference.add({
-        "id_mahasiswa" : studentId,
-        "nama_mahasiswa" : studentName,
-        "kata_sandi" : generateMd5(studentPassword),
-        "id_dosen" : lecturerId,
-        "nama_dosen" : lecturerName,
-        "id_kelas" : classId,
-        "nama_kelas" : className,
-        "status" : false,
-        "daftar_id_latihan" : <String>[],
+        "id_mahasiswa": studentId,
+        "nama_mahasiswa": studentName,
+        "kata_sandi": generateMd5(studentPassword),
+        "id_dosen": lecturerId,
+        "nama_dosen": lecturerName,
+        "id_kelas": classId,
+        "nama_kelas": className,
+        "status": false,
+        "daftar_id_latihan": <String>[],
       }).whenComplete(() {
-        Get.snackbar("Berhasil Menambahkan Mahasiswa", "Data mahasiswa $studentId berhasil ditambahkan");
         clearForm();
         Get.offNamed(Routes.LOGIN);
+        SnackBarHelper.showFlushbarSuccess("Berhasil Menambahkan Mahasiswa",
+            "Data mahasiswa $studentId berhasil ditambahkan")
+          ..show(context);
       });
-    }else {
-      Get.snackbar("Terjadi Kesalahan", "Data mahasiswa $studentId sudah ada");
+    } else {
+      SnackBarHelper.showFlushbarInfo(
+          "Terjadi Kesalahan", "Data mahasiswa $studentId sudah ada")
+        ..show(context);
     }
-
   }
 
   Future<void> validateStudentId() async {
@@ -153,7 +162,7 @@ class RegisterController extends GetxController {
     var snapshots = await studentReference.get();
 
     snapshots.docs.forEach((element) {
-      if(element["id_mahasiswa"] == studentId) {
+      if (element["id_mahasiswa"] == studentId) {
         isValid = false;
       }
     });

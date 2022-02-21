@@ -139,7 +139,7 @@ class RegisterView extends GetView<RegisterController> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      controller.addStudent();
+                      controller.addStudent(context);
                     },
                     child: Text(
                       "Daftar",
