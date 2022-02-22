@@ -1,5 +1,6 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/utils/custom_text_helper.dart';
+import 'package:easyflutter/app/utils/dialog_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/views/widget/back_button_exercise_widget.dart';
 import 'package:easyflutter/app/views/widget/drag_target_widget.dart';
@@ -29,10 +30,11 @@ class WidgetExerciseExampleView extends StatelessWidget {
             controller.startExercise();
           }
           if (p0 == 10) {
-            Get.defaultDialog(
-              title: "Selamat! Anda telah menyelesaikan Tutorial.",
-              middleText:
-                  "Kerjakan contoh soal berikut sebelum mengerjakan latihan soal. Semangat!",
+            showDialog(
+              context: context,
+              builder: (context) {
+                return DialogHelper.dialogEndTutorial(context);
+              },
             );
           }
         },
@@ -95,6 +97,7 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
             centerTitle: false,
             leading: BackButtonExercise(
               isStart: controller.isStart,
+              exerciseName: controller.exerciseName,
             ),
             title: CustomShowcaseWidget(
               globalKey: key1,

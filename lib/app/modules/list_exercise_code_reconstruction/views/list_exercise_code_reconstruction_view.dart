@@ -102,6 +102,7 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                 title: CustomTextHelper.textBody(
                   context: context,
                   text: item.exerciseName!,
+                  customWeight: FontWeight.bold,
                 ),
                 subtitle: CustomTextHelper.textCaption(
                   context: context,

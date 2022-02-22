@@ -10,6 +10,7 @@ import 'stopwatch_widget.dart';
 class RightContentWidget extends StatelessWidget {
   const RightContentWidget({
     required this.stopWatchTimer,
+    required this.dialogMessage,
     required this.image,
     required this.exerciseName,
     required this.isStart,
@@ -24,6 +25,7 @@ class RightContentWidget extends StatelessWidget {
   final StopWatchTimer stopWatchTimer;
   final String image;
   final String exerciseName;
+  final String dialogMessage;
   final RxBool isStart;
   final RxBool isAnswerTrue;
   final Function startExercise;
@@ -78,6 +80,7 @@ class RightContentWidget extends StatelessWidget {
                 ),
                 ButtonsWidget(
                   exerciseName: exerciseName,
+                  dialogMessage: dialogMessage,
                   isStart: isStart,
                   isAnswerTrue: isAnswerTrue,
                   startExercise: startExercise,

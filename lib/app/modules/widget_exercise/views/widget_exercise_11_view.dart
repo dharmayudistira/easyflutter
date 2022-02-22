@@ -24,6 +24,7 @@ class WidgetExercise11View extends StatelessWidget {
             centerTitle: false,
             leading: BackButtonExercise(
               isStart: controller.isStart,
+              exerciseName: controller.exerciseName,
             ),
             title: CustomTextHelper.textBody(
               context: context,
@@ -108,6 +109,7 @@ class WidgetExercise11View extends StatelessWidget {
                   isAnswerTrue: controller.isAnswerTrue,
                   startExercise: controller.startExercise,
                   checkAnswer: controller.checkAnswer,
+                  dialogMessage: controller.dialogMessage,
                   sendAnswer: controller.sendAnswer,
                   reset: controller.reset,
                 ),

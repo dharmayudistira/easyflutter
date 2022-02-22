@@ -20,6 +20,8 @@ class WidgetExerciseController extends GetxController {
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
   final exerciseDescription = Get.arguments[2]["description"];
+  final dialogMessage =
+      "Lengkapi widget tree yang sudah disediakan sesuai dengan output yang diharapkan. Ketika Anda menekan tombol \"Yakin\", maka waktu akan dimulai dan waktu akan secara otomatis berhenti ketika Anda telah melengkapi widget tree dengan benar.";
 
   int step = 0;
 
@@ -42,7 +44,8 @@ class WidgetExerciseController extends GetxController {
     targetAnswer = targetAnswerArg.obs;
   }
 
-  void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer, BuildContext context) {
+  void acceptAnswer(
+      AnswerWidgetModel answer, int indexTargetAnswer, BuildContext context) {
     // check isStart
     if (isStart.value) {
       if (!isOver) {
@@ -80,6 +83,7 @@ class WidgetExerciseController extends GetxController {
 
   void startExercise() {
     isStart.value = true;
+    Get.back();
     startStopwatch();
   }
 

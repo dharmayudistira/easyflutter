@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import '../controllers/widget_exercise_controller.dart';
 
 class WidgetExercise1View extends StatelessWidget {
-final controller = Get.put(WidgetExerciseController());
+  final controller = Get.put(WidgetExerciseController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,7 @@ final controller = Get.put(WidgetExerciseController());
             centerTitle: false,
             leading: BackButtonExercise(
               isStart: controller.isStart,
+              exerciseName: controller.exerciseName,
             ),
             title: CustomTextHelper.textBody(
               context: context,
@@ -113,6 +114,7 @@ final controller = Get.put(WidgetExerciseController());
                   isAnswerTrue: controller.isAnswerTrue,
                   startExercise: controller.startExercise,
                   checkAnswer: controller.checkAnswer,
+                  dialogMessage: controller.dialogMessage,
                   sendAnswer: controller.sendAnswer,
                   reset: controller.reset,
                 ),

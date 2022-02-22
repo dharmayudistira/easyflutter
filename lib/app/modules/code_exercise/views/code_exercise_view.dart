@@ -35,6 +35,7 @@ class CodeExerciseView extends GetView<CodeExerciseController> {
               stopwatchTimer: controller.stopwatchTimer,
               exerciseName: controller.exerciseName,
               exerciseOutputImage: controller.exerciseOutput,
+              dialogMessage: controller.dialogMessage,
               isStarted: controller.isStarted,
               isCorrect: controller.isCorrect,
               checkAnswer: controller.checkAnswer,

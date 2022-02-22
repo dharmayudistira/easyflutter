@@ -72,12 +72,14 @@ class CustomTextHelper {
   static Widget textBodyDialog({
     required BuildContext context,
     required String text,
+    TextAlign customAlignment = TextAlign.start,
   }) {
     return Text(
       text,
       style: Theme.of(context).textTheme.subtitle2?.copyWith(
             color: Colors.black.withOpacity(0.7),
           ),
+          textAlign: customAlignment,
     );
   }
 

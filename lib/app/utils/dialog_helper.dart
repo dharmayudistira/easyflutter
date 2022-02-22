@@ -9,6 +9,7 @@ class DialogHelper {
   static AlertDialog dialogStartExercise(
     BuildContext context,
     String exerciseName,
+    String dialogMessage,
     Function onDialogStartSuccess,
   ) {
     return AlertDialog(
@@ -20,8 +21,7 @@ class DialogHelper {
         width: double.minPositive,
         child: CustomTextHelper.textBodyDialog(
           context: context,
-          text:
-              "Susunlah blok - blok kode yang sudah disediakan sesuai dengan output yang diharapkan. Ketika Anda menekan tombol \"Yakin\", maka waktu akan dimulai dan waktu akan secara otomatis berhenti ketika Anda telah menyusun blok kode dengan benar.",
+          text: dialogMessage,
         ),
       ),
       actions: [
@@ -60,7 +60,7 @@ class DialogHelper {
     return AlertDialog(
       title: CustomTextHelper.textTitleDialog(
         context: context,
-        text: "Selamat Anda telah menyelesaikan $exerciseName",
+        text: "Selamat, Anda telah menyelesaikan $exerciseName",
       ),
       content: Container(
         width: double.minPositive,
@@ -100,14 +100,15 @@ class DialogHelper {
     return AlertDialog(
       title: CustomTextHelper.textTitleDialog(
         context: context,
-        text: "Apakah Anda yakin untuk keluar ?",
+        text: "Apakah Anda yakin untuk keluar dari $exerciseName ?",
       ),
       content: Container(
         width: double.minPositive,
         child: CustomTextHelper.textBodyDialog(
           context: context,
           text:
-              "Saat ini Anda sedang mengerjakan $exerciseName. Jika Anda menekan tombol \"Yakin\", maka Anda akan keluar dari latihan ini.",
+              "Jika Anda menekan tombol \"Yakin\", maka Anda akan keluar dari latihan ini.",
+          customAlignment: TextAlign.center,
         ),
       ),
       actions: [
@@ -140,14 +141,19 @@ class DialogHelper {
     return AlertDialog(
       title: CustomTextHelper.textTitleDialog(
         context: context,
-        text:
-            "Selamat! Tutorial pengerjaan latihan soal sudah selesai\nAnda dapat melanjutkan mengerjakan latihan soal ini sebagai latihan.",
+        text: "Selamat, tutorial pengerjaan latihan soal sudah selesai",
       ),
       content: Container(
         width: double.minPositive,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            CustomTextHelper.textBodyDialog(
+              context: context,
+              text:
+                  "Cobalah contoh soal berikut sebelum mengerjakan latihan soal",
+              customAlignment: TextAlign.center,
+            ),
             Lottie.asset(
               "assets/animations/success_animation.json",
               height: 150,

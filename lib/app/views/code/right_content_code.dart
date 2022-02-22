@@ -9,6 +9,7 @@ class RightContentCode extends StatelessWidget {
   final StopWatchTimer stopwatchTimer;
   final String exerciseName;
   final String exerciseOutputImage;
+  final String dialogMessage;
   final RxBool isStarted;
   final RxBool isCorrect;
   final Function checkAnswer;
@@ -19,6 +20,7 @@ class RightContentCode extends StatelessWidget {
     required this.stopwatchTimer,
     required this.exerciseName,
     required this.exerciseOutputImage,
+    required this.dialogMessage,
     required this.isStarted,
     required this.isCorrect,
     required this.checkAnswer,
@@ -141,6 +143,7 @@ class RightContentCode extends StatelessWidget {
                               return DialogHelper.dialogStartExercise(
                                 context,
                                 exerciseName,
+                                dialogMessage,
                                 onDialogStartOnSuccess,
                               );
                             },

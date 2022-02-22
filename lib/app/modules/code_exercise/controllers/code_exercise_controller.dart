@@ -17,6 +17,8 @@ class CodeExerciseController extends GetxController {
   final exerciseCaption = Get.arguments[2] as String;
   final exerciseCodeBlocks = Get.arguments[3] as List<Map<String, Object>>;
   final exerciseOutput = Get.arguments[4] as String;
+  final dialogMessage =
+      "Susunlah blok - blok kode yang sudah disediakan sesuai dengan output yang diharapkan. Ketika Anda menekan tombol \"Yakin\", maka waktu akan dimulai dan waktu akan secara otomatis berhenti ketika Anda telah menyusun blok kode dengan benar.";
 
   final stopwatchTimer = StopWatchTimer();
 
@@ -133,4 +135,3 @@ class CodeExerciseController extends GetxController {
     SendAnswerHelper.updateStudent(exerciseId);
   }
 }
-
