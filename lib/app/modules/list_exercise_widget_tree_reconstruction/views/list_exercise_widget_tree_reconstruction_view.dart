@@ -97,12 +97,10 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
               elevation: dimenSmall,
               child: ListTile(
                 onTap: () {
-                  Get.toNamed(
-                    "widget-exercise-${index + 1}",
-                    arguments: [
-                      item.exerciseId,
-                      item.exerciseName,
-                    ],
+                  controller.navigateTo(
+                    index + 1,
+                    item.exerciseId,
+                    item.exerciseName,
                   );
                 },
                 title: CustomTextHelper.textBody(

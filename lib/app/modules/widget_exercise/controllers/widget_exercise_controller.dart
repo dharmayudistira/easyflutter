@@ -1,17 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
+import 'package:easyflutter/app/data/log_model.dart';
+import 'package:easyflutter/app/utils/check_answer_helper.dart';
+import 'package:easyflutter/app/utils/send_answer_helper.dart';
+import 'package:easyflutter/app/utils/storage_helper.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-class WidgetExerciseExampleController extends GetxController {
+class WidgetExerciseController extends GetxController {
   final StopWatchTimer stopWatchTimer = StopWatchTimer();
+
+  final _storageHelper = Get.find<StorageHelper>();
+
+  final CollectionReference logReference =
+      FirebaseFirestore.instance.collection("log");
 
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
-  final exerciseDescription =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et posuere nulla. Mauris fringilla felis arcu, at aliquet mi porttitor venenatis.";
-
-  Function eq = const ListEquality().equals;
+  final exerciseDescription = Get.arguments[2]["description"];
 
   int step = 0;
 
@@ -20,21 +26,19 @@ class WidgetExerciseExampleController extends GetxController {
   var isStart = false.obs;
   var isOver = false;
 
-  List<String> answer = ["Row", "Icon", "Icon"];
+  List<String> answerKey = Get.arguments[2]["answerKey"];
+  List<AnswerWidgetModel> answerListArg = Get.arguments[2]["answerList"];
+  List<AnswerWidgetModel> targetAnswerArg = Get.arguments[2]["targetAnswer"];
 
-  List<AnswerWidgetModel> answerList = [
-    AnswerWidgetModel(index: 0, content: "Icon", isUsed: false),
-    AnswerWidgetModel(index: 1, content: "Text", isUsed: false),
-    AnswerWidgetModel(index: 2, content: "Icon", isUsed: false),
-    AnswerWidgetModel(index: 3, content: "Image", isUsed: false),
-    AnswerWidgetModel(index: 4, content: "Row", isUsed: false),
-  ].obs;
+  var answerList = <AnswerWidgetModel>[].obs;
+  var targetAnswer = <AnswerWidgetModel>[].obs;
 
-  List<AnswerWidgetModel> targetAnswer = [
-    AnswerWidgetModel(index: -1, content: "", isUsed: false),
-    AnswerWidgetModel(index: -1, content: "", isUsed: false),
-    AnswerWidgetModel(index: -1, content: "", isUsed: false),
-  ].obs;
+  @override
+  void onInit() {
+    super.onInit();
+    answerList = answerListArg.obs;
+    targetAnswer = targetAnswerArg.obs;
+  }
 
   void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer) {
     // check isStart
@@ -61,6 +65,8 @@ class WidgetExerciseExampleController extends GetxController {
         targetAnswer[indexTargetAnswer].index = answer.index;
         targetAnswer[indexTargetAnswer].content = answer.content;
         targetAnswer[indexTargetAnswer].isUsed = true;
+
+        createLog();
       }
     } else {
       Get.snackbar(
@@ -111,8 +117,41 @@ class WidgetExerciseExampleController extends GetxController {
     stopWatchTimer.onExecute.add(StopWatchExecute.stop);
   }
 
+  void createLog() {
+    step++;
+
+    final log = LogModel(
+      logId: "$exerciseId-${DateTime.now()}",
+      studentId: _storageHelper.getIdUser(),
+      studentName: _storageHelper.getNameUser(),
+      exerciseId: exerciseId,
+      step: step.toString(),
+      time: StopWatchTimer.getDisplayTime(
+        stopWatchTimer.rawTime.value,
+        hours: true,
+      ),
+      answer: getTextAnswer().toString(),
+      timeStamp: DateTime.now().toString(),
+    );
+
+    uploadLog(log);
+  }
+
+  void uploadLog(LogModel log) {
+    logReference.add({
+      "id_log": log.logId,
+      "id_mahasiswa": log.studentId,
+      "nama_mahasiswa": log.studentName,
+      "id_latihan": log.exerciseId,
+      "langkah": log.step,
+      "waktu": log.time,
+      "jawaban": log.answer,
+      "time_stamp": log.timeStamp,
+    });
+  }
+
   bool checkAnswer() {
-    if (eq(getTextAnswer(), answer)) {
+    if (CheckAnswerHelper.isEqual(getTextAnswer(), answerKey)) {
       isAnswerTrue.value = true;
       isOver = true;
       stopStopWatch();
@@ -124,6 +163,11 @@ class WidgetExerciseExampleController extends GetxController {
 
   List<String?> getTextAnswer() {
     return targetAnswer.map((e) => e.content).toList();
+  }
+
+  void sendAnswer() {
+    SendAnswerHelper.updateExercise(exerciseId);
+    SendAnswerHelper.updateStudent(exerciseId);
   }
 
   @override
