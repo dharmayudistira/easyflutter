@@ -138,6 +138,7 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
               child: CustomTextHelper.textBody(
                 context: context,
                 text: controller.exerciseName,
+                customWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: dimenSmall / 2),

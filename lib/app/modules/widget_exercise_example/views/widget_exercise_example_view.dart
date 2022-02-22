@@ -137,13 +137,14 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                               child: CustomTextHelper.textBody(
                                 context: context,
                                 text: controller.exerciseName,
+                                customWeight: FontWeight.bold,
                               ),
                             ),
                             CustomShowcaseWidget(
                               globalKey: key3,
                               description:
                                   "Berikut merupakan Deskripsi Latihan.",
-                              child: CustomTextHelper.textBody(
+                              child: CustomTextHelper.textCaption(
                                 context: context,
                                 text: controller.exerciseDescription,
                               ),
@@ -178,8 +179,8 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                                             DragTargetWidget(
                                               acceptAnswer:
                                                   controller.acceptAnswer,
-                                              targetAnswers:
-                                                  controller.targetAnswers,
+                                              targetAnswer:
+                                                  controller.targetAnswer,
                                               index: 0,
                                               size: 70,
                                             ),
@@ -192,8 +193,8 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                                             DragTargetWidget(
                                               acceptAnswer:
                                                   controller.acceptAnswer,
-                                              targetAnswers:
-                                                  controller.targetAnswers,
+                                              targetAnswer:
+                                                  controller.targetAnswer,
                                               index: 1,
                                               size: 70,
                                             ),
@@ -201,8 +202,8 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                                             DragTargetWidget(
                                               acceptAnswer:
                                                   controller.acceptAnswer,
-                                              targetAnswers:
-                                                  controller.targetAnswers,
+                                              targetAnswer:
+                                                  controller.targetAnswer,
                                               index: 2,
                                               size: 70,
                                             ),
