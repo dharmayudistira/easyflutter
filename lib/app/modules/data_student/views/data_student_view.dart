@@ -165,18 +165,27 @@ class DataStudentView extends StatelessWidget {
                         ),
                 ),
                 DataCell(
-                  ElevatedButton(
-                    onPressed: (status)
-                        ? null
-                        : () {
-                            controller.validateStudentStatus(studentId);
+                  (status)
+                      ? OutlinedButton(
+                          onPressed: () {
+                            controller.validateStudentStatus(studentId, false);
                           },
-                    child: CustomTextHelper.textBody(
-                      context: context,
-                      text: "Validasi",
-                      customColor: Colors.white,
-                    ),
-                  ),
+                          child: CustomTextHelper.textBody(
+                            context: context,
+                            text: "Batalkan Validasi",
+                            customColor: Colors.black,
+                          ),
+                        )
+                      : ElevatedButton(
+                          onPressed: () {
+                            controller.validateStudentStatus(studentId, true);
+                          },
+                          child: CustomTextHelper.textBody(
+                            context: context,
+                            text: "Validasi",
+                            customColor: Colors.white,
+                          ),
+                        ),
                 ),
               ],
             );

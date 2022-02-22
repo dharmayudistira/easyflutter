@@ -25,12 +25,12 @@ class DataStudentController extends GetxController {
     listStudent = result;
   }
 
-  Future<void> validateStudentStatus(String studentId) async {
+  Future<void> validateStudentStatus(String studentId, bool status) async {
     final snapshots = await studentReference.where("id_mahasiswa", isEqualTo: studentId).get();
     final snapshotId = snapshots.docs[0].id;
 
     await studentReference.doc(snapshotId).update({
-      "status" : true,
+      "status" : status,
     });
   }
 

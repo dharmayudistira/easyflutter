@@ -100,13 +100,6 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
             child: Card(
               elevation: dimenSmall,
               child: ListTile(
-                onTap: () {
-                  controller.navigateTo(
-                    index + 1,
-                    item.exerciseId,
-                    item.exerciseName,
-                  );
-                },
                 title: CustomTextHelper.textBody(
                   context: context,
                   text: item.exerciseName!,
@@ -117,16 +110,28 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
                   text: item.exerciseId!,
                 ),
                 trailing: (isComplete)
-                    ? ElevatedButton(
-                        onPressed: () {},
+                    ? OutlinedButton(
+                        onPressed: () {
+                          controller.navigateTo(
+                            index + 1,
+                            item.exerciseId,
+                            item.exerciseName,
+                          );
+                        },
                         child: CustomTextHelper.textBody(
                           context: context,
                           text: "Kerjakan Lagi",
-                          customColor: Colors.white,
+                          customColor: Colors.black,
                         ),
                       )
                     : ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.navigateTo(
+                            index + 1,
+                            item.exerciseId,
+                            item.exerciseName,
+                          );
+                        },
                         child: CustomTextHelper.textBody(
                           context: context,
                           text: "Kerjakan",
