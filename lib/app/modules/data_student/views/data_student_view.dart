@@ -32,8 +32,10 @@ class DataStudentView extends StatelessWidget {
                   onPressed: () {
                     controller.dashboardLecturerController.setSelectedIndex(2);
                   },
-                  child: Text(
-                    "Tambah",
+                  child: CustomTextHelper.textBody(
+                    context: context,
+                    text: "Tambah",
+                    customColor: Colors.white,
                   ),
                 ),
               ],
@@ -169,7 +171,11 @@ class DataStudentView extends StatelessWidget {
                         : () {
                             controller.validateStudentStatus(studentId);
                           },
-                    child: Text("Validasi"),
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Validasi",
+                      customColor: Colors.white,
+                    ),
                   ),
                 ),
               ],

@@ -225,24 +225,28 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
           context: context,
           text: "Keluar ?",
         ),
-        content: CustomTextHelper.textBodyDialog(context: context, text: "Apakah Anda yakin untuk keluar ?"),
+        content: CustomTextHelper.textBodyDialog(
+            context: context, text: "Apakah Anda yakin untuk keluar ?"),
         actions: [
           TextButton(
             onPressed: () {
               Get.back();
             },
-            child: Text(
-              "Tidak",
-              style: TextStyle(
-                color: Colors.redAccent,
-              ),
+            child: CustomTextHelper.textBody(
+              context: context,
+              text: "Tidak",
+              customColor: Colors.red,
             ),
           ),
           TextButton(
             onPressed: () {
               controller.logout(context);
             },
-            child: Text("Ya"),
+            child: CustomTextHelper.textBody(
+              context: context,
+              text: "Simpan",
+              customColor: Colors.blue,
+            ),
           ),
         ],
       ),

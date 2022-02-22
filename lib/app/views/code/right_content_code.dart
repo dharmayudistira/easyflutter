@@ -88,7 +88,11 @@ class RightContentCode extends StatelessWidget {
                                   : () {
                                       checkAnswer(context);
                                     },
-                              child: Text("Cek Jawaban"),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: "Cek Jawaban",
+                                customColor: Colors.white,
+                              ),
                             );
                           }),
                           SizedBox(width: dimenSmall),
@@ -110,7 +114,11 @@ class RightContentCode extends StatelessWidget {
                                       );
                                     }
                                   : null,
-                              child: Text("Kirim Jawaban"),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: "Kirim Jawaban",
+                                customColor: Colors.white,
+                              ),
                             );
                           }),
                         ],
@@ -120,7 +128,11 @@ class RightContentCode extends StatelessWidget {
                     return Container(
                       width: double.maxFinite,
                       child: ElevatedButton(
-                        child: Text("Kerjakan Latihan"),
+                        child: CustomTextHelper.textBody(
+                          context: context,
+                          text: "Kerjakan Latihan",
+                          customColor: Colors.white,
+                        ),
                         onPressed: () {
                           showDialog(
                             barrierDismissible: false,

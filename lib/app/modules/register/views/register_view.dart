@@ -150,14 +150,14 @@ class RegisterView extends GetView<RegisterController> {
                 SizedBox(height: dimenMedium),
                 Container(
                   width: double.maxFinite,
-                  height: 50,
                   child: ElevatedButton(
                     onPressed: () {
                       controller.addStudent(context);
                     },
-                    child: CustomTextHelper.textTitle(
+                    child: CustomTextHelper.textBody(
                       context: context,
                       text: "Daftar",
+                      customColor: Colors.white,
                     ),
                   ),
                 ),

@@ -34,8 +34,10 @@ class DataClassView extends StatelessWidget {
                     controller.clearForm();
                     _buildShowAddTableDialog(context);
                   },
-                  child: Text(
-                    "Tambah",
+                  child: CustomTextHelper.textBody(
+                    context: context,
+                    text: "Tambah",
+                    customColor: Colors.white,
                   ),
                 ),
               ],
@@ -96,18 +98,21 @@ class DataClassView extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            child: Text(
-              "Batal",
-              style: TextStyle(
-                color: Colors.redAccent,
-              ),
+            child: CustomTextHelper.textBody(
+              context: context,
+              text: "Batal",
+              customColor: Colors.red,
             ),
           ),
           TextButton(
             onPressed: () async {
               await controller.addClass(context);
             },
-            child: Text("Simpan"),
+            child: CustomTextHelper.textBody(
+              context: context,
+              text: "Simpan",
+              customColor: Colors.blue,
+            ),
           ),
         ],
       ),
@@ -190,7 +195,11 @@ class DataClassView extends StatelessWidget {
                       controller.dashboardLecturerController
                           .setSelectedIndex(3);
                     },
-                    child: Text("Lihat Latihan Soal"),
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Lihat Latihan Soal",
+                      customColor: Colors.white,
+                    ),
                   ),
                 ),
               ],

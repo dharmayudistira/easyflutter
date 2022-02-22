@@ -38,7 +38,11 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                       Get.toNamed(Routes.CODE_EXERCISE_EXAMPLE,
                           arguments: ["ti-3a-c-0", "Contoh Latihan Soal"]);
                     },
-                    child: Text("Contoh Soal"),
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Contoh Soal",
+                      customColor: Colors.white,
+                    ),
                   )
                 ],
               ),
@@ -106,11 +110,19 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                 trailing: (isComplete)
                     ? ElevatedButton(
                         onPressed: () {},
-                        child: Text("Kerjakan Lagi"),
+                        child: CustomTextHelper.textBody(
+                          context: context,
+                          text: "Kerjakan Lagi",
+                          customColor: Colors.white,
+                        ),
                       )
                     : ElevatedButton(
                         onPressed: () {},
-                        child: Text("Kerjakan"),
+                        child: CustomTextHelper.textBody(
+                          context: context,
+                          text: "Kerjakan",
+                          customColor: Colors.white,
+                        ),
                       ),
               ),
             ),

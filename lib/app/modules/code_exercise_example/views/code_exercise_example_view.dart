@@ -267,7 +267,11 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                                   : () {
                                       controller.checkAnswer(context);
                                     },
-                              child: Text("Cek Jawaban"),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: "Cek Jawaban",
+                                customColor: Colors.white,
+                              ),
                             ),
                           );
                         }),
@@ -293,7 +297,11 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                                       );
                                     }
                                   : null,
-                              child: Text("Kirim Jawaban"),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: "Kirim Jawaban",
+                                customColor: Colors.white,
+                              ),
                             ),
                           );
                         }),
@@ -308,7 +316,11 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
                       description:
                           "Berikut adalah tombol untuk mengerjakan latihan",
                       child: ElevatedButton(
-                        child: Text("Kerjakan Latihan"),
+                        child: CustomTextHelper.textBody(
+                          context: context,
+                          text: "Kerjakan Latihan",
+                          customColor: Colors.white,
+                        ),
                         onPressed: () {},
                       ),
                     ),

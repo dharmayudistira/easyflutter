@@ -67,16 +67,17 @@ class ButtonsWidget extends StatelessWidget {
                 ),
               ),
               actions: [
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
                     Get.back();
                   },
-                  child: Text('Tidak'),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.redAccent,
+                  child: CustomTextHelper.textBody(
+                    context: context,
+                    text: "Tidak",
+                    customColor: Colors.red,
                   ),
                 ),
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
                     Get.back();
                     startExercise();
@@ -84,14 +85,22 @@ class ButtonsWidget extends StatelessWidget {
                         "Informasi", "Selamat mengerjakan.")
                       ..show(context);
                   },
-                  child: Text('Yakin'),
+                  child: CustomTextHelper.textBody(
+                    context: context,
+                    text: "Yakin",
+                    customColor: Colors.blue,
+                  ),
                 ),
               ],
             );
           },
         );
       },
-      child: Text("Kerjakan Latihan"),
+      child: CustomTextHelper.textBody(
+        context: context,
+        text: "Kerjakan Latihan",
+        customColor: Colors.white,
+      ),
     );
   }
 
@@ -126,25 +135,27 @@ class ButtonsWidget extends StatelessWidget {
                             ),
                           ),
                           actions: [
-                            ElevatedButton(
+                            TextButton(
                               onPressed: () {
                                 sendAnswer();
                                 Get.back();
                                 Get.back();
                               },
-                              child: Text('Selesai'),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: "Selesai",
+                                customColor: Colors.white,
+                              ),
                             ),
                           ],
                         );
                       });
                 }
               : null,
-          child: Text(
-            "Kirim Jawaban",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2
-                ?.copyWith(color: Colors.white),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Kirim Jawaban",
+            customColor: Colors.white,
           ),
         );
       },
@@ -170,12 +181,10 @@ class ButtonsWidget extends StatelessWidget {
                   }
                 }
               : null,
-          child: Text(
-            "Check Jawaban",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2
-                ?.copyWith(color: Colors.white),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Cek Jawaban",
+            customColor: Colors.white,
           ),
         );
       },
@@ -198,21 +207,26 @@ class ButtonsWidget extends StatelessWidget {
                               'Apakah Anda yakin untuk reset jawaban latihan?',
                         ),
                         actions: [
-                          ElevatedButton(
+                          TextButton(
                             onPressed: () {
                               Get.back();
                             },
-                            child: Text('Tidak'),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.redAccent,
+                            child: CustomTextHelper.textBody(
+                              context: context,
+                              text: "Tidak",
+                              customColor: Colors.red,
                             ),
                           ),
-                          ElevatedButton(
+                          TextButton(
                             onPressed: () {
                               Get.back();
                               reset();
                             },
-                            child: Text('Yakin'),
+                            child: CustomTextHelper.textBody(
+                              context: context,
+                              text: "Yakin",
+                              customColor: Colors.blue,
+                            ),
                           ),
                         ],
                       );
@@ -220,12 +234,10 @@ class ButtonsWidget extends StatelessWidget {
                   );
                 }
               : null,
-          child: Text(
-            "Reset",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2
-                ?.copyWith(color: Colors.white),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Reset",
+            customColor: Colors.white,
           ),
         );
       },

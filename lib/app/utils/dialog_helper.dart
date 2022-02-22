@@ -29,11 +29,10 @@ class DialogHelper {
           onPressed: () {
             Get.back();
           },
-          child: Text(
-            "Tidak",
-            style: TextStyle(
-              color: Colors.redAccent,
-            ),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Tidak",
+            customColor: Colors.red,
           ),
         ),
         TextButton(
@@ -42,7 +41,11 @@ class DialogHelper {
             SnackBarHelper.showFlushbarInfo("Informasi", "Selamat mengerjakan.")
               ..show(context);
           },
-          child: Text("Yakin"),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Yakin",
+            customColor: Colors.blue,
+          ),
         ),
       ],
     );
@@ -78,7 +81,11 @@ class DialogHelper {
             Get.back();
             Get.back();
           },
-          child: Text("OK"),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "OK",
+            customColor: Colors.blue,
+          ),
         ),
       ],
     );
@@ -106,11 +113,10 @@ class DialogHelper {
           onPressed: () {
             Get.back();
           },
-          child: Text(
-            "Tidak",
-            style: TextStyle(
-              color: Colors.redAccent,
-            ),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Tidak",
+            customColor: Colors.red,
           ),
         ),
         TextButton(
@@ -118,7 +124,11 @@ class DialogHelper {
             Get.back();
             Get.back();
           },
-          child: Text("Yakin"),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Yakin",
+            customColor: Colors.blue,
+          ),
         ),
       ],
     );
@@ -128,7 +138,8 @@ class DialogHelper {
     return AlertDialog(
       title: CustomTextHelper.textTitleDialog(
         context: context,
-        text: "Selamat! Tutorial pengerjaan latihan soal sudah selesai\nAnda dapat melanjutkan mengerjakan latihan soal ini sebagai latihan.",
+        text:
+            "Selamat! Tutorial pengerjaan latihan soal sudah selesai\nAnda dapat melanjutkan mengerjakan latihan soal ini sebagai latihan.",
       ),
       content: Container(
         width: double.minPositive,
@@ -150,7 +161,11 @@ class DialogHelper {
           onPressed: () {
             Get.back();
           },
-          child: Text("OK"),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "OK",
+            customColor: Colors.blue,
+          ),
         ),
       ],
     );

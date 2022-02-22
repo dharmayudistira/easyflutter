@@ -362,29 +362,38 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                 ),
               ),
               actions: [
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
                     Get.back();
                   },
-                  child: Text('Tidak'),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.redAccent,
+                  child: CustomTextHelper.textBody(
+                    context: context,
+                    text: "Tidak",
+                    customColor: Colors.red,
                   ),
                 ),
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
                     Get.back();
                     controller.startExercise();
                     Get.snackbar("Informasi", "Selamat mengerjakan.");
                   },
-                  child: Text('Yakin'),
+                  child: CustomTextHelper.textBody(
+                    context: context,
+                    text: "Yakin",
+                    customColor: Colors.blue,
+                  ),
                 ),
               ],
             );
           },
         );
       },
-      child: Text("Kerjakan Latihan"),
+      child: CustomTextHelper.textBody(
+        context: context,
+        text: "Kerjakan Latihan",
+        customColor: Colors.white,
+      ),
     );
   }
 
@@ -408,24 +417,26 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                                 "Anda telah menyelesaikan ${controller.exerciseName}",
                           ),
                           actions: [
-                            ElevatedButton(
+                            TextButton(
                               onPressed: () {
                                 Get.back();
                                 Get.back();
                               },
-                              child: Text('Selesai'),
+                              child: CustomTextHelper.textBody(
+                                context: context,
+                                text: "Selesai",
+                                customColor: Colors.white,
+                              ),
                             ),
                           ],
                         );
                       });
                 }
               : null,
-          child: Text(
-            "Kirim Jawaban",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2
-                ?.copyWith(color: Colors.white),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Kirim Jawaban",
+            customColor: Colors.white,
           ),
         );
       },
@@ -451,12 +462,10 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                   }
                 }
               : null,
-          child: Text(
-            "Check Jawaban",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2
-                ?.copyWith(color: Colors.white),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Cek Jawaban",
+            customColor: Colors.white,
           ),
         );
       },
@@ -479,21 +488,26 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                               'Apakah Anda yakin untuk reset jawaban latihan?',
                         ),
                         actions: [
-                          ElevatedButton(
+                          TextButton(
                             onPressed: () {
                               Get.back();
                             },
-                            child: Text('Tidak'),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.redAccent,
+                            child: CustomTextHelper.textBody(
+                              context: context,
+                              text: "Tidak",
+                              customColor: Colors.red,
                             ),
                           ),
-                          ElevatedButton(
+                          TextButton(
                             onPressed: () {
                               Get.back();
                               controller.reset();
                             },
-                            child: Text('Yakin'),
+                            child: CustomTextHelper.textBody(
+                              context: context,
+                              text: "Yakin",
+                              customColor: Colors.blue,
+                            ),
                           ),
                         ],
                       );
@@ -501,12 +515,10 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                   );
                 }
               : null,
-          child: Text(
-            "Reset",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2
-                ?.copyWith(color: Colors.white),
+          child: CustomTextHelper.textBody(
+            context: context,
+            text: "Reset",
+            customColor: Colors.white,
           ),
         );
       },

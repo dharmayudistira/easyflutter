@@ -152,17 +152,14 @@ class LoginView extends GetView<LoginController> {
                 SizedBox(height: dimenMedium),
                 Container(
                   width: double.maxFinite,
-                  height: 50,
                   child: ElevatedButton(
                     onPressed: () {
                       controller.login(context);
                     },
-                    child: Text(
-                      "Masuk",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline5
-                          ?.copyWith(color: Colors.white),
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Masuk",
+                      customColor: Colors.white,
                     ),
                   ),
                 ),

@@ -117,14 +117,18 @@ class ListExerciseView extends StatelessWidget {
                     text: converted,
                   ),
                 ),
-                DataCell(CustomTextHelper.textBodyTable(
+                DataCell(
+                  CustomTextHelper.textBodyTable(
                     context: context,
                     text: exerciseId!,
-                  ),),
-                DataCell(CustomTextHelper.textBodyTable(
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
                     context: context,
                     text: exerciseName!,
-                  ),),
+                  ),
+                ),
                 DataCell(
                   ElevatedButton(
                     onPressed: () {
@@ -133,7 +137,11 @@ class ListExerciseView extends StatelessWidget {
                       controller.dashboardLecturerController
                           .setSelectedIndex(4);
                     },
-                    child: Text("Lihat Log Mahasiswa"),
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Lihat Log Mahasiswa",
+                      customColor: Colors.white,
+                    ),
                   ),
                 ),
               ],

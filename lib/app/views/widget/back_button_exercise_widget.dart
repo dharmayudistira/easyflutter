@@ -33,21 +33,26 @@ class BackButtonExercise extends StatelessWidget {
                   ),
                 ),
                 actions: [
-                  ElevatedButton(
+                  TextButton(
                     onPressed: () {
                       Get.back();
                     },
-                    child: Text('Tidak'),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.redAccent,
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Tidak",
+                      customColor: Colors.red,
                     ),
                   ),
-                  ElevatedButton(
+                  TextButton(
                     onPressed: () {
                       Get.back();
                       Get.back();
                     },
-                    child: Text('Yakin'),
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Yakin",
+                      customColor: Colors.blue,
+                    ),
                   ),
                 ],
               );

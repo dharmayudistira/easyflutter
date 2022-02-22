@@ -103,10 +103,15 @@ class AddStudentView extends StatelessWidget {
             ),
             SizedBox(height: dimenMedium),
             ElevatedButton(
-                onPressed: () {
-                  controller.addStudent(context);
-                },
-                child: Text("Simpan")),
+              onPressed: () {
+                controller.addStudent(context);
+              },
+              child: CustomTextHelper.textBody(
+                context: context,
+                text: "Simpan",
+                customColor: Colors.white,
+              ),
+            ),
           ],
         ),
       ),

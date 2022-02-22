@@ -43,7 +43,11 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
                         ],
                       );
                     },
-                    child: Text("Contoh Soal"),
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Contoh Soal",
+                      customColor: Colors.white,
+                    ),
                   ),
                 ],
               ),
@@ -114,11 +118,19 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
                 trailing: (isComplete)
                     ? ElevatedButton(
                         onPressed: () {},
-                        child: Text("Kerjakan Lagi"),
+                        child: CustomTextHelper.textBody(
+                          context: context,
+                          text: "Kerjakan Lagi",
+                          customColor: Colors.white,
+                        ),
                       )
                     : ElevatedButton(
                         onPressed: () {},
-                        child: Text("Kerjakan"),
+                        child: CustomTextHelper.textBody(
+                          context: context,
+                          text: "Kerjakan",
+                          customColor: Colors.white,
+                        ),
                       ),
               ),
             ),
