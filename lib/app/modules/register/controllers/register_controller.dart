@@ -118,15 +118,17 @@ class RegisterController extends GetxController {
 
     if (lecturerId == "null") {
       SnackBarHelper.showFlushbarWarning(
-          "Terjadi Kesalahan", "Harap pilih dosen terlebih dahulu")
-        ..show(context);
+        "Peringatan",
+        "Harap pilih dosen terlebih dahulu",
+      )..show(context);
       return;
     }
 
     if (className == "PILIH KELAS") {
       SnackBarHelper.showFlushbarWarning(
-          "Terjadi Kesalahan", "Harap pilih kelas terlebih dahulu")
-        ..show(context);
+        "Peringatan",
+        "Harap pilih kelas terlebih dahulu",
+      )..show(context);
       return;
     }
 
@@ -144,14 +146,16 @@ class RegisterController extends GetxController {
       }).whenComplete(() {
         clearForm();
         Get.offNamed(Routes.LOGIN);
-        SnackBarHelper.showFlushbarSuccess("Berhasil Menambahkan Mahasiswa",
-            "Data mahasiswa $studentId berhasil ditambahkan")
-          ..show(context);
+        SnackBarHelper.showFlushbarSuccess(
+          "Sukses",
+          "Data mahasiswa $studentId berhasil ditambahkan",
+        )..show(context);
       });
     } else {
       SnackBarHelper.showFlushbarInfo(
-          "Terjadi Kesalahan", "Data mahasiswa $studentId sudah ada")
-        ..show(context);
+        "Terjadi Kesalahan",
+        "Mahasiswa dengan NIM $studentId sudah terdaftar",
+      )..show(context);
     }
   }
 

@@ -63,7 +63,7 @@ class CodeExerciseExampleController extends GetxController {
       return;
     } else {
       SnackBarHelper.showFlushbarWarning(
-        "Mohon maaf",
+        "Peringatan",
         "Blok kode yang Anda susun belum sesuai dengan output yang diharapkan",
       )..show(context);
     }

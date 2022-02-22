@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class DashboardLecturerController extends GetxController {
-
   final storageHelper = Get.find<StorageHelper>();
 
   var selectedIndexScreen = 0.obs;
@@ -34,8 +33,10 @@ class DashboardLecturerController extends GetxController {
 
   void logout(BuildContext context) async {
     Get.offNamed(Routes.LOGIN);
-    SnackBarHelper.showFlushbarSuccess("Berhasil Keluar", "Sampai jumpa lagi! ${storageHelper.getNameUser()}")..show(context);
+    SnackBarHelper.showFlushbarSuccess(
+      "Sukses",
+      "Sampai jumpa lagi, ${storageHelper.getNameUser()}",
+    )..show(context);
     await storageHelper.clearStorage();
   }
-
 }

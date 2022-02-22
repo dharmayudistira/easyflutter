@@ -38,8 +38,10 @@ class DialogHelper {
         TextButton(
           onPressed: () {
             onDialogStartSuccess();
-            SnackBarHelper.showFlushbarInfo("Informasi", "Selamat mengerjakan.")
-              ..show(context);
+            SnackBarHelper.showFlushbarInfo(
+              "Informasi",
+              "Selamat mengerjakan $exerciseName",
+            )..show(context);
           },
           child: CustomTextHelper.textBody(
             context: context,

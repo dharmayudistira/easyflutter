@@ -23,7 +23,7 @@ class DragTargetWidget extends StatelessWidget {
       child: DragTarget<AnswerWidgetModel>(
         onWillAccept: (data) => true,
         onAccept: (data) {
-          acceptAnswer(data, index);
+          acceptAnswer(data, index, context);
         },
         builder: (context, candidateData, rejectedData) {
           return Obx(

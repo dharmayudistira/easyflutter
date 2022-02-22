@@ -16,8 +16,9 @@ class DashboardStudentController extends GetxController {
   void logout(BuildContext context) async {
     Get.offNamed(Routes.LOGIN);
     SnackBarHelper.showFlushbarSuccess(
-        "Berhasil Keluar", "Sampai jumpa lagi! ${_storageHelper.getNameUser()}")
-      ..show(context);
+      "Sukses",
+      "Sampai jumpa lagi, ${_storageHelper.getNameUser()}",
+    )..show(context);
     await _storageHelper.clearStorage();
   }
 }

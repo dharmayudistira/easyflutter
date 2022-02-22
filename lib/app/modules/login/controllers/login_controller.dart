@@ -74,17 +74,20 @@ class LoginController extends GetxController {
         clearForm();
         Get.offNamed(Routes.DASHBOARD_LECTURER);
         SnackBarHelper.showFlushbarSuccess(
-            "Berhasil Masuk", "Selamat Datang! ${_storageHelper.getNameUser()}")
-          ..show(context);
+          "Sukses",
+          "Selamat Datang, ${_storageHelper.getNameUser()}",
+        )..show(context);
       } else {
         SnackBarHelper.showFlushbarWarning(
-            "Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda")
-          ..show(context);
+          "Peringatan",
+          "Mohon periksa kembali kata sandi Anda",
+        )..show(context);
       }
     } else {
       SnackBarHelper.showFlushbarWarning(
-          "Terjadi Kesalahan", "Tidak ada dosen dengan ID : $id")
-        ..show(context);
+        "Peringatan",
+        "Dosen dengan NIDN $id tidak ditemukan",
+      )..show(context);
     }
   }
 
@@ -107,23 +110,27 @@ class LoginController extends GetxController {
           await saveStudentDataToSharedPref(selectedStudent);
           clearForm();
           Get.offNamed(Routes.DASHBOARD_STUDENT);
-          SnackBarHelper.showFlushbarSuccess("Berhasil Masuk",
-              "Selamat Datang! ${_storageHelper.getNameUser()}")
-            ..show(context);
+          SnackBarHelper.showFlushbarSuccess(
+            "Sukses",
+            "Selamat Datang, ${_storageHelper.getNameUser()}",
+          )..show(context);
         } else {
-          SnackBarHelper.showFlushbarInfo("Terjadi Kesalahan",
-              "Mohon tunggu validasi dari dosen pengampu Anda")
-            ..show(context);
+          SnackBarHelper.showFlushbarInfo(
+            "Informasi",
+            "Mohon tunggu validasi dari dosen pengampu Anda",
+          )..show(context);
         }
       } else {
         SnackBarHelper.showFlushbarWarning(
-            "Terjadi Kesalahan", "Mohon periksa kembali ID dan kata sandi Anda")
-          ..show(context);
+          "Peringatan",
+          "Mohon periksa kembali kata sandi Anda",
+        )..show(context);
       }
     } else {
       SnackBarHelper.showFlushbarWarning(
-          "Terjadi Kesalahan", "Tidak ada mahasiswa dengan ID : $id")
-        ..show(context);
+        "Peringatan",
+        "Mahasiswa dengan NIM $id tidak ditemukan",
+      )..show(context);
     }
   }
 

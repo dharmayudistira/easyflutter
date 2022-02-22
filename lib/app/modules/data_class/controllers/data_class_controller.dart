@@ -14,7 +14,7 @@ class DataClassController extends GetxController {
   final GlobalKey<FormState> dataClassFormKey = GlobalKey();
   final classReference = FirebaseFirestore.instance.collection("kelas");
   final exerciseReference = FirebaseFirestore.instance.collection("latihan");
-  
+
   final listTitleExerciseCodeReconstruction =
       GenerateExercisesHelper.listExerciseCodeReconstruction;
   final listTitleExerciseWidgetTreeReconstruction =
@@ -80,8 +80,9 @@ class DataClassController extends GetxController {
         edtControllerClassName.clear();
         Get.back();
         SnackBarHelper.showFlushbarSuccess(
-            "Berhasil", "Data kelas $className berhasil ditambahkan")
-          ..show(context);
+          "Sukses",
+          "Data kelas $className berhasil ditambahkan",
+        )..show(context);
       });
 
       await addExerciseEachClass(className);
@@ -89,8 +90,9 @@ class DataClassController extends GetxController {
       edtControllerClassName.clear();
       Get.back();
       SnackBarHelper.showFlushbarWarning(
-          "Terjadi Kesalahan", "Data kelas $className sudah diampu dosen lain")
-        ..show(context);
+        "Peringatan",
+        "Data kelas $className sudah diampu dosen lain",
+      )..show(context);
     }
   }
 

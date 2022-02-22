@@ -1,5 +1,6 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/utils/custom_text_helper.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/views/widget/back_button_exercise_widget.dart';
 import 'package:easyflutter/app/views/widget/drag_target_widget.dart';
 import 'package:easyflutter/app/views/widget/draggable_widget.dart';
@@ -376,7 +377,10 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
                   onPressed: () {
                     Get.back();
                     controller.startExercise();
-                    Get.snackbar("Informasi", "Selamat mengerjakan.");
+                    SnackBarHelper.showFlushbarInfo(
+                      "Informasi",
+                      "Selamat mengerjakan ${controller.exerciseName}",
+                    )..show(context);
                   },
                   child: CustomTextHelper.textBody(
                     context: context,
@@ -450,15 +454,15 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
           onPressed: !controller.isAnswerTrue.value
               ? () {
                   if (controller.checkAnswer()) {
-                    Get.snackbar(
-                      "Benar!",
-                      "Selamat, jawaban Anda benar!",
-                    );
+                    SnackBarHelper.showFlushbarSuccess(
+                      "Selamat",
+                      "Widget Tree yang Anda lengkapi telah sesuai dengan output yang diharapkan",
+                    )..show(context);
                   } else {
-                    Get.snackbar(
-                      "Salah!",
-                      "Maaf, jawaban Anda salah!",
-                    );
+                    SnackBarHelper.showFlushbarWarning(
+                      "Peringatan",
+                      "Widget Tree yang Anda lengkapi belum sesuai dengan output yang diharapkan",
+                    )..show(context);
                   }
                 }
               : null,

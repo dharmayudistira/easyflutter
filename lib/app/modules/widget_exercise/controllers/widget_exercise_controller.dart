@@ -3,7 +3,9 @@ import 'package:easyflutter/app/data/answer_widget_model.dart';
 import 'package:easyflutter/app/data/log_model.dart';
 import 'package:easyflutter/app/utils/check_answer_helper.dart';
 import 'package:easyflutter/app/utils/send_answer_helper.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
@@ -40,7 +42,7 @@ class WidgetExerciseController extends GetxController {
     targetAnswer = targetAnswerArg.obs;
   }
 
-  void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer) {
+  void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer, BuildContext context) {
     // check isStart
     if (isStart.value) {
       if (!isOver) {
@@ -69,10 +71,10 @@ class WidgetExerciseController extends GetxController {
         createLog();
       }
     } else {
-      Get.snackbar(
+      SnackBarHelper.showFlushbarInfo(
         "Informasi",
-        'Pastikan Anda sudah menekan tombol "Kerjakan Latihan" untuk melengkapi peta konsep.',
-      );
+        'Pastikan Anda sudah menekan tombol "Kerjakan Latihan" untuk melengkapi peta konsep',
+      )..show(context);
     }
   }
 

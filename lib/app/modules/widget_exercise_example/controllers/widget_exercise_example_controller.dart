@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easyflutter/app/data/answer_widget_model.dart';
+import 'package:easyflutter/app/utils/snackbar_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
@@ -36,8 +38,8 @@ class WidgetExerciseExampleController extends GetxController {
     AnswerWidgetModel(index: -1, content: "", isUsed: false),
   ].obs;
 
-  void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer) {
-    // check isStart
+  void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer, BuildContext context) {
+    // check  isStart
     if (isStart.value) {
       if (!isOver) {
         // disable answer
@@ -63,10 +65,10 @@ class WidgetExerciseExampleController extends GetxController {
         targetAnswer[indexTargetAnswer].isUsed = true;
       }
     } else {
-      Get.snackbar(
+      SnackBarHelper.showFlushbarInfo(
         "Informasi",
         'Pastikan Anda sudah menekan tombol "Kerjakan Latihan" untuk melengkapi peta konsep.',
-      );
+      )..show(context);
     }
   }
 

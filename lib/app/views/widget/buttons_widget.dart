@@ -82,8 +82,9 @@ class ButtonsWidget extends StatelessWidget {
                     Get.back();
                     startExercise();
                     SnackBarHelper.showFlushbarInfo(
-                        "Informasi", "Selamat mengerjakan.")
-                      ..show(context);
+                      "Informasi",
+                      "Selamat mengerjakan $exerciseName",
+                    )..show(context);
                   },
                   child: CustomTextHelper.textBody(
                     context: context,

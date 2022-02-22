@@ -78,13 +78,13 @@ class AddStudentController extends GetxController {
 
     if (selectedClass.value == "Pilih Kelas") {
       SnackBarHelper.showFlushbarWarning(
-        "Terjadi Kesalahan",
+        "Peringatan",
         "Harap pilih kelas terlebih dahulu",
       )..show(context);
     } else if (!isValid) {
       SnackBarHelper.showFlushbarWarning(
-        "Terjadi Kesalahan",
-        "Mahasiswa dengan NIM ${edtStudentIdController.text} sudah ada",
+        "Peringatan",
+        "Mahasiswa dengan NIM ${edtStudentIdController.text} sudah terdaftar",
       )..show(context);
     } else {
       final studentId = edtStudentIdController.text;
@@ -109,7 +109,7 @@ class AddStudentController extends GetxController {
         clearForm();
         dashboardLecturerController.setSelectedIndex(1);
         SnackBarHelper.showFlushbarSuccess(
-          "Berhasil Menambahkan Mahasiswa",
+          "Sukses",
           "Data mahasiswa $studentName berhasil ditambahkan",
         )..show(context);
       });
