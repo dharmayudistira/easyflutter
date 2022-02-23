@@ -11,7 +11,6 @@ import 'package:get/get.dart';
 class DataClassController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
-  final GlobalKey<FormState> dataClassFormKey = GlobalKey();
   final classReference = FirebaseFirestore.instance.collection("kelas");
   final exerciseReference = FirebaseFirestore.instance.collection("latihan");
 
@@ -50,9 +49,7 @@ class DataClassController extends GetxController {
     rowOfClasses = result;
   }
 
-  Future<void> addClass(BuildContext context) async {
-    final isValid = dataClassFormKey.currentState?.validate();
-
+  Future<void> addClass(BuildContext context, bool isValid) async {
     if (isValid != true) return;
 
     final className = edtControllerClassName.text.toUpperCase();

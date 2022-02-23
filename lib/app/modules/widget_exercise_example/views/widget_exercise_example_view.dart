@@ -31,6 +31,7 @@ class WidgetExerciseExampleView extends StatelessWidget {
           }
           if (p0 == 10) {
             showDialog(
+              barrierDismissible: false,
               context: context,
               builder: (context) {
                 return DialogHelper.dialogEndTutorial(context);
@@ -351,47 +352,11 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
         showDialog(
           context: context,
           builder: (BuildContext context) {
-            return AlertDialog(
-              title: CustomTextHelper.textTitleDialog(
-                context: context,
-                text:
-                    "Apakah Anda yakin untuk mengerjakan ${controller.exerciseName}?",
-              ),
-              content: Container(
-                width: double.minPositive,
-                child: CustomTextHelper.textCaption(
-                  context: context,
-                  text:
-                      'Lengkapi peta konsep menggunakan jawaban yang sudah disediakan, sesuai dengan output yang diharapkan. Ketika Anda menekan tombol "Yakin", maka waktu akan dimulai, dan waktu akan secara otomatis berhenti ketika Anda telah melengkapi peta konsep dengan benar.',
-                ),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: CustomTextHelper.textBody(
-                    context: context,
-                    text: "Tidak",
-                    customColor: Colors.red,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                    controller.startExercise();
-                    SnackBarHelper.showFlushbarInfo(
-                      "Informasi",
-                      "Selamat mengerjakan ${controller.exerciseName}",
-                    )..show(context);
-                  },
-                  child: CustomTextHelper.textBody(
-                    context: context,
-                    text: "Yakin",
-                    customColor: Colors.blue,
-                  ),
-                ),
-              ],
+            return DialogHelper.dialogStartExercise(
+              context,
+              controller.exerciseName,
+              controller.dialogMessage,
+              controller.startExercise,
             );
           },
         );
@@ -411,33 +376,14 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
           onPressed: controller.isAnswerTrue.value
               ? () {
                   showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: CustomTextHelper.textTitleDialog(
-                            context: context,
-                            text: "Selamat",
-                          ),
-                          content: CustomTextHelper.textBodyDialog(
-                            context: context,
-                            text:
-                                "Anda telah menyelesaikan ${controller.exerciseName}",
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Get.back();
-                                Get.back();
-                              },
-                              child: CustomTextHelper.textBody(
-                                context: context,
-                                text: "Selesai",
-                                customColor: Colors.white,
-                              ),
-                            ),
-                          ],
-                        );
-                      });
+                    context: context,
+                    builder: (BuildContext context) {
+                      return DialogHelper.dialogSendAnswerExercise(
+                        context,
+                        controller.exerciseName,
+                      );
+                    },
+                  );
                 }
               : null,
           child: CustomTextHelper.textBody(

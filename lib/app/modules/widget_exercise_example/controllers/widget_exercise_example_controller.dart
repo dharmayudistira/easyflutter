@@ -13,6 +13,9 @@ class WidgetExerciseExampleController extends GetxController {
   final exerciseDescription =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et posuere nulla. Mauris fringilla felis arcu, at aliquet mi porttitor venenatis.";
 
+  final dialogMessage =
+      'Lengkapi peta konsep menggunakan jawaban yang sudah disediakan, sesuai dengan output yang diharapkan. Ketika Anda menekan tombol "Yakin", maka waktu akan dimulai, dan waktu akan secara otomatis berhenti ketika Anda telah melengkapi peta konsep dengan benar.';
+
   Function eq = const ListEquality().equals;
 
   int step = 0;
@@ -38,7 +41,8 @@ class WidgetExerciseExampleController extends GetxController {
     AnswerWidgetModel(index: -1, content: "", isUsed: false),
   ].obs;
 
-  void acceptAnswer(AnswerWidgetModel answer, int indexTargetAnswer, BuildContext context) {
+  void acceptAnswer(
+      AnswerWidgetModel answer, int indexTargetAnswer, BuildContext context) {
     // check  isStart
     if (isStart.value) {
       if (!isOver) {
@@ -74,6 +78,7 @@ class WidgetExerciseExampleController extends GetxController {
 
   void startExercise() {
     isStart.value = true;
+    Get.back();
     startStopwatch();
   }
 

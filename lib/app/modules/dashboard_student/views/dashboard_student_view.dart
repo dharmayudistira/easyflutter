@@ -239,12 +239,12 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
             ),
           ),
           TextButton(
-            onPressed: () {
-              controller.logout(context);
+            onPressed: () async {
+              await controller.logout(context);
             },
             child: CustomTextHelper.textBody(
               context: context,
-              text: "Simpan",
+              text: "Yakin",
               customColor: Colors.blue,
             ),
           ),

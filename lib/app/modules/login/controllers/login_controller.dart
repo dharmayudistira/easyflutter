@@ -10,7 +10,7 @@ class LoginController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final _firestore = FirebaseFirestore.instance;
   final listLoginType = ["Mahasiswa", "Dosen"].obs;
-  final GlobalKey<FormState> loginFormKey = GlobalKey();
+  
 
   late TextEditingController edtControllerId;
   late TextEditingController edtControllerPassword;
@@ -40,9 +40,7 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void login(BuildContext context) {
-    final isValid = loginFormKey.currentState?.validate();
-
+  void login(BuildContext context, bool isValid) {
     if (isValid == true) {
       final id = edtControllerId.text;
       final password = edtControllerPassword.text;

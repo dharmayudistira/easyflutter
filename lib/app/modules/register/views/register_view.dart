@@ -13,6 +13,9 @@ import 'package:get/get.dart';
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
+
+  final GlobalKey<FormState> registerFormKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +47,7 @@ class RegisterView extends GetView<RegisterController> {
         padding:
             EdgeInsets.symmetric(horizontal: dimenLarge, vertical: dimenMedium),
         child: Form(
-          key: controller.registerFormKey,
+          key: registerFormKey,
           child: SingleChildScrollView(
             controller: ScrollController(),
             child: Column(
@@ -152,7 +155,8 @@ class RegisterView extends GetView<RegisterController> {
                   width: double.maxFinite,
                   child: ElevatedButton(
                     onPressed: () {
-                      controller.addStudent(context);
+                      final isFormValid = registerFormKey.currentState?.validate();
+                      controller.addStudent(context, isFormValid ?? false);
                     },
                     child: CustomTextHelper.textBody(
                       context: context,

@@ -13,6 +13,7 @@ import '../controllers/data_class_controller.dart';
 
 class DataClassView extends StatelessWidget {
   final controller = Get.put(DataClassController());
+  final GlobalKey<FormState> dataClassFormKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +78,7 @@ class DataClassView extends StatelessWidget {
           text: "Tambahkkan Kelas",
         ),
         content: Form(
-          key: controller.dataClassFormKey,
+          key: dataClassFormKey,
           child: TextFormField(
             controller: controller.edtControllerClassName,
             decoration: InputDecoration(
@@ -106,7 +107,8 @@ class DataClassView extends StatelessWidget {
           ),
           TextButton(
             onPressed: () async {
-              await controller.addClass(context);
+              final isValid = dataClassFormKey.currentState?.validate();
+              await controller.addClass(context, isValid ?? false);
             },
             child: CustomTextHelper.textBody(
               context: context,

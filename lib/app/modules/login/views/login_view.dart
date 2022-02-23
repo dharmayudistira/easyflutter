@@ -13,6 +13,9 @@ import 'package:get/get.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
+
+  final GlobalKey<FormState> loginFormKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +49,7 @@ class LoginView extends GetView<LoginController> {
         padding:
             EdgeInsets.symmetric(horizontal: dimenSmall, vertical: dimenMedium),
         child: Form(
-          key: controller.loginFormKey,
+          key: loginFormKey,
           child: SingleChildScrollView(
             controller: ScrollController(),
             child: Column(
@@ -154,7 +157,8 @@ class LoginView extends GetView<LoginController> {
                   width: double.maxFinite,
                   child: ElevatedButton(
                     onPressed: () {
-                      controller.login(context);
+                      final isValid = loginFormKey.currentState?.validate();
+                      controller.login(context, isValid ?? false);
                     },
                     child: CustomTextHelper.textBody(
                       context: context,

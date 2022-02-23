@@ -12,6 +12,7 @@ import '../controllers/add_student_controller.dart';
 
 class AddStudentView extends StatelessWidget {
   final controller = Get.put(AddStudentController());
+  final GlobalKey<FormState> addStudentFormKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class AddStudentView extends StatelessWidget {
             ),
             SizedBox(height: dimenSmall),
             Form(
-              key: controller.addStudentFormKey,
+              key: addStudentFormKey,
               child: Column(
                 children: [
                   TextFormField(
@@ -104,7 +105,8 @@ class AddStudentView extends StatelessWidget {
             SizedBox(height: dimenMedium),
             ElevatedButton(
               onPressed: () {
-                controller.addStudent(context);
+                final isFormValid = addStudentFormKey.currentState?.validate();
+                controller.addStudent(context, isFormValid ?? false);
               },
               child: CustomTextHelper.textBody(
                 context: context,

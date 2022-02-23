@@ -21,7 +21,7 @@ void main() async {
 
 Widget _buildApp() {
   return GetMaterialApp(
-    title: "Application",
+    title: "EasyFlutter",
     debugShowCheckedModeBanner: false,
     initialRoute: AppPages.INITIAL,
     getPages: AppPages.routes,
