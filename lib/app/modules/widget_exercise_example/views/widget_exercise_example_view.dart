@@ -349,17 +349,7 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
   Widget buildStartExerciseButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return DialogHelper.dialogStartExercise(
-              context,
-              controller.exerciseName,
-              controller.dialogMessage,
-              controller.startExercise,
-            );
-          },
-        );
+        controller.startExercise();
       },
       child: CustomTextHelper.textBody(
         context: context,

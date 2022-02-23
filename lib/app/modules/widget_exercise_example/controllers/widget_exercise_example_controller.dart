@@ -78,7 +78,6 @@ class WidgetExerciseExampleController extends GetxController {
 
   void startExercise() {
     isStart.value = true;
-    Get.back();
     startStopwatch();
   }
 
