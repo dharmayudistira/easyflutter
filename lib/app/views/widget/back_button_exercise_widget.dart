@@ -1,4 +1,3 @@
-import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/dialog_helper.dart';
 import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

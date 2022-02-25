@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DataStudentController extends GetxController {
-
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
   final studentReference = FirebaseFirestore.instance.collection("mahasiswa");
@@ -16,22 +15,52 @@ class DataStudentController extends GetxController {
 
   Stream<QuerySnapshot> getAllStudent() {
     final lecturerId = _storageHelper.getIdUser();
-    return studentReference.where("id_dosen", isEqualTo: lecturerId).snapshots();
+    return studentReference
+        .where("id_dosen", isEqualTo: lecturerId)
+        .snapshots();
   }
 
-  void mapStudentFirestoreToStudentModel(AsyncSnapshot<QuerySnapshot> snapshots) {
+  void mapStudentFirestoreToStudentModel(
+      AsyncSnapshot<QuerySnapshot> snapshots) {
     final result = ConverterHelper.mapStudentFirestoreToStudentModel(snapshots);
     result.sort((a, b) => a.studentName!.compareTo(b.studentName!));
     listStudent = result;
   }
 
   Future<void> validateStudentStatus(String studentId, bool status) async {
-    final snapshots = await studentReference.where("id_mahasiswa", isEqualTo: studentId).get();
+    final snapshots = await studentReference
+        .where("id_mahasiswa", isEqualTo: studentId)
+        .get();
     final snapshotId = snapshots.docs[0].id;
 
     await studentReference.doc(snapshotId).update({
-      "status" : status,
+      "status": status,
     });
   }
 
+  String getPostTestCodeStatus(List<String>? listExerciseId) {
+    final counterCode = listExerciseId
+        ?.where((exerciseId) => exerciseId.substring(6, 7) == 'c')
+        .toList()
+        .length;
+
+    if (counterCode == 15) {
+      return "Siap";
+    } else {
+      return "Belum Siap";
+    }
+  }
+
+  String getPostTestWidgetStatus(List<String>? listExerciseId) {
+    final counterWidget = listExerciseId
+        ?.where((exerciseId) => exerciseId.substring(6, 7) == 'w')
+        .toList()
+        .length;
+
+    if (counterWidget == 15) {
+      return "Siap";
+    } else {
+      return "Belum Siap";
+    }
+  }
 }

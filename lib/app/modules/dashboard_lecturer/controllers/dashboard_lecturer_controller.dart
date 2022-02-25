@@ -1,8 +1,3 @@
-import 'package:easyflutter/app/modules/add_student/controllers/add_student_controller.dart';
-import 'package:easyflutter/app/modules/data_class/controllers/data_class_controller.dart';
-import 'package:easyflutter/app/modules/data_student/controllers/data_student_controller.dart';
-import 'package:easyflutter/app/modules/list_exercise/controllers/list_exercise_controller.dart';
-import 'package:easyflutter/app/modules/list_log_student/controllers/list_log_student_controller.dart';
 import 'package:easyflutter/app/routes/app_pages.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:easyflutter/app/utils/storage_helper.dart';

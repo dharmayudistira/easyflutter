@@ -87,7 +87,7 @@ class DataStudentView extends StatelessWidget {
                 context: context,
                 text: "NIM",
               ),
-              size: ColumnSize.M,
+              size: ColumnSize.L,
             ),
             DataColumn2(
               label: CustomTextHelper.textTitleTable(
@@ -100,6 +100,20 @@ class DataStudentView extends StatelessWidget {
               label: CustomTextHelper.textTitleTable(
                 context: context,
                 text: "Kelas",
+              ),
+              size: ColumnSize.M,
+            ),
+            DataColumn2(
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Code",
+              ),
+              size: ColumnSize.M,
+            ),
+            DataColumn2(
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Widget",
               ),
               size: ColumnSize.M,
             ),
@@ -151,6 +165,18 @@ class DataStudentView extends StatelessWidget {
                   CustomTextHelper.textBodyTable(
                     context: context,
                     text: studentClass!,
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: controller.getPostTestCodeStatus(student.listExerciseId),
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
+                    text: controller.getPostTestWidgetStatus(student.listExerciseId),
                   ),
                 ),
                 DataCell(

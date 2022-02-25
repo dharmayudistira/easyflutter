@@ -91,8 +91,18 @@ class CodeExerciseController extends GetxController {
   }
 
   void checkAnswer(BuildContext context) {
+    final correctCodeValue = <String>[];
+    correctAnswer.forEach((element) {
+      correctCodeValue.add("${element['codeValue']}");
+    });
+
+    final studentCodeValue = <String>[];
+    studentAnswer.forEach((element) {
+      studentCodeValue.add("${element['codeValue']}");
+    });
+
     isCorrect.value =
-        CheckAnswerHelper.isDeepEqual(correctAnswer, studentAnswer);
+        CheckAnswerHelper.isDeepEqual(correctCodeValue, studentCodeValue);
 
     if (isCorrect.value) {
       stopTimer();

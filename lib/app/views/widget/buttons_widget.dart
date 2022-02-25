@@ -1,11 +1,9 @@
-import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:easyflutter/app/utils/dialog_helper.dart';
 import 'package:easyflutter/app/utils/snackbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 
 class ButtonsWidget extends StatelessWidget {
   const ButtonsWidget({
