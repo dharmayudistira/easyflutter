@@ -33,5 +33,10 @@ class GenerateExercisesHelper {
     "Latihan 13",
     "Latihan 14",
     "Latihan 15",
+    "Latihan 16",
+    "Latihan 17",
+    "Latihan 18",
+    "Latihan 19",
+    "Latihan 20",
   ];
 }

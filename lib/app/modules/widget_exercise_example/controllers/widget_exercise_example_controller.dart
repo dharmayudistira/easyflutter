@@ -11,7 +11,7 @@ class WidgetExerciseExampleController extends GetxController {
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
   final exerciseDescription =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et posuere nulla. Mauris fringilla felis arcu, at aliquet mi porttitor venenatis.";
+      "Lengkapi peta konsep (widget tree) dibawah menggunakan pilihan jawaban yang sudah disediakan dengan cara drag and drop, sehingga peta konsep (widget tree) tersebut merepresentasikan output yang diharapkan.";
 
   final dialogMessage =
       'Lengkapi peta konsep menggunakan jawaban yang sudah disediakan, sesuai dengan output yang diharapkan. Ketika Anda menekan tombol "Yakin", maka waktu akan dimulai, dan waktu akan secara otomatis berhenti ketika Anda telah melengkapi peta konsep dengan benar.';

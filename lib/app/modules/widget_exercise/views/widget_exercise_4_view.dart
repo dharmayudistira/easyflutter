@@ -97,7 +97,7 @@ class WidgetExercise4View extends StatelessWidget {
                   draggableContent: Center(
                     child: DraggableWidget(
                       answerList: controller.answerList,
-                      size: 70,
+                      size: 80,
                     ),
                   ),
                 ),

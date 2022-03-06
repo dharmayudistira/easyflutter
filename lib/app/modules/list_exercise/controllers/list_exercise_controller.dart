@@ -24,17 +24,17 @@ class ListExerciseController extends GetxController {
       AsyncSnapshot<QuerySnapshot> snapshots) {
     var result = ConverterHelper.mapExerciseFirestoreToExerciseModel(snapshots);
     result.sort((a, b) {
-      final idA = int.parse(a.exerciseId?.substring(8) ?? "0");
-      final idB = int.parse(b.exerciseId?.substring(8) ?? "0");
-
-      return idA.compareTo(idB);
-    });
-    result.sort((a, b) {
       final typeA = a.type!;
       final typeB = b.type!;
 
       return typeA.compareTo(typeB);
     });
     listOfExercise = result;
+    result.sort((a, b) {
+      final idA = a.exerciseId!;
+      final idB = b.exerciseId!;
+
+      return idA.compareTo(idB);
+    });
   }
 }
