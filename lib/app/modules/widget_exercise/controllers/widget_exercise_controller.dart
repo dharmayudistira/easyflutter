@@ -43,6 +43,7 @@ class WidgetExerciseController extends GetxController {
     super.onInit();
     answerList = answerListArg.obs;
     targetAnswer = targetAnswerArg.obs;
+    reset();
   }
 
   void acceptAnswer(
