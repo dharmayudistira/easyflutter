@@ -19,7 +19,8 @@ class WidgetExerciseController extends GetxController {
 
   final exerciseId = Get.arguments[0];
   final exerciseName = Get.arguments[1];
-  final exerciseDescription = Get.arguments[2]["description"];
+  final exerciseDescription =
+      "Lengkapi peta konsep (widget tree) dibawah menggunakan pilihan jawaban yang sudah disediakan dengan cara drag and drop, sehingga peta konsep (widget tree) tersebut merepresentasikan output yang diharapkan.";
   final dialogMessage =
       "Lengkapi widget tree yang sudah disediakan sesuai dengan output yang diharapkan. Ketika Anda menekan tombol \"Yakin\", maka waktu akan dimulai dan waktu akan secara otomatis berhenti ketika Anda telah melengkapi widget tree dengan benar.";
 
@@ -42,6 +43,7 @@ class WidgetExerciseController extends GetxController {
     super.onInit();
     answerList = answerListArg.obs;
     targetAnswer = targetAnswerArg.obs;
+    reset();
   }
 
   void acceptAnswer(
