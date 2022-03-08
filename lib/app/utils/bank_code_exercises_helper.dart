@@ -485,188 +485,169 @@ class BankCodeExercisesHelper {
     },
   ];
 
-  static String thirteenthExerciseCaption = "Susunlah blok kode di bawah ini sesuai dengan output yang diharapkan pada bagian sebelah kanan. Pada latihan ini Anda akan menyusun tampilan dengan gabungan Column yang berisi 2 Row.";
+  static String thirteenthExerciseCaption = "Expanded itu apa ? SizedBox itu apa ?";
   static List<Map<String, Object>> thirteenthExerciseAnswer = [
     {
       "keyValue": 1,
-      "codeValue": "Column ("
+      "codeValue": "Row ("
           "\n   childern: [",
       "paddingValue": 32.0,
     },
     {
       "keyValue": 2,
-      "codeValue": "Row ("
-          "\n   childern: [",
+      "codeValue": "Container ("
+          "\n   color: Colors.green,"
+          "\n   width: 100,"
+          "\n),",
       "paddingValue": 64.0,
     },
     {
       "keyValue": 3,
-      "codeValue": "Container (color: Colors.yellow),",
-      "paddingValue": 96.0,
+      "codeValue": "SizedBox (width: 20),",
+      "paddingValue": 64.0,
     },
     {
       "keyValue": 4,
-      "codeValue": "Container (color: Colors.red),",
-      "paddingValue": 96.0,
+      "codeValue": "Expanded ("
+          "\n   child: Container(color: Colors.yellow),"
+          "\n),",
+      "paddingValue": 64.0,
     },
     {
       "keyValue": 5,
-      "codeValue": "   ],"
-          "\n),",
+      "codeValue": "SizedBox (width: 20),",
       "paddingValue": 64.0,
     },
     {
       "keyValue": 6,
-      "codeValue": "Row ("
-          "\n   childern: [",
-      "paddingValue": 64.0,
-    },
-    {
-      "keyValue": 7,
-      "codeValue": "Container (color: Colors.blue),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 8,
-      "codeValue": "Container (color: Colors.green),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 9,
-      "codeValue": "   ],"
+      "codeValue": "Container ("
+          "\n   color: Colors.red,"
+          "\n   width: 100,"
           "\n),",
       "paddingValue": 64.0,
     },
     {
-      "keyValue": 10,
+      "keyValue": 7,
       "codeValue": "   ],"
           "\n);",
       "paddingValue": 32.0,
     },
   ];
 
-  static String fourteenthExerciseCaption = "Susunlah blok kode di bawah ini sesuai dengan output yang diharapkan pada bagian sebelah kanan. Pada latihan ini Anda akan menyusun tampilan dengan gabungan Column yang berisi 2 Row dengan tambahan MainAxis.";
+  static String fourteenthExerciseCaption = "Apa itu Flexible ? Apa itu Spacer ?";
   static List<Map<String, Object>> fourteenthExerciseAnswer = [
     {
       "keyValue": 1,
       "codeValue": "Column ("
-          "\n   mainAxisAlignment: MainAxisAlignment.spaceBetween"
           "\n   childern: [",
       "paddingValue": 32.0,
     },
     {
       "keyValue": 2,
-      "codeValue": "Row ("
-          "\n   mainAxisAlignment: MainAxisAlignment.center"
-          "\n   childern: [",
+      "codeValue": "Spacer (flex: 1),",
       "paddingValue": 64.0,
     },
     {
       "keyValue": 3,
-      "codeValue": "Container (color: Colors.green),",
-      "paddingValue": 96.0,
+      "codeValue": "Flexible (",
+      "paddingValue": 64.0,
     },
     {
       "keyValue": 4,
-      "codeValue": "Container (color: Colors.red),",
+      "codeValue": "flex: 2,"
+          "\nchild: Container(color: Colors.red),",
       "paddingValue": 96.0,
     },
     {
       "keyValue": 5,
-      "codeValue": "   ],"
-          "\n),",
+      "codeValue": "),",
       "paddingValue": 64.0,
     },
     {
       "keyValue": 6,
-      "codeValue": "Row ("
-          "\n   mainAxisAlignment: MainAxisAlignment.spaceAround"
-          "\n   childern: [",
+      "codeValue": "Flexible (",
       "paddingValue": 64.0,
     },
     {
       "keyValue": 7,
-      "codeValue": "Container (color: Colors.yellow),",
+      "codeValue": "flex: 3,"
+          "\nchild: Container(color: Colors.yellow),",
       "paddingValue": 96.0,
     },
     {
       "keyValue": 8,
-      "codeValue": "Container (color: Colors.blue),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 9,
-      "codeValue": "   ],"
-          "\n),",
+      "codeValue": "),",
       "paddingValue": 64.0,
     },
     {
-      "keyValue": 10,
+      "keyValue": 9,
       "codeValue": "   ],"
           "\n);",
       "paddingValue": 32.0,
     },
   ];
 
-  static String fifteenthExerciseCaption = "Susunlah blok kode di bawah ini sesuai dengan output yang diharapkan pada bagian sebelah kanan. Pada latihan ini Anda akan menyusun tampilan dengan gabungan Column yang berisi 2 Row dengan tambahan MainAxis dan CrossAxis.";
+  static String fifteenthExerciseCaption = "Apa itu Stack ? Apa itu Positioned ?";
   static List<Map<String, Object>> fifteenthExerciseAnswer = [
     {
       "keyValue": 1,
-      "codeValue": "Column ("
-          "\n   mainAxisAlignment: MainAxisAlignment.spaceBetween"
+      "codeValue": "Stack ("
           "\n   childern: [",
       "paddingValue": 32.0,
     },
     {
       "keyValue": 2,
-      "codeValue": "Row ("
-          "\n   mainAxisAlignment: MainAxisAlignment.start"
-          "\n   crossAxisAlignment: CrossAxisAlignment.start"
-          "\n   childern: [",
+      "codeValue": "Positioned (",
       "paddingValue": 64.0,
     },
     {
       "keyValue": 3,
-      "codeValue": "Container (color: Colors.green),",
+      "codeValue": "top: 180,"
+          "\nleft: 70,"
+          "\nchild: Container (color: Colors.red),",
       "paddingValue": 96.0,
     },
     {
       "keyValue": 4,
-      "codeValue": "Container (color: Colors.red),",
-      "paddingValue": 96.0,
+      "codeValue": "),",
+      "paddingValue": 64.0,
     },
     {
       "keyValue": 5,
-      "codeValue": "   ],"
-          "\n),",
+      "codeValue": "Positioned (",
       "paddingValue": 64.0,
     },
     {
       "keyValue": 6,
-      "codeValue": "Row ("
-          "\n   mainAxisAlignment: MainAxisAlignment.end"
-          "\n   crossAxisAlignment: CrossAxisAlignment.end"
-          "\n   childern: [",
-      "paddingValue": 64.0,
+      "codeValue": "top: 210,"
+          "\nleft: 100,"
+          "\nchild: Container (color: Colors.yellow),",
+      "paddingValue": 96.0,
     },
     {
       "keyValue": 7,
-      "codeValue": "Container (color: Colors.yellow),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 8,
-      "codeValue": "Container (color: Colors.blue),",
-      "paddingValue": 96.0,
-    },
-    {
-      "keyValue": 9,
-      "codeValue": "   ],"
-          "\n),",
+      "codeValue": "),",
       "paddingValue": 64.0,
     },
     {
+      "keyValue": 8,
+      "codeValue": "Positioned (",
+      "paddingValue": 64.0,
+    },
+    {
+      "keyValue": 9,
+      "codeValue": "top: 240,"
+          "\nleft: 130,"
+          "\nchild: Container (color: Colors.green),",
+      "paddingValue": 96.0,
+    },
+    {
       "keyValue": 10,
+      "codeValue": "),",
+      "paddingValue": 64.0,
+    },
+    {
+      "keyValue": 11,
       "codeValue": "   ],"
           "\n);",
       "paddingValue": 32.0,
