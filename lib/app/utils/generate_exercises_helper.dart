@@ -12,9 +12,9 @@ class GenerateExercisesHelper {
     "Latihan 10 : Belajar Row dengan MainAxis.SpaceAround",
     "Latihan 11 : Belajar Column dengan MainAxis.SpaceEvenly",
     "Latihan 12 : Belajar Row dengan MainAxis.SpaceEvenly",
-    "Latihan 13 : Belajar Column + Row",
-    "Latihan 14 : Belajar Column + Row dengan MainAxis",
-    "Latihan 15 : Belajar Column + Row dengan MainAxis + CrossAxis",
+    "Latihan 13 : Belajar Expanded dan SizedBox",
+    "Latihan 14 : Belajar Belajar Flexible dan Spacer",
+    "Latihan 15 : Belajar Stack dan Positioned",
   ];
 
   static final listExerciseWidgetTreeReconstruction = [
