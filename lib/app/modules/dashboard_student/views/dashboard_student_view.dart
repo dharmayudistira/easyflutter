@@ -2,6 +2,7 @@ import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/views/list_exercise_code_reconstruction_view.dart';
 import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/views/list_exercise_widget_tree_reconstruction_view.dart';
+import 'package:easyflutter/app/utils/app_scroll_behaviour.dart';
 import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,9 +15,10 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: _buildAppBar(context),
-        body: Obx(() {
+      backgroundColor: Colors.white,
+      appBar: _buildAppBar(context),
+      body: Obx(
+        () {
           final selectedIndex = controller.selectedIndex.value;
           return IndexedStack(
             index: selectedIndex,
@@ -26,7 +28,9 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
               ListExerciseWidgetTreeReconstructionView(),
             ],
           );
-        }));
+        },
+      ),
+    );
   }
 
   AppBar _buildAppBar(BuildContext context) {
@@ -86,22 +90,19 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
   }
 
   Widget _buildDashboardContent(BuildContext context) {
-    return SingleChildScrollView(
-      controller: ScrollController(),
-      child: Column(
-        children: [
-          _buildCodeReconstructionInformation(context),
-          Container(color: Colors.black.withOpacity(0.1), height: dimenLarge),
-          _buildWidgetTreeReconstructionInformation(context),
-        ],
-      ),
+    return PageView(
+      scrollDirection: Axis.horizontal,
+      scrollBehavior: AppScrollBehavior(),
+      controller: controller.dashboardContentController,
+      children: [
+        _buildCodeReconstructionInformation(context),
+        _buildWidgetTreeReconstructionInformation(context),
+      ],
     );
   }
 
   Widget _buildWidgetTreeReconstructionInformation(BuildContext context) {
     return Container(
-      width: Get.size.width,
-      height: Get.size.height - AppBar().preferredSize.height,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: dimenExtraLarge,
@@ -145,7 +146,14 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                               "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
                               "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
                               "konsep tersebut dengan jawaban yang sudah disediakan.",
-                        )
+                        ),
+                        SizedBox(height: dimenMedium),
+                        IconButton(
+                          onPressed: () {
+                            controller.previousContent();
+                          },
+                          icon: FaIcon(FontAwesomeIcons.angleLeft),
+                        ),
                       ],
                     ),
                   ),
@@ -160,8 +168,6 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
 
   Widget _buildCodeReconstructionInformation(BuildContext context) {
     return Container(
-      width: Get.size.width,
-      height: Get.size.height - AppBar().preferredSize.height,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: dimenExtraLarge,
@@ -190,6 +196,13 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                               "Code Reconstruction menerapkan metode Parsons Problem, "
                               "di mana terdapat blok-blok kode yang sudah disusun secara "
                               "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
+                        ),
+                        SizedBox(height: dimenMedium),
+                        IconButton(
+                          onPressed: () {
+                            controller.nextContent();
+                          },
+                          icon: FaIcon(FontAwesomeIcons.angleRight),
                         ),
                       ],
                     ),

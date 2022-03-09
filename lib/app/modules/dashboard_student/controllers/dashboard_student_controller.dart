@@ -8,11 +8,34 @@ import 'package:get/get.dart';
 
 class DashboardStudentController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
+  final dashboardContentController = PageController(initialPage: 0);
 
   var selectedIndex = 0.obs;
 
+  @override
+  void onClose() {
+    dashboardContentController.dispose();
+    super.onClose();
+  }
+
   void setSelectedIndex(int index) {
     selectedIndex.value = index;
+  }
+
+  void nextContent() {
+    dashboardContentController.animateToPage(
+      1,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void previousContent() {
+    dashboardContentController.animateToPage(
+      0,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
   }
 
   Future<void> logout(BuildContext context) async {
