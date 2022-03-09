@@ -91,7 +91,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
 
   Widget _buildDashboardContent(BuildContext context) {
     return PageView(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
       scrollBehavior: AppScrollBehavior(),
       controller: controller.dashboardContentController,
       children: [
@@ -109,64 +109,59 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
           vertical: dimenMedium,
         ),
         child: Container(
-          child: Row(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      controller.previousContent();
-                    },
-                    icon: FaIcon(FontAwesomeIcons.angleLeft),
-                  ),
-                  CustomTextHelper.textBody(
-                    context: context,
-                    text: "Back",
-                  ),
-                ],
+              IconButton(
+                onPressed: () {
+                  controller.previousContent();
+                },
+                icon: FaIcon(FontAwesomeIcons.angleDoubleUp),
               ),
-              SizedBox(width: dimenMedium),
-              Expanded(
-                flex: 4,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenSmall),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(dimenSmall),
-                      child: Image.asset(
-                        "assets/images/img_widget_tree_reconstruction.png",
+              Row(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenSmall),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(dimenSmall),
+                          child: Image.asset(
+                            "assets/images/img_widget_tree_reconstruction.png",
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenMedium),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomTextHelper.textTitle(
-                          context: context,
-                          text: "Apa itu\nWidget Tree Reconstruction ?",
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenMedium),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextHelper.textTitle(
+                              context: context,
+                              text: "Apa itu\nWidget Tree Reconstruction ?",
+                            ),
+                            SizedBox(height: dimenMedium),
+                            CustomTextHelper.textBody(
+                              context: context,
+                              text:
+                                  "Widget Tree Reconstruction menerapkan metode Concept Map. "
+                                  "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
+                                  "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
+                                  "konsep tersebut dengan jawaban yang sudah disediakan.",
+                            ),
+                          ],
                         ),
-                        SizedBox(height: dimenMedium),
-                        CustomTextHelper.textBody(
-                          context: context,
-                          text:
-                              "Widget Tree Reconstruction menerapkan metode Concept Map. "
-                              "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
-                              "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
-                              "konsep tersebut dengan jawaban yang sudah disediakan.",
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
@@ -183,63 +178,58 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
           vertical: dimenMedium,
         ),
         child: Container(
-          child: Row(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                flex: 3,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenMedium),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomTextHelper.textTitle(
-                          context: context,
-                          text: "Apa itu\nCode Reconstruction ?",
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenMedium),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextHelper.textTitle(
+                              context: context,
+                              text: "Apa itu\nCode Reconstruction ?",
+                            ),
+                            SizedBox(height: dimenMedium),
+                            CustomTextHelper.textBody(
+                              context: context,
+                              text:
+                                  "Code Reconstruction menerapkan metode Parsons Problem, "
+                                  "di mana terdapat blok-blok kode yang sudah disusun secara "
+                                  "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
+                            ),
+                          ],
                         ),
-                        SizedBox(height: dimenMedium),
-                        CustomTextHelper.textBody(
-                          context: context,
-                          text:
-                              "Code Reconstruction menerapkan metode Parsons Problem, "
-                              "di mana terdapat blok-blok kode yang sudah disusun secara "
-                              "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 4,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenSmall),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(dimenSmall),
-                      child: Image.asset(
-                        "assets/images/img_code_reconstruction.png",
                       ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(width: dimenMedium),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      controller.nextContent();
-                    },
-                    icon: FaIcon(FontAwesomeIcons.angleRight),
-                  ),
-                  CustomTextHelper.textBody(
-                    context: context,
-                    text: "Next",
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenSmall),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(dimenSmall),
+                          child: Image.asset(
+                            "assets/images/img_code_reconstruction.png",
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
+              ),
+              IconButton(
+                onPressed: () {
+                  controller.nextContent();
+                },
+                icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
               ),
             ],
           ),
