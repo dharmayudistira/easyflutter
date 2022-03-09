@@ -111,6 +111,22 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
         child: Container(
           child: Row(
             children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.previousContent();
+                    },
+                    icon: FaIcon(FontAwesomeIcons.angleLeft),
+                  ),
+                  CustomTextHelper.textBody(
+                    context: context,
+                    text: "Back",
+                  ),
+                ],
+              ),
+              SizedBox(width: dimenMedium),
               Expanded(
                 flex: 4,
                 child: Container(
@@ -146,13 +162,6 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                               "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
                               "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
                               "konsep tersebut dengan jawaban yang sudah disediakan.",
-                        ),
-                        SizedBox(height: dimenMedium),
-                        IconButton(
-                          onPressed: () {
-                            controller.previousContent();
-                          },
-                          icon: FaIcon(FontAwesomeIcons.angleLeft),
                         ),
                       ],
                     ),
@@ -197,13 +206,6 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                               "di mana terdapat blok-blok kode yang sudah disusun secara "
                               "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
                         ),
-                        SizedBox(height: dimenMedium),
-                        IconButton(
-                          onPressed: () {
-                            controller.nextContent();
-                          },
-                          icon: FaIcon(FontAwesomeIcons.angleRight),
-                        ),
                       ],
                     ),
                   ),
@@ -222,6 +224,22 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(width: dimenMedium),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.nextContent();
+                    },
+                    icon: FaIcon(FontAwesomeIcons.angleRight),
+                  ),
+                  CustomTextHelper.textBody(
+                    context: context,
+                    text: "Next",
+                  ),
+                ],
               ),
             ],
           ),
