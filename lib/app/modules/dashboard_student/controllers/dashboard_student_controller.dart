@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class DashboardStudentController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardContentController = PageController(initialPage: 0);
+  final featureController = PageController(initialPage: 0);
 
   var selectedIndex = 0.obs;
 
@@ -20,6 +21,32 @@ class DashboardStudentController extends GetxController {
 
   void setSelectedIndex(int index) {
     selectedIndex.value = index;
+  }
+
+  void navigateFeature(int index) {
+    switch (index) {
+      case 0:
+        featureController.animateToPage(
+          0,
+          duration: Duration(seconds: 1),
+          curve: Curves.easeInOut,
+        );
+        break;
+      case 1:
+        featureController.animateToPage(
+          1,
+          duration: Duration(seconds: 1),
+          curve: Curves.easeInOut,
+        );
+        break;
+      case 2:
+        featureController.animateToPage(
+          2,
+          duration: Duration(seconds: 1),
+          curve: Curves.easeInOut,
+        );
+        break;
+    }
   }
 
   void nextContent() {

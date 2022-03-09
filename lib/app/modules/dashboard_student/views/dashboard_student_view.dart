@@ -17,18 +17,14 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildAppBar(context),
-      body: Obx(
-        () {
-          final selectedIndex = controller.selectedIndex.value;
-          return IndexedStack(
-            index: selectedIndex,
-            children: [
-              _buildDashboardContent(context),
-              ListExerciseCodeReconstructionView(),
-              ListExerciseWidgetTreeReconstructionView(),
-            ],
-          );
-        },
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        controller: controller.featureController,
+        children: [
+          _buildDashboardContent(context),
+          ListExerciseCodeReconstructionView(),
+          ListExerciseWidgetTreeReconstructionView(),
+        ],
       ),
     );
   }
@@ -44,7 +40,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
               text: "EasyFlutter",
             ),
             onPressed: () {
-              controller.setSelectedIndex(0);
+              controller.navigateFeature(0);
             },
           ),
           Row(
@@ -55,7 +51,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   text: "Code Reconstruction",
                 ),
                 onPressed: () {
-                  controller.setSelectedIndex(1);
+                  controller.navigateFeature(1);
                 },
               ),
               SizedBox(width: dimenMedium),
@@ -65,7 +61,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   text: "Widget Tree Reconstruction",
                 ),
                 onPressed: () {
-                  controller.setSelectedIndex(2);
+                  controller.navigateFeature(2);
                 },
               ),
               SizedBox(width: dimenMedium),
