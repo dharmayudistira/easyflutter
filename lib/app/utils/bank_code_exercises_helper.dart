@@ -485,7 +485,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
-  static String thirteenthExerciseCaption = "Expanded itu apa ? SizedBox itu apa ?";
+  static String thirteenthExerciseCaption = "Expanded adalah widget yang dapat membungkus widget di dalamnya dan memaksa widget tersebut untuk mengisi ruang yang ada. Sedangkan Sizedbox dapat membungkus widget di dalamnya agar mengikuti height dan width dari Sizedbox itu sendiri. ";
   static List<Map<String, Object>> thirteenthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -534,7 +534,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
-  static String fourteenthExerciseCaption = "Apa itu Flexible ? Apa itu Spacer ?";
+  static String fourteenthExerciseCaption = "Flexible adalah widget yang dapat membungkus widget di dalamnya dan mengontrol menggunakan attribut flex. Spacer adalah widget yang membuat ruang kosong yang dapat dikontrol menggunakan attribute flex.";
   static List<Map<String, Object>> fourteenthExerciseAnswer = [
     {
       "keyValue": 1,
@@ -587,7 +587,7 @@ class BankCodeExercisesHelper {
     },
   ];
 
-  static String fifteenthExerciseCaption = "Apa itu Stack ? Apa itu Positioned ?";
+  static String fifteenthExerciseCaption = "Stack adalah widget yang dapat membungkus beberapa widget di dalamnya dan menyusunnya dengan cara ditumpuk. Sedangkan Positioned adalah widget yang dapat mengontrol letak sebuah widget yang ada dalam tumpukan Stack.";
   static List<Map<String, Object>> fifteenthExerciseAnswer = [
     {
       "keyValue": 1,
