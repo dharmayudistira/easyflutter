@@ -2,6 +2,7 @@ import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/views/list_exercise_code_reconstruction_view.dart';
 import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/views/list_exercise_widget_tree_reconstruction_view.dart';
+import 'package:easyflutter/app/utils/app_scroll_behaviour.dart';
 import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,19 +15,18 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: _buildAppBar(context),
-        body: Obx(() {
-          final selectedIndex = controller.selectedIndex.value;
-          return IndexedStack(
-            index: selectedIndex,
-            children: [
-              _buildDashboardContent(context),
-              ListExerciseCodeReconstructionView(),
-              ListExerciseWidgetTreeReconstructionView(),
-            ],
-          );
-        }));
+      backgroundColor: Colors.white,
+      appBar: _buildAppBar(context),
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        controller: controller.featureController,
+        children: [
+          _buildDashboardContent(context),
+          ListExerciseCodeReconstructionView(),
+          ListExerciseWidgetTreeReconstructionView(),
+        ],
+      ),
+    );
   }
 
   AppBar _buildAppBar(BuildContext context) {
@@ -40,7 +40,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
               text: "EasyFlutter",
             ),
             onPressed: () {
-              controller.setSelectedIndex(0);
+              controller.navigateFeature(0);
             },
           ),
           Row(
@@ -51,7 +51,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   text: "Code Reconstruction",
                 ),
                 onPressed: () {
-                  controller.setSelectedIndex(1);
+                  controller.navigateFeature(1);
                 },
               ),
               SizedBox(width: dimenMedium),
@@ -61,7 +61,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   text: "Widget Tree Reconstruction",
                 ),
                 onPressed: () {
-                  controller.setSelectedIndex(2);
+                  controller.navigateFeature(2);
                 },
               ),
               SizedBox(width: dimenMedium),
@@ -86,70 +86,78 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
   }
 
   Widget _buildDashboardContent(BuildContext context) {
-    return SingleChildScrollView(
-      controller: ScrollController(),
-      child: Column(
-        children: [
-          _buildCodeReconstructionInformation(context),
-          Container(color: Colors.black.withOpacity(0.1), height: dimenLarge),
-          _buildWidgetTreeReconstructionInformation(context),
-        ],
-      ),
+    return PageView(
+      scrollDirection: Axis.vertical,
+      scrollBehavior: AppScrollBehavior(),
+      controller: controller.dashboardContentController,
+      children: [
+        _buildCodeReconstructionInformation(context),
+        _buildWidgetTreeReconstructionInformation(context),
+      ],
     );
   }
 
   Widget _buildWidgetTreeReconstructionInformation(BuildContext context) {
     return Container(
-      width: Get.size.width,
-      height: Get.size.height - AppBar().preferredSize.height,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: dimenExtraLarge,
           vertical: dimenMedium,
         ),
         child: Container(
-          child: Row(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                flex: 4,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenSmall),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(dimenSmall),
-                      child: Image.asset(
-                        "assets/images/img_widget_tree_reconstruction.png",
+              IconButton(
+                onPressed: () {
+                  controller.previousContent();
+                },
+                icon: FaIcon(FontAwesomeIcons.angleDoubleUp),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenSmall),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(dimenSmall),
+                          child: Image.asset(
+                            "assets/images/img_widget_tree_reconstruction.png",
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenMedium),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomTextHelper.textTitle(
-                          context: context,
-                          text: "Apa itu\nWidget Tree Reconstruction ?",
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenMedium),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextHelper.textTitle(
+                              context: context,
+                              text: "Apa itu\nWidget Tree Reconstruction ?",
+                            ),
+                            SizedBox(height: dimenMedium),
+                            CustomTextHelper.textBody(
+                              context: context,
+                              text:
+                                  "Widget Tree Reconstruction menerapkan metode Concept Map. "
+                                  "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
+                                  "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
+                                  "konsep tersebut dengan jawaban yang sudah disediakan.",
+                            ),
+                          ],
                         ),
-                        SizedBox(height: dimenMedium),
-                        CustomTextHelper.textBody(
-                          context: context,
-                          text:
-                              "Widget Tree Reconstruction menerapkan metode Concept Map. "
-                              "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
-                              "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
-                              "konsep tersebut dengan jawaban yang sudah disediakan.",
-                        )
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
@@ -160,55 +168,64 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
 
   Widget _buildCodeReconstructionInformation(BuildContext context) {
     return Container(
-      width: Get.size.width,
-      height: Get.size.height - AppBar().preferredSize.height,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: dimenExtraLarge,
           vertical: dimenMedium,
         ),
         child: Container(
-          child: Row(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                flex: 3,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenMedium),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomTextHelper.textTitle(
-                          context: context,
-                          text: "Apa itu\nCode Reconstruction ?",
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenMedium),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextHelper.textTitle(
+                              context: context,
+                              text: "Apa itu\nCode Reconstruction ?",
+                            ),
+                            SizedBox(height: dimenMedium),
+                            CustomTextHelper.textBody(
+                              context: context,
+                              text:
+                                  "Code Reconstruction menerapkan metode Parsons Problem, "
+                                  "di mana terdapat blok-blok kode yang sudah disusun secara "
+                                  "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
+                            ),
+                          ],
                         ),
-                        SizedBox(height: dimenMedium),
-                        CustomTextHelper.textBody(
-                          context: context,
-                          text:
-                              "Code Reconstruction menerapkan metode Parsons Problem, "
-                              "di mana terdapat blok-blok kode yang sudah disusun secara "
-                              "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 4,
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(dimenSmall),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(dimenSmall),
-                      child: Image.asset(
-                        "assets/images/img_code_reconstruction.png",
                       ),
                     ),
                   ),
-                ),
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenSmall),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(dimenSmall),
+                          child: Image.asset(
+                            "assets/images/img_code_reconstruction.png",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              IconButton(
+                onPressed: () {
+                  controller.nextContent();
+                },
+                icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
               ),
             ],
           ),
