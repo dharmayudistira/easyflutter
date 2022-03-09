@@ -58,42 +58,38 @@ class WidgetExercise3View extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 127.r),
+                            SizedBox(height: 128.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 298.h),
+                                SizedBox(width: 300.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 0,
-                                  size: 70,
+                                  size: 68,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 34.5.r),
+                            SizedBox(height: 36.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 298.h),
+                                SizedBox(width: 160.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 1,
-                                  size: 70,
+                                  size: 68,
                                 ),
-                              ],
-                            ),
-                            SizedBox(height: 34.5.r),
-                            Row(
-                              children: [
-                                SizedBox(width: 228.3.h),
+                                SizedBox(width: 71.3.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 2,
-                                  size: 70,
+                                  size: 68,
                                 ),
                               ],
                             ),
+                            SizedBox(height: 34.5.r),
                           ],
                         ),
                       ],

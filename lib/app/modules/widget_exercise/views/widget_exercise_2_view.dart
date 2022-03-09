@@ -61,36 +61,36 @@ class WidgetExercise2View extends StatelessWidget {
                             SizedBox(height: 128.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 335.2.h),
+                                SizedBox(width: 334.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 0,
-                                  size: 65,
+                                  size: 68,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 40.5.r),
+                            SizedBox(height: 36.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 264.5.h),
+                                SizedBox(width: 265.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 1,
-                                  size: 65,
+                                  size: 68,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 41.r),
+                            SizedBox(height: 36.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 335.2.h),
+                                SizedBox(width: 195.3.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 2,
-                                  size: 65,
+                                  size: 68,
                                 ),
                               ],
                             ),

@@ -7,12 +7,11 @@ import 'package:easyflutter/app/views/widget/left_content_widget.dart';
 import 'package:easyflutter/app/views/widget/right_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 
 import '../controllers/widget_exercise_controller.dart';
 
-class WidgetExercise18View extends StatelessWidget {
+class WidgetExercise6View extends StatelessWidget {
   final controller = Get.put(WidgetExerciseController());
 
   @override
@@ -52,41 +51,46 @@ class WidgetExercise18View extends StatelessWidget {
                             child: SizedBox(
                               height: 420.h,
                               child: Image.asset(
-                                "assets/images/widget/widget_tree18.png",
+                                "assets/images/widget/widget_tree6.png",
                               ),
                             ),
                           ),
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 164.r),
+                            SizedBox(height: 18.r),
                             Row(
                               children: [
-                                SizedBox(width: 283.h),
+                                SizedBox(width: 267.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 0,
-                                  size: 100,
+                                  size: 68,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 30.r),
+                            SizedBox(height: 95.r),
                             Row(
                               children: [
-                                SizedBox(width: 153.h),
+                                SizedBox(width: 267.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 1,
-                                  size: 100,
+                                  size: 68,
                                 ),
-                                SizedBox(width: 30.h),
+                              ],
+                            ),
+                            SizedBox(height: 13.r),
+                            Row(
+                              children: [
+                                SizedBox(width: 331.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 2,
-                                  size: 100,
+                                  size: 68,
                                 ),
                               ],
                             ),
@@ -104,7 +108,7 @@ class WidgetExercise18View extends StatelessWidget {
                 ),
                 RightContentWidget(
                   stopWatchTimer: controller.stopWatchTimer,
-                  image: "assets/images/widget/latihan18.png",
+                  image: "assets/images/widget/latihan6.png",
                   exerciseName: controller.exerciseName,
                   isStart: controller.isStart,
                   isAnswerTrue: controller.isAnswerTrue,

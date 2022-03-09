@@ -7,6 +7,7 @@ import 'package:easyflutter/app/views/widget/left_content_widget.dart';
 import 'package:easyflutter/app/views/widget/right_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 
 import '../controllers/widget_exercise_controller.dart';
@@ -58,53 +59,34 @@ class WidgetExercise13View extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 101.r),
+                            SizedBox(height: 125.r),
                             Row(
                               children: [
-                                SizedBox(width: 188.h),
+                                SizedBox(width: 293.8.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 0,
-                                  size: 65,
+                                  size: 80,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16.r),
+                            SizedBox(height: 20.r),
                             Row(
                               children: [
-                                SizedBox(width: 42.5.h),
+                                SizedBox(width: 194.3.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 1,
-                                  size: 65,
+                                  size: 80,
                                 ),
-                                SizedBox(width: 80.h),
+                                SizedBox(width: 19.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 2,
-                                  size: 65,
-                                ),
-                                SizedBox(width: 169.h),
-                                DragTargetWidget(
-                                  acceptAnswer: controller.acceptAnswer,
-                                  targetAnswer: controller.targetAnswer,
-                                  index: 3,
-                                  size: 65,
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 15.5.r),
-                            Row(
-                              children: [
-                                SizedBox(width: 510.h),
-                                DragTargetWidget(
-                                  acceptAnswer: controller.acceptAnswer,
-                                  targetAnswer: controller.targetAnswer,
-                                  index: 4,
-                                  size: 65,
+                                  size: 80,
                                 ),
                               ],
                             ),

@@ -58,17 +58,22 @@ class WidgetExercise4View extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 180.r),
+                            SizedBox(height: 101.r),
                             Row(
                               children: [
-                                SizedBox(width: 299.h),
+                                SizedBox(width: 365.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 0,
                                   size: 68,
                                 ),
-                                SizedBox(width: 60.h),
+                              ],
+                            ),
+                            SizedBox(height: 11),
+                            Row(
+                              children: [
+                                SizedBox(width: 428.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
@@ -77,7 +82,7 @@ class WidgetExercise4View extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 13.r),
+                            SizedBox(height: 11),
                             Row(
                               children: [
                                 SizedBox(width: 235.h),

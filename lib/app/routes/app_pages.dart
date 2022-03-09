@@ -32,17 +32,12 @@ import '../modules/widget_exercise/views/widget_exercise_12_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_13_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_14_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_15_view.dart';
-import '../modules/widget_exercise/views/widget_exercise_16_view.dart';
-import '../modules/widget_exercise/views/widget_exercise_17_view.dart';
-import '../modules/widget_exercise/views/widget_exercise_18_view.dart';
-import '../modules/widget_exercise/views/widget_exercise_19_view.dart';
-import '../modules/widget_exercise/views/widget_exercise_20_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_1_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_2_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_3_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_4_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_5_view.dart';
-import '../modules/widget_exercise/views/widget_exercise_6_view.dart';
+import '../modules/widget_exercise/views/widget_exercise_6_vie.dart';
 import '../modules/widget_exercise/views/widget_exercise_7_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_8_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_9_view.dart';
@@ -183,26 +178,6 @@ class AppPages {
     GetPage(
       name: _Paths.WIDGET_EXERCISE_15,
       page: () => WidgetExercise15View(),
-    ),
-    GetPage(
-      name: _Paths.WIDGET_EXERCISE_16,
-      page: () => WidgetExercise16View(),
-    ),
-    GetPage(
-      name: _Paths.WIDGET_EXERCISE_17,
-      page: () => WidgetExercise17View(),
-    ),
-    GetPage(
-      name: _Paths.WIDGET_EXERCISE_18,
-      page: () => WidgetExercise18View(),
-    ),
-    GetPage(
-      name: _Paths.WIDGET_EXERCISE_19,
-      page: () => WidgetExercise19View(),
-    ),
-    GetPage(
-      name: _Paths.WIDGET_EXERCISE_20,
-      page: () => WidgetExercise20View(),
     ),
   ];
 }

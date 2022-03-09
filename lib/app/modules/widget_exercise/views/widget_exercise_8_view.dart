@@ -58,39 +58,53 @@ class WidgetExercise8View extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 18.r),
+                            SizedBox(height: 96.r),
                             Row(
                               children: [
-                                SizedBox(width: 267.h),
+                                SizedBox(width: 264.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 0,
-                                  size: 68,
+                                  size: 65,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 95.r),
+                            SizedBox(height: 17.3.r),
                             Row(
                               children: [
-                                SizedBox(width: 267.h),
+                                SizedBox(width: 174.3.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 1,
-                                  size: 68,
+                                  size: 65,
                                 ),
-                              ],
-                            ),
-                            SizedBox(height: 13.r),
-                            Row(
-                              children: [
-                                SizedBox(width: 331.h),
+                                SizedBox(width: 172.8.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 2,
-                                  size: 68,
+                                  size: 65,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 17.r),
+                            Row(
+                              children: [
+                                SizedBox(width: 346.5.h),
+                                DragTargetWidget(
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswer: controller.targetAnswer,
+                                  index: 3,
+                                  size: 65,
+                                ),
+                                SizedBox(width: 66.h),
+                                DragTargetWidget(
+                                  acceptAnswer: controller.acceptAnswer,
+                                  targetAnswer: controller.targetAnswer,
+                                  index: 4,
+                                  size: 65,
                                 ),
                               ],
                             ),

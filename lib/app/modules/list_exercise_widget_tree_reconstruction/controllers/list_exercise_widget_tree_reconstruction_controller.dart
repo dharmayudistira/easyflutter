@@ -184,56 +184,6 @@ class ListExerciseWidgetTreeReconstructionController extends GetxController {
           ],
         );
         break;
-      case 16:
-        Get.toNamed(
-          Routes.WIDGET_EXERCISE_16,
-          arguments: [
-            exerciseId,
-            exerciseName,
-            BankWidgetExerciseHelper.sixteenthExercise,
-          ],
-        );
-        break;
-      case 17:
-        Get.toNamed(
-          Routes.WIDGET_EXERCISE_17,
-          arguments: [
-            exerciseId,
-            exerciseName,
-            BankWidgetExerciseHelper.seventeenthExercise,
-          ],
-        );
-        break;
-      case 18:
-        Get.toNamed(
-          Routes.WIDGET_EXERCISE_18,
-          arguments: [
-            exerciseId,
-            exerciseName,
-            BankWidgetExerciseHelper.eighteenthExercise,
-          ],
-        );
-        break;
-      case 19:
-        Get.toNamed(
-          Routes.WIDGET_EXERCISE_19,
-          arguments: [
-            exerciseId,
-            exerciseName,
-            BankWidgetExerciseHelper.nineteenthExercise,
-          ],
-        );
-        break;
-      case 20:
-        Get.toNamed(
-          Routes.WIDGET_EXERCISE_20,
-          arguments: [
-            exerciseId,
-            exerciseName,
-            BankWidgetExerciseHelper.twentiethExercise,
-          ],
-        );
-        break;
     }
   }
 }
