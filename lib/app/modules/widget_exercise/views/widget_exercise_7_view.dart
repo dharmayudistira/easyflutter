@@ -58,10 +58,10 @@ class WidgetExercise7View extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 18.r),
+                            SizedBox(height: 22.r),
                             Row(
                               children: [
-                                SizedBox(width: 330.h),
+                                SizedBox(width: 266.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
@@ -70,10 +70,10 @@ class WidgetExercise7View extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 95.r),
+                            SizedBox(height: 82.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 330.h),
+                                SizedBox(width: 266.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
@@ -82,10 +82,10 @@ class WidgetExercise7View extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 13.r),
+                            SizedBox(height: 16.r),
                             Row(
                               children: [
-                                SizedBox(width: 267.h),
+                                SizedBox(width: 333.3.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,

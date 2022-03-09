@@ -58,39 +58,39 @@ class WidgetExercise5View extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 180.r),
+                            SizedBox(height: 182.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 267.h),
+                                SizedBox(width: 269.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 0,
-                                  size: 68,
+                                  size: 65,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 13.r),
+                            SizedBox(height: 15.r),
                             Row(
                               children: [
-                                SizedBox(width: 363.h),
+                                SizedBox(width: 365.5.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 1,
-                                  size: 68,
+                                  size: 65,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 13.r),
+                            SizedBox(height: 15.5.r),
                             Row(
                               children: [
-                                SizedBox(width: 267.h),
+                                SizedBox(width: 269.h),
                                 DragTargetWidget(
                                   acceptAnswer: controller.acceptAnswer,
                                   targetAnswer: controller.targetAnswer,
                                   index: 2,
-                                  size: 68,
+                                  size: 65,
                                 ),
                               ],
                             ),
