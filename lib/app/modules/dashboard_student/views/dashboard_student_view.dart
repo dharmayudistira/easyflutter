@@ -88,8 +88,8 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
   Widget _buildDashboardContent(BuildContext context) {
     return PageView(
       scrollDirection: Axis.vertical,
-      scrollBehavior: AppScrollBehavior(),
       controller: controller.dashboardContentController,
+      physics: NeverScrollableScrollPhysics(),
       children: [
         _buildCodeReconstructionInformation(context),
         _buildWidgetTreeReconstructionInformation(context),
