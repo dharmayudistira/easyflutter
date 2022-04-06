@@ -22,7 +22,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
         children: [
           _buildDashboardContent(context),
           ListExerciseCodeReconstructionView(),
-          ListExerciseWidgetTreeReconstructionView(),
+          // ListExerciseWidgetTreeReconstructionView(),
         ],
       ),
     );
@@ -54,15 +54,15 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                 },
               ),
               SizedBox(width: dimenMedium),
-              TextButton(
-                child: CustomTextHelper.textBody(
-                  context: context,
-                  text: "Widget Tree Reconstruction",
-                ),
-                onPressed: () {
-                  controller.navigateFeature(2);
-                },
-              ),
+              // TextButton(
+              //   child: CustomTextHelper.textBody(
+              //     context: context,
+              //     text: "Widget Tree Reconstruction",
+              //   ),
+              //   onPressed: () {
+              //     controller.navigateFeature(2);
+              //   },
+              // ),
               SizedBox(width: dimenMedium),
               IconButton(
                 onPressed: () {
@@ -91,7 +91,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
       physics: NeverScrollableScrollPhysics(),
       children: [
         _buildCodeReconstructionInformation(context),
-        _buildWidgetTreeReconstructionInformation(context),
+        // _buildWidgetTreeReconstructionInformation(context),
       ],
     );
   }
@@ -220,12 +220,12 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   ),
                 ],
               ),
-              IconButton(
-                onPressed: () {
-                  controller.nextContent();
-                },
-                icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
-              ),
+              // IconButton(
+              //   onPressed: () {
+              //     controller.nextContent();
+              //   },
+              //   icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
+              // ),
             ],
           ),
         ),
