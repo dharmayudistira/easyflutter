@@ -106,13 +106,16 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                 ),
                 trailing: (isComplete)
                     ? OutlinedButton(
-                        onPressed: () {
-                          controller.navigateTo(
-                            index,
-                            item.exerciseId!,
-                            item.exerciseName!,
-                          );
-                        },
+                        // open this comment when the experiment start
+                        // onPressed: () {
+                        //   controller.navigateTo(
+                        //     index,
+                        //     item.exerciseId!,
+                        //     item.exerciseName!,
+                        //   );
+                        // },
+
+                        onPressed: null,
                         child: CustomTextHelper.textBody(
                           context: context,
                           text: "Kerjakan Lagi",
@@ -120,13 +123,16 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                         ),
                       )
                     : ElevatedButton(
-                        onPressed: () {
-                          controller.navigateTo(
-                            index,
-                            item.exerciseId!,
-                            item.exerciseName!,
-                          );
-                        },
+                        // open this comment when the experiment start
+                        // onPressed: () {
+                        //   controller.navigateTo(
+                        //     index,
+                        //     item.exerciseId!,
+                        //     item.exerciseName!,
+                        //   );
+                        // },
+
+                        onPressed: null,
                         child: CustomTextHelper.textBody(
                           context: context,
                           text: "Kerjakan",
