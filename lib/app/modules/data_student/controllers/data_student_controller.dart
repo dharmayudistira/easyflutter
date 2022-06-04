@@ -17,6 +17,7 @@ class DataStudentController extends GetxController {
     final lecturerId = _storageHelper.getIdUser();
     return studentReference
         .where("id_dosen", isEqualTo: lecturerId)
+        .where("id_kelas", isEqualTo: "mi-2d")
         .snapshots();
   }
 
@@ -44,11 +45,12 @@ class DataStudentController extends GetxController {
         .toList()
         .length;
 
-    if (counterCode == 15) {
-      return "Siap";
-    } else {
-      return "Belum Siap";
-    }
+    return "$counterCode/15";
+    // if (counterCode == 15) {
+    //   return "Siap";
+    // } else {
+    //   return "Belum Siap";
+    // }
   }
 
   String getPostTestWidgetStatus(List<String>? listExerciseId) {
