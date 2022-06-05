@@ -106,13 +106,15 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                 ),
                 trailing: (isComplete)
                     ? OutlinedButton(
-                        onPressed: () {
-                          controller.navigateTo(
-                            index,
-                            item.exerciseId!,
-                            item.exerciseName!,
-                          );
-                        },
+                        onPressed: (index < 13)
+                            ? () {
+                                controller.navigateTo(
+                                  index,
+                                  item.exerciseId!,
+                                  item.exerciseName!,
+                                );
+                              }
+                            : null,
                         child: CustomTextHelper.textBody(
                           context: context,
                           text: "Kerjakan Lagi",
@@ -120,13 +122,15 @@ class ListExerciseCodeReconstructionView extends StatelessWidget {
                         ),
                       )
                     : ElevatedButton(
-                        onPressed: () {
-                          controller.navigateTo(
-                            index,
-                            item.exerciseId!,
-                            item.exerciseName!,
-                          );
-                        },
+                        onPressed: (index < 10)
+                            ? () {
+                                controller.navigateTo(
+                                  index,
+                                  item.exerciseId!,
+                                  item.exerciseName!,
+                                );
+                              }
+                            : null,
                         child: CustomTextHelper.textBody(
                           context: context,
                           text: "Kerjakan",
