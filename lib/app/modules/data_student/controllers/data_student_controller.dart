@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easyflutter/app/data/class_model.dart';
 import 'package:easyflutter/app/data/student_model.dart';
 import 'package:easyflutter/app/modules/dashboard_lecturer/controllers/dashboard_lecturer_controller.dart';
 import 'package:easyflutter/app/utils/converter_helper.dart';
@@ -10,15 +11,23 @@ class DataStudentController extends GetxController {
   final _storageHelper = Get.find<StorageHelper>();
   final dashboardLecturerController = Get.find<DashboardLecturerController>();
   final studentReference = FirebaseFirestore.instance.collection("mahasiswa");
+  final classReference = FirebaseFirestore.instance.collection("kelas");
 
   var listStudent = <StudentModel>[];
+  var selectedClass = "All".obs;
 
   Stream<QuerySnapshot> getAllStudent() {
     final lecturerId = _storageHelper.getIdUser();
-    return studentReference
-        .where("id_dosen", isEqualTo: lecturerId)
-        .where("id_kelas", isEqualTo: "mi-2e")
-        .snapshots();
+    if (selectedClass.value == "All") {
+      return studentReference
+          .where("id_dosen", isEqualTo: lecturerId)
+          .snapshots();
+    } else {
+      return studentReference
+          .where("id_dosen", isEqualTo: lecturerId)
+          .where("id_kelas", isEqualTo: selectedClass.value.toLowerCase())
+          .snapshots();
+    }
   }
 
   void mapStudentFirestoreToStudentModel(
@@ -68,5 +77,19 @@ class DataStudentController extends GetxController {
     //   return "Belum Siap";
     // }
     return "$counterWidget / 10";
+  }
+
+  Future<List<String>> getClassByLecturerId() async {
+    final lecturerId = _storageHelper.getIdUser();
+    var listClass = ["All"];
+
+    QuerySnapshot<Map<String, dynamic>> dataClass =
+        await classReference.where("id_dosen", isEqualTo: lecturerId).get();
+    for (int i = 0; i < dataClass.size; i++) {
+      ClassModel currentClass = ClassModel.fromJson(dataClass.docs[i].data());
+      listClass.add(currentClass.className ?? "");
+    }
+
+    return listClass;
   }
 }
