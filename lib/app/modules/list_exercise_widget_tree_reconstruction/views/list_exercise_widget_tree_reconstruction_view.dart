@@ -83,66 +83,71 @@ class ListExerciseWidgetTreeReconstructionView extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = controller.listExercise[index];
 
-          var isComplete = false;
-          item.listStudentId?.forEach((element) {
-            if (element == controller.storageHelper.getIdUser()) {
-              isComplete = true;
-              return;
-            }
-          });
+          int exerciseNum = int.parse(item.exerciseId!.substring(8));
+          if (exerciseNum >= 1 && exerciseNum <= 10) {
+            var isComplete = false;
+            item.listStudentId?.forEach((element) {
+              if (element == controller.storageHelper.getIdUser()) {
+                isComplete = true;
+                return;
+              }
+            });
 
-          return Padding(
-            padding: const EdgeInsets.only(
-              left: dimenSmall / 2,
-              top: dimenSmall / 2,
-              right: dimenSmall / 2,
-            ),
-            child: Card(
-              elevation: dimenSmall,
-              child: ListTile(
-                title: CustomTextHelper.textBody(
-                  context: context,
-                  text: item.exerciseName!,
-                  customWeight: FontWeight.bold,
-                ),
-                subtitle: CustomTextHelper.textCaption(
-                  context: context,
-                  text: item.exerciseId!,
-                ),
-                trailing: (isComplete)
-                    ? OutlinedButton(
-                        // onPressed: () {
-                        //   controller.navigateTo(
-                        //     index + 1,
-                        //     item.exerciseId,
-                        //     item.exerciseName,
-                        //   );
-                        // },
-                        onPressed: null,
-                        child: CustomTextHelper.textBody(
-                          context: context,
-                          text: "Kerjakan Lagi",
-                          customColor: Colors.black,
-                        ),
-                      )
-                    : ElevatedButton(
-                        // onPressed: () {
-                        //   controller.navigateTo(
-                        //     index + 1,
-                        //     item.exerciseId,
-                        //     item.exerciseName,
-                        //   );
-                        // },
-                        onPressed: null,
-                        child: CustomTextHelper.textBody(
-                          context: context,
-                          text: "Kerjakan",
-                          customColor: Colors.white,
-                        ),
-                      ),
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: dimenSmall / 2,
+                top: dimenSmall / 2,
+                right: dimenSmall / 2,
               ),
-            ),
-          );
+              child: Card(
+                elevation: dimenSmall,
+                child: ListTile(
+                  title: CustomTextHelper.textBody(
+                    context: context,
+                    text: item.exerciseName!,
+                    customWeight: FontWeight.bold,
+                  ),
+                  subtitle: CustomTextHelper.textCaption(
+                    context: context,
+                    text: item.exerciseId!,
+                  ),
+                  trailing: (isComplete)
+                      ? OutlinedButton(
+                          onPressed: () {
+                            controller.navigateTo(
+                              index + 1,
+                              item.exerciseId,
+                              item.exerciseName,
+                            );
+                          },
+                          // onPressed: null,
+                          child: CustomTextHelper.textBody(
+                            context: context,
+                            text: "Kerjakan Lagi",
+                            customColor: Colors.black,
+                          ),
+                        )
+                      : ElevatedButton(
+                          onPressed: () {
+                            controller.navigateTo(
+                              index + 1,
+                              item.exerciseId,
+                              item.exerciseName,
+                            );
+                          },
+                          // onPressed: null,
+                          child: CustomTextHelper.textBody(
+                            context: context,
+                            text: "Kerjakan",
+                            customColor: Colors.white,
+                          ),
+                        ),
+                ),
+              ),
+            );
+          } else {
+            return Container();
+          }
         },
       ),
     );

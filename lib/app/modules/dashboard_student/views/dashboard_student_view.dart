@@ -1,6 +1,5 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
-import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/views/list_exercise_code_reconstruction_view.dart';
 import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/views/list_exercise_widget_tree_reconstruction_view.dart';
 import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
@@ -165,73 +164,73 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
     );
   }
 
-  Widget _buildCodeReconstructionInformation(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: dimenExtraLarge,
-          vertical: dimenMedium,
-        ),
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      child: Padding(
-                        padding: EdgeInsets.all(dimenMedium),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomTextHelper.textTitle(
-                              context: context,
-                              text: "Apa itu\nCode Reconstruction ?",
-                            ),
-                            SizedBox(height: dimenMedium),
-                            CustomTextHelper.textBody(
-                              context: context,
-                              text:
-                                  "Code Reconstruction menerapkan metode Parsons Problem, "
-                                  "di mana terdapat blok-blok kode yang sudah disusun secara "
-                                  "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      child: Padding(
-                        padding: EdgeInsets.all(dimenSmall),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(dimenSmall),
-                          child: Image.asset(
-                            "assets/images/img_code_reconstruction.png",
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              IconButton(
-                onPressed: () {
-                  controller.nextContent();
-                },
-                icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildCodeReconstructionInformation(BuildContext context) {
+  //   return Container(
+  //     child: Padding(
+  //       padding: EdgeInsets.symmetric(
+  //         horizontal: dimenExtraLarge,
+  //         vertical: dimenMedium,
+  //       ),
+  //       child: Container(
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //           children: [
+  //             Row(
+  //               children: [
+  //                 Expanded(
+  //                   flex: 3,
+  //                   child: Container(
+  //                     child: Padding(
+  //                       padding: EdgeInsets.all(dimenMedium),
+  //                       child: Column(
+  //                         crossAxisAlignment: CrossAxisAlignment.start,
+  //                         mainAxisAlignment: MainAxisAlignment.center,
+  //                         children: [
+  //                           CustomTextHelper.textTitle(
+  //                             context: context,
+  //                             text: "Apa itu\nCode Reconstruction ?",
+  //                           ),
+  //                           SizedBox(height: dimenMedium),
+  //                           CustomTextHelper.textBody(
+  //                             context: context,
+  //                             text:
+  //                                 "Code Reconstruction menerapkan metode Parsons Problem, "
+  //                                 "di mana terdapat blok-blok kode yang sudah disusun secara "
+  //                                 "acak sehingga mahasiswa perlu menyusunnya ke susunan yang benar.",
+  //                           ),
+  //                         ],
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 Expanded(
+  //                   flex: 4,
+  //                   child: Container(
+  //                     child: Padding(
+  //                       padding: EdgeInsets.all(dimenSmall),
+  //                       child: ClipRRect(
+  //                         borderRadius: BorderRadius.circular(dimenSmall),
+  //                         child: Image.asset(
+  //                           "assets/images/img_code_reconstruction.png",
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //             IconButton(
+  //               onPressed: () {
+  //                 controller.nextContent();
+  //               },
+  //               icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Future<dynamic> _buildDialogLogout(BuildContext context) {
     return showDialog(

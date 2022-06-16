@@ -17,6 +17,7 @@ class DataStudentController extends GetxController {
     final lecturerId = _storageHelper.getIdUser();
     return studentReference
         .where("id_dosen", isEqualTo: lecturerId)
+        .where("id_kelas", isEqualTo: "mi-2e")
         .snapshots();
   }
 
@@ -38,29 +39,34 @@ class DataStudentController extends GetxController {
     });
   }
 
-  String getPostTestCodeStatus(List<String>? listExerciseId) {
-    final counterCode = listExerciseId
-        ?.where((exerciseId) => exerciseId.substring(6, 7) == 'c')
-        .toList()
-        .length;
+  // String getPostTestCodeStatus(List<String>? listExerciseId) {
+  //   final counterCode = listExerciseId
+  //       ?.where((exerciseId) => exerciseId.substring(6, 7) == 'c')
+  //       .toList()
+  //       .length;
 
-    if (counterCode == 15) {
-      return "Siap";
-    } else {
-      return "Belum Siap";
-    }
-  }
+  //   if (counterCode == 15) {
+  //     return "Siap";
+  //   } else {
+  //     return "Belum Siap";
+  //   }
+  // }
 
   String getPostTestWidgetStatus(List<String>? listExerciseId) {
-    final counterWidget = listExerciseId
+    final listWidget = listExerciseId
         ?.where((exerciseId) => exerciseId.substring(6, 7) == 'w')
-        .toList()
-        .length;
+        .toList();
+    var counterWidget = listWidget?.length;
 
-    if (counterWidget == 15) {
-      return "Siap";
-    } else {
-      return "Belum Siap";
+    if ((counterWidget ?? 0) > 10) {
+      counterWidget = 10;
     }
+
+    // if (counterWidget == 15) {
+    //   return "Siap";
+    // } else {
+    //   return "Belum Siap";
+    // }
+    return "$counterWidget / 10";
   }
 }

@@ -103,13 +103,13 @@ class DataStudentView extends StatelessWidget {
               ),
               size: ColumnSize.M,
             ),
-            DataColumn2(
-              label: CustomTextHelper.textTitleTable(
-                context: context,
-                text: "Code",
-              ),
-              size: ColumnSize.M,
-            ),
+            // DataColumn2(
+            //   label: CustomTextHelper.textTitleTable(
+            //     context: context,
+            //     text: "Code",
+            //   ),
+            //   size: ColumnSize.M,
+            // ),
             DataColumn2(
               label: CustomTextHelper.textTitleTable(
                 context: context,
@@ -167,16 +167,17 @@ class DataStudentView extends StatelessWidget {
                     text: studentClass!,
                   ),
                 ),
+                // DataCell(
+                //   CustomTextHelper.textBodyTable(
+                //     context: context,
+                //     text: controller.getPostTestCodeStatus(student.listExerciseId),
+                //   ),
+                // ),
                 DataCell(
                   CustomTextHelper.textBodyTable(
                     context: context,
-                    text: controller.getPostTestCodeStatus(student.listExerciseId),
-                  ),
-                ),
-                DataCell(
-                  CustomTextHelper.textBodyTable(
-                    context: context,
-                    text: controller.getPostTestWidgetStatus(student.listExerciseId),
+                    text: controller
+                        .getPostTestWidgetStatus(student.listExerciseId),
                   ),
                 ),
                 DataCell(

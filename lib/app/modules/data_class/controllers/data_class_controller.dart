@@ -95,16 +95,16 @@ class DataClassController extends GetxController {
 
   Future<void> addExerciseEachClass(String className) async {
     //loop to add Code Reconstruction exercises
-    for (int i = 0; i < listTitleExerciseCodeReconstruction.length; i++) {
-      await exerciseReference.add({
-        "id_latihan":
-            "${className.toLowerCase()}-c-${(i + 1 < 10) ? "0${i + 1}" : i + 1}",
-        "nama_latihan": "${listTitleExerciseCodeReconstruction[i]}",
-        "id_kelas": "${className.toLowerCase()}",
-        "tipe": "code",
-        "daftar_id_mahasiswa": <String>[],
-      });
-    }
+    // for (int i = 0; i < listTitleExerciseCodeReconstruction.length; i++) {
+    //   await exerciseReference.add({
+    //     "id_latihan":
+    //         "${className.toLowerCase()}-c-${(i + 1 < 10) ? "0${i + 1}" : i + 1}",
+    //     "nama_latihan": "${listTitleExerciseCodeReconstruction[i]}",
+    //     "id_kelas": "${className.toLowerCase()}",
+    //     "tipe": "code",
+    //     "daftar_id_mahasiswa": <String>[],
+    //   });
+    // }
 
     //loop to add Widget Tree Reconstruction exercises
     for (int i = 0; i < listTitleExerciseWidgetTreeReconstruction.length; i++) {
