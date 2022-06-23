@@ -10,8 +10,19 @@ import 'package:get/get.dart';
 
 import '../controllers/data_student_controller.dart';
 
-class DataStudentView extends StatelessWidget {
+class DataStudentView extends StatefulWidget {
+  @override
+  State<DataStudentView> createState() => _DataStudentViewState();
+}
+
+class _DataStudentViewState extends State<DataStudentView> {
   final controller = Get.put(DataStudentController());
+
+  @override
+  void initState() {
+    controller.selectedClass.value = "Semua";
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +39,54 @@ class DataStudentView extends StatelessWidget {
                   context: context,
                   text: "Data Mahasiswa",
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    controller.dashboardLecturerController.setSelectedIndex(2);
-                  },
-                  child: CustomTextHelper.textBody(
-                    context: context,
-                    text: "Tambah",
-                    customColor: Colors.white,
-                  ),
+                Row(
+                  children: [
+                    FutureBuilder(
+                      future: controller.getClassByLecturerId(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done &&
+                            snapshot.hasData) {
+                          return Obx(
+                            () {
+                              return DropdownButton<String>(
+                                value: controller.selectedClass.value,
+                                items: (snapshot.data as List<String>)
+                                    .map<DropdownMenuItem<String>>(
+                                      (e) => DropdownMenuItem(
+                                        child: Text(
+                                          e.toString(),
+                                        ),
+                                        value: e.toString(),
+                                      ),
+                                    )
+                                    .toList(),
+                                onChanged: (String? data) {
+                                  setState(() {
+                                    controller.selectedClass.value =
+                                        data ?? "Semua";
+                                  });
+                                },
+                              );
+                            },
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
+                    ),
+                    SizedBox(width: dimenSmall),
+                    ElevatedButton(
+                      onPressed: () {
+                        controller.dashboardLecturerController
+                            .setSelectedIndex(2);
+                      },
+                      child: CustomTextHelper.textBody(
+                        context: context,
+                        text: "Tambah",
+                        customColor: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -110,13 +160,6 @@ class DataStudentView extends StatelessWidget {
               ),
               size: ColumnSize.M,
             ),
-            // DataColumn2(
-            //   label: CustomTextHelper.textTitleTable(
-            //     context: context,
-            //     text: "Widget",
-            //   ),
-            //   size: ColumnSize.M,
-            // ),
             DataColumn2(
               label: CustomTextHelper.textTitleTable(
                 context: context,
@@ -170,15 +213,10 @@ class DataStudentView extends StatelessWidget {
                 DataCell(
                   CustomTextHelper.textBodyTable(
                     context: context,
-                    text: controller.getPostTestCodeStatus(student.listExerciseId),
+                    text: controller
+                        .getPostTestCodeStatus(student.listExerciseId),
                   ),
                 ),
-                // DataCell(
-                //   CustomTextHelper.textBodyTable(
-                //     context: context,
-                //     text: controller.getPostTestWidgetStatus(student.listExerciseId),
-                //   ),
-                // ),
                 DataCell(
                   (status!)
                       ? CustomTextHelper.textBodyTable(
