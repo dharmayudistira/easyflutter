@@ -21,7 +21,7 @@ class _DataStudentViewState extends State<DataStudentView> {
   @override
   void initState() {
     super.initState();
-    controller.selectedClass.value = "All";
+    controller.selectedClass.value = "Semua";
   }
 
   @override
@@ -63,7 +63,7 @@ class _DataStudentViewState extends State<DataStudentView> {
                                 onChanged: (String? data) {
                                   setState(() {
                                     controller.selectedClass.value =
-                                        data ?? "All";
+                                        data ?? "Semua";
                                   });
                                 },
                               );
@@ -163,7 +163,7 @@ class _DataStudentViewState extends State<DataStudentView> {
             DataColumn2(
               label: CustomTextHelper.textTitleTable(
                 context: context,
-                text: "Widget",
+                text: "Progress",
               ),
               size: ColumnSize.M,
             ),

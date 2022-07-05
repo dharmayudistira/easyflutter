@@ -14,11 +14,11 @@ class DataStudentController extends GetxController {
   final classReference = FirebaseFirestore.instance.collection("kelas");
 
   var listStudent = <StudentModel>[];
-  var selectedClass = "All".obs;
+  var selectedClass = "Semua".obs;
 
   Stream<QuerySnapshot> getAllStudent() {
     final lecturerId = _storageHelper.getIdUser();
-    if (selectedClass.value == "All") {
+    if (selectedClass.value == "Semua") {
       return studentReference
           .where("id_dosen", isEqualTo: lecturerId)
           .snapshots();
@@ -81,7 +81,7 @@ class DataStudentController extends GetxController {
 
   Future<List<String>> getClassByLecturerId() async {
     final lecturerId = _storageHelper.getIdUser();
-    var listClass = ["All"];
+    var listClass = ["Semua"];
 
     QuerySnapshot<Map<String, dynamic>> dataClass =
         await classReference.where("id_dosen", isEqualTo: lecturerId).get();

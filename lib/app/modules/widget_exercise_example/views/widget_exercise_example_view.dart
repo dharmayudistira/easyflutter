@@ -42,7 +42,7 @@ class _WidgetExerciseExampleViewState extends State<WidgetExerciseExampleView> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(milliseconds: 200), () {
-        ShowCaseWidget.of(myContext!)?.startShowCase([
+        ShowCaseWidget.of(myContext!).startShowCase([
           key1,
           key2,
           key3,
