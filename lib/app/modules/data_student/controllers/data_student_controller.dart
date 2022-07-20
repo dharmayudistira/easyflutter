@@ -78,15 +78,16 @@ class DataStudentController extends GetxController {
   }
 
   String getPostTestWidgetStatus(List<String>? listExerciseId) {
-    final counterWidget = listExerciseId
+    final listWidget = listExerciseId
         ?.where((exerciseId) => exerciseId.substring(6, 7) == 'w')
-        .toList()
-        .length;
+        .toList();
+    var counterWidget = listWidget?.length;
 
-    if (counterWidget == 15) {
-      return "Siap";
-    } else {
-      return "Belum Siap";
+    if ((counterWidget ?? 0) > 10) {
+      counterWidget = 10;
     }
+
+    return "$counterWidget / 10";
   }
+
 }

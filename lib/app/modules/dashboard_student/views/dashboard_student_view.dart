@@ -1,6 +1,7 @@
 import 'package:easyflutter/app/constants/color_constants.dart';
 import 'package:easyflutter/app/constants/dimen_constants.dart';
 import 'package:easyflutter/app/modules/list_exercise_code_reconstruction/views/list_exercise_code_reconstruction_view.dart';
+import 'package:easyflutter/app/modules/list_exercise_widget_tree_reconstruction/views/list_exercise_widget_tree_reconstruction_view.dart';
 import 'package:easyflutter/app/utils/custom_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,6 +22,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
         children: [
           _buildDashboardContent(context),
           ListExerciseCodeReconstructionView(),
+          ListExerciseWidgetTreeReconstructionView(),
         ],
       ),
     );
@@ -52,6 +54,15 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                 },
               ),
               SizedBox(width: dimenMedium),
+              TextButton(
+                child: CustomTextHelper.textBody(
+                  context: context,
+                  text: "Widget Tree Reconstruction",
+                ),
+                onPressed: () {
+                  controller.navigateFeature(2);
+                },
+              ),
               SizedBox(width: dimenMedium),
               IconButton(
                 onPressed: () {
@@ -80,7 +91,77 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
       physics: NeverScrollableScrollPhysics(),
       children: [
         _buildCodeReconstructionInformation(context),
+        _buildWidgetTreeReconstructionInformation(context),
       ],
+    );
+  }
+
+  Widget _buildWidgetTreeReconstructionInformation(BuildContext context) {
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: dimenExtraLarge,
+          vertical: dimenMedium,
+        ),
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: () {
+                  controller.previousContent();
+                },
+                icon: FaIcon(FontAwesomeIcons.anglesUp),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenSmall),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(dimenSmall),
+                          child: Image.asset(
+                            "assets/images/img_widget_tree_reconstruction.png",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(dimenMedium),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextHelper.textTitle(
+                              context: context,
+                              text: "Apa itu\nWidget Tree Reconstruction ?",
+                            ),
+                            SizedBox(height: dimenMedium),
+                            CustomTextHelper.textBody(
+                              context: context,
+                              text:
+                                  "Widget Tree Reconstruction menerapkan metode Concept Map. "
+                                  "Mahasiswa diberikan peta konsep dari dosen (ahli) yang sudah "
+                                  "dihilangkan beberapa bagian, sehingga mahasiswa perlu melengkapi peta "
+                                  "konsep tersebut dengan jawaban yang sudah disediakan.",
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -139,12 +220,12 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   ),
                 ],
               ),
-              // IconButton(
-              //   onPressed: () {
-              //     controller.nextContent();
-              //   },
-              //   icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
-              // ),
+              IconButton(
+                onPressed: () {
+                  controller.nextContent();
+                },
+                icon: FaIcon(FontAwesomeIcons.anglesDown),
+              ),
             ],
           ),
         ),

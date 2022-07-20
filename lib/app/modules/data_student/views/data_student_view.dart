@@ -156,7 +156,14 @@ class _DataStudentViewState extends State<DataStudentView> {
             DataColumn2(
               label: CustomTextHelper.textTitleTable(
                 context: context,
-                text: "Progress",
+                text: "Progress Code",
+              ),
+              size: ColumnSize.M,
+            ),
+            DataColumn2(
+              label: CustomTextHelper.textTitleTable(
+                context: context,
+                text: "Progress Widget",
               ),
               size: ColumnSize.M,
             ),
@@ -213,8 +220,14 @@ class _DataStudentViewState extends State<DataStudentView> {
                 DataCell(
                   CustomTextHelper.textBodyTable(
                     context: context,
+                    text: controller.getPostTestCodeStatus(student.listExerciseId),
+                  ),
+                ),
+                DataCell(
+                  CustomTextHelper.textBodyTable(
+                    context: context,
                     text: controller
-                        .getPostTestCodeStatus(student.listExerciseId),
+                        .getPostTestWidgetStatus(student.listExerciseId),
                   ),
                 ),
                 DataCell(

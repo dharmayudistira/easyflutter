@@ -14,44 +14,13 @@ import 'package:showcaseview/showcaseview.dart';
 
 import '../controllers/widget_exercise_example_controller.dart';
 
-class WidgetExerciseExampleView extends StatelessWidget {
-  WidgetExerciseExampleView({Key? key}) : super(key: key);
-
-  final controller = Get.put(WidgetExerciseExampleController());
-
+class WidgetExerciseExampleView extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ShowCaseWidget(
-        builder: Builder(builder: (_) => WidgetExerciseExample()),
-        onComplete: (p0, p1) {
-          if (p0 == 7) {
-            controller.startExercise();
-          }
-          if (p0 == 10) {
-            showDialog(
-              barrierDismissible: false,
-              context: context,
-              builder: (context) {
-                return DialogHelper.dialogEndTutorial(context);
-              },
-            );
-          }
-        },
-      ),
-    );
-  }
+  State<WidgetExerciseExampleView> createState() =>
+      _WidgetExerciseExampleViewState();
 }
 
-class WidgetExerciseExample extends StatefulWidget {
-  WidgetExerciseExample({Key? key}) : super(key: key);
-
-  @override
-  State<WidgetExerciseExample> createState() => _WidgetExerciseExampleState();
-}
-
-class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
+class _WidgetExerciseExampleViewState extends State<WidgetExerciseExampleView> {
   final controller = Get.put(WidgetExerciseExampleController());
   final key1 = GlobalKey();
   final key2 = GlobalKey();
@@ -72,7 +41,7 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(milliseconds: 200), () {
-        ShowCaseWidget.of(context).startShowCase([
+        ShowCaseWidget.of(myContext!).startShowCase([
           key1,
           key2,
           key3,
