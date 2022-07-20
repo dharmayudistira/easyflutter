@@ -58,7 +58,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   _buildDialogLogout(context);
                 },
                 icon: FaIcon(
-                  FontAwesomeIcons.signOutAlt,
+                  FontAwesomeIcons.rightFromBracket,
                   color: Colors.black,
                   size: dimenMedium * 0.65,
                 ),

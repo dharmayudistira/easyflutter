@@ -64,14 +64,15 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
   final key9 = GlobalKey();
   final key10 = GlobalKey();
   final key11 = GlobalKey();
+  BuildContext? myContext;
 
   @override
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(milliseconds: 200), () {
-        ShowCaseWidget.of(context)?.startShowCase([
+        ShowCaseWidget.of(context).startShowCase([
           key1,
           key2,
           key3,
@@ -90,258 +91,288 @@ class _WidgetExerciseExampleState extends State<WidgetExerciseExample> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: Size(1366, 768),
-      builder: () {
-        return Scaffold(
-          appBar: AppBar(
-            centerTitle: false,
-            leading: BackButtonExercise(
-              isStart: controller.isStart,
-              exerciseName: controller.exerciseName,
-            ),
-            title: CustomShowcaseWidget(
-              globalKey: key1,
-              description: "Berikut merupakan ID Latihan.",
-              child: CustomTextHelper.textBody(
-                context: context,
-                text: "Latihan ID: ${controller.exerciseId}",
-              ),
-            ),
-            backgroundColor: ColorConstants.kPrimaryColor,
-            elevation: 0,
-          ),
-          body: Container(
-            color: Colors.grey.withOpacity(0.1),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: 32.w,
-                      top: 16.h,
-                      right: 16.w,
-                      bottom: 16.h,
+    return ShowCaseWidget(
+      builder: Builder(
+        builder: (context) {
+          myContext = context;
+          return ScreenUtilInit(
+            designSize: Size(1366, 768),
+            builder: (context, child) {
+              return Scaffold(
+                appBar: AppBar(
+                  centerTitle: false,
+                  leading: BackButtonExercise(
+                    isStart: controller.isStart,
+                    exerciseName: controller.exerciseName,
+                  ),
+                  title: CustomShowcaseWidget(
+                    globalKey: key1,
+                    description: "Berikut merupakan ID Latihan.",
+                    child: CustomTextHelper.textBody(
+                      context: context,
+                      text: "Latihan ID: ${controller.exerciseId}",
                     ),
-                    child: Card(
-                      elevation: 8.r,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 24.w, vertical: 24.h),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomShowcaseWidget(
-                              globalKey: key2,
-                              description: "Berikut merupakan Nama Latihan.",
-                              child: CustomTextHelper.textBody(
-                                context: context,
-                                text: controller.exerciseName,
-                                customWeight: FontWeight.bold,
-                              ),
+                  ),
+                  backgroundColor: ColorConstants.kPrimaryColor,
+                  elevation: 0,
+                ),
+                body: Container(
+                  color: Colors.grey.withOpacity(0.1),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: 32.w,
+                            top: 16.h,
+                            right: 16.w,
+                            bottom: 16.h,
+                          ),
+                          child: Card(
+                            elevation: 8.r,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
-                            CustomShowcaseWidget(
-                              globalKey: key3,
-                              description:
-                                  "Berikut merupakan Deskripsi Latihan.",
-                              child: CustomTextHelper.textCaption(
-                                context: context,
-                                text: controller.exerciseDescription,
-                              ),
-                            ),
-                            CustomShowcaseWidget(
-                              globalKey: key4,
-                              description:
-                                  "Berikut merupakan Concept Map (Widget Tree) dari ahli yang sudah dihilangkan beberapa bagian.",
-                              child: Center(
-                                child: Stack(
-                                  children: [
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12.r),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 24.w, vertical: 24.h),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomShowcaseWidget(
+                                    globalKey: key2,
+                                    description:
+                                        "Berikut merupakan Nama Latihan.",
+                                    child: CustomTextHelper.textBody(
+                                      context: context,
+                                      text: controller.exerciseName,
+                                      customWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  CustomShowcaseWidget(
+                                    globalKey: key3,
+                                    description:
+                                        "Berikut merupakan Deskripsi Latihan.",
+                                    child: CustomTextHelper.textCaption(
+                                      context: context,
+                                      text: controller.exerciseDescription,
+                                    ),
+                                  ),
+                                  CustomShowcaseWidget(
+                                    globalKey: key4,
+                                    description:
+                                        "Berikut merupakan Concept Map (Widget Tree) dari ahli yang sudah dihilangkan beberapa bagian.",
+                                    child: Center(
+                                      child: Stack(
+                                        children: [
+                                          Card(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.r),
+                                            ),
+                                            child: Center(
+                                              child: SizedBox(
+                                                height: 420.h,
+                                                child: Image.asset(
+                                                  "assets/images/widget/widget_tree0.png",
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Column(
+                                            children: [
+                                              SizedBox(height: 232.r),
+                                              Row(
+                                                children: [
+                                                  SizedBox(width: 298.3.h),
+                                                  DragTargetWidget(
+                                                    acceptAnswer:
+                                                        controller.acceptAnswer,
+                                                    targetAnswer:
+                                                        controller.targetAnswer,
+                                                    index: 0,
+                                                    size: 70,
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(height: 34.6.r),
+                                              Row(
+                                                children: [
+                                                  SizedBox(width: 193.6.h),
+                                                  DragTargetWidget(
+                                                    acceptAnswer:
+                                                        controller.acceptAnswer,
+                                                    targetAnswer:
+                                                        controller.targetAnswer,
+                                                    index: 1,
+                                                    size: 70,
+                                                  ),
+                                                  SizedBox(width: 139.5.h),
+                                                  DragTargetWidget(
+                                                    acceptAnswer:
+                                                        controller.acceptAnswer,
+                                                    targetAnswer:
+                                                        controller.targetAnswer,
+                                                    index: 2,
+                                                    size: 70,
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                      child: Center(
+                                    ),
+                                  ),
+                                  CustomShowcaseWidget(
+                                    globalKey: key5,
+                                    description:
+                                        "Berikut merupakan pilihan jawaban yang dapat digunakan mahasiswa untuk melengkapi Concept Map (Widget Tree) diatas.",
+                                    child: Center(
+                                      child: DraggableWidget(
+                                        answerList: controller.answerList,
+                                        size: 70,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: 16.w,
+                            top: 16.h,
+                            right: 32.w,
+                            bottom: 16.h,
+                          ),
+                          child: Card(
+                            elevation: 8.r,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 24.w, vertical: 24.h),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      CustomTextHelper.textBody(
+                                        context: context,
+                                        text: "Output yang diharapkan :",
+                                      ),
+                                      CustomShowcaseWidget(
+                                        globalKey: key6,
+                                        description:
+                                            "Berikut merupakan waktu yang digunakan mahasiswa untuk menyelesaikan latihan.",
+                                        child: StopWatchWidget(
+                                          stopWatchTimer:
+                                              controller.stopWatchTimer,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  CustomShowcaseWidget(
+                                    globalKey: key7,
+                                    description:
+                                        "Berikut merupakan gambar output yang diharapkan dari Concept Map (Widget Tree).",
+                                    child: Center(
+                                      child: Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12.r),
+                                        ),
                                         child: SizedBox(
                                           height: 420.h,
                                           child: Image.asset(
-                                            "assets/images/widget/widget_tree0.png",
+                                            "assets/images/widget/latihan0.png",
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Column(
-                                      children: [
-                                        SizedBox(height: 232.r),
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 298.3.h),
-                                            DragTargetWidget(
-                                              acceptAnswer:
-                                                  controller.acceptAnswer,
-                                              targetAnswer:
-                                                  controller.targetAnswer,
-                                              index: 0,
-                                              size: 70,
+                                  ),
+                                  Obx(() {
+                                    return controller.isStart.value
+                                        ? Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              CustomShowcaseWidget(
+                                                globalKey: key9,
+                                                description:
+                                                    "Berikut merupakan tombol yang dapat digunakan untuk mengatur ulang Concept Map (Widget Tree) dan Pilihan Jawaban yang tersedia.",
+                                                child:
+                                                    buildResetButton(context),
+                                              ),
+                                              SizedBox(width: 16.r),
+                                              CustomShowcaseWidget(
+                                                globalKey: key10,
+                                                description:
+                                                    "Berikut merupakan tombol yang dapat digunakan untuk memeriksa apakah Concept Map (Widget Tree) sudah dilengkapi dengan benar.",
+                                                child: buildCheckAnswerButton(
+                                                    context),
+                                              ),
+                                              SizedBox(width: 16.r),
+                                              CustomShowcaseWidget(
+                                                globalKey: key11,
+                                                description:
+                                                    "Berikut merupakan tombol untuk menandakan bahwa latihan berhasil diselesaikan.",
+                                                child: buildSendAnswerButton(
+                                                    context),
+                                              ),
+                                            ],
+                                          )
+                                        : CustomShowcaseWidget(
+                                            globalKey: key8,
+                                            description:
+                                                "Berikut merupakan tombol untuk memulai latihan.",
+                                            child: Container(
+                                              width: double.infinity,
+                                              child: buildStartExerciseButton(
+                                                  context),
                                             ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 34.6.r),
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 193.6.h),
-                                            DragTargetWidget(
-                                              acceptAnswer:
-                                                  controller.acceptAnswer,
-                                              targetAnswer:
-                                                  controller.targetAnswer,
-                                              index: 1,
-                                              size: 70,
-                                            ),
-                                            SizedBox(width: 139.5.h),
-                                            DragTargetWidget(
-                                              acceptAnswer:
-                                                  controller.acceptAnswer,
-                                              targetAnswer:
-                                                  controller.targetAnswer,
-                                              index: 2,
-                                              size: 70,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                          );
+                                  }),
+                                ],
                               ),
                             ),
-                            CustomShowcaseWidget(
-                              globalKey: key5,
-                              description:
-                                  "Berikut merupakan pilihan jawaban yang dapat digunakan mahasiswa untuk melengkapi Concept Map (Widget Tree) diatas.",
-                              child: Center(
-                                child: DraggableWidget(
-                                  answerList: controller.answerList,
-                                  size: 70,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      )
+                    ],
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: 16.w,
-                      top: 16.h,
-                      right: 32.w,
-                      bottom: 16.h,
-                    ),
-                    child: Card(
-                      elevation: 8.r,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 24.w, vertical: 24.h),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CustomTextHelper.textBody(
-                                  context: context,
-                                  text: "Output yang diharapkan :",
-                                ),
-                                CustomShowcaseWidget(
-                                  globalKey: key6,
-                                  description:
-                                      "Berikut merupakan waktu yang digunakan mahasiswa untuk menyelesaikan latihan.",
-                                  child: StopWatchWidget(
-                                    stopWatchTimer: controller.stopWatchTimer,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            CustomShowcaseWidget(
-                              globalKey: key7,
-                              description:
-                                  "Berikut merupakan gambar output yang diharapkan dari Concept Map (Widget Tree).",
-                              child: Center(
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                  child: SizedBox(
-                                    height: 420.h,
-                                    child: Image.asset(
-                                      "assets/images/widget/latihan0.png",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Obx(() {
-                              return controller.isStart.value
-                                  ? Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        CustomShowcaseWidget(
-                                          globalKey: key9,
-                                          description:
-                                              "Berikut merupakan tombol yang dapat digunakan untuk mengatur ulang Concept Map (Widget Tree) dan Pilihan Jawaban yang tersedia.",
-                                          child: buildResetButton(context),
-                                        ),
-                                        SizedBox(width: 16.r),
-                                        CustomShowcaseWidget(
-                                          globalKey: key10,
-                                          description:
-                                              "Berikut merupakan tombol yang dapat digunakan untuk memeriksa apakah Concept Map (Widget Tree) sudah dilengkapi dengan benar.",
-                                          child:
-                                              buildCheckAnswerButton(context),
-                                        ),
-                                        SizedBox(width: 16.r),
-                                        CustomShowcaseWidget(
-                                          globalKey: key11,
-                                          description:
-                                              "Berikut merupakan tombol untuk menandakan bahwa latihan berhasil diselesaikan.",
-                                          child: buildSendAnswerButton(context),
-                                        ),
-                                      ],
-                                    )
-                                  : CustomShowcaseWidget(
-                                      globalKey: key8,
-                                      description:
-                                          "Berikut merupakan tombol untuk memulai latihan.",
-                                      child: Container(
-                                        width: double.infinity,
-                                        child:
-                                            buildStartExerciseButton(context),
-                                      ),
-                                    );
-                            }),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
+              );
+            },
+          );
+        },
+      ),
+      onComplete: (p0, p1) {
+        if (p0 == 7) {
+          controller.startExercise();
+        }
+        if (p0 == 10) {
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return DialogHelper.dialogEndTutorial(context);
+            },
+          );
+        }
       },
     );
   }

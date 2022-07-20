@@ -19,7 +19,7 @@ class SnackBarHelper {
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
           child: FaIcon(
-            FontAwesomeIcons.checkCircle,
+            FontAwesomeIcons.circleCheck,
             color: Colors.green,
           ),
         ),
@@ -41,7 +41,7 @@ class SnackBarHelper {
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
           child: FaIcon(
-            FontAwesomeIcons.infoCircle,
+            FontAwesomeIcons.circleInfo,
             color: Colors.blue,
           ),
         ),
@@ -63,7 +63,7 @@ class SnackBarHelper {
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
           child: FaIcon(
-            FontAwesomeIcons.exclamationCircle,
+            FontAwesomeIcons.circleExclamation,
             color: Colors.yellow,
           ),
         ),
@@ -85,7 +85,7 @@ class SnackBarHelper {
         icon: Padding(
           padding: EdgeInsets.only(left: dimenSmall / 2),
           child: FaIcon(
-            FontAwesomeIcons.exclamationTriangle,
+            FontAwesomeIcons.triangleExclamation,
             color: Colors.red,
           ),
         ),

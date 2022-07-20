@@ -18,7 +18,7 @@ class WidgetExercise6View extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(1366, 768),
-      builder: () {
+      builder: (context, child) {
         return Scaffold(
           appBar: AppBar(
             centerTitle: false,
