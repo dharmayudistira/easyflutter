@@ -69,7 +69,7 @@ class LoginView extends GetView<LoginController> {
                       text: "Masukkan NIM / NIDN",
                     ),
                     prefixIcon: Icon(
-                      FontAwesomeIcons.userAlt,
+                      FontAwesomeIcons.userLarge,
                       size: dimenSmall * 1.2,
                     ),
                   ),

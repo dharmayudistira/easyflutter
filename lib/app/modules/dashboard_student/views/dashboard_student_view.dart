@@ -22,7 +22,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
         children: [
           _buildDashboardContent(context),
           ListExerciseCodeReconstructionView(),
-          // ListExerciseWidgetTreeReconstructionView(),
+          ListExerciseWidgetTreeReconstructionView(),
         ],
       ),
     );
@@ -54,22 +54,22 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                 },
               ),
               SizedBox(width: dimenMedium),
-              // TextButton(
-              //   child: CustomTextHelper.textBody(
-              //     context: context,
-              //     text: "Widget Tree Reconstruction",
-              //   ),
-              //   onPressed: () {
-              //     controller.navigateFeature(2);
-              //   },
-              // ),
+              TextButton(
+                child: CustomTextHelper.textBody(
+                  context: context,
+                  text: "Widget Tree Reconstruction",
+                ),
+                onPressed: () {
+                  controller.navigateFeature(2);
+                },
+              ),
               SizedBox(width: dimenMedium),
               IconButton(
                 onPressed: () {
                   _buildDialogLogout(context);
                 },
                 icon: FaIcon(
-                  FontAwesomeIcons.signOutAlt,
+                  FontAwesomeIcons.rightFromBracket,
                   color: Colors.black,
                   size: dimenMedium * 0.65,
                 ),
@@ -91,7 +91,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
       physics: NeverScrollableScrollPhysics(),
       children: [
         _buildCodeReconstructionInformation(context),
-        // _buildWidgetTreeReconstructionInformation(context),
+        _buildWidgetTreeReconstructionInformation(context),
       ],
     );
   }
@@ -111,7 +111,7 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                 onPressed: () {
                   controller.previousContent();
                 },
-                icon: FaIcon(FontAwesomeIcons.angleDoubleUp),
+                icon: FaIcon(FontAwesomeIcons.anglesUp),
               ),
               Row(
                 children: [
@@ -220,12 +220,12 @@ class DashboardStudentView extends GetView<DashboardStudentController> {
                   ),
                 ],
               ),
-              // IconButton(
-              //   onPressed: () {
-              //     controller.nextContent();
-              //   },
-              //   icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
-              // ),
+              IconButton(
+                onPressed: () {
+                  controller.nextContent();
+                },
+                icon: FaIcon(FontAwesomeIcons.anglesDown),
+              ),
             ],
           ),
         ),

@@ -36,9 +36,9 @@ class _CodeExerciseExampleViewState extends State<CodeExerciseExampleView> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(milliseconds: 200), () {
-        ShowCaseWidget.of(myContext!)?.startShowCase([
+        ShowCaseWidget.of(myContext!).startShowCase([
           keyButtonBack,
           keyAppbarTitle,
           keyExerciseName,

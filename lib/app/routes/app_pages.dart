@@ -37,7 +37,7 @@ import '../modules/widget_exercise/views/widget_exercise_2_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_3_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_4_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_5_view.dart';
-import '../modules/widget_exercise/views/widget_exercise_6_vie.dart';
+import '../modules/widget_exercise/views/widget_exercise_6_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_7_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_8_view.dart';
 import '../modules/widget_exercise/views/widget_exercise_9_view.dart';
